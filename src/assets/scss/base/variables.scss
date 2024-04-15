@@ -1,0 +1,114 @@
+@use 'sass:math';
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1340;
+
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 40;
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Ширина страбатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+// Брейкпоинты
+$pc: $containerWidth + px;
+$xs: 479.98px;
+$sm: 576px;
+$md: 767.98px;
+$lg: 991.98px;
+$xl: 1024px;
+$xxl: 1200px;
+$xxxl: 1400px;
+
+// (i) Стили будут применяться ко всем классам содержащим *__container. Например header__container, footer__container и т.д.
+@if ($responsiveType ==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer > 0) {
+			max-width: $maxWidthContainer + px;
+			margin: 0 auto;
+		}
+		@if ($containerPadding > 0) {
+			padding: 0 math.div($containerPadding, 2) + px;
+		}
+	}
+}
+@else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer > 0) {
+			max-width: $maxWidthContainer + px;
+		}
+		@if ($containerPadding > 0) {
+			padding: 0 math.div($containerPadding, 2) + px;
+		}
+		@media (max-width: $xxl) {
+			max-width: 980px;
+		}
+		@media (max-width: $lg) {
+			max-width: 750px;
+		}
+		@media (max-width: $md) {
+			max-width: 620px;
+		}
+		@media (max-width: $sm) {
+			max-width: 100%;
+		}
+	}
+}
+
+// размеры шрифтов
+$fontSize: 16px;
+
+// Основные Цвета
+$mainColor: #000;
+$whiteColor: #ffffff;
+
+$black: #000;
+$white: #ffffff;
+
+// bg colors
+$bg-contrast-2: #f7bf18;
+$bg-contrast: #369;
+$bg-seconadary: #f3f4f8;
+$bg-primary: #fff;
+$bg-tertiary: #dfe0e4;
+// text colors
+$text-headings: #212226;
+$text-contrast-primary: #9a9eae;
+$text-button: #312605;
+$text-contrast-seconadry: #369;
+$text-contrast-tertiary: #fff;
+$text-contrast-additional: #b8bccc;
+$text-default-text-contrast: #37383b;
+$text-default-text: #4d4e51;
+$text-placeholder: #bfc7d8;
+// btns colors
+$button-primary-blue-default: #369;
+$button-primary-blue-hover: #15487b;
+$button-primary-yellow-default: #f7bf18;
+$button-primary-yellow-hover: #d9a100;
+$button-link-default: #369;
+$button-link-hover: #96afc8;
+// icon colors
+$icons-blue: #369;
+$icons-white: #fff;
+$icons-yellow: #f7bf18;
+$icons-black: #212226;
+$stroke-light: #d3dbec;
+$stroke-contrast: #477aad;
+$system-error: #fc281a;
+
+
+$shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.05);
+// Шрифты
+$fontWeight: 400;
+$fontFamily: "Montserrat", sans-serif;

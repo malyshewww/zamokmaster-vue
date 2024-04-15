@@ -1,0 +1,355 @@
+.main-screen {
+	background: $bg-seconadary;
+	padding: 60px 0 60px;
+	&__heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 20px;
+	}
+	&__title {
+		font-weight: 600;
+		font-size: 80px;
+		color: $text-headings;
+		line-height: 88px;
+		& span {
+			color: $text-contrast-primary;
+			display: block;
+		}
+	}
+	&__phone {
+		border-radius: 52px;
+		padding: 4px 4px 4px 30px;
+		background: $bg-contrast-2;
+		height: 70px;
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		flex: 0 1 340px;
+		&-text {
+			flex-grow: 1;
+			font-weight: 600;
+			font-size: 24px;
+			color: $text-button;
+		}
+		&-icon {
+			width: 62px;
+			height: 62px;
+			flex-shrink: 0;
+			border-radius: 50%;
+			background-color: $text-headings;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			&::before {
+				content: "";
+				display: block;
+				mask-image: url('../images/icons/phone.svg');
+				mask-repeat: no-repeat;
+				mask-position: center;
+				background-color: $bg-contrast-2;
+				width: 25px;
+				height: 25px;
+				mask-size: 21px 21px;
+			}
+		}
+	}
+	&__advantages {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px 30px;
+		max-width: 1008px;
+	}
+	&__image-wrap {
+		margin-top: 30px;
+		position: relative;
+	}
+	&__image {
+		padding-bottom: math.div(441, 1300) * 100%;
+		border-radius: 28px;
+		overflow: hidden;
+		& img {
+			border-radius: inherit;
+		}
+	}
+	&__info {
+		width: 459px;
+		background: $bg-primary;
+		border-radius: 28px;
+		padding: 30px 30px;
+		font-weight: 500;
+		font-size: 20px;
+		position: absolute;
+		right: 40px;
+		top: -58px;
+		& p {
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+		}
+		&-icon {
+			width: 35px;
+			height: 35px;
+			border-radius: 0 50% 0 50%;
+			border: 5px solid $bg-seconadary;
+			position: absolute;
+			top: -15px;
+			right: -17px;
+			background-image: url('../images/icons/info.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 30px 30px;
+		}
+		& span {
+			font-weight: 700;
+			color: $bg-contrast;
+		}
+	}
+}
+.main-screen__advantage {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	color: $text-default-text-contrast;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	&::before {
+		content: "";
+		display: block;
+		width: 46px;
+		height: 46px;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+@for $i from 1 through 3 {
+	.main-screen__advantage--#{$i} {
+		&::before {
+			background-image: url('../images/main-screen/advantage-#{$i}.svg');
+		}
+	}
+}
+
+// services
+
+.services {
+	background: $bg-seconadary;
+	padding: 60px 0 60px;
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+	&__item {}
+}
+.item-services {
+	border-radius: 28px;
+	min-height: 230px;
+	position: relative;
+	border-radius: 28px;
+	background-color: $bg-primary;
+	cursor: pointer;
+	&::before {
+		content: "";
+		width: 90%;
+		height: 198px;
+		background-color: #f9f9fb;
+		border-radius: 28px;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: -14px;
+		pointer-events: none;
+		z-index: 1;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 20px;
+		height: 100%;
+		padding: 30px 30px;
+		position: relative;
+		z-index: 2;
+		background-color: $bg-primary;
+		border-radius: 28px;
+	}
+	&__title {
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 24px;
+		color: $black;
+	}
+	&__icon {
+		width: 80px;
+		height: 80px;
+	}
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 20px;
+		&::before {
+			content: "";
+			display: block;
+			width: 37px;
+			height: 24px;
+			mask-image: url('../images/icons/arrow-right.svg');
+			mask-repeat: no-repeat;
+			mask-position: center;
+			background-color: #212226;
+		}
+	}
+}
+
+// request
+.request {
+	padding: 52px 0 120px;
+	background: $bg-seconadary;
+	&__body {
+		background-color: $bg-primary;
+		border-radius: 28px;
+		padding: 47px 15px 45px;
+		background-repeat: no-repeat;
+		background-position: 44% center;
+		background-image: url('../images/request/decor.svg');
+		background-size: 173px 380px;
+	}
+	&__inner {
+		display: grid;
+		grid-template-columns: 382px 1fr;
+		justify-content: space-between;
+		gap: 20px;
+		max-width: 1080px;
+		margin: 0 auto;
+		width: 100%;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	&__title {
+		font-weight: 600;
+		font-size: 40px;
+		line-height: 44px;
+		color: $text-headings;
+	}
+	&__sub-title {
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-button;
+		& span {
+			font-weight: 700;
+			color: $bg-contrast;
+		}
+	}
+	&__form {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 20px;
+		max-width: 530px;
+		justify-self: end;
+		& .form-item {
+			width: 100%;
+		}
+		& .form-text {
+			max-width: 306px;
+			font-weight: 400;
+			font-size: 12px;
+			color: $text-contrast-primary;
+		}
+	}
+}
+
+// services-detail 
+.services-detail {
+	&--second {
+		& .services-detail__box {
+			&:nth-child(odd) {
+				& .services-detail__image-wrap::before {
+					transform: rotate(4deg);
+				}
+			}
+			&:nth-child(even) {
+				& .services-detail__image-wrap::before {
+					background-color: $bg-primary;
+				}
+			}
+		}
+	}
+	&__wrapper {
+		padding: 150px 0 60px;
+		display: flex;
+		flex-direction: column;
+		gap: 150px 0;
+	}
+	&__box {
+		&:nth-child(even) {
+			& .services-detail__body {
+				flex-direction: row-reverse;
+			}
+		}
+	}
+	&__item {}
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0 110px;
+	}
+	&__image-wrap {
+		flex: 0 0 522px;
+		position: relative;
+		&::before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: $bg-tertiary;
+			transform: rotate(-4deg);
+			border-radius: 28px;
+		}
+	}
+	&__image {
+		padding-bottom: math.div(480, 522) * 100%;
+		border-radius: 28px;
+		overflow: hidden;
+		& img {
+			border-radius: inherit;
+		}
+	}
+	&__content {
+		display: grid;
+		gap: 24px;
+	}
+	&__title {
+		color: $text-headings;
+		font-weight: 600;
+		font-size: 40px;
+		line-height: 44px;
+		span {
+			display: inline-block;
+			color: $text-contrast-primary;
+		}
+	}
+	&__text {
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text;
+		& p {
+			&:not(:last-child) {
+				margin-bottom: 12px;
+			}
+		}
+	}
+	&__button {
+		max-width: 162px;
+		margin-top: 16px;
+	}
+}
