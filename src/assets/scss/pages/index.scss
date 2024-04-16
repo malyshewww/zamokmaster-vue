@@ -18,43 +18,7 @@
 			display: block;
 		}
 	}
-	&__phone {
-		border-radius: 52px;
-		padding: 4px 4px 4px 30px;
-		background: $bg-contrast-2;
-		height: 70px;
-		display: flex;
-		align-items: center;
-		gap: 20px;
-		flex: 0 1 340px;
-		&-text {
-			flex-grow: 1;
-			font-weight: 600;
-			font-size: 24px;
-			color: $text-button;
-		}
-		&-icon {
-			width: 62px;
-			height: 62px;
-			flex-shrink: 0;
-			border-radius: 50%;
-			background-color: $text-headings;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			&::before {
-				content: "";
-				display: block;
-				mask-image: url('../images/icons/phone.svg');
-				mask-repeat: no-repeat;
-				mask-position: center;
-				background-color: $bg-contrast-2;
-				width: 25px;
-				height: 25px;
-				mask-size: 21px 21px;
-			}
-		}
-	}
+	&__phone {}
 	&__advantages {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -268,6 +232,7 @@
 // services-detail 
 .services-detail {
 	&--second {
+		padding-top: 60px;
 		& .services-detail__box {
 			&:nth-child(odd) {
 				& .services-detail__image-wrap::before {
@@ -277,6 +242,26 @@
 			&:nth-child(even) {
 				& .services-detail__image-wrap::before {
 					background-color: $bg-primary;
+				}
+				& .services-detail__title span {
+					display: inline-block;
+				}
+			}
+		}
+		& .services-detail__wrapper {
+			max-width: 1740px;
+			margin: 0 auto;
+			border-radius: 28px;
+			background-color: $bg-seconadary;
+			overflow: hidden;
+			gap: 133px 0;
+		}
+	}
+	&--third {
+		& .services-detail__box {
+			&:nth-child(odd) {
+				& .services-detail__title span {
+					display: inline-block;
 				}
 			}
 		}
@@ -334,7 +319,7 @@
 		font-size: 40px;
 		line-height: 44px;
 		span {
-			display: inline-block;
+			display: block;
 			color: $text-contrast-primary;
 		}
 	}
@@ -351,5 +336,335 @@
 	&__button {
 		max-width: 162px;
 		margin-top: 16px;
+	}
+}
+
+// services-slider
+
+.services-slider {
+	position: relative;
+	margin-top: 60px;
+	&__body {
+		overflow: visible;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: 267px;
+			height: 117px;
+			top: 0;
+			// background: linear-gradient(90deg, #fff 0%, #fff 100%);
+			background-repeat: no-repeat;
+			background-size: 100% auto;
+			z-index: 2;
+			pointer-events: none;
+		}
+		&::before {
+			left: 0;
+			background-image: url('../images/service-detail/decor-left.png');
+		}
+		&::after {
+			right: 0;
+			background-image: url('../images/service-detail/decor-right.png');
+		}
+	}
+	&__wrapper {}
+	&__item {
+		border: 1px solid $stroke-light;
+		border-radius: 12px;
+		width: 204px;
+		height: 117px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $white;
+	}
+	&__image {
+		width: 96px;
+		height: 96px;
+	}
+}
+
+.slider-controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	margin-top: 30px;
+}
+.slider-button {
+	width: 36px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&::before {
+		content: "";
+		width: 36px;
+		height: 25px;
+		display: block;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		background-color: $bg-contrast;
+	}
+	&-prev {
+		&::before {
+			mask-image: url('../images/icons/arrow-prev.svg');
+		}
+	}
+	&-next {
+		&::before {
+			mask-image: url('../images/icons/arrow-next.svg');
+		}
+	}
+}
+
+// questions
+.questions {
+	padding: 60px 0 90px;
+	&__body {
+		border-radius: 28px;
+		min-height: 204px;
+		background: $bg-contrast-2;
+		padding: 58px 15px;
+		background-image: url('../images/questions/decor.svg');
+		background-repeat: no-repeat;
+		background-position: 54% center;
+		background-size: 173px 380px;
+		position: relative;
+	}
+	&__inner {
+		max-width: 1080px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	}
+	&__content {
+		max-width: 460px;
+		display: grid;
+		gap: 20px;
+	}
+	&__title {
+		font-weight: 600;
+		font-size: 40px;
+		line-height: 44px;
+		color: $text-headings;
+	}
+	&__sub-title {
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-button;
+	}
+	&__info {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: -47px;
+		border-radius: 28px;
+		padding: 20px;
+		background-color: $bg-seconadary;
+		width: 417px;
+		min-height: 84px;
+		& p {
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 120%;
+			color: $text-default-text-contrast;
+			& span {
+				font-weight: 700;
+				color: $bg-contrast;
+			}
+		}
+		&-icon {
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%, 50%);
+			border-radius: 50%;
+			background-color: $white;
+			width: 30px;
+			height: 30px;
+			background-image: url('../images/icons/info-white.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+	}
+	& .btn-phone {
+		background-color: $bg-contrast;
+		&__text {
+			color: $white;
+		}
+		&__icon {
+			background-color: $white;
+			&::before {
+				background-color: $bg-contrast;
+			}
+		}
+	}
+}
+
+.main-about {
+	padding: 90px 0 70px;
+	& .heading {
+		margin-bottom: 40px;
+	}
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 108px;
+	}
+	&__content {
+		position: relative;
+	}
+	&__content-gradient {
+		position: absolute;
+		width: 100%;
+		height: 114px;
+		left: 0;
+		bottom: -4px;
+		background-image: url('../images/main-about/gradient.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+	}
+	&__stats {
+		margin-bottom: 38px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+	&__item {}
+	&__button {}
+	&__image-wrap {
+		flex: 0 0 530px;
+		position: relative;
+		&::before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: $bg-tertiary;
+			transform: rotate(4deg);
+			border-radius: 28px;
+		}
+	}
+	&__image {
+		padding-bottom: math.div(518, 530) * 100%;
+		border-radius: 28px;
+		overflow: hidden;
+		& img {
+			border-radius: inherit;
+		}
+	}
+}
+.stats-item {
+	padding: 20px;
+	background-color: $bg-seconadary;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-radius: 20px;
+	&__num {
+		font-weight: 600;
+		font-size: 42px;
+		line-height: 46px;
+		color: $bg-contrast;
+	}
+	&__text {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 18px;
+		color: $text-contrast-primary;
+	}
+}
+
+// testimonials
+.testimonials {
+	padding: 75px 0 60px;
+	&__wrapper {
+		max-width: 1740px;
+		margin: 0 auto;
+		border-radius: 28px;
+		background-color: $bg-seconadary;
+		padding: 120px 0;
+		position: relative;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			right: 26px;
+			bottom: 0;
+			display: block;
+			width: 757px;
+			height: 627px;
+			background-image: url('../images/testimonials/quote.svg');
+			background-size: 757px 627px;
+			background-position: right 26px, 150%;
+			background-repeat: no-repeat;
+		}
+	}
+	&__body {
+		display: flex;
+		align-items: flex-start;
+		gap: 0 100px;
+	}
+}
+
+// geography
+.geography {
+	padding: 60px 0 60px;
+	&__wrapper {
+		height: 304px;
+		overflow: hidden;
+		position: relative;
+	}
+	&__gradient {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 120px;
+		background-image: url('../images/geography/gradient.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+	&__list {
+		display: grid;
+		gap: 20px;
+	}
+	&__list-item {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-size: 18px;
+		color: $text-default-text;
+		&::before {
+			content: "";
+			display: block;
+			width: 28px;
+			height: 28px;
+			background-image: url('../images/icons/station.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+	&__button {
+		margin: 37px auto 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
 	}
 }

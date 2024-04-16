@@ -42,7 +42,7 @@ body {
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  // overflow: hidden;
+  overflow: clip;
   display: flex;
   flex-direction: column;
   // Прижимаем footer
@@ -63,6 +63,10 @@ body {
   flex-shrink: 0;
 }
 
+.main {
+  padding-bottom: 60px;
+}
+
 //<ОСНОВНАЯ СЕТКА>===========================================================================================================
 .container {
   max-width: $maxWidthContainer + px;
@@ -74,8 +78,10 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>==============================================================================
 // Подключение общих стилей для элементов
 @import "./common";
+@import "./libs/swiper";
 
 // Подключение общих стилей компонентов
+@import "./components/content";
 @import "./components/header";
 @import "./components/footer";
 

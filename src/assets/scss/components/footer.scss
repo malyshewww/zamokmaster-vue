@@ -1,0 +1,103 @@
+.footer {
+	background-color: $bg-seconadary;
+	&__main {}
+
+}
+
+.main-footer {
+	padding: 60px 0 54px;
+	&__body {
+		display: grid;
+		grid-template-columns: 275px 1fr;
+		justify-content: space-between;
+		gap: 30px;
+	}
+	&__menu {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 40px 80px;
+	}
+}
+
+.menu-footer {
+	&__caption {
+		font-weight: 700;
+		font-size: 22px;
+		color: $text-headings;
+		margin-bottom: 16px;
+	}
+	& ul {
+		@include reset-list;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	& a {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text-contrast;
+		@include transition(color, .25s);
+		@media (any-hover: hover) {
+			&:hover {
+				color: $bg-contrast;
+			}
+
+		}
+	}
+}
+
+.menu-footer__phone,
+.menu-footer__email {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	&::before {
+		content: "";
+		display: block;
+		width: 16px;
+		height: 16px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 16px 16px;
+	}
+}
+.menu-footer__phone {
+	&::before {
+		background-image: url('../images/icons/phone.svg');
+	}
+}
+
+.menu-footer__email {
+	&::before {
+		background-image: url('../images/icons/mail.svg');
+	}
+}
+
+.bottom-footer {
+	padding: 20px 0;
+	border-top: 1px solid $stroke-light;
+	font-size: 12px;
+	line-height: 16px;
+	color: $text-contrast-primary;
+	&__body {
+		display: flex;
+		align-items: center;
+		gap: 40px;
+	}
+}
+.footer__company {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-grow: 1;
+	justify-content: flex-end;
+	&-caption {}
+	&-logo {
+		width: 69px;
+		height: 12px;
+	}
+}

@@ -1,0 +1,44 @@
+"
+<section class="main-about">
+  <div class="container">
+    <div class="main-about__body">
+      <div class="main-about__content">
+        <div class="heading">
+          <h2 class="heading__title">О компании</h2>
+          <div class="main-about__stats">
+            <div class="main-about__item stats-item" v-for="item in stats">
+              <div class="stats-item__num">{{ item.num }}</div>
+              <div class="stats-item__text">{{ item.text }}</div>
+            </div>
+          </div>
+          <div class="main-about__content content">
+            <p>
+              В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь,
+              сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа,
+              и теперь не знаете что делать?
+            </p>
+            <p>
+              Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов,
+              самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка,
+              но и целостность самой двери.
+            </p>
+            <p>
+              Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого
+              человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не
+            </p>
+          </div>
+          <button class="main-about__button" type="button">Читать полностью</button>
+        </div>
+      </div>
+      <div class="main-about__image-wrap">
+        <div class="main-screen__image ibg">
+          <picture>
+            <source srcset="../../images/main-about/master.jpg" />
+            <img src="../../images/main-about/master.jpg" alt="Баннер"
+          /></picture>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+"

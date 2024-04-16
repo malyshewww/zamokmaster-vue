@@ -15,12 +15,23 @@ picture {
 	align-items: center;
 }
 .heading {
+	margin-bottom: 50px;
 	&__title {
 		font-weight: 600;
 		font-size: 54px;
 		line-height: 59px;
 		color: $text-headings;
-		margin-bottom: 50px;
+		& span {
+			display: block;
+			color: $text-contrast-primary;
+		}
+	}
+	&__sub-title {
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text;
+		max-width: 477px;
+		margin-top: 24px;
 	}
 }
 
@@ -54,4 +65,88 @@ picture {
 	color: $text-button;
 	background-color: $bg-contrast-2;
 	cursor: pointer;
+}
+.btn-border {
+	background-color: transparent;
+	border: 2px solid $bg-contrast-2;
+}
+
+.btn-phone {
+	border-radius: 52px;
+	padding: 4px 4px 4px 30px;
+	background: $bg-contrast-2;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex: 0 1 340px;
+	&__text {
+		flex-grow: 1;
+		font-weight: 600;
+		font-size: 24px;
+		color: $text-button;
+	}
+	&__icon {
+		width: 62px;
+		height: 62px;
+		flex-shrink: 0;
+		border-radius: 50%;
+		background-color: $text-headings;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&::before {
+			content: "";
+			display: block;
+			mask-image: url('../images/icons/phone.svg');
+			mask-repeat: no-repeat;
+			mask-position: center;
+			background-color: $bg-contrast-2;
+			width: 25px;
+			height: 25px;
+			mask-size: 21px 21px;
+		}
+	}
+}
+.btn-show {
+	font-weight: 600;
+	font-size: 16px;
+	color: $bg-contrast;
+	padding-bottom: 4px;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 1px;
+		background-color: $bg-contrast;
+	}
+}
+
+.widget-call {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: $bg-contrast;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 30px;
+	bottom: 100px;
+	z-index: 5;
+	cursor: pointer;
+	&::before {
+		content: "";
+		width: 30px;
+		height: 30px;
+		display: block;
+		mask-image: url('../images/icons/phone.svg');
+		mask-repeat: no-repeat;
+		mask-position: center;
+		background-color: $white;
+		mask-size: 30px 30px;
+	}
 }

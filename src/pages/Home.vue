@@ -3,9 +3,9 @@
 		.container 
 			.main-screen__heading
 				h1.main-screen__title Вскрытие замков #[span в&nbsp;Санкт-Петербурге]
-				a(href="tel:+79958881086").main-screen__phone
-					span.main-screen__phone-text +7 (995) 888-10-86
-					span.main-screen__phone-icon
+				a(href="tel:+79958881086").main-screen__phone.btn-phone
+					span.btn-phone__text +7 (995) 888-10-86
+					span.btn-phone__icon
 			.main-screen__advantages
 				.main-screen__advantage.main-screen__advantage--1 Работаем официально и круглосуточно (24/7)
 				.main-screen__advantage.main-screen__advantage--2 Срочный выезд мастера (15-20 мин)
@@ -45,48 +45,110 @@
 							input(type="text" placeholder="Введите номер")
 						input(type="submit", value="Заказать звонок" class="btn")
 						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
-	.services__sections
-		section.services-detail.services-detail--first
+	section.services-detail.services-detail--first
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[0].titleGray" :title="servicesDetail[0].title" :text1="servicesDetail[0].text[0]" img="1")
+				ServiceSlider(:count="9" imagePath="lock")
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[1].titleGray" :title="servicesDetail[1].title" :text1="servicesDetail[1].text[0]" :text2="servicesDetail[1].text[1]" img="2")
+				ServiceSlider(:count="9" imagePath="doors")
+	section.services-detail.services-detail--second
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[2].titleGray" :title="servicesDetail[2].title" :text1="servicesDetail[2].text[0]" :text2="servicesDetail[2].text[1]" img="3")
+				ServiceSlider(:count="9" imagePath="safe") 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[3].titleGray" :title="servicesDetail[3].title" :text1="servicesDetail[3].text[0]" :text2="servicesDetail[3].text[1]" img="4")
+				ServiceSlider(:count="9" imagePath="car") 
+	section.services-detail.services-detail--third
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
+				ServiceSlider(:count="9" imagePath="setlock")
+	section.questions
+		.container 
+			.questions__body 
+				.questions__inner
+					.questions__content
+						h2.questions__title Остались вопросы?
+						p.questions__sub-title Мастер проконсультирует вас&nbsp;по&nbsp;всем вопросам
+					a(href="tel:79958881086").questions__phone.btn-phone
+						.btn-phone__text +7 (995) 888-10-86
+						.btn-phone__icon 
+					.questions__info 
+						p Выезд мастера #[span в течении 15–20 минут]. #[br] Круглосуточно и без выходных
+						span.questions__info-icon
+	section.main-about
+		.container 
+			.main-about__body 
+				.main-about__content
+					.heading 
+						h2.heading__title О компании
+					.main-about__stats
+						.main-about__item.stats-item(v-for="item in stats")
+							.stats-item__num {{ item.num }}
+							.stats-item__text {{ item.text }}
+					.main-about__content.content 
+						p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
+						p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
+						p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не 
+						div.main-about__content-gradient
+							button(type="button").main-about__button.btn-show Читать полностью
+				.main-about__image-wrap 
+					.main-about__image.ibg
+						picture
+							source(srcset="../../images/main-about/master.jpg")
+							img(src='../../images/main-about/master.jpg' alt="Баннер")
+	section.testimonials
+		.testimonials__wrapper
 			.container
-				.services-detail__wrapper 
-					.services-detail__box
-						ServiceDetail(:titleGray="servicesDetail[0].titleGray" :title="servicesDetail[0].title" :text1="servicesDetail[0].text[0]" img="1")
-						| slider 
-					.services-detail__box
-						ServiceDetail(:titleGray="servicesDetail[1].titleGray" :title="servicesDetail[1].title" :text1="servicesDetail[1].text[0]" :text2="servicesDetail[1].text[1]" img="2")
-						| slider 
-		section.services-detail.services-detail--second
-			.container
-				.services-detail__wrapper 
-					.services-detail__box
-						ServiceDetail(:titleGray="servicesDetail[2].titleGray" :title="servicesDetail[2].title" :text1="servicesDetail[2].text[0]" :text2="servicesDetail[2].text[1]" img="3")
-						| slider 
-					.services-detail__box
-						ServiceDetail(:titleGray="servicesDetail[3].titleGray" :title="servicesDetail[3].title" :text1="servicesDetail[3].text[0]" :text2="servicesDetail[3].text[1]" img="4")
-						| slider 
-		section.services-detail.services-detail--third
-			.container
-				.services-detail__wrapper 
-					.services-detail__box
-						ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="4")
-						| slider 
+				.testimonials__body 
+					.testimonials__module 
+						picture 
+							source(srcset="../../images/testimonials/widget.png")
+							img(src='../../images/testimonials/widget.зтп' alt="Виджет")
+					.heading 
+						h2.heading__title Отзывы #[span наших&nbsp;клиентов]
+						p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
+	section.geography
+		.container 
+			.heading 
+				h2.heading__title География работы
+			.geography__wrapper
+				.geography__body 
+					ul.geography__list(v-for="item in geography")
+						li.geography__list-item(v-for="station in item.list") {{ station }}
+				span.geography__gradient
+			button(type="button").geography__button.btn-show Показать все
+
+
 </template>
 
 <script>
 // import { defineComponent, onMounted, ref } from 'vue'
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
+import ServiceSlider from '../components/ServiceSlider.vue'
 
-const { services, servicesDetail } = obj
+const { services, servicesDetail, stats, geography } = obj
 
 export default {
   components: {
-    ServiceDetail
+    ServiceDetail,
+    ServiceSlider
   },
   data() {
     return {
       services,
-      servicesDetail
+      servicesDetail,
+      stats,
+      geography
     }
   }
 }

@@ -13,6 +13,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		gap: 30px;
 	}
 	&__menu {
 		& ul {
@@ -20,6 +21,7 @@
 			display: flex;
 			align-items: center;
 			gap: 30px;
+			flex-wrap: wrap;
 		}
 		& li {
 			font-weight: 500;
@@ -32,7 +34,11 @@
 			transition: color .25s;
 		}
 	}
-	&__location {
+	&__location {}
+}
+.location-header {
+	position: relative;
+	&__current {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -46,6 +52,41 @@
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: #336699;
+		}
+	}
+	&__choice {
+		box-shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.05);
+		background: $bg-primary;
+		border-radius: 16px;
+		padding: 20px;
+		width: 372px;
+		display: grid;
+		gap: 20px;
+		position: absolute;
+		right: 0;
+		top: calc(100% + 15px);
+	}
+	&__header {
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 22px;
+		color: $text-headings;
+		& span {
+			color: $text-contrast-primary;
+		}
+	}
+	&__buttons {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	&__button {
+		font-size: 16px;
+		line-height: 18px;
+		padding: 13px 32px;
+		&.btn-border {
+			padding: 13px 25px;
+			flex-grow: 1;
 		}
 	}
 }
