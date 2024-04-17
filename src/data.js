@@ -184,6 +184,74 @@ const data = {
         }
       ]
     }
+  ],
+  castleList: [
+    {
+      path: 'opencastle',
+      title: 'Вскрытие замков',
+      children: ['Abloy', 'Mottura', 'Mul-t-lock', 'Эльбор', 'Liberty', 'Sargent and greenleaf']
+    },
+    {
+      path: 'opendoors',
+      title: 'Вскрытие дверей',
+      children: [
+        'Mottura',
+        'Abloy',
+        'Abloy',
+        'Abloy',
+        'Archie',
+        'Эльбор',
+        'Завод Новатор',
+        'Контур',
+        'Просам',
+        'msm'
+      ]
+    },
+    {
+      path: 'opensafe',
+      title: 'Вскрытие сейфов',
+      children: [
+        'Mottura',
+        'SMP',
+        'Mottura',
+        'Stahlkraft',
+        'Abloy',
+        'Контур',
+        'Завод новатор',
+        'Glory'
+      ]
+    },
+    {
+      path: 'setcastle',
+      title: 'Установка замков',
+      children: ['Paxos', 'Abloy', 'Archie', 'Abloy', 'Mottura', 'msm', 'Контур', 'Просам']
+    }
+  ],
+  castleAdvantages: [
+    {
+      caption: 'Работаем 24/7',
+      descr: 'Круглосуточно и без выходных'
+    },
+    {
+      caption: 'Официально',
+      descr: 'Предоставляем все документы'
+    },
+    {
+      caption: 'Быстро',
+      descr: 'Выезд мастера в течение 15 минут'
+    },
+    {
+      caption: 'Без предоплат',
+      descr: 'Оплата после выполнения'
+    },
+    {
+      caption: 'Аккуратно',
+      descr: 'Без повреждений и царапин двери'
+    },
+    {
+      caption: 'Без посредников',
+      descr: 'Звонок напрямую мастеру'
+    }
   ]
 }
 export default data

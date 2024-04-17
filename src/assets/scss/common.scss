@@ -26,6 +26,10 @@ picture {
 			color: $text-contrast-primary;
 		}
 	}
+	& .title-sm {
+		font-size: 32px;
+		line-height: 35px;
+	}
 	&__sub-title {
 		font-size: 18px;
 		line-height: 23px;
@@ -71,6 +75,19 @@ picture {
 	border: 2px solid $bg-contrast-2;
 }
 
+.btn-blue {
+	border-radius: 62px;
+	padding: 13px 32px;
+	min-height: 46px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	line-height: 18px;
+	color: $bg-primary;
+	background-color: $bg-contrast;
+}
+
 .btn-phone {
 	border-radius: 52px;
 	padding: 4px 4px 4px 30px;
@@ -79,7 +96,7 @@ picture {
 	display: flex;
 	align-items: center;
 	gap: 20px;
-	flex: 0 1 340px;
+	width: 340px;
 	&__text {
 		flex-grow: 1;
 		font-weight: 600;
@@ -148,5 +165,95 @@ picture {
 		mask-position: center;
 		background-color: $white;
 		mask-size: 30px 30px;
+	}
+}
+.page-title {
+	font-weight: 600;
+	font-size: 54px;
+	line-height: 59px;
+	color: $text-headings;
+	& span {
+		color: $text-contrast-primary;
+	}
+}
+.page__body {
+	padding: 120px 0 0px;
+}
+
+.aside {
+	position: sticky;
+	top: 20px;
+	display: grid;
+	align-items: start;
+	gap: 20px;
+}
+
+.castle-types {
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+	&__button {
+		max-width: 153px;
+		margin-top: 40px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+.castle-item {
+	height: 115px;
+	border: 1px solid $stroke-light;
+	border-radius: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+}
+
+.castle-advantages {
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 40px 20px;
+	}
+	&__item {
+		display: grid;
+		grid-template-columns: 54px 1fr;
+		align-items: center;
+		gap: 16px;
+	}
+	&__content {
+		display: grid;
+		gap: 10px;
+		align-items: start;
+	}
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 54px;
+		flex-shrink: 0;
+	}
+	&__caption {
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 20px;
+		color: $text-headings;
+	}
+	&__description {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text;
+	}
+}
+@for $i from 1 through 6 {
+	.castle-advantages__item--#{$i} {
+		& .castle-advantages__icon {
+			background-image: url('../images/castle-advantages/icon-#{$i}.svg');
+
+		}
 	}
 }

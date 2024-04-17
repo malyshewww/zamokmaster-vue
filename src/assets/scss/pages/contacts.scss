@@ -1,0 +1,49 @@
+.contacts {
+	&__wrapper {
+		padding-bottom: 60px;
+	}
+	&__body {
+		display: flex;
+		align-items: flex-start;
+		gap: 40px;
+	}
+	&__info {
+		flex: 0 1 510px;
+	}
+	&__map {
+		flex: 1 1 auto;
+		height: 365px;
+		border-radius: 22px;
+		overflow: hidden;
+		background-color: $bg-seconadary;
+	}
+}
+.info-contacts {
+	display: grid;
+	gap: 20px;
+	&__item {
+		display: grid;
+		gap: 16px;
+		&:not(:last-child) {
+			padding-bottom: 20px;
+			border-bottom: 1px solid $stroke-light;
+		}
+	}
+	&__caption {
+		font-weight: 600;
+		font-size: 26px;
+		line-height: 29px;
+		color: $text-headings;
+	}
+	&__list {
+		@include reset-list;
+		display: grid;
+		gap: 10px;
+	}
+	&__link {
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text;
+		cursor: pointer;
+	}
+}

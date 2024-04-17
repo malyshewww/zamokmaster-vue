@@ -9,6 +9,9 @@
 		padding: 0 40px;
 		width: 100%;
 	}
+	&__logo {
+		flex-shrink: 0;
+	}
 	&__body {
 		display: flex;
 		justify-content: space-between;
@@ -20,7 +23,7 @@
 			@include reset-list;
 			display: flex;
 			align-items: center;
-			gap: 30px;
+			gap: 12px 30px;
 			flex-wrap: wrap;
 		}
 		& li {
@@ -38,6 +41,7 @@
 }
 .location-header {
 	position: relative;
+	flex-shrink: 0;
 	&__current {
 		position: relative;
 		display: flex;
@@ -133,6 +137,7 @@
 	}
 	&__sub-list {
 		position: absolute;
+		z-index: 5;
 		padding-top: 15px;
 		top: 100%;
 		left: 0;

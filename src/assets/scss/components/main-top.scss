@@ -1,0 +1,41 @@
+.main__top {}
+.top-main {
+	background-color: $bg-seconadary;
+	padding: 60px 0 60px;
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+	}
+	&__body {
+		display: grid;
+		gap: 20px;
+		max-width: 800px;
+	}
+	&__sub-title {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 23px;
+		color: $text-default-text-contrast;
+		max-width: 450px;
+	}
+	&__card {
+		display: grid;
+		grid-template-columns: 390px 1fr;
+		align-items: center;
+		gap: 50px;
+		&-image {
+			width: 390px;
+			border-radius: 28px;
+			background-color: $bg-primary;
+			padding: 19px 25px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		& .top-main__body {
+			gap: 30px;
+		}
+	}
+}

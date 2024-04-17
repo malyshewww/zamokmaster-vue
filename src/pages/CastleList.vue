@@ -1,0 +1,55 @@
+<template lang="pug">
+	.page.castle-list
+		.main__top.top-main
+			.container
+				.breadcrumbs
+					nav.breadcrumbs__navigation
+						ul.breadcrumbs__list 
+							li.breadcrumbs__item
+								a(href="/home").breadcrumbs__link Главная
+							li.breadcrumbs__item Список замков
+				.top-main__content 
+					.top-main__body 
+						h1.top-main__title.page-title Вскрытие всех видов замков #[span в Санкт-Петербурге]
+						p.top-main__sub-title Профессиональное вскрытие замков. Официально, предоставляем все документы
+					a(href="tel:+79958881086").btn-phone
+						.btn-phone__text +7 (995) 888-10-86
+						.btn-phone__icon
+		.page__body
+			.container
+				.castle-list__body
+					.castle-list__categories 
+						section.castle-list__section.category-castle(v-for="item in castleList")
+							.heading
+								h2.heading__title.title-sm {{ item.title }}
+							.category-castle__items 
+								.category-castle__item(v-for="(child, index) in item.children")
+									.category-castle__image 
+										picture 
+											source(:srcset=`"../../images/castlelist/"+item.path+'/'+(index+1)+'.png'` media="(min-width: 767.98px)")
+											//- source(:srcset=`"../../images/castlelist/"+item.path+'/'+(index+1)+'-mob.png'` media="(min-width: 300px)")
+											img(:src=`"../../images/castlelist/"+item.path+'/'+(index+1)+'.png'`, alt=child)
+									.category-castle__name {{child}}
+						.castle-list__content.content 
+							p ABUS — это немецкая компания, которая с 1924 года разрабатывает охранные системы. Марка ABUS позиционирует себя как лидером уникальных изобретений, у которых запатентованные сплавы сверхпрочных металлов.
+							p Компания входит независимую группу предприятий, работающую по всему миру в области механических и электронных систем безопасности. Замки Абус использоваются как для внутрених так и наружних помещений и всепогодных условий.
+							p Область приминения замков Абус очень обширна, начиная защиты вашего самоката, велосипеда, мотоцикла, заканчивая защитой вашего гаража, бытовых и промышленных сооружений. Они просты в использовании и при этом очень прочные, эффективно защищают от взлома. Также вся продукция проходит тестирование на заморозку жидким азотом. После заморозки металл не теряет своих свойств и сопротивляется взлому.
+					Sidebar
+</template>
+
+<script>
+import obj from '../data.js'
+import Sidebar from '../components/Sidebar.vue'
+
+const { castleList } = obj
+export default {
+  components: {
+    Sidebar
+  },
+  data() {
+    return {
+      castleList
+    }
+  }
+}
+</script>

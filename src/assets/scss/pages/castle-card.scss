@@ -1,0 +1,13 @@
+.castle-card {
+	&__groups {
+		display: grid;
+		gap: 100px;
+		align-items: start;
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: 1fr 380px;
+		align-items: start;
+		gap: 60px;
+	}
+}

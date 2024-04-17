@@ -1,44 +1,35 @@
-"
-<section class="main-about">
+<div class="page contacts">
   <div class="container">
-    <div class="main-about__body">
-      <div class="main-about__content">
-        <div class="heading">
-          <h2 class="heading__title">О компании</h2>
-          <div class="main-about__stats">
-            <div class="main-about__item stats-item" v-for="item in stats">
-              <div class="stats-item__num">{{ item.num }}</div>
-              <div class="stats-item__text">{{ item.text }}</div>
-            </div>
+    <div class="contacts__body">
+      <div class="contacts__info info-contacts">
+        <div class="info-contacts__item">
+          <div class="info-contacts__caption">Расположение</div>
+          <div class="info-contacts__text">
+            Наши сотрудники работают во&nbsp;всех точках города. К&nbsp;вам&nbsp;приедет самый
+            ближайший
           </div>
-          <div class="main-about__content content">
-            <p>
-              В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь,
-              сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа,
-              и теперь не знаете что делать?
-            </p>
-            <p>
-              Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов,
-              самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка,
-              но и целостность самой двери.
-            </p>
-            <p>
-              Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого
-              человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не
-            </p>
+        </div>
+        <div class="info-contacts__item">
+          <div class="info-contacts__caption">Адрес</div>
+          <div class="info-contacts__text">
+            Россия, Москва, улица Красная Пресня, 23, корп.&nbsp;Б, стр.&nbsp;1
           </div>
-          <button class="main-about__button" type="button">Читать полностью</button>
+        </div>
+        <div class="info-contacts__item">
+          <div class="info-contacts__caption">Контакты</div>
+          <ul class="info-contacts__list">
+            <li class="info-contacts__list-item">
+              <a class="info-contacts__link" href="tel:+79958881086">+7 (995) 888-10-86</a>
+            </li>
+            <li class="info-contacts__list-item">
+              <a class="info-contacts__link" href="mailto:hello@zamokmaster.ru"
+                >hello@zamokmaster.ru</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="main-about__image-wrap">
-        <div class="main-screen__image ibg">
-          <picture>
-            <source srcset="../../images/main-about/master.jpg" />
-            <img src="../../images/main-about/master.jpg" alt="Баннер"
-          /></picture>
-        </div>
-      </div>
+      <div class="contacts__map" id="map"></div>
     </div>
   </div>
-</section>
-"
+</div>

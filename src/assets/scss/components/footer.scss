@@ -10,6 +10,7 @@
 		display: grid;
 		grid-template-columns: 275px 1fr;
 		justify-content: space-between;
+		align-items: flex-start;
 		gap: 30px;
 	}
 	&__menu {
@@ -22,6 +23,11 @@
 }
 
 .menu-footer {
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 26px;
+	}
 	&__caption {
 		font-weight: 700;
 		font-size: 22px;

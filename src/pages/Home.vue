@@ -71,19 +71,7 @@
 				.container
 					ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
 				ServiceSlider(:count="9" imagePath="setlock")
-	section.questions
-		.container 
-			.questions__body 
-				.questions__inner
-					.questions__content
-						h2.questions__title Остались вопросы?
-						p.questions__sub-title Мастер проконсультирует вас&nbsp;по&nbsp;всем вопросам
-					a(href="tel:79958881086").questions__phone.btn-phone
-						.btn-phone__text +7 (995) 888-10-86
-						.btn-phone__icon 
-					.questions__info 
-						p Выезд мастера #[span в течении 15–20 минут]. #[br] Круглосуточно и без выходных
-						span.questions__info-icon
+	Questions
 	section.main-about
 		.container 
 			.main-about__body 
@@ -135,13 +123,15 @@
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
 import ServiceSlider from '../components/ServiceSlider.vue'
+import Questions from '../components/Questions.vue'
 
 const { services, servicesDetail, stats, geography } = obj
 
 export default {
   components: {
     ServiceDetail,
-    ServiceSlider
+    ServiceSlider,
+	Questions
   },
   data() {
     return {

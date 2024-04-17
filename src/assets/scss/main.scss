@@ -84,9 +84,15 @@ body {
 @import "./components/content";
 @import "./components/header";
 @import "./components/footer";
+@import "./components/main-top";
+@import "./components/breadcrumbs";
 
 // Подключение стилей для отдельных страниц
 @import "./pages/index";
+@import "./pages/about";
+@import "./pages/contacts";
+@import "./pages/castle-list";
+@import "./pages/castle-card";
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>==============================================================================
 /* ПОДКЛЮЧЕНИЕ СТИЛЕЙ АДАПТИВА */
 // @import "response";

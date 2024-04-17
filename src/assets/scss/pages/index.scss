@@ -421,7 +421,11 @@
 
 // questions
 .questions {
-	padding: 60px 0 90px;
+	padding: 60px 0 60px;
+	&__wrapper {
+		padding-bottom: 49px;
+		position: relative;
+	}
 	&__body {
 		border-radius: 28px;
 		min-height: 204px;
@@ -461,7 +465,7 @@
 		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);
-		bottom: -47px;
+		bottom: 0;
 		border-radius: 28px;
 		padding: 20px;
 		background-color: $bg-seconadary;
@@ -507,7 +511,7 @@
 }
 
 .main-about {
-	padding: 90px 0 70px;
+	padding: 85px 0 70px;
 	& .heading {
 		margin-bottom: 40px;
 	}
