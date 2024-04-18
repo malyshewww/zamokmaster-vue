@@ -1,0 +1,22 @@
+.service-card {
+	padding: 0 0 60px;
+	&__body {
+		display: grid;
+		grid-template-columns: 1fr 380px;
+		align-items: start;
+		gap: 60px;
+	}
+	&__groups {
+		display: grid;
+		align-items: start;
+		gap: 100px;
+	}
+	&__content {
+		& table {
+			margin: 0;
+			& tr {
+				grid-template-columns: 1fr 219px;
+			}
+		}
+	}
+}

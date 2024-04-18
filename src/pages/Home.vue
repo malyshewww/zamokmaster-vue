@@ -3,7 +3,7 @@
 		.container 
 			.main-screen__heading
 				h1.main-screen__title Вскрытие замков #[span в&nbsp;Санкт-Петербурге]
-				a(href="tel:+79958881086").main-screen__phone.btn-phone
+				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
 			.main-screen__advantages
@@ -43,7 +43,8 @@
 					form.request__form.form
 						.form-item 
 							input(type="text" placeholder="Введите номер")
-						input(type="submit", value="Заказать звонок" class="btn")
+						.btn
+							input(type="submit", value="Заказать звонок")
 						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
 	section.services-detail.services-detail--first
 		.services-detail__wrapper 
@@ -114,12 +115,45 @@
 						li.geography__list-item(v-for="station in item.list") {{ station }}
 				span.geography__gradient
 			button(type="button").geography__button.btn-show Показать все
-
-
+	.modal
+		.modal__wrapper 
+			.modal__content 
+				button(type="button").modal__close
+				.modal__header 
+					.modal__title Оставьте заявку
+					.modal__sub-title Оставьте заявку и наш мастер перезвонит вам в ближайшее время
+				form(action="").modal__form.form 
+					.form__items 
+						.form-item 
+							input(type="text" placeholder="Ваше имя")
+						.form-item 
+							input(type="text" placeholder="Номер телефона")
+					.form__bottom 
+						.btn
+							input(type="submit", value="Заказать звонок").form__button
+						.form__agreement Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
+	.modal.modal-notice
+		.modal__wrapper 
+			.modal__content
+				button(type="button").modal__close
+				.modal__title Заявка успешно отправлена
+	.modal.modal-search
+		.modal__wrapper 
+			.modal__content 
+				button(type="button").modal__close
+				.modal__header 
+					.modal__title Выберите город
+				form(action="#").modal__form.form
+					.form-item 
+						input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
+						button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
+						button(type="button" ref="btn_delete" @click="deleteSearch" v-if="showBtnDelete").form-item__btn.btn-delete
+					.form-result
+						ul.form-result__list 
+							li(v-for="(city, index) in citiesByTitle" @click="selectCity") {{ city }}
 </template>
 
 <script>
-// import { defineComponent, onMounted, ref } from 'vue'
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
 import ServiceSlider from '../components/ServiceSlider.vue'
@@ -131,15 +165,69 @@ export default {
   components: {
     ServiceDetail,
     ServiceSlider,
-	Questions
+    Questions
   },
   data() {
     return {
       services,
       servicesDetail,
       stats,
-      geography
+      geography,
+      search: '',
+      showBtnSearch: true,
+      showBtnDelete: false,
+      cities: [
+        'Москва',
+        'Санкт-Петербург',
+        'Нижний Новгород',
+        'Казань',
+        'Екатеринбург',
+        'Москва',
+        'Санкт-Петербург',
+        'Нижний Новгород',
+        'Казань',
+        'Екатеринбург'
+      ],
+      metaTitle: ''
     }
+  },
+  methods: {
+    setTitle: function () {
+      this.metaTitle = this.$route.name
+    },
+    onSearchInput(e) {
+      if (this.search !== '') {
+        this.showBtnSearch = false
+        this.showBtnDelete = true
+        // this.$refs.btn_search.classList.add('hidden')
+        // this.$refs.btn_delete.classList.remove('hidden')
+      } else {
+        this.showBtnSearch = true
+        this.showBtnDelete = false
+        // this.$refs.btn_search.classList.remove('hidden')
+        // this.$refs.btn_delete.classList.add('hidden')
+      }
+    },
+    selectCity(e) {
+      this.search = e.target.innerText
+      this.showBtnSearch = false
+      this.showBtnDelete = true
+    },
+    deleteSearch() {
+      this.search = ''
+      this.showBtnSearch = true
+      this.showBtnDelete = false
+    }
+  },
+  computed: {
+    citiesByTitle() {
+      return this.cities.filter(
+        (item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+      )
+    }
+  },
+  mounted() {
+    this.setTitle()
   }
 }
 </script>

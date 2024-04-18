@@ -40,7 +40,11 @@ picture {
 }
 
 .form-item {
+	position: relative;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 	& input {
 		border: 1px solid $stroke-light;
 		border-radius: 63px;
@@ -53,6 +57,7 @@ picture {
 			font-size: 16px;
 			line-height: 21px;
 			color: $text-placeholder;
+			font-family: "Montserrat", sans-serif;
 		}
 	}
 }
@@ -68,11 +73,69 @@ picture {
 	line-height: 18px;
 	color: $text-button;
 	background-color: $bg-contrast-2;
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $button-primary-yellow-hover;
+		transform-origin: 100% 50%;
+		transform: scale3d(0, 1, 1);
+		transition: transform .25s;
+	}
+	& input {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 18px;
+		background-color: transparent;
+		color: $text-button;
+		cursor: pointer;
+	}
+	& span {
+		position: relative;
+		z-index: 2;
+	}
 	cursor: pointer;
+	@media (any-hover:hover) {
+		&:hover {
+			&::before {
+				transform-origin: 0% 50%;
+				transform: scale3d(1, 1, 1);
+			}
+			& .btn-phone__icon::before {
+				background-color: $button-primary-yellow-hover;
+			}
+		}
+	}
+	&.disabled,
+	&:disabled {
+		cursor: default;
+		pointer-events: none;
+	}
 }
+
 .btn-border {
 	background-color: transparent;
 	border: 2px solid $bg-contrast-2;
+	padding: 11px 32px;
+	&::before {
+		background-color: $bg-contrast-2;
+	}
+	@media (any-hover:hover) {
+		&:hover {
+			&::before {
+				transform-origin: 0% 50%;
+				transform: scale3d(1, 1, 1);
+			}
+		}
+	}
 }
 
 .btn-blue {
@@ -86,6 +149,37 @@ picture {
 	line-height: 18px;
 	color: $bg-primary;
 	background-color: $bg-contrast;
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $button-primary-blue-hover;
+		transform-origin: 100% 50%;
+		transform: scale3d(0, 1, 1);
+		transition: transform .25s;
+	}
+	&.disabled,
+	&:disabled {
+		cursor: default;
+		pointer-events: none;
+	}
+	& span {
+		position: relative;
+		z-index: 2;
+	}
+	@media (any-hover:hover) {
+		&:hover {
+			&::before {
+				transform-origin: 0% 50%;
+				transform: scale3d(1, 1, 1);
+			}
+		}
+	}
 }
 
 .btn-phone {
@@ -101,6 +195,7 @@ picture {
 		flex-grow: 1;
 		font-weight: 600;
 		font-size: 24px;
+		line-height: 120%;
 		color: $text-button;
 	}
 	&__icon {
@@ -122,6 +217,7 @@ picture {
 			width: 25px;
 			height: 25px;
 			mask-size: 21px 21px;
+			transition: background-color .1s linear .1s;
 		}
 	}
 }

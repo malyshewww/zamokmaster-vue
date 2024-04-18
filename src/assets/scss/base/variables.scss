@@ -30,7 +30,7 @@ $xxxl: 1400px;
 // (i) Стили будут применяться ко всем классам содержащим *__container. Например header__container, footer__container и т.д.
 @if ($responsiveType ==1) {
 	// Отзывчивая
-	[class*="__container"] {
+	.container {
 		@if ($maxWidthContainer > 0) {
 			max-width: $maxWidthContainer + px;
 			margin: 0 auto;
@@ -42,7 +42,7 @@ $xxxl: 1400px;
 }
 @else {
 	// По брейк-поинтам
-	[class*="__container"] {
+	.container {
 		margin: 0 auto;
 		@if ($maxWidthContainer > 0) {
 			max-width: $maxWidthContainer + px;

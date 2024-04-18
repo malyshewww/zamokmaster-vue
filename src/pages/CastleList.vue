@@ -2,12 +2,7 @@
 	.page.castle-list
 		.main__top.top-main
 			.container
-				.breadcrumbs
-					nav.breadcrumbs__navigation
-						ul.breadcrumbs__list 
-							li.breadcrumbs__item
-								a(href="/home").breadcrumbs__link Главная
-							li.breadcrumbs__item Список замков
+				Breadcrumbs(pageTitle="Список замков")
 				.top-main__content 
 					.top-main__body 
 						h1.top-main__title.page-title Вскрытие всех видов замков #[span в Санкт-Петербурге]
@@ -40,11 +35,13 @@
 <script>
 import obj from '../data.js'
 import Sidebar from '../components/Sidebar.vue'
+import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { castleList } = obj
 export default {
   components: {
-    Sidebar
+    Sidebar,
+    Breadcrumbs
   },
   data() {
     return {

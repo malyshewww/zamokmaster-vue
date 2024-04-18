@@ -8,7 +8,7 @@
 				.services-detail__text 
 					p {{ text1 }}
 					p(v-if="text2") {{ text2 }}
-				a(href="/").services-detail__button.btn Подробнее
+				router-link(to="/service-card").services-detail__button.btn #[span Подробнее]
 			.services-detail__image-wrap 
 				.services-detail__image.ibg
 					picture

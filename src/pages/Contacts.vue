@@ -2,12 +2,7 @@
 	.page.contacts
 		.main__top.top-main
 			.container
-				.breadcrumbs
-					nav.breadcrumbs__navigation
-						ul.breadcrumbs__list 
-							li.breadcrumbs__item
-								a(href="/home").breadcrumbs__link Главная
-							li.breadcrumbs__item Контакты
+				Breadcrumbs(pageTitle="Контакты")
 				.top-main__content 
 					h1.top-main__title.page-title Контакты
 		.page__body
@@ -36,10 +31,12 @@
 
 <script>
 import Questions from '../components/Questions.vue'
+import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 export default {
   components: {
-    Questions
+    Questions,
+    Breadcrumbs
   },
   data() {
     return {

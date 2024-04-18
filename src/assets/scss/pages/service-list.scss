@@ -1,0 +1,20 @@
+.service-list {
+	padding: 0 0 60px;
+	&__wrapper {
+		display: grid;
+		gap: 100px;
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px 20px;
+	}
+	& .item-services {
+		&::before {
+			background-color: #e9eaee;
+		}
+		&__content {
+			background-color: $bg-seconadary;
+		}
+	}
+}

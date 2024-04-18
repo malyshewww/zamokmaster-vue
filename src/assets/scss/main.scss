@@ -79,6 +79,7 @@ body {
 // Подключение общих стилей для элементов
 @import "./common";
 @import "./libs/swiper";
+// @import "./libs/fancybox";
 
 // Подключение общих стилей компонентов
 @import "./components/content";
@@ -86,6 +87,7 @@ body {
 @import "./components/footer";
 @import "./components/main-top";
 @import "./components/breadcrumbs";
+@import "./components/popup";
 
 // Подключение стилей для отдельных страниц
 @import "./pages/index";
@@ -93,6 +95,9 @@ body {
 @import "./pages/contacts";
 @import "./pages/castle-list";
 @import "./pages/castle-card";
+@import "./pages/service-card";
+@import "./pages/service-list";
+@import "./pages/text-page";
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>==============================================================================
 /* ПОДКЛЮЧЕНИЕ СТИЛЕЙ АДАПТИВА */
 // @import "response";

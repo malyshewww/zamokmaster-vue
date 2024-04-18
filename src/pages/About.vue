@@ -2,12 +2,7 @@
 	.page.about
 		.main__top.top-main
 			.container
-				.breadcrumbs
-					nav.breadcrumbs__navigation
-						ul.breadcrumbs__list 
-							li.breadcrumbs__item
-								a(href="/home").breadcrumbs__link Главная
-							li.breadcrumbs__item О компании
+				Breadcrumbs(pageTitle="О компании")
 				.top-main__content 
 					h1.top-main__title.page-title О компании
 		.page__body
@@ -104,9 +99,11 @@
 
 <script>
 import Questions from '../components/Questions.vue'
+import Breadcrumbs from '../components/Breadcrumbs.vue'
 export default {
   components: {
-    Questions
+    Questions,
+    Breadcrumbs
   },
   data() {
     return {}

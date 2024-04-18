@@ -9,7 +9,7 @@
 								source(srcset="../../images/icons/footer-logo.svg" media="(min-width: 767.98px)")
 								source(srcset="../../images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
 								img(src="../../images/icons/logo-pc.svg", alt="логотип")
-						button(type="button").btn Заказать звонок
+						button(type="button").btn #[span Заказать звонок]
 					.main-footer__menu.menu-footer
 						.menu-footer__column(v-for="item in menuFooter")
 							.menu-footer__caption {{ item.caption }}

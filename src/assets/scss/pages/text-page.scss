@@ -1,0 +1,23 @@
+.text-page {
+	padding-bottom: 60px;
+	&__top {
+		padding: 80px 0 39px;
+	}
+	& .breadcrumbs {
+		margin: 0;
+	}
+	&__gallery {
+		padding-top: 66px;
+		h3 {
+			font-weight: 600;
+			font-size: 40px;
+			line-height: 44px;
+			margin-bottom: 33px;
+		}
+		&-body {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+		}
+	}
+}
