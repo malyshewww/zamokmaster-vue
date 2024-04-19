@@ -9,7 +9,7 @@
 								source(srcset="../../images/icons/footer-logo.svg" media="(min-width: 767.98px)")
 								source(srcset="../../images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
 								img(src="../../images/icons/logo-pc.svg", alt="логотип")
-						button(type="button").btn #[span Заказать звонок]
+						FooterCall
 					.main-footer__menu.menu-footer
 						.menu-footer__column(v-for="item in menuFooter")
 							.menu-footer__caption {{ item.caption }}
@@ -38,10 +38,14 @@
 
 <script>
 import obj from '../data.js'
+import FooterCall from './FooterCall.vue'
 
 const { menuFooter } = obj
 
 export default {
+  components: {
+    FooterCall
+  },
   data() {
     return {
       menuFooter

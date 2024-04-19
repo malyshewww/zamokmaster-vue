@@ -211,15 +211,16 @@
 		gap: 9px;
 	}
 	&__button {
-		position: relative;
-		z-index: 2;
-		background: transparent;
-		cursor: pointer;
-		width: 204px;
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 18px;
-		color: $text-button;
+		flex: 0 0 204px;
+		// width: 204px;
+		// position: relative;
+		// z-index: 2;
+		// background: transparent;
+		// cursor: pointer;
+		// font-weight: 600;
+		// font-size: 16px;
+		// line-height: 18px;
+		// color: $text-button;
 	}
 	&__bottom {
 		display: flex;

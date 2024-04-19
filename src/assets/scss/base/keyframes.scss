@@ -1,4 +1,4 @@
-@keyframes scroll-down{
+@keyframes scroll-down {
 	0% {
 		background-position-y: 50%;
 	}
@@ -8,4 +8,45 @@
 	100% {
 		background-position-y: 50%;
 	}
-} 
+}
+
+@keyframes animFade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes animJump {
+	0% {
+		transform: translateY(10px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes trin {
+	from {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+	20%, 32%, 44%, 56% {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+	23%, 35%, 47%, 59% {
+		transform: rotate3d(0, 0, 1, 15deg);
+	}
+	26%, 38%, 50%, 62% {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+	29%, 41%, 53%, 65% {
+		transform: rotate3d(0, 0, 1, -15deg);
+	}
+	70% {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+}

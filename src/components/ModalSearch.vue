@@ -1,11 +1,4 @@
 <template lang="pug">
-	.header__location.location-header
-		.location-header__current Санкт-Петербург
-		.location-header__choice(:class="[isShowLocation ? 'active': '']")
-			.location-header__header Ваш город #[span Санкт-Петербург?]
-			.location-header__buttons 
-				button(type="button" @click="closeLocation()").location-header__button.btn Верно
-				button(type="button" @click="openModal").location-header__button.btn.btn-border Выбрать другой
 	.modal(class="modal-search" id="modal-search" :class="[showModal ? 'open-modal' : '']" @click="closeModal")
 		.modal__wrapper 
 			.modal__content(@click="noCloseModal") 
@@ -23,15 +16,11 @@
 </template>
 
 <script>
-import ModalSearch from './ModalSearch.vue'
 export default {
-  components: { ModalSearch },
+  components: {},
+  props: ['showModal'],
   data() {
     return {
-      top: '',
-      left: '',
-      isShowLocation: false,
-      showModal: false,
       showBtnSearch: true,
       search: '',
       cities: [
@@ -53,8 +42,8 @@ export default {
       this.isShowLocation = false
     },
     openModal(e, modalId) {
+      this.$emit('showModal')
       console.log('openPopup')
-      this.showModal = true
     },
     closeModal(e) {
       this.showModal = false
@@ -63,7 +52,11 @@ export default {
       e.stopPropagation()
     },
     onSearchInput(e) {
-      this.showBtnSearch = this.search == '' ? false : true
+      if (this.search !== '') {
+        this.showBtnSearch = false
+      } else {
+        this.showBtnSearch = true
+      }
     },
     selectCity(e) {
       this.search = e.target.innerText
@@ -80,9 +73,6 @@ export default {
         (item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
       )
     }
-  },
-  mounted() {
-    this.isShowLocation = true
   }
 }
 </script>

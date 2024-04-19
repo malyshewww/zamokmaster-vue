@@ -7,7 +7,7 @@
 						.questions__content
 							h2.questions__title Остались вопросы?
 							p.questions__sub-title Мастер проконсультирует вас&nbsp;по&nbsp;всем вопросам
-						a(href="tel:79958881086").questions__phone.btn-phone
+						a(href="tel:79958881086").questions__phone.btn-phone.btn-blue
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon 
 				.questions__info 

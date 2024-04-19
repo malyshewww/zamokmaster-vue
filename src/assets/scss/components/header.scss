@@ -69,6 +69,15 @@
 		position: absolute;
 		right: 0;
 		top: calc(100% + 15px);
+		transform: translateY(15px);
+		opacity: 0;
+		pointer-events: none;
+		transition: transform .25s, opacity .25s;
+		&.active {
+			opacity: 1;
+			transform: translateY(0px);
+			pointer-events: all;
+		}
 	}
 	&__header {
 		font-weight: 600;

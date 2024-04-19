@@ -15,10 +15,7 @@
 					picture
 						source(srcset="../../images/main-screen/banner.png")
 						img(src='../../images/main-screen/banner.png' alt="Баннер")
-				.main-screen__info
-					p Сейчас свободны #[span 13 из 19 мастеров]
-					p К вам приедет ближайший из них
-					span.main-screen__info-icon 
+				MainScreenInfo
 	section.services 
 		.container
 			.heading 
@@ -43,8 +40,7 @@
 					form.request__form.form
 						.form-item 
 							input(type="text" placeholder="Введите номер")
-						.btn
-							input(type="submit", value="Заказать звонок")
+						input(type="submit", value="Заказать звонок").btn
 						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
 	section.services-detail.services-detail--first
 		.services-detail__wrapper 
@@ -73,35 +69,14 @@
 					ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
 				ServiceSlider(:count="9" imagePath="setlock")
 	Questions
-	section.main-about
-		.container 
-			.main-about__body 
-				.main-about__content
-					.heading 
-						h2.heading__title О компании
-					.main-about__stats
-						.main-about__item.stats-item(v-for="item in stats")
-							.stats-item__num {{ item.num }}
-							.stats-item__text {{ item.text }}
-					.main-about__content.content 
-						p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
-						p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
-						p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не 
-						div.main-about__content-gradient
-							button(type="button").main-about__button.btn-show Читать полностью
-				.main-about__image-wrap 
-					.main-about__image.ibg
-						picture
-							source(srcset="../../images/main-about/master.jpg")
-							img(src='../../images/main-about/master.jpg' alt="Баннер")
+	MainAbout
 	section.testimonials
 		.testimonials__wrapper
 			.container
 				.testimonials__body 
-					.testimonials__module 
-						picture 
-							source(srcset="../../images/testimonials/widget.png")
-							img(src='../../images/testimonials/widget.зтп' alt="Виджет")
+					div(class="testimonials__module" style="width:560px;height:700px;overflow:hidden;position:relative;")
+						iframe(style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/158778930985?comments")
+						a(href="https://yandex.ru/maps/org/dom_byta/158778930985/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box") Дом Быта на карте Москвы — Яндекс Карты
 					.heading 
 						h2.heading__title Отзывы #[span наших&nbsp;клиентов]
 						p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
@@ -115,42 +90,11 @@
 						li.geography__list-item(v-for="station in item.list") {{ station }}
 				span.geography__gradient
 			button(type="button").geography__button.btn-show Показать все
-	.modal
-		.modal__wrapper 
-			.modal__content 
-				button(type="button").modal__close
-				.modal__header 
-					.modal__title Оставьте заявку
-					.modal__sub-title Оставьте заявку и наш мастер перезвонит вам в ближайшее время
-				form(action="").modal__form.form 
-					.form__items 
-						.form-item 
-							input(type="text" placeholder="Ваше имя")
-						.form-item 
-							input(type="text" placeholder="Номер телефона")
-					.form__bottom 
-						.btn
-							input(type="submit", value="Заказать звонок").form__button
-						.form__agreement Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
-	.modal.modal-notice
+	.modal.modal-notice#modal-notice
 		.modal__wrapper 
 			.modal__content
 				button(type="button").modal__close
 				.modal__title Заявка успешно отправлена
-	.modal.modal-search
-		.modal__wrapper 
-			.modal__content 
-				button(type="button").modal__close
-				.modal__header 
-					.modal__title Выберите город
-				form(action="#").modal__form.form
-					.form-item 
-						input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
-						button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
-						button(type="button" ref="btn_delete" @click="deleteSearch" v-if="showBtnDelete").form-item__btn.btn-delete
-					.form-result
-						ul.form-result__list 
-							li(v-for="(city, index) in citiesByTitle" @click="selectCity") {{ city }}
 </template>
 
 <script>
@@ -158,6 +102,10 @@ import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
 import ServiceSlider from '../components/ServiceSlider.vue'
 import Questions from '../components/Questions.vue'
+import MainScreenInfo from '../components/MainScreenInfo.vue'
+import MainAbout from '../components/MainAbout.vue'
+
+import ScrollReveal from 'scrollreveal'
 
 const { services, servicesDetail, stats, geography } = obj
 
@@ -165,69 +113,35 @@ export default {
   components: {
     ServiceDetail,
     ServiceSlider,
-    Questions
+    Questions,
+    MainScreenInfo,
+    MainAbout
   },
   data() {
     return {
       services,
       servicesDetail,
       stats,
-      geography,
-      search: '',
-      showBtnSearch: true,
-      showBtnDelete: false,
-      cities: [
-        'Москва',
-        'Санкт-Петербург',
-        'Нижний Новгород',
-        'Казань',
-        'Екатеринбург',
-        'Москва',
-        'Санкт-Петербург',
-        'Нижний Новгород',
-        'Казань',
-        'Екатеринбург'
-      ],
-      metaTitle: ''
+      geography
     }
   },
   methods: {
-    setTitle: function () {
-      this.metaTitle = this.$route.name
-    },
-    onSearchInput(e) {
-      if (this.search !== '') {
-        this.showBtnSearch = false
-        this.showBtnDelete = true
-        // this.$refs.btn_search.classList.add('hidden')
-        // this.$refs.btn_delete.classList.remove('hidden')
-      } else {
-        this.showBtnSearch = true
-        this.showBtnDelete = false
-        // this.$refs.btn_search.classList.remove('hidden')
-        // this.$refs.btn_delete.classList.add('hidden')
-      }
-    },
-    selectCity(e) {
-      this.search = e.target.innerText
-      this.showBtnSearch = false
-      this.showBtnDelete = true
-    },
-    deleteSearch() {
-      this.search = ''
-      this.showBtnSearch = true
-      this.showBtnDelete = false
+    animation() {
+      //   ScrollReveal({
+      //     reset: true,
+      //     duration: 2500
+      //   })
+      //   ScrollReveal().reveal('.main-screen__heading', { origin: 'bottom' })
+      //   ScrollReveal().reveal('.main-screen__advantage--1', {
+      //     opacity: 1,
+      //     duration: 1000,
+      //     origin: 'top'
+      //   })
     }
   },
-  computed: {
-    citiesByTitle() {
-      return this.cities.filter(
-        (item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-      )
-    }
-  },
+  computed: {},
   mounted() {
-    this.setTitle()
+    this.animation()
   }
 }
 </script>
