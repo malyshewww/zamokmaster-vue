@@ -46,7 +46,7 @@
 				h3 Фотогалерея
 				.text-page__gallery-body
 					a.gallery-item(v-for="(item, index) in 8" data-fancybox="gallery" :href=`"../../images/text-page/gallery-"+(index+1)+".jpg"`)
-						div.gallery-item__image 
+						div.gallery-item__image.ibg
 							picture
 								source(:srcset=`"../../images/text-page/gallery-"+(index+1)+".jpg"`)
 								img(:src=`"../../images/text-page/gallery-"+(index+1)+".jpg"` alt="фото")

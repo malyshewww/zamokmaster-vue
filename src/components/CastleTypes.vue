@@ -3,12 +3,12 @@
 		.heading
 			h2.heading__title.title-sm Открываем все виды замков
 		.castle-types__body
-			.castle-item(v-for="(item, index) in count")
+			router-link.castle-item(to="/castle-card" v-for="(item, index) in count")
 				.castle-item__image
 					picture 
 						source(:srcset=`'../../images/castle-types/'+path+'/type-'+(index+1)+'.png'`)
 						img(:src=`"../../images/castle-types/card/type-"+(index+1)+'.png'`, alt="")
-		a(href="#").castle-types__button.btn Все замки
+		router-link(to="/castle-list").castle-types__button.btn Все замки
 </template>
 
 <script>

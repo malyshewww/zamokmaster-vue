@@ -1,6 +1,9 @@
 .main-screen {
 	background: $bg-seconadary;
 	padding: 60px 0 60px;
+	@media screen and (max-width: $lg) {
+		padding: 34px 0 30px;
+	}
 	&__heading {
 		display: flex;
 		align-items: center;
@@ -8,27 +11,50 @@
 		gap: 20px;
 		margin-bottom: 20px;
 		animation: animFade 1.5s linear forwards;
+		@media screen and (max-width: $md) {
+			display: block;
+		}
 	}
 	&__title {
 		font-weight: 600;
-		font-size: 80px;
 		color: $text-headings;
-		line-height: 88px;
+		@include adaptiv-value("font-size", 80, 26, 1);
+		@include adaptiv-value("line-height", 88, 29, 1);
 		& span {
 			color: $text-contrast-primary;
 			display: block;
 		}
 	}
-	&__phone {}
+	&__phone {
+		@media screen and (max-width: $md) {
+			display: none;
+		}
+		&-mobile {
+			display: none;
+			@media screen and (max-width: $md) {
+				display: flex;
+			}
+		}
+	}
 	&__advantages {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 15px 30px;
+		gap: 13px 30px;
 		max-width: 1008px;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+		}
+		@media screen and (max-width: $md) {
+			gap: 16px;
+			margin-bottom: 30px;
+		}
 	}
 	&__image-wrap {
 		margin-top: 30px;
 		position: relative;
+		@media screen and (max-width: $md) {
+			padding: 0 10px;
+		}
 	}
 	&__image {
 		padding-bottom: math.div(441, 1300) * 100%;
@@ -36,6 +62,9 @@
 		overflow: hidden;
 		& img {
 			border-radius: inherit;
+		}
+		@media screen and (max-width: $md) {
+			display: none;
 		}
 	}
 	&__info {
@@ -47,30 +76,54 @@
 		font-size: 20px;
 		position: absolute;
 		right: 40px;
-		top: -58px;
+		top: -55px;
+		@media screen and (max-width: $lg) {
+			width: 400px;
+			top: -30px;
+			right: 20px;
+		}
+		@media screen and (max-width: $md) {
+			position: relative;
+			top: 0;
+			right: 0;
+			width: 100%;
+			text-align: center;
+		}
 		& p {
+			font-weight: 500;
+			font-size: 20px;
 			&:not(:last-child) {
-				margin-bottom: 8px;
+				margin-bottom: 11px;
+				@media screen and (max-width: $md) {
+					margin-bottom: 8px;
+				}
+			}
+			@media screen and (max-width: $md) {
+				font-size: 16px;
+				line-height: 120%;
 			}
 		}
 		&-icon {
-			width: 35px;
-			height: 35px;
+			width: 45px;
+			height: 45px;
 			border-radius: 0 50% 0 50%;
 			border: 5px solid $bg-seconadary;
 			position: absolute;
-			top: -15px;
-			right: -17px;
+			top: -26px;
+			right: -22px;
 			background-image: url('../images/icons/info.svg');
 			background-repeat: no-repeat;
 			background-position: center;
-			background-size: 30px 30px;
+			background-size: 40px 40px;
 			animation: trin 4s linear infinite;
 			animation-delay: 5s;
 		}
 		& span {
 			font-weight: 700;
 			color: $bg-contrast;
+			@media screen and (max-width: $md) {
+				display: inline-block;
+			}
 		}
 	}
 }
@@ -82,13 +135,24 @@
 	display: flex;
 	align-items: center;
 	gap: 5px;
+	@media screen and (max-width: $md) {
+		gap: 12px;
+		font-size: 16px;
+		line-height: 18px;
+	}
 	&::before {
 		content: "";
 		display: block;
-		width: 46px;
-		height: 46px;
+		width: 47px;
+		height: 47px;
 		background-repeat: no-repeat;
 		background-position: center;
+		flex-shrink: 0;
+		@media screen and (max-width: $md) {
+			width: 30px;
+			height: 30px;
+			background-size: 30px 30px;
+		}
 	}
 	animation: animJump 0.5s linear both;
 }
@@ -105,16 +169,31 @@
 .services {
 	background: $bg-seconadary;
 	padding: 60px 0 60px;
+	@media screen and (max-width: $lg) {
+		padding: 30px 0 30px;
+	}
+	& .heading {
+		@media screen and (max-width: $md) {
+			display: none;
+		}
+	}
 	&__body {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+		}
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__item {}
 }
 .item-services {
 	border-radius: 28px;
-	min-height: 230px;
+	min-height: 238px;
 	position: relative;
 	border-radius: 28px;
 	cursor: pointer;
@@ -126,10 +205,14 @@
 			}
 		}
 	}
+	@media screen and (max-width: $md) {
+		padding-top: 5px;
+		min-height: 98px;
+	}
 	&::before {
 		content: "";
 		width: 91%;
-		height: 198px;
+		height: 100%;
 		background-color: #f9f9fb;
 		border-radius: 28px;
 		position: absolute;
@@ -150,16 +233,34 @@
 		z-index: 2;
 		background-color: $bg-primary;
 		border-radius: 28px;
+		@media screen and (max-width: $md) {
+			padding: 20px 20px;
+			gap: 19px;
+			border-radius: 16px;
+		}
 	}
 	&__title {
 		font-weight: 500;
 		font-size: 22px;
 		line-height: 24px;
 		color: $black;
+		@media screen and (max-width: $md) {
+			font-size: 16px;
+			line-height: 18px;
+			max-width: 88%;
+		}
 	}
 	&__icon {
 		width: 80px;
 		height: 80px;
+		flex-shrink: 0;
+		@media screen and (max-width: $md) {
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+		}
 	}
 	&__bottom {
 		display: flex;
@@ -169,7 +270,7 @@
 		&::before {
 			content: "";
 			display: block;
-			width: 37px;
+			width: 35px;
 			height: 24px;
 			mask-image: url('../images/icons/arrow-right.svg');
 			mask-repeat: no-repeat;
@@ -177,6 +278,12 @@
 			background-color: #212226;
 			transform-origin: left;
 			transition: transform .25s;
+			@media screen and (max-width: $md) {
+				mask-image: url('../images/icons/arrow-right-mob.svg');
+				height: 16px;
+				width: 35px;
+				mask-size: 35px 16px;
+			}
 		}
 	}
 }
@@ -185,14 +292,21 @@
 .request {
 	padding: 52px 0 120px;
 	background: $bg-seconadary;
+	@media screen and (max-width: $lg) {
+		padding: 30px 0px 60px;
+	}
 	&__body {
 		background-color: $bg-primary;
 		border-radius: 28px;
 		padding: 47px 15px 45px;
 		background-repeat: no-repeat;
-		background-position: 44% center;
+		background-position: 42.5% center;
 		background-image: url('../images/request/decor.svg');
 		background-size: 173px 380px;
+		@media screen and (max-width: $lg) {
+			background-image: none;
+			padding: 40px 20px 40px;
+		}
 	}
 	&__inner {
 		display: grid;
@@ -202,25 +316,36 @@
 		max-width: 1080px;
 		margin: 0 auto;
 		width: 100%;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+			align-items: center;
+			text-align: center;
+		}
 	}
 	&__content {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		@media screen and (max-width: $lg) {
+			gap: 10px;
+		}
 	}
 	&__title {
 		font-weight: 600;
-		font-size: 40px;
-		line-height: 44px;
 		color: $text-headings;
+		@include adaptiv-value("font-size", 40, 22, 1);
+		@include adaptiv-value("line-height", 44, 24, 1);
 	}
 	&__sub-title {
-		font-size: 18px;
-		line-height: 23px;
 		color: $text-button;
+		@include adaptiv-value("font-size", 18, 14, 1);
+		@include adaptiv-value("line-height", 24, 18, 1);
 		& span {
 			font-weight: 700;
 			color: $bg-contrast;
+			@media screen and (max-width: $md) {
+				display: block;
+			}
 		}
 	}
 	&__form {
@@ -230,6 +355,12 @@
 		gap: 20px;
 		max-width: 530px;
 		justify-self: end;
+		@media screen and (max-width: $lg) {
+			max-width: 100%;
+			width: 100%;
+			justify-content: center;
+			text-align: center;
+		}
 		& .form-item {
 			width: 100%;
 		}
@@ -237,16 +368,37 @@
 			max-width: 306px;
 			font-weight: 400;
 			font-size: 12px;
+			line-height: 120%;
 			color: $text-contrast-primary;
+			@media screen and (max-width: $lg) {
+				max-width: 100%;
+			}
 		}
 	}
 	& .btn {
 		width: 204px;
+		@media screen and (max-width: $lg) {
+			width: 100%;
+		}
 	}
 }
 
 // services-detail 
 .services-detail {
+	&--first {
+		& .services-detail__box {
+			&:nth-child(1) {
+				& .services-detail__item {
+					max-width: 1217px;
+				}
+			}
+			&:nth-child(2) {
+				& .services-detail__body {
+					gap: 0 138px;
+				}
+			}
+		}
+	}
 	&--second {
 		padding-top: 60px;
 		& .services-detail__box {
@@ -263,6 +415,20 @@
 					display: inline-block;
 				}
 			}
+			&:nth-child(1) {
+				& .services-detail__item {
+					max-width: 1272px;
+				}
+			}
+			&:nth-child(2) {
+				& .services-detail__item {
+					max-width: 1270px;
+					margin-left: auto;
+				}
+				& .services-detail__body {
+					gap: 0 108px;
+				}
+			}
 		}
 		& .services-detail__wrapper {
 			max-width: 1740px;
@@ -271,9 +437,13 @@
 			background-color: $bg-seconadary;
 			overflow: hidden;
 			gap: 133px 0;
+			padding-bottom: 120px;
 		}
 	}
 	&--third {
+		& .services-detail__item {
+			max-width: 1272px;
+		}
 		& .services-detail__box {
 			&:nth-child(odd) {
 				& .services-detail__title span {
@@ -307,11 +477,11 @@
 		position: relative;
 		&::before {
 			content: "";
-			width: 100%;
-			height: 100%;
+			width: calc(100% + 11px);
+			height: calc(100% + 9px);
 			position: absolute;
-			top: 0;
-			left: 0;
+			top: -4px;
+			left: -4px;
 			background: $bg-tertiary;
 			transform: rotate(-4deg);
 			border-radius: 28px;
@@ -344,6 +514,9 @@
 		line-height: 23px;
 		color: $text-default-text;
 		& p {
+			font-size: 18px;
+			line-height: 24px;
+			color: $text-default-text;
 			&:not(:last-child) {
 				margin-bottom: 12px;
 			}
@@ -384,7 +557,9 @@
 			background-image: url('../images/service-detail/decor-right.png');
 		}
 	}
-	&__wrapper {}
+	&__wrapper {
+		// justify-content: center;
+	}
 	&__item {
 		border: 1px solid $stroke-light;
 		border-radius: 12px;
@@ -414,6 +589,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 	&::before {
 		content: "";
 		width: 36px;
@@ -422,6 +598,7 @@
 		mask-repeat: no-repeat;
 		mask-position: center;
 		background-color: $bg-contrast;
+		@include transition(background-color, ease .25s)
 	}
 	&-prev {
 		&::before {
@@ -432,6 +609,17 @@
 		&::before {
 			mask-image: url('../images/icons/arrow-next.svg');
 		}
+	}
+	@media (any-hover:hover) {
+		&:hover {
+			&::before {
+				background-color: $button-link-hover;
+			}
+		}
+	}
+	.swiper-button-disabled {
+		pointer-events: none;
+		background-color: $button-link-hover;
 	}
 }
 
@@ -449,7 +637,7 @@
 		padding: 58px 15px;
 		background-image: url('../images/questions/decor.svg');
 		background-repeat: no-repeat;
-		background-position: 54% center;
+		background-position: 53.5% center;
 		background-size: 173px 380px;
 		position: relative;
 	}
@@ -479,7 +667,7 @@
 	}
 	&__info {
 		position: absolute;
-		left: 50%;
+		left: 52.9%;
 		transform: translateX(-50%);
 		bottom: 0;
 		border-radius: 28px;
@@ -504,8 +692,8 @@
 			transform: translate(-50%, 50%);
 			border-radius: 50%;
 			background-color: $white;
-			width: 30px;
-			height: 30px;
+			width: 45px;
+			height: 45px;
 			&::before {
 				content: "";
 				position: absolute;
@@ -537,7 +725,7 @@
 }
 
 .main-about {
-	padding: 85px 0 70px;
+	padding: 70px 0 70px;
 	& .heading {
 		margin-bottom: 40px;
 	}
@@ -546,6 +734,7 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 108px;
+		max-width: 1275px;
 	}
 	&__stats {
 		margin-bottom: 38px;
@@ -560,6 +749,7 @@
 	&__image-wrap {
 		flex: 0 0 530px;
 		position: relative;
+		margin: 15px 0 0;
 		&::before {
 			content: "";
 			width: 100%;
@@ -580,12 +770,15 @@
 			border-radius: inherit;
 		}
 	}
+	& .content p {
+		margin-bottom: 9px;
+	}
 }
 
 .text-hidden {
 	&-content {
 		position: relative;
-		max-height: 270px;
+		max-height: 226px;
 		overflow: hidden;
 		transition: max-height .5s ease 0s;
 		// .active & {
@@ -604,7 +797,11 @@
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-start;
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 5.9%, #FFF 70.28%);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 5.9%, #FFF 100.00%);
+		transition: opacity .25s;
+		.active & {
+			opacity: 0;
+		}
 	}
 }
 
@@ -644,7 +841,7 @@
 			content: "";
 			position: absolute;
 			right: 26px;
-			bottom: 0;
+			bottom: -53px;
 			display: block;
 			width: 757px;
 			height: 627px;
@@ -665,9 +862,10 @@
 .geography {
 	padding: 60px 0 60px;
 	&__wrapper {
-		height: 304px;
+		max-height: 304px;
 		overflow: hidden;
 		position: relative;
+		transition: max-height .5s;
 	}
 	&__gradient {
 		position: absolute;
@@ -678,6 +876,10 @@
 		background-image: url('../images/geography/gradient.png');
 		background-repeat: no-repeat;
 		background-size: cover;
+		transition: opacity .5s;
+		.active & {
+			opacity: 0;
+		}
 	}
 	&__body {
 		display: grid;
@@ -686,7 +888,7 @@
 	}
 	&__list {
 		display: grid;
-		gap: 20px;
+		gap: 19px 20px;
 	}
 	&__list-item {
 		display: flex;
@@ -705,7 +907,7 @@
 		}
 	}
 	&__button {
-		margin: 37px auto 0;
+		margin: 18px auto 0;
 		text-align: center;
 		display: flex;
 		justify-content: center;

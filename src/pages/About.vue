@@ -11,13 +11,13 @@
 					.about__body 
 						nav.about__navigation.nav-about
 							ul.nav-about__list 
-								li.nav-about__item.active 1994
-								li.nav-about__item 2005
-								li.nav-about__item 2013
-								li.nav-about__item 2014
-								li.nav-about__item 2024
+								li(data-anchor-link="year-1994" @click="manualSmoothScroll($event)").nav-about__link.active 1994
+								li(data-anchor-link="year-2005" @click="manualSmoothScroll($event)").nav-about__link 2005
+								li(data-anchor-link="year-2013" @click="manualSmoothScroll($event)").nav-about__link 2013
+								li(data-anchor-link="year-2014" @click="manualSmoothScroll($event)").nav-about__link 2014
+								li(data-anchor-link="year-2024" @click="manualSmoothScroll($event)").nav-about__link 2024
 						.about__sections 
-							section.about-section.about-section--beginning
+							section.about-section.about-section--beginning(id="year-1994" data-anchor-section="year-1994")
 								h2.about-section__title Начало работы компании
 								.about-section__content.content 
 									p В период с 1994 года мы&nbsp;специализировались на&nbsp;производстве и&nbsp;продаже элитных защитных дверей.
@@ -32,7 +32,7 @@
 										picture 
 											source(srcset="../../images/about/beginning/2.jpg")
 											img(src="../../images/about/beginning/2.jpg", alt="фото")
-							section.about-section.about-section--scaling
+							section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005")
 								h2.about-section__title Масштабирование компании #[span по&nbsp;вскрытию&nbsp;замков]
 								.about-section__content.content 
 									p Наши услуги по вскрытию замков стали востребованы в разных секторах использования замочных механизмов. В итоге наш опыт и знания нашли своё применение во вскрытии автомобильного транспорта. К 2005 году, мы уже сотрудничали со многим официальным и частным автосалонами в рамках договорных гарантийных обязательств.
@@ -41,13 +41,13 @@
 										picture 
 											source(srcset="../../images/about/scaling/1.jpg")
 											img(src="../../images/about/scaling/1.jpg", alt="фото")
-							section.about-section.about-section--progress
+							section.about-section.about-section--progress(id="year-2013" data-anchor-section="year-2013")
 								h2.about-section__title Развитие направления #[span по продаже, обслуживанию и вскрытию сейфов]
 								.about-section__content.content 
 									p В 2012 открылось первое представительство в городе Уфе компании Промет (крупнейший производитель сейфов и сейфового оборудования в России). К тому моменту мы имели значительный опыт по обслуживанию/вскрытию сейфов и защитных механизмов, в том числе повышенного класса взломостойкости. За 19 лет мы заслужили надёжную репутацию партнёра.
 									p И в 2013 наша компания приняла предложение стать, одним из первых дилеров Промет. Мы вззяли на себя гарантийное обязательство по обслуживанию и вскрытию (в случае необходимости), производимого компанией сейфового оборудования.
 								.about-section__learning.learning-box
-									.learning-box__caption В рамках сотрудничества с «Промет» наши специалисты:
+									.learning-box__caption В рамках сотрудничества с&nbsp;«Промет» наши специалисты:
 									.learning-box__items 
 										.learning-box__item Посещали специализированные семинары федерального и международного уровня
 										.learning-box__item Изучали замки и защитные системы, банковских хранилищ, кассовых терминалов, банкоматов.
@@ -61,7 +61,7 @@
 										picture 
 											source(srcset="../../images/about/progress/2.jpg")
 											img(src="../../images/about/progress/2.jpg", alt="фото")
-							section.about-section.about-section--leaders
+							section.about-section.about-section--leaders(id="year-2014" data-anchor-section="year-2014")
 								h2.about-section__title Лидеры по вскрытию замков #[span в&nbsp;нескольких&nbsp;регионах России]
 								.about-section__content.content 
 									p С 2014 года мы уже обслуживаем на постоянной тендерной основе, такие организации как Сбербанк, ВТБ, Газпром, Сургутнефтегаз и др., в том числе бюджетные предприятия региона.
@@ -86,7 +86,7 @@
 											source(srcset="../../images/about/leaders/logo-surgutneft.svg" media="(min-width: 767.98px)")
 											source(srcset="../../images/about/leaders/logo-surgutneft-mob.svg" media="(min-width: 300px)")
 											img(src="../../images/about/leaders/logo-surgutneft.svg", alt="сургутнефть")
-							section.about-section.about-section--expansion
+							section.about-section.about-section--expansion(id="year-2024"  data-anchor-section="year-2024")
 								h2.about-section__title Расширение филиальной сети #[span по России]
 								.about-section__content.content 
 									p В настоящее время наша компания активно развивается сотрудничая, как с юридическими так и физическими лицами во многих регионах России и ближнего зарубежья. Мы налаживаем честное профессиональное сотрудничество с мастерами разных городов, передаем им наш опыт и знания в рамках обучения. 
@@ -106,7 +106,54 @@ export default {
     Breadcrumbs
   },
   data() {
-    return {}
+    return {
+      menuObserver: null
+    }
+  },
+  methods: {
+    manualSmoothScroll(event) {
+      // находим хэш ссылу по которой мы кликнули
+      const id = event.target.closest('.nav-about li')?.getAttribute('data-anchor-link')
+      console.log(id)
+      console.log(this.menuObserver)
+      if (!id) return
+      //   this.menuObserver = null
+      // находим цель куда будем скроллить по хэшу
+      const target = document.querySelector(`[data-anchor-section="${id}"]`)
+      // если не нашли - ничего не делаем
+      if (!target) return
+      // отменяем стандартный переход
+      event.preventDefault()
+      // едем руками
+      target.scrollIntoView({ behavior: 'smooth' })
+    },
+    observeNav() {
+      // Отслеживание пересечения секции и добавление класса для меню
+      const changeNav = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+            ;[...document.querySelectorAll('.nav-about li.active')].forEach((item) => {
+              item.classList.remove('active')
+            })
+            let id = entry.target.getAttribute('id')
+            document
+              .querySelector(`.nav-about li[data-anchor-link="${id}"]`)
+              ?.classList.add('active')
+          }
+        })
+      }
+      const menuOptions = {
+        threshold: [0.5]
+      }
+      this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
+      const sections = document.querySelectorAll('[data-anchor-section]')
+      sections.forEach((section) => {
+        this.menuObserver.observe(section)
+      })
+    }
+  },
+  mounted() {
+    this.observeNav()
   }
 }
 </script>

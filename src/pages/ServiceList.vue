@@ -7,7 +7,7 @@
 					.top-main__body 
 						h1.top-main__title.page-title Услуги Замокмастер #[span в Санкт-Петербурге]
 						p.top-main__sub-title Поможем открыть любой замок без повреждений двери. Срочный выезд за 15–20 минут
-					a(href="tel:+79958881086").btn-phone
+					a(href="tel:+79958881086").btn-phone.btn
 						.btn-phone__text +7 (995) 888-10-86
 						.btn-phone__icon
 		.page__body

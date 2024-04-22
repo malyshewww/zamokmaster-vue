@@ -15,7 +15,7 @@
 							.menu-footer__caption {{ item.caption }}
 							ul.menu-footer__list
 								li(v-for="el in item.list")
-									a(:href=`el.path`) {{ el.title }}
+									router-link(:to="`${el.path}`") {{ el.title }}
 						.menu-footer__column.menu-footer-contacts
 							.menu-footer__caption Контакты
 							ul.menu-footer__list

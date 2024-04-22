@@ -3,7 +3,7 @@
 		nav.breadcrumbs__navigation
 			ul.breadcrumbs__list 
 				li.breadcrumbs__item
-					router-link(to="/home").breadcrumbs__link Главная
+					router-link(to="/").breadcrumbs__link Главная
 				li.breadcrumbs__item {{ pageTitle }}
 </template>
 

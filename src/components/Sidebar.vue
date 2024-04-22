@@ -2,7 +2,7 @@
 	aside.aside
 		.castle-list__questions.questions-castle
 			.questions-castle__title Остались вопросы?
-			.questions-castle__sub-title Мастер проконсультирует вас по всем вопросам
+			.questions-castle__sub-title Мастер проконсультирует вас&nbsp;по&nbsp;всем вопросам
 			a(href="tel:+79958881086").questions-castle__button.btn-blue #[span +7 (995) 888-10-86]
 		.castle-list__module 
 			div(style="width:382px;height:546px;overflow:hidden;position:relative;")

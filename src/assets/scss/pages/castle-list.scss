@@ -10,16 +10,21 @@
 		display: grid;
 		gap: 100px;
 	}
+	& .heading .title-sm {
+		line-height: 104%;
+	}
 }
 
 .category-castle {
 	&__items {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
+		align-items: start;
 		gap: 20px;
 	}
 	&__item {
 		display: grid;
+		align-items: start;
 		gap: 8px;
 	}
 	&__image {
@@ -52,9 +57,10 @@
 	}
 	&__sub-title {
 		font-size: 16px;
+		line-height: 120%;
 		color: $text-default-text-contrast;
 	}
 	&__button {
-		margin-top: 10px;
+		margin-top: 12px;
 	}
 }

@@ -24,14 +24,23 @@
 		align-items: flex-start;
 		gap: 40px;
 	}
-	&__item {
+	&__link {
+		display: block;
 		font-weight: 600;
 		font-size: 34px;
-		line-height: 37px;
+		line-height: 124%;
 		color: $text-contrast-additional;
 		transition: font-size, .5s, line-height .5s, color .5s;
 		position: relative;
 		cursor: pointer;
+		padding: 0 12px;
+		@include transition(color, .25s);
+		@media (any-hover: hover) {
+			&:hover {
+				color: $bg-contrast;
+			}
+
+		}
 		&::before {
 			content: "";
 			display: block;
@@ -69,6 +78,11 @@
 		}
 		.about-section--expansion & {
 			max-width: 600px;
+		}
+		.about-section--scaling &,
+		.about-section--progress &,
+		.about-section--expansion & {
+			margin-bottom: 24px;
 		}
 	}
 	&__content {

@@ -1,7 +1,8 @@
 <template lang="pug">
 	.main-screen__info
-		p Сейчас свободны #[span #{randomInteger(10, 16)} из #{randomInteger(18, 25)} мастеров]
-		p К вам приедет ближайший из них
+		.main-screen__content
+			p Сейчас свободны #[span #{randomInteger(10, 16)} из #{randomInteger(18, 25)} мастеров]
+			p К вам приедет ближайший из них
 		span.main-screen__info-icon 
 </template>
 

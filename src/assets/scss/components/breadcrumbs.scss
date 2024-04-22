@@ -9,6 +9,7 @@
 	&__item {
 		font-weight: 500;
 		font-size: 13px;
+		line-height: 120%;
 		color: $text-contrast-primary;
 		position: relative;
 		& + & {

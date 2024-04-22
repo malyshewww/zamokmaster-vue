@@ -20,4 +20,9 @@
 			gap: 20px;
 		}
 	}
+	& .gallery-item {
+		&__image {
+			padding-bottom: math.div(269, 311) * 100%;
+		}
+	}
 }

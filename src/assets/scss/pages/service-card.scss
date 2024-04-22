@@ -12,6 +12,9 @@
 		gap: 100px;
 	}
 	&__content {
+		& .disclamer p {
+			margin-bottom: 0;
+		}
 		& table {
 			margin: 0;
 			& tr {

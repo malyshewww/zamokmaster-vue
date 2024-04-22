@@ -33,6 +33,15 @@
 		font-size: 22px;
 		color: $text-headings;
 		margin-bottom: 16px;
+		line-height: 124%;
+	}
+	&__column {
+		&:first-child {
+			flex: 0 1 208px;
+		}
+		&:last-child {
+			flex: 0 1 238px;
+		}
 	}
 	& ul {
 		@include reset-list;

@@ -2,7 +2,7 @@
 	header.header 
 		.container
 			.header__body 
-				a(href="#").header__logo
+				router-link(to="/").header__logo
 					picture 
 						source(srcset="../../images/icons/logo-pc.svg" media="(min-width: 767.98px)")
 						source(srcset="../../images/icons/logo-mobile.svg" media="(min-width: 300px)")

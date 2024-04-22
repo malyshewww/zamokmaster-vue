@@ -18,9 +18,9 @@
 								p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 								p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
 								p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не 
-							div.text-hidden-content__gradient
-					button(type="button" @click="hideText" v-if="textShow").main-about__button.btn-show.text-hidden__btn Скрыть
-					button(type="button" @click="showText" v-else).main-about__button.btn-show.text-hidden__btn Читать полностью
+							div.text-hidden-content__gradient(@click='textShow = !textShow')
+					button(type="button" @click='textShow = !textShow' v-if="!textShow").main-about__button.btn-show Читать полностью
+					//- button(type="button" @click="showText" v-else).main-about__button.btn-show Читать полностью
 				.main-about__image-wrap 
 					.main-about__image.ibg
 						picture
@@ -30,36 +30,28 @@
 
 <script>
 import obj from '../data.js'
+// import { textHidden, textHide } from '../assets/scripts/modules/textHidden.js'
 const { stats } = obj
 
 export default {
+  components: {},
   data() {
     return {
       stats,
       textShow: false,
-      maxHeight: ''
+      maxHeight: 0
     }
   },
-  methods: {
-    showText() {
-      this.textShow = !this.textShow
-      this.maxHeight = this.$refs.content.clientHeight
-      console.log(this.maxHeight, this.$el)
-    },
-    hideText() {
-      this.textShow = false
-      this.maxHeight = this.$refs.hiddenContent.clientHeight
-      console.log(this.$refs.hiddenContent.clientHeight)
-      console.log(this.maxHeight)
-    }
-  },
+  methods: {},
   computed: {
     myStyles() {
       return {
-        'max-height': `${this.maxHeight}px`
+        // `height: ${this.show ? this.$el.scrollHeight : 0}px`
+        'max-height': `${this.textShow ? this.$el.querySelector('.text-hidden-content')?.scrollHeight : false}px`
       }
     }
   },
+  watch: {},
   mounted() {}
 }
 </script>
