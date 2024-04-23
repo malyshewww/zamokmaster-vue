@@ -11,6 +11,6 @@
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon 
 				.questions__info 
-					p Выезд мастера #[span в течении 15–20 минут]. #[br] Круглосуточно и без выходных
+					p Выезд мастера #[span в&nbsp;течении 15–20 минут]. #[br] Круглосуточно и&nbsp;без&nbsp;выходных
 					span.questions__info-icon
 </template>

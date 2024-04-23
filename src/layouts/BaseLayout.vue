@@ -1,6 +1,6 @@
 <template lang="pug">
 	.wrapper
-		//- TheHeader
+		TheHeader
 		main.main
 			router-view
 		TheFooter

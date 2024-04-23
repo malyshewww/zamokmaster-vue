@@ -10,19 +10,21 @@
 								source(srcset="../../images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
 								img(src="../../images/icons/logo-pc.svg", alt="логотип")
 						FooterCall
-					.main-footer__menu.menu-footer
+					.main-footer__menu.menu-footer(data-spollers)
 						.menu-footer__column(v-for="item in menuFooter")
-							.menu-footer__caption {{ item.caption }}
-							ul.menu-footer__list
-								li(v-for="el in item.list")
-									router-link(:to="`${el.path}`") {{ el.title }}
+							.menu-footer__caption(data-spoller) {{ item.caption }}
+							.menu-footer__content
+								ul.menu-footer__list(ref="menu_list")
+									li(v-for="el in item.list")
+										router-link(:to="`${el.path}`") {{ el.title }}
 						.menu-footer__column.menu-footer-contacts
-							.menu-footer__caption Контакты
-							ul.menu-footer__list
-								li 
-									a(href="tel:+79958881086").menu-footer__phone +7 (995) 888-10-86
-								li 
-									a(href="mailto:hello@zamokmaster.ru").menu-footer__email hello@zamokmaster.ru
+							.menu-footer__caption(data-spoller) Контакты
+							.menu-footer__content
+								ul.menu-footer__list
+									li 
+										a(href="tel:+79958881086").menu-footer__phone +7 (995) 888-10-86
+									li 
+										a(href="mailto:hello@zamokmaster.ru").menu-footer__email hello@zamokmaster.ru
 		.footer__bottom.bottom-footer
 			.container 
 				.bottom-footer__body 
@@ -40,6 +42,8 @@
 import obj from '../data.js'
 import FooterCall from './FooterCall.vue'
 
+import spollers from '../assets/scripts/modules/spollers.js'
+
 const { menuFooter } = obj
 
 export default {
@@ -50,6 +54,28 @@ export default {
     return {
       menuFooter
     }
+  },
+  methods: {
+    initSpollers() {
+      if (window.matchMedia('(max-width: 767.98px)').matches) {
+        spollers()
+      } else {
+        return false
+      }
+    },
+    resizeSpollers() {
+      window.addEventListener('resize', () => {
+        if (window.innerWidth < 767.98) {
+          this.initSpollers()
+        } else {
+          return false
+        }
+      })
+    }
+  },
+  mounted() {
+    this.initSpollers()
+    this.resizeSpollers()
   }
 }
 </script>

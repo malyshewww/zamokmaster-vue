@@ -1,6 +1,6 @@
 <template lang="pug">
 	.services-slider
-		.services-slider__body.swiper(ref="swiper")
+		.services-slider__body.swiper(ref="mySwiper")
 			.services-slider__wrapper.swiper-wrapper
 				.services-slider__item.swiper-slide(v-for="item in count")
 					.services-slider__image
@@ -29,11 +29,10 @@ export default {
     }
   },
   mounted() {
-    this.slider = new Swiper(this.$refs.swiper, {
+    this.slider = new Swiper(this.$refs.mySwiper, {
       modules: [Navigation, Autoplay],
       speed: 1000,
       slidesPerView: 'auto',
-      spaceBetween: 22,
       loop: true,
       autoplay: {
         delay: 1000,
@@ -42,6 +41,14 @@ export default {
       navigation: {
         nextEl: '.slider-button-next',
         prevEl: '.slider-button-prev'
+      },
+      breakpoints: {
+        300: {
+          spaceBetween: 10
+        },
+        767.98: {
+          spaceBetween: 22
+        }
       }
     })
   }

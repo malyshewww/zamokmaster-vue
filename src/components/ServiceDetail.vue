@@ -13,7 +13,7 @@
 				.services-detail__image.ibg
 					picture
 						source(:srcset=`'./images/services/service-detail-'+img+'.jpg'` media="(min-width: 767.98px)")
-						source(:srcset=`'./images/services/service-detail-'+img+'-mob.jpg'` media="(min-width: 300px)")
+						//- source(:srcset=`'./images/services/service-detail-'+img+'-mob.jpg'` media="(min-width: 300px)")
 						img(:src=`'./images/services/service-detail-'+img+'.jpg'`, :alt="titleGray + title")
 </template>
 

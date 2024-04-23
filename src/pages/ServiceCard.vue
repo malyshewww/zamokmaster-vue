@@ -15,8 +15,8 @@
 							.btn-phone__icon
 		.page__body 
 			.container
-				.service-card__body
-					.service-card__groups
+				.service-card__body.page-layout
+					.service-card__groups.section-groups
 						CastleAdvantages
 						.service-card__content.content
 							p Специалисты «Мастер замков» смогут так же восстановить ключи от вашего авто, в том числе Чип-ключей, даже в случае их полной утери. За что не всегда берутся другие мастера. Причём делаем эту услугу быстро и качественно.
@@ -67,6 +67,24 @@ export default {
     return {
       tablePrice
     }
+  },
+  methods: {
+    wrapTable() {
+      if (window.innerWidth < 768) {
+        let contentTable = document.querySelectorAll('.content table')
+        if (contentTable.length) {
+          contentTable.forEach(function (item) {
+            let tableWrap = document.createElement('div')
+            tableWrap.setAttribute('class', 'table-wrap')
+            item.parentNode.insertBefore(tableWrap, item)
+            tableWrap.appendChild(item)
+          })
+        }
+      }
+    }
+  },
+  mounted() {
+    this.wrapTable()
   }
 }
 </script>

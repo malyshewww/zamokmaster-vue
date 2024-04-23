@@ -12,7 +12,7 @@
 						.btn-phone__icon
 		.page__body
 			.container 
-				.service-list__wrapper
+				.service-list__wrapper.section-groups
 					.service-list__body
 						.services__item.item-services(v-for="(service, index) in servicesList")
 							.item-services__content

@@ -1,5 +1,4 @@
 .service-list {
-	padding: 0 0 60px;
 	& .page-title span {
 		display: inline-block;
 	}
@@ -11,6 +10,13 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 23px 20px;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+		}
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+		}
 	}
 	& .item-services {
 		&::before {

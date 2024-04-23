@@ -45,45 +45,51 @@
 							input(type="text" placeholder="Введите номер")
 						input(type="submit", value="Заказать звонок").btn
 						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
-	//- section.services-detail.services-detail--first
-	//- 	.services-detail__wrapper 
-	//- 		.services-detail__box
-	//- 			.container
-	//- 				ServiceDetail(:titleGray="servicesDetail[0].titleGray" :title="servicesDetail[0].title" :text1="servicesDetail[0].text[0]" img="1")
-	//- 			ServiceSlider(:count="9" imagePath="lock")
-	//- 		.services-detail__box
-	//- 			.container
-	//- 				ServiceDetail(:titleGray="servicesDetail[1].titleGray" :title="servicesDetail[1].title" :text1="servicesDetail[1].text[0]" :text2="servicesDetail[1].text[1]" img="2")
-	//- 			ServiceSlider(:count="9" imagePath="doors")
-	//- section.services-detail.services-detail--second
-	//- 	.services-detail__wrapper 
-	//- 		.services-detail__box
-	//- 			.container
-	//- 				ServiceDetail(:titleGray="servicesDetail[2].titleGray" :title="servicesDetail[2].title" :text1="servicesDetail[2].text[0]" :text2="servicesDetail[2].text[1]" img="3")
-	//- 			ServiceSlider(:count="9" imagePath="safe") 
-	//- 		.services-detail__box
-	//- 			.container
-	//- 				ServiceDetail(:titleGray="servicesDetail[3].titleGray" :title="servicesDetail[3].title" :text1="servicesDetail[3].text[0]" :text2="servicesDetail[3].text[1]" img="4")
-	//- 			ServiceSlider(:count="9" imagePath="car") 
-	//- section.services-detail.services-detail--third
-	//- 	.services-detail__wrapper 
-	//- 		.services-detail__box
-	//- 			.container
-	//- 				ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
-	//- 			ServiceSlider(:count="9" imagePath="setlock")
-	//- Questions
-	//- MainAbout
-	//- section.testimonials
-	//- 	.testimonials__wrapper
-	//- 		.container
-	//- 			.testimonials__body 
-	//- 				div(class="testimonials__module" style="width:560px;height:700px;overflow:hidden;position:relative;")
-	//- 					iframe(style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/158778930985?comments")
-	//- 					a(href="https://yandex.ru/maps/org/dom_byta/158778930985/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box") Дом Быта на карте Москвы — Яндекс Карты
-	//- 				.heading 
-	//- 					h2.heading__title Отзывы #[span наших&nbsp;клиентов]
-	//- 					p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
-	//- MainGeography
+	section.services-detail.services-detail--first
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[0].titleGray" :title="servicesDetail[0].title" :text1="servicesDetail[0].text[0]" img="1")
+				ServiceSlider(:count="9" imagePath="lock")
+				.services-detail__bottom 
+					.container
+						router-link(to="/service-card").services-detail__button.btn Подробнее
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[1].titleGray" :title="servicesDetail[1].title" :text1="servicesDetail[1].text[0]" :text2="servicesDetail[1].text[1]" img="2")
+				ServiceSlider(:count="9" imagePath="doors")
+				.services-detail__bottom 
+					.container
+						router-link(to="/service-card").services-detail__button.btn Подробнее
+	section.services-detail.services-detail--second
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[2].titleGray" :title="servicesDetail[2].title" :text1="servicesDetail[2].text[0]" :text2="servicesDetail[2].text[1]" img="3")
+				ServiceSlider(:count="9" imagePath="safe") 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[3].titleGray" :title="servicesDetail[3].title" :text1="servicesDetail[3].text[0]" :text2="servicesDetail[3].text[1]" img="4")
+				ServiceSlider(:count="9" imagePath="car") 
+	section.services-detail.services-detail--third
+		.services-detail__wrapper 
+			.services-detail__box
+				.container
+					ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
+				ServiceSlider(:count="9" imagePath="setlock")
+	Questions
+	MainAbout
+	section.testimonials
+		.testimonials__wrapper
+			.container
+				.testimonials__body 
+					div(class="testimonials__module")
+						iframe(style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/158778930985?comments")
+						a(href="https://yandex.ru/maps/org/dom_byta/158778930985/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box") Дом Быта на карте Москвы — Яндекс Карты
+					.heading 
+						h2.heading__title Отзывы #[span наших&nbsp;клиентов]
+						p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
+	MainGeography
 	.modal.modal-notice#modal-notice
 		.modal__wrapper 
 			.modal__content

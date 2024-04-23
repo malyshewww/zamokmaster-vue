@@ -3,9 +3,9 @@
 		ul.menu__list
 			li.menu__item
 				router-link.route(to="/") Главная
-			li.menu__item.menu__item--extended
-				router-link.route(to="/services") Услуги
-				.menu__sub-list
+			li.menu__item.menu__item--extended(:class="[isShow ? 'active' : '']")
+				router-link(to="/service-list" @click.native="openSubMenu($event)") Услуги
+				.menu__sub-list(:style="myStyles")
 					ul
 						li 
 							router-link.route(to="#") Вскрытие дверей
@@ -27,6 +27,30 @@
 				router-link.route(to="/contacts") Контакты
 </template>
 
-<script setup></script>
+<script>
+export default {
+  data() {
+    return {
+      maxHeight: 0,
+      isShow: false
+    }
+  },
+  methods: {
+    openSubMenu(e) {
+      if (window.innerWidth < 1400) {
+        e.preventDefault()
+        this.isShow = !this.isShow
+      }
+    }
+  },
+  computed: {
+    myStyles() {
+      return {
+        'max-height': `${this.isShow ? this.$el.querySelector('.menu__sub-list')?.scrollHeight : this.maxHeight}px`
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss"></style>

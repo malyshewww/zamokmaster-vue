@@ -1,17 +1,10 @@
 .castle-card {
-	padding-bottom: 60px;
-	&__groups {
-		display: grid;
-		gap: 100px;
-		align-items: start;
-	}
-	&__body {
-		display: grid;
-		grid-template-columns: 1fr 380px;
-		align-items: start;
-		gap: 60px;
-	}
+	&__groups {}
+	&__body {}
 	& .castle-advantages {
 		margin-bottom: 60px;
+		@media screen and (max-width: $lg) {
+			margin-bottom: 0;
+		}
 	}
 }

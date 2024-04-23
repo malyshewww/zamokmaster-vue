@@ -1,14 +1,18 @@
 .contacts {
 	&__wrapper {
 		padding-bottom: 60px;
+		@media screen and (max-width: $md) {
+			padding-bottom: 30px;
+		}
 	}
 	&__body {
 		display: flex;
 		align-items: flex-start;
 		gap: 40px;
-	}
-	&__info {
-		flex: 0 1 510px;
+		@media screen and (max-width:$md) {
+			flex-direction: column;
+			align-items: stretch;
+		}
 	}
 	&__map {
 		flex: 1 1 auto;
@@ -16,17 +20,34 @@
 		border-radius: 22px;
 		overflow: hidden;
 		background-color: $bg-seconadary;
+		min-width: 350px;
+		@media screen and (max-width: $md) {
+			min-width: 100%;
+			flex: 1 1 auto;
+			height: 280px;
+		}
 	}
 }
 .info-contacts {
 	display: grid;
+	align-items: start;
 	gap: 19px;
+	flex: 0 1 510px;
+	@media screen and (max-width: $md) {
+		flex: 0;
+	}
 	&__item {
 		display: grid;
 		gap: 17px;
 		&:not(:last-child) {
 			padding-bottom: 20px;
 			border-bottom: 1px solid $stroke-light;
+			@media screen and (max-width: $md) {
+				padding-bottom: 15px;
+			}
+		}
+		@media screen and (max-width: $md) {
+			gap: 10px;
 		}
 	}
 	&__caption {
@@ -34,6 +55,10 @@
 		font-size: 26px;
 		line-height: 29px;
 		color: $text-headings;
+		@media screen and (max-width: $md) {
+			font-size: 22px;
+			line-height: 24px;
+		}
 	}
 	&__list {
 		@include reset-list;
@@ -50,6 +75,10 @@
 			&:hover {
 				color: $bg-contrast;
 			}
+		}
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+			line-height: 18px;
 		}
 	}
 }

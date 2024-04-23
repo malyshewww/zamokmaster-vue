@@ -1,5 +1,8 @@
 .breadcrumbs {
 	margin-bottom: 30px;
+	@media screen and (max-width: $md) {
+		margin-bottom: 16px;
+	}
 	&__list {
 		@include reset-list;
 		display: flex;

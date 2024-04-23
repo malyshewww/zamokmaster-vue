@@ -6,12 +6,19 @@
 
 .main-footer {
 	padding: 60px 0 54px;
+	@media screen and (max-width: $md) {
+		padding: 60px 0 30px;
+	}
 	&__body {
 		display: grid;
 		grid-template-columns: 275px 1fr;
 		justify-content: space-between;
 		align-items: flex-start;
-		gap: 30px;
+		gap: 0px 100px;
+		@media screen and (max-width: $lg) {
+			grid-template-columns: 1fr;
+			gap: 30px;
+		}
 	}
 	&__menu {
 		display: flex;
@@ -19,6 +26,14 @@
 		justify-content: flex-end;
 		flex-wrap: wrap;
 		gap: 40px 80px;
+		@media screen and (max-width: $xxl) {
+			gap: 40px;
+			justify-content: flex-start;
+		}
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+			gap: 20px;
+		}
 	}
 }
 
@@ -27,6 +42,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 26px;
+		@media screen and (max-width: $lg) {
+			text-align: center;
+			align-items: center;
+			& .btn {
+				align-self: stretch;
+			}
+		}
 	}
 	&__caption {
 		font-weight: 700;
@@ -34,13 +56,46 @@
 		color: $text-headings;
 		margin-bottom: 16px;
 		line-height: 124%;
+		@media screen and (max-width: $md) {
+			margin-bottom: 0;
+			font-size: 18px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			&::after {
+				content: "";
+				display: block;
+				width: 23px;
+				height: 23px;
+				mask-image: url('../images/icons/chevron-down-blue.svg');
+				mask-repeat: no-repeat;
+				mask-position: center;
+				background-color: $bg-contrast;
+				transition: transform .3s, background-color .3s;
+			}
+			&._active {
+				&::after {
+					transform: rotate(180deg);
+					background-color: $text-contrast-primary;
+				}
+			}
+		}
 	}
 	&__column {
+		@media screen and (max-width: $md) {
+			width: 100%;
+		}
 		&:first-child {
 			flex: 0 1 208px;
+			@media screen and (max-width: $md) {
+				flex: 1 1 auto;
+			}
 		}
 		&:last-child {
 			flex: 0 1 238px;
+			@media screen and (max-width: $md) {
+				flex: 1 1 auto;
+			}
 		}
 	}
 	& ul {
@@ -48,6 +103,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		@media screen and (max-width: $md) {
+			padding-top: 16px;
+		}
 	}
 	& a {
 		font-weight: 400;
@@ -102,6 +160,14 @@
 		display: flex;
 		align-items: center;
 		gap: 40px;
+		@media screen and (max-width: $md) {
+			gap: 16px;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+	@media screen and (max-width: $md) {
+		padding: 30px 0;
 	}
 }
 .footer__company {

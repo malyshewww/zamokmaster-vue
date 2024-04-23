@@ -8,6 +8,9 @@
 		max-width: 100%;
 		padding: 0 40px;
 		width: 100%;
+		@media screen and (max-width: 1600px) {
+			padding: 0 20px;
+		}
 	}
 	&__logo {
 		flex-shrink: 0;
@@ -25,6 +28,15 @@
 			align-items: center;
 			gap: 12px 30px;
 			flex-wrap: wrap;
+			@media screen and (max-width: 1600px) {
+				gap: 12px;
+			}
+			@media screen and (max-width: $xxxl) {
+				flex-direction: column;
+				flex-wrap: nowrap;
+				gap: 16px;
+				align-items: flex-start;
+			}
 		}
 		& li {
 			font-weight: 500;
@@ -35,6 +47,30 @@
 			font-weight: 500;
 			color: currentColor;
 			transition: color .25s;
+			@media screen and (max-width: $xxxl) {
+				font-size: 22px;
+				line-height: 24px;
+				font-weight: 600;
+			}
+		}
+		& .menu__item--extended ul a {
+			@media screen and (max-width: $xxxl) {
+				font-size: 16px;
+				line-height: 21px;
+				font-weight: 400;
+			}
+		}
+		@media screen and (max-width: $xxxl) {
+			position: fixed;
+			width: 354px;
+			right: 0;
+			top: 0;
+			background-color: $bg-primary;
+			height: 100dvh;
+			z-index: 10;
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding: 81px 30px 30px;
 		}
 	}
 	&__location {}
@@ -42,6 +78,7 @@
 .location-header {
 	position: relative;
 	flex-shrink: 0;
+	z-index: 10;
 	&__current {
 		position: relative;
 		display: flex;
@@ -118,10 +155,27 @@
 		display: flex;
 		align-items: center;
 		gap: 6px;
+		& > a {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		&.active {
+			& > a::after {
+				background-color: $bg-contrast;
+				transform: rotate(180deg);
+			}
+			& > a {
+				color: $bg-contrast;
+			}
+			& .menu__sub-list {
+				margin-top: 8px;
+			}
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: $bg-contrast;
-				&::after {
+				& > a::after {
 					background-color: $bg-contrast;
 					transform: rotate(180deg);
 				}
@@ -132,7 +186,12 @@
 				}
 			}
 		}
-		&::after {
+		@media screen and (max-width: $xxxl) {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0;
+		}
+		& > a::after {
 			content: "";
 			display: block;
 			width: 10px;
@@ -142,6 +201,9 @@
 			mask-position: center;
 			background-color: $text-default-text;
 			transition: transform .25s, background-color .25s;
+			@media screen and (max-width: $xxxl) {
+				mask-image: url('../images/icons/chevron-down-menu.svg');
+			}
 		}
 	}
 	&__sub-list {
@@ -155,6 +217,18 @@
 		visibility: hidden;
 		transform: translateY(15px);
 		transition: opacity .25s, visibility .25s, transform .25s;
+		@media screen and (max-width: $xxxl) {
+			position: static;
+			width: 100%;
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+			flex: 1 1 100%;
+			max-height: 0;
+			overflow: hidden;
+			padding: 0;
+			transition: max-height .25s linear 0s, margin-top .25s linear 0s;
+		}
 		& ul {
 			box-shadow: $shadow;
 			background: $bg-primary;
@@ -164,6 +238,12 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 12px;
+			@media screen and (max-width: $xxxl) {
+				box-shadow: none;
+				background-color: transparent;
+				padding: 0px 0 0;
+				gap: 6px;
+			}
 		}
 		& a {
 			font-size: 16px;
