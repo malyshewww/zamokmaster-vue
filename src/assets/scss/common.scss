@@ -52,10 +52,13 @@ picture {
 	& input {
 		border: 1px solid $stroke-light;
 		border-radius: 63px;
-		padding: 12px 20px;
+		padding: 10px 20px;
 		min-height: 45px;
 		font-family: "Montserrat", sans-serif;
 		width: 100%;
+		font-size: 16px;
+		line-height: 21px;
+		color: $text-default-text;
 		&::placeholder {
 			font-weight: 400;
 			font-size: 16px;
@@ -206,6 +209,15 @@ picture {
 		}
 	}
 }
+
+.form {
+	& .btn {
+		@media screen and (max-width: $md) {
+			background-color: $bg-contrast-2;
+		}
+	}
+}
+
 .btn-show {
 	font-weight: 600;
 	font-size: 16px;
@@ -238,7 +250,7 @@ picture {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	right: 30px;
+	right: 106px;
 	bottom: 100px;
 	z-index: 5;
 	cursor: pointer;
@@ -262,17 +274,28 @@ picture {
 				animation-play-state: paused;
 			}
 		}
-
+	}
+	@media screen and (max-width: $xxxl) {
+		right: 50px;
+	}
+	@media screen and (max-width: $md) {
+		right: 30px;
+		width: 40px;
+		height: 40px;
+		&::before {
+			width: 20px;
+			height: 20px;
+			mask-size: 20px 20px;
+		}
 	}
 }
-
-
 
 .page-title {
 	font-weight: 600;
 	color: $text-headings;
 	@include adaptiv-value("font-size", 54, 26, 1);
 	@include adaptiv-value("line-height", 59, 29, 1);
+	hyphens: auto;
 	& span {
 		color: $text-contrast-primary;
 		@media screen and (max-width: $md) {
@@ -480,5 +503,99 @@ picture {
 	}
 	&__button {
 		margin-top: 10px;
+	}
+}
+
+.services-mobile {
+	display: none;
+	@media screen and (max-width: $md) {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		min-height: 78px;
+		padding: 10px 0;
+		box-shadow: 0 -1px 23px 0 rgba(0, 0, 0, 0.05);
+		background: $bg-primary;
+		z-index: 10;
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 17px;
+		padding: 0 14px;
+	}
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 6px;
+		position: relative;
+		padding: 0 2px;
+		&:not(:last-child) {
+			&::before {
+				content: "";
+				position: absolute;
+				width: 1px;
+				height: 47px;
+				background: $bg-seconadary;
+				left: 100%;
+				transform: translateX(8px);
+			}
+		}
+	}
+	&__title {
+		font-weight: 500;
+		font-size: 10px;
+		line-height: 11px;
+		color: #000;
+	}
+}
+
+.phone-mobile {
+	display: none;
+	@media screen and (max-width: $md) {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		min-height: 78px;
+		padding: 10px 0;
+		box-shadow: 0 -1px 23px 0 rgba(0, 0, 0, 0.05);
+		background: $bg-primary;
+		z-index: 10;
+	}
+	& .btn-phone {
+		height: 34px;
+		font-size: 14px;
+		padding: 10px;
+		min-height: 34px;
+	}
+	&__body {
+		display: grid;
+		text-align: center;
+		gap: 8px;
+	}
+	& p {
+		font-weight: 500;
+		font-size: 13px;
+		color: $text-headings;
+		& span {
+			font-weight: 700;
+			color: $bg-contrast;
+		}
+	}
+}
+
+body.home {
+	@media screen and (max-width: $md) {
+		.services-mobile {
+			display: block;
+		}
+	}
+	@media screen and (max-width: $md) {
+		.phone-mobile {
+			display: none;
+		}
 	}
 }

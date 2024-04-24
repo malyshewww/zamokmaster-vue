@@ -1,11 +1,11 @@
 <template lang="pug">
-	nav 
+	nav(@click="closeMenu($event)")
 		ul.menu__list
 			li.menu__item
 				router-link.route(to="/") Главная
 			li.menu__item.menu__item--extended(:class="[isShow ? 'active' : '']")
-				router-link(to="/service-list" @click.native="openSubMenu($event)") Услуги
-				.menu__sub-list(:style="myStyles")
+				a(href="javascript:void();" @click.native="openSubMenu($event)") Услуги
+				.menu__sub-list(:style="myStyles" ref="sub_menu")
 					ul
 						li 
 							router-link.route(to="#") Вскрытие дверей
@@ -25,6 +25,9 @@
 				router-link.route(to="/individual") Физическим лицам
 			li.menu__item
 				router-link.route(to="/contacts") Контакты
+	.header__contacts.contacts-header
+		a(href="tel:+79958881086").contacts-header__link.contacts-header__link--phone +7 (995) 888-10-86
+		a(href="mailto:hello@zamokmaster.ru").contacts-header__link.contacts-header__link--email hello@zamokmaster.ru
 </template>
 
 <script>
@@ -41,12 +44,18 @@ export default {
         e.preventDefault()
         this.isShow = !this.isShow
       }
+    },
+    closeMenu(e) {
+      if (e.target.closest('a')) {
+        document.body.classList.remove('menu-open')
+        document.body.classList.remove('lock')
+      }
     }
   },
   computed: {
     myStyles() {
       return {
-        'max-height': `${this.isShow ? this.$el.querySelector('.menu__sub-list')?.scrollHeight : this.maxHeight}px`
+        'max-height': `${this.isShow ? this.$refs.sub_menu?.scrollHeight : this.maxHeight}px`
       }
     }
   }

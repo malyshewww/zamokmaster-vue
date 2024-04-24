@@ -1,7 +1,9 @@
 .footer {
 	background-color: $bg-seconadary;
 	&__main {}
-
+	@media screen and (max-width: $md) {
+		padding-bottom: 70px;
+	}
 }
 
 .main-footer {

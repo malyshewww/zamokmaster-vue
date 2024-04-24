@@ -4,6 +4,29 @@
 	align-items: center;
 	padding: 23px 0;
 	border-bottom: 1px solid $stroke-light;
+	position: relative;
+	@media screen and (max-width: $md) {
+		min-height: 50px;
+		padding: 12px 0;
+		border: none;
+	}
+	// &::before {
+	// 	content: "";
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	background-color: $white;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	z-index: 11;
+	// 	display: none;
+	// 	@media screen and (max-width: $xxxl) {
+	// 		display: block;
+	// 	}
+	// 	@media screen and (max-width: $md) {
+	// 		z-index: 21;
+	// 	}
+	// }
 	& .container {
 		max-width: 100%;
 		padding: 0 40px;
@@ -14,6 +37,11 @@
 	}
 	&__logo {
 		flex-shrink: 0;
+		position: relative;
+		z-index: 20;
+		@media screen and (max-width: $md) {
+			z-index: 21;
+		}
 	}
 	&__body {
 		display: flex;
@@ -43,7 +71,7 @@
 			color: $text-default-text;
 			position: relative;
 		}
-		& a {
+		& nav a {
 			font-weight: 500;
 			color: currentColor;
 			transition: color .25s;
@@ -51,6 +79,10 @@
 				font-size: 22px;
 				line-height: 24px;
 				font-weight: 600;
+			}
+			@media screen and (max-width: $md) {
+				font-size: 18px;
+				line-height: 20px;
 			}
 		}
 		& .menu__item--extended ul a {
@@ -61,30 +93,182 @@
 			}
 		}
 		@media screen and (max-width: $xxxl) {
+			& .menu__body {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				gap: 20px;
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
 			position: fixed;
 			width: 354px;
 			right: 0;
 			top: 0;
 			background-color: $bg-primary;
 			height: 100dvh;
-			z-index: 10;
-			overflow-y: auto;
-			overflow-x: hidden;
-			padding: 81px 30px 30px;
+			z-index: 20;
+			padding: 83px 30px 30px;
+			transform: translateX(100%);
+			transition: transform .5s;
+			&::before {
+				content: "";
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 80px;
+				background-color: $white;
+			}
+			.menu-open & {
+				transform: translateX(0);
+			}
+		}
+		@media screen and (max-width: $md) {
+			width: 100%;
+			padding: 75px 20px 20px;
+			&::before {
+				height: 50px;
+			}
 		}
 	}
 	&__location {}
+	&__burger {
+		display: none;
+		@media screen and (max-width: $xxxl) {
+			width: 30px;
+			height: 22px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			z-index: 21;
+			flex-shrink: 0;
+			& span,
+			&::before,
+			&::after {
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%, 0%);
+				width: 100%;
+				height: 2px;
+				background-color: $bg-contrast;
+				transition: all .25s, rotate .25s linear 0.5s;
+			}
+			& span {
+				.menu-open & {
+					opacity: 0;
+				}
+			}
+			&::before,
+			&::after {
+				content: "";
+				.menu-open & {
+					background-color: $button-link-hover;
+					width: 22px;
+				}
+			}
+			&::before {
+				top: 2px;
+				.menu-open & {
+					top: 50%;
+					transform: translate(-50%, -50%) rotate(-135deg);
+				}
+			}
+			&::after {
+				bottom: 2px;
+				.menu-open & {
+					bottom: 50%;
+					transform: translate(-50%, 50%) rotate(-45deg);
+				}
+			}
+		}
+	}
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 30px;
+		@media screen and (max-width: $xxxl) {
+			margin-left: auto;
+		}
+		@media screen and (max-width: $md) {
+			gap: 15px;
+		}
+	}
 }
+
+.contacts-header {
+	display: none;
+	@media screen and (max-width: $xxxl) {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	&__link {
+		font-weight: 500;
+		line-height: 18px;
+		color: $text-default-text;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		&::before {
+			content: "";
+			display: block;
+			width: 16px;
+			height: 16px;
+			flex-shrink: 0;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 16px 16px;
+		}
+		&--phone {
+			&::before {
+				background-image: url('../images/icons/phone.svg');
+			}
+		}
+		&--email {
+			&::before {
+				background-image: url('../images/icons/mail.svg');
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: $bg-contrast;
+			}
+		}
+	}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100dvh;
+	background: rgba(51, 102, 153, 0.3);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	z-index: 15;
+	transition: opacity .25s, visibility .25s;
+	.menu-open & {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: all;
+	}
+}
+
 .location-header {
-	position: relative;
 	flex-shrink: 0;
-	z-index: 10;
+	position: relative;
 	&__current {
 		position: relative;
 		display: flex;
 		align-items: center;
 		gap: 6px;
 		font-weight: 500;
+		z-index: 21;
 		&::before {
 			content: "";
 			display: block;
@@ -94,6 +278,15 @@
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: #336699;
+		}
+		@media screen and (max-width: $md) {
+			width: 18px;
+			height: 18px;
+			gap: 0;
+			font-size: 0;
+			&::before {
+				mask-size: 16px 16px;
+			}
 		}
 	}
 	&__choice {
@@ -111,10 +304,19 @@
 		opacity: 0;
 		pointer-events: none;
 		transition: transform .25s, opacity .25s;
+		z-index: 11;
 		&.active {
 			opacity: 1;
 			transform: translateY(0px);
 			pointer-events: all;
+		}
+		.menu-open & {
+			z-index: 9;
+		}
+		@media screen and (max-width: $md) {
+			width: 240px;
+			padding: 20px 10px;
+			gap: 10px;
 		}
 	}
 	&__header {
@@ -125,11 +327,19 @@
 		& span {
 			color: $text-contrast-primary;
 		}
+		@media screen and (max-width: $md) {
+			font-size: 16px;
+			line-height: 20px;
+			text-align: center;
+		}
 	}
 	&__buttons {
 		display: flex;
 		align-items: center;
 		gap: 10px;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+		}
 	}
 	&__button {
 		font-size: 16px;
@@ -138,11 +348,21 @@
 			padding: 11px 20px;
 			flex-grow: 1;
 		}
+		@media screen and (max-width: $md) {
+			width: 100%;
+		}
 	}
 }
 .menu {
+	& nav a {
+		@media screen and (max-width: $xxxl) {
+			&:hover {
+				color: $bg-contrast;
+			}
+		}
+	}
 	& li {
-		@media (any-hover: hover) {
+		@media screen and (min-width: $xxxl) {
 			&:hover {
 				color: $bg-contrast;
 			}
@@ -172,7 +392,7 @@
 				margin-top: 8px;
 			}
 		}
-		@media (any-hover: hover) {
+		@media screen and (min-width: $xxxl) {
 			&:hover {
 				color: $bg-contrast;
 				& > a::after {

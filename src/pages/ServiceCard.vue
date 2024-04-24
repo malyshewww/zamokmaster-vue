@@ -54,6 +54,8 @@ import Sidebar from '../components/Sidebar.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
+import wrapTable from '../utils/tableWrap.js'
+
 const { tablePrice } = obj
 
 export default {
@@ -68,23 +70,9 @@ export default {
       tablePrice
     }
   },
-  methods: {
-    wrapTable() {
-      if (window.innerWidth < 768) {
-        let contentTable = document.querySelectorAll('.content table')
-        if (contentTable.length) {
-          contentTable.forEach(function (item) {
-            let tableWrap = document.createElement('div')
-            tableWrap.setAttribute('class', 'table-wrap')
-            item.parentNode.insertBefore(tableWrap, item)
-            tableWrap.appendChild(item)
-          })
-        }
-      }
-    }
-  },
+  methods: {},
   mounted() {
-    this.wrapTable()
+    wrapTable()
   }
 }
 </script>

@@ -7,8 +7,14 @@
 	}
 	&__navigation {}
 	&__sections {
-		display: grid;
-		gap: 100px;
+		// display: grid;
+		// gap: 100px;
+		& .swiper-wrapper {
+			flex-direction: column;
+			& > * {
+				flex-shrink: 0;
+			}
+		}
 	}
 	&__data {
 		padding: 0 0 60px;

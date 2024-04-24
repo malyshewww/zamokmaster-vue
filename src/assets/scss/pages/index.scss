@@ -154,7 +154,7 @@
 			background-size: 30px 30px;
 		}
 	}
-	animation: animJump 0.5s linear both;
+	animation: animJump 0.5s ease-in both;
 }
 @for $i from 1 through 3 {
 	.main-screen__advantage--#{$i} {

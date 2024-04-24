@@ -26,6 +26,7 @@
 import ModalSearch from './ModalSearch.vue'
 export default {
   components: { ModalSearch },
+  props: ['isShowMenu'],
   data() {
     return {
       top: '',
