@@ -4,6 +4,15 @@
 		grid-template-columns: 210px 1fr;
 		align-items: flex-start;
 		gap: 0 120px;
+		@media screen and (max-width: $xxl) {
+			gap: 0 60px;
+		}
+		@media screen and (max-width: $lg) {
+			display: block;
+			& > *:not(:last-child) {
+				margin-bottom: 30px;
+			}
+		}
 	}
 	&__navigation {}
 	&__sections {
@@ -11,24 +20,89 @@
 		// gap: 100px;
 		& .swiper-wrapper {
 			flex-direction: column;
+			gap: 100px;
+			@media screen and (max-width: $xxl) {
+				gap: 70px;
+			}
+			@media screen and (max-width: $lg) {
+				flex-direction: row;
+				gap: 0;
+			}
 			& > * {
 				flex-shrink: 0;
+			}
+		}
+		& .swiper-scrollbar {
+			background-color: $stroke-light;
+			border-radius: 20px;
+			margin-top: 30px;
+			position: relative;
+			height: 4px;
+			display: none;
+			@media screen and (max-width: $lg) {
+				display: block;
+			}
+			& .swiper-scrollbar-drag {
+				border-radius: 21px;
+				height: 100%;
+				background: $bg-contrast;
+			}
+			@media screen and (max-width: $md) {
+				height: 2px;
 			}
 		}
 	}
 	&__data {
 		padding: 0 0 60px;
+		@media screen and (max-width: $md) {
+			padding: 0 0 30px;
+		}
 	}
 }
 .nav-about {
 	position: sticky;
 	top: 20px;
+	transition: top .5s ease 0s;
+	@media screen and (max-width: $lg) {
+		position: static;
+		top: unset;
+		width: 100%;
+	}
 	&__list {
 		@include reset-list;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 40px;
+		@media screen and (max-width: $lg) {
+			flex-direction: row;
+			align-items: center;
+			gap: 0;
+			height: 100%;
+			width: 100%;
+		}
+	}
+	&__list-item {
+		flex-shrink: 0;
+		@media screen and (max-width: $lg) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: fit-content;
+			&.swiper-slide-thumb-active {
+				& a {
+					transform: scale(1.2);
+					color: $bg-contrast;
+					&::before {
+						width: 100%;
+						opacity: 1;
+					}
+					// font-size: 30px;
+					// line-height: 33px;
+					// transform: scale(1.1);
+				}
+			}
+		}
 	}
 	&__link {
 		display: block;
@@ -36,16 +110,19 @@
 		font-size: 34px;
 		line-height: 124%;
 		color: $text-contrast-additional;
-		transition: font-size, .5s, line-height .5s, color .5s;
 		position: relative;
 		cursor: pointer;
 		padding: 0 12px;
-		@include transition(color, .25s);
+		@include transition(font-size, .5s, line-height .5s, color .5s, transform .25s);
 		@media (any-hover: hover) {
 			&:hover {
 				color: $bg-contrast;
 			}
-
+		}
+		@media screen and (max-width: $lg) {
+			font-size: 26px;
+			line-height: 29px;
+			padding: 0;
 		}
 		&::before {
 			content: "";
@@ -60,63 +137,106 @@
 			transform-origin: left bottom;
 			transition: width .5s, opcaity .5s;
 		}
-		&.active {
-			font-size: 80px;
-			line-height: 88px;
-			color: $bg-contrast;
-			&::before {
-				width: 100%;
-				opacity: 1;
+		@media screen and (min-width: $lg) {
+			&.active {
+				font-size: 80px;
+				line-height: 88px;
+				color: $bg-contrast;
+				&::before {
+					width: 100%;
+					opacity: 1;
+				}
+				@media screen and (max-width: $lg) {
+					font-size: 30px;
+					line-height: 33px;
+				}
 			}
 		}
 	}
 }
 .about-section {
+	opacity: 0.5;
+	transition: opacity .25s;
+	@media screen and (max-width: $lg) {
+		&.swiper-slide-active {
+			opacity: 1;
+		}
+	}
 	&--scaling {}
 	&__title {
 		font-weight: 600;
-		font-size: 40px;
-		line-height: 44px;
 		color: $text-headings;
 		margin-bottom: 20px;
+		@include adaptiv-value("font-size", 40, 22, 1);
+		@include adaptiv-value("line-height", 44, 24, 1);
 		& span {
 			color: $text-contrast-primary;
 		}
 		.about-section--expansion & {
 			max-width: 600px;
+			@media screen and (max-width: $lg) {
+				max-width: 100%;
+			}
 		}
 		.about-section--scaling &,
 		.about-section--progress &,
 		.about-section--expansion & {
 			margin-bottom: 24px;
+			@media screen and (max-width: $lg) {
+				margin-bottom: 20px;
+			}
+		}
+		.about-section--leaders & {
+			max-width: 700px;
+			@media screen and (max-width: $lg) {
+				max-width: 100%;
+			}
 		}
 	}
 	&__content {
 		margin-bottom: 40px;
+		@media screen and (max-width: $lg) {
+			margin-bottom: 20px;
+		}
 	}
 	&__images {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $lg) {
+			gap: 10px;
+		}
 		.about-section--scaling & {
 			grid-template-columns: 1fr;
 		}
 		.about-section--progress & {
 			grid-template-columns: 1fr 358px;
+			@media screen and (max-width: $md) {
+				grid-template-columns: 1fr;
+			}
 		}
 	}
 	&__image {
 		padding-bottom: math.div(301, 475) * 100%;
 		border-radius: 28px;
 		overflow: hidden;
+		min-height: 135px;
+		@media screen and (max-width: $md) {
+			border-radius: 16px;
+		}
 		.about-section--scaling & {
 			padding-bottom: math.div(400, 970) * 100%;
+			min-height: 160px;
+			@media screen and (max-width: $md) {
+				border-radius: 28px;
+			}
 		}
-		.about-section--progress &:nth-child(1) {
-			padding-bottom: math.div(348, 592) * 100%;
-		}
+		.about-section--progress &:nth-child(1),
 		.about-section--progress &:nth-child(2) {
-			padding-bottom: math.div(348, 358) * 100%;
+			padding-bottom: math.div(348, 592) * 100%;
+			@media screen and (max-width: $md) {
+				padding-bottom: math.div(150, 280) * 100%;
+			}
 		}
 		.about-section--expansion & {
 			padding-bottom: math.div(517, 970) * 100%;
@@ -131,6 +251,9 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 	&__logo {
 		border: 1px solid $stroke-light;
@@ -140,6 +263,9 @@
 		justify-content: center;
 		align-items: center;
 		padding: 20px;
+		@media screen and (max-width: $md) {
+			height: 66px;
+		}
 	}
 }
 .learning-box {
@@ -149,8 +275,13 @@
 	background-image: url('../images/about/progress/decor-right.svg');
 	background-position: 100% 100%;
 	background-repeat: no-repeat;
-	background-size: 109px 241px;
+	background-size: 109px 100%;
 	margin-bottom: 35px;
+	@media screen and (max-width: $md) {
+		padding: 20px;
+		background-image: none;
+		margin-bottom: 20px;
+	}
 	&__caption {
 		font-weight: 600;
 		font-size: 26px;
@@ -158,13 +289,22 @@
 		color: $bg-primary;
 		max-width: 445px;
 		margin-bottom: 24px;
+		@media screen and (max-width: $md) {
+			font-size: 16px;
+			line-height: 18px;
+			max-width: 100%;
+			margin-bottom: 16px;
+		}
 	}
 	&__items {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 20px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr;
+			gap: 12px;
+		}
 	}
-
 	&__item {
 		padding: 6px 0px 6px 0;
 		font-size: 15px;
@@ -173,7 +313,15 @@
 		&:not(:last-child) {
 			padding-right: 14px;
 			border-right: 1px solid $stroke-contrast;
+			@media screen and (max-width: $md) {
+				padding: 0 0 12px;
+				border-right: none;
+				border-bottom: 1px solid $stroke-contrast;
+			}
 		}
-
+		@media screen and (max-width: $md) {
+			font-size: 12px;
+			line-height: 15px;
+		}
 	}
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-	header.header 
+	header.header(ref="header")
 		.container
 			.header__body 
 				router-link(to="/").header__logo
@@ -11,20 +11,26 @@
 					.menu__body
 						Navbar
 				.header__actions
-					HeaderLocation(:isShowMenu="isShowMenu")
+					HeaderLocation(:isHidden="isHidden", :currentCity="currentCity")
 					button(type="button" @click="openMenu").header__burger
 						span
 	.overlay(@click="closeMenu")
+	.header-menu-mobile
 </template>
 
 <script>
 import Navbar from '../components/Navbar.vue'
 import HeaderLocation from '../components/HeaderLocation.vue'
 
+import DynamicAdapt from '../assets/scripts/modules/dynamic_adapt.js'
+
 export default {
-  components: { Navbar, HeaderLocation },
+  components: { Navbar, HeaderLocation, DynamicAdapt },
+  props: ['currentCity'],
   data() {
-    return {}
+    return {
+      isHidden: false
+    }
   },
   methods: {
     openMenu() {
@@ -34,7 +40,27 @@ export default {
     closeMenu() {
       document.body.classList.remove('menu-open')
       document.body.classList.remove('lock')
+    },
+    stickyHeader() {
+      let currScroll = window.scrollY
+      document.addEventListener('scroll', () => {
+        if (currScroll <= window.scrollY && window.scrollY > 0) {
+          if (!this.isHidden) {
+            this.$refs.header.classList.add('hide')
+            this.isHidden = true
+          }
+        } else {
+          if (this.isHidden) {
+            this.$refs.header.classList.remove('hide')
+            this.isHidden = false
+          }
+        }
+        currScroll = window.scrollY
+      })
     }
+  },
+  mounted() {
+    this.stickyHeader()
   }
 }
 </script>

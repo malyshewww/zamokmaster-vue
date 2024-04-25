@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
+    "lvovich": "^2.0.1",
     "scrollreveal": "^4.0.9",
     "swiper": "^11.1.1",
     "vue": "^3.4.21",

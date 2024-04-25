@@ -82,6 +82,7 @@
 			color: $text-headings;
 			@media screen and (max-width: $md) {
 				font-size: 14px;
+				line-height: 120%;
 				color: rgba(33, 34, 38, 0.8);
 			}
 		}
@@ -99,11 +100,19 @@
 		}
 	}
 	ol {
+
 		counter-reset: item;
 		li {
 			position: relative;
 			display: flex;
 			gap: 20px;
+			font-size: 18px;
+			line-height: 23px;
+			@media screen and (max-width: $md) {
+				font-size: 14px;
+				line-height: 120%;
+				color: rgba(33, 34, 38, 0.8);
+			}
 		}
 		li::before {
 			display: inline-block;

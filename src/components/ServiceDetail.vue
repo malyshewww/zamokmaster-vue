@@ -20,6 +20,8 @@
 <script>
 export default {
   props: ['titleGray', 'title', 'text1', 'text2', 'img'],
-  data() {}
+  data() {
+    return {}
+  }
 }
 </script>

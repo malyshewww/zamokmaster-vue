@@ -5,11 +5,21 @@
 	padding: 23px 0;
 	border-bottom: 1px solid $stroke-light;
 	position: relative;
+	transform: translateY(0%);
+	transition: transform 0.5s;
+	position: sticky;
+	top: 0;
+	background-color: $white;
+	z-index: 20;
+	&.hide {
+		transform: translateY(-120%);
+	}
 	@media screen and (max-width: $md) {
 		min-height: 50px;
 		padding: 12px 0;
 		border: none;
 	}
+
 	// &::before {
 	// 	content: "";
 	// 	height: 100%;
@@ -269,6 +279,7 @@
 		gap: 6px;
 		font-weight: 500;
 		z-index: 21;
+		color: $text-default-text;
 		&::before {
 			content: "";
 			display: block;

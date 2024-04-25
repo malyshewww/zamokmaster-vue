@@ -662,7 +662,9 @@
 		}
 	}
 	&__wrapper {
-		// justify-content: center;
+		.in-active & {
+			justify-content: center;
+		}
 	}
 	&__item {
 		border: 1px solid $stroke-light;
@@ -675,8 +677,8 @@
 		background-color: $white;
 		@media screen and (max-width: $md) {
 			border-radius: 6px;
-			width: 87px;
 			height: 50px;
+			width: 87px;
 		}
 	}
 	&__image {
@@ -700,6 +702,9 @@
 	gap: 40px;
 	margin-top: 30px;
 	@media screen and (max-width: $md) {
+		display: none;
+	}
+	.in-active & {
 		display: none;
 	}
 }

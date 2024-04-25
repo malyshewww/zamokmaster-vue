@@ -6,16 +6,21 @@
 				.top-main__content 
 					h1.top-main__title.page-title О компании
 		.page__body
-			.about__data
+			.about__data(ref="about_data")
 				.container 
 					.about__body 
-						nav.about__navigation.nav-about
-							ul.nav-about__list 
-								li(data-anchor-link="year-1994" @click="manualSmoothScroll($event)").nav-about__link.active 1994
-								li(data-anchor-link="year-2005" @click="manualSmoothScroll($event)").nav-about__link 2005
-								li(data-anchor-link="year-2013" @click="manualSmoothScroll($event)").nav-about__link 2013
-								li(data-anchor-link="year-2014" @click="manualSmoothScroll($event)").nav-about__link 2014
-								li(data-anchor-link="year-2024" @click="manualSmoothScroll($event)").nav-about__link 2024
+						nav.about__navigation.nav-about(ref="nav_about")
+							ul.nav-about__list
+								li.nav-about__list-item
+									a(href="javascript:void(0);" data-anchor-link="year-1994" @click="manualSmoothScroll($event)").nav-about__link.active 1994
+								li.nav-about__list-item
+									a(href="javascript:void(0);" data-anchor-link="year-2005" @click="manualSmoothScroll($event)").nav-about__link 2005
+								li.nav-about__list-item
+									a(href="javascript:void(0);" data-anchor-link="year-2013" @click="manualSmoothScroll($event)").nav-about__link 2013
+								li.nav-about__list-item
+									a(href="javascript:void(0);" data-anchor-link="year-2014" @click="manualSmoothScroll($event)").nav-about__link 2014
+								li.nav-about__list-item
+									a(href="javascript:void(0);" data-anchor-link="year-2024" @click="manualSmoothScroll($event)").nav-about__link 2024
 						.about__sections 
 							.swiper(ref="contentSlider")
 								.swiper-wrapper
@@ -44,7 +49,7 @@
 													source(srcset="../../images/about/scaling/1.jpg")
 													img(src="../../images/about/scaling/1.jpg", alt="фото")
 									section.about-section.about-section--progress(id="year-2013" data-anchor-section="year-2013")
-										h2.about-section__title Развитие направления #[span по продаже, обслуживанию и вскрытию сейфов]
+										h2.about-section__title #[span Развитие направления] по продаже, обслуживанию и вскрытию сейфов
 										.about-section__content.content 
 											p В 2012 открылось первое представительство в городе Уфе компании Промет (крупнейший производитель сейфов и сейфового оборудования в России). К тому моменту мы имели значительный опыт по обслуживанию/вскрытию сейфов и защитных механизмов, в том числе повышенного класса взломостойкости. За 19 лет мы заслужили надёжную репутацию партнёра.
 											p И в 2013 наша компания приняла предложение стать, одним из первых дилеров Промет. Мы вззяли на себя гарантийное обязательство по обслуживанию и вскрытию (в случае необходимости), производимого компанией сейфового оборудования.
@@ -64,7 +69,7 @@
 													source(srcset="../../images/about/progress/2.jpg")
 													img(src="../../images/about/progress/2.jpg", alt="фото")
 									section.about-section.about-section--leaders(id="year-2014" data-anchor-section="year-2014")
-										h2.about-section__title Лидеры по вскрытию замков #[span в&nbsp;нескольких&nbsp;регионах России]
+										h2.about-section__title Лидеры по вскрытию замков #[span в&nbsp;нескольких регионах России]
 										.about-section__content.content 
 											p С 2014 года мы уже обслуживаем на постоянной тендерной основе, такие организации как Сбербанк, ВТБ, Газпром, Сургутнефтегаз и др., в том числе бюджетные предприятия региона.
 										.about-section__logos
@@ -96,11 +101,13 @@
 											picture
 												source(srcset="../../images/about/expansion/map.svg")
 												img(src="../../images/about/expansion/map.svg", alt="карта")
+								.swiper-scrollbar
 			Questions
 </template>
 
 <script>
 import Swiper from 'swiper'
+import { Scrollbar, FreeMode, Thumbs } from 'swiper/modules'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 export default {
@@ -110,73 +117,96 @@ export default {
   },
   data() {
     return {
-      menuObserver: null
+      menuObserver: null,
+      contentSlider: null,
+      navSlider: null,
+      count: 0
     }
   },
   methods: {
     manualSmoothScroll(event) {
-      // находим хэш ссылу по которой мы кликнули
-      const id = event.target.closest('.nav-about li')?.getAttribute('data-anchor-link')
-      console.log(id)
-      console.log(this.menuObserver)
-      if (!id) return
-      //   this.menuObserver = null
-      // находим цель куда будем скроллить по хэшу
-      const target = document.querySelector(`[data-anchor-section="${id}"]`)
-      // если не нашли - ничего не делаем
-      if (!target) return
-      // отменяем стандартный переход
-      event.preventDefault()
-      // едем руками
-      target.scrollIntoView({ behavior: 'smooth' })
+      if (window.innerWidth > 991.98) {
+        const id = event.target.closest('.nav-about a')?.getAttribute('data-anchor-link')
+        if (!id) return
+        const target = document.querySelector(`[data-anchor-section="${id}"]`)
+        if (!target) return
+        event.preventDefault()
+        target.scrollIntoView({ behavior: 'smooth' })
+      }
     },
     observeNav() {
-      // Отслеживание пересечения секции и добавление класса для меню
-      const changeNav = (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
-            ;[...document.querySelectorAll('.nav-about li.active')].forEach((item) => {
-              item.classList.remove('active')
-            })
-            let id = entry.target.getAttribute('id')
-            document
-              .querySelector(`.nav-about li[data-anchor-link="${id}"]`)
-              ?.classList.add('active')
+      if (window.innerWidth > 991.98) {
+        let lastTimeout
+        // Отслеживание пересечения секции и добавление класса для меню
+        const changeNav = (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+              entry.target.style.opacity = 1
+              if (lastTimeout) clearTimeout(lastTimeout)
+              lastTimeout = setTimeout(function () {
+                this.count++
+                //   counter.innerText = `Intersections: ${count}`
+                //   entry.target.style.backgroundColor = 'lightblue'
+                ;[...document.querySelectorAll('.nav-about a.active')].forEach((item) => {
+                  item.classList.remove('active')
+                })
+                let id = entry.target.getAttribute('id')
+                document
+                  .querySelector(`.nav-about a[data-anchor-link="${id}"]`)
+                  ?.classList.add('active')
+              }, 350)
+            }
+          })
+        }
+        const menuOptions = {
+          threshold: [0.1]
+        }
+        this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
+        const sections = document.querySelectorAll('[data-anchor-section]')
+        sections.forEach((section) => {
+          this.menuObserver.observe(section)
+        })
+      }
+    },
+    initSlider() {
+      if (!this.navSlider && !this.contentSlider) {
+        this.navSlider = new Swiper(this.$refs.nav_about, {
+          slideClass: 'nav-about__list-item',
+          wrapperClass: 'nav-about__list',
+          speed: 800,
+          freeMode: true,
+          slidesPerView: 'auto',
+          spaceBetween: 20
+        })
+        this.contentSlider = new Swiper(this.$refs.contentSlider, {
+          modules: [FreeMode, Scrollbar, Thumbs],
+          //   direction: 'vertical',
+          slidesPerView: 1,
+          slideClass: 'about-section',
+          spaceBetween: 100,
+          speed: 800,
+          autoHeight: true,
+          watchActiveIndex: true,
+          spaceBetween: 20,
+          scrollbar: {
+            el: '.swiper-scrollbar',
+            dragSize: 74
+          },
+          thumbs: {
+            swiper: this.navSlider
+          },
+          on: {
+            slideChange: function (swiper) {
+              console.log('change')
+              // let actveIndex = swiper.activeIndex
+              // navSwiper.slideTo(actveIndex)
+              // updateNav()
+            }
           }
         })
       }
-      const menuOptions = {
-        threshold: [0.5]
-      }
-      this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
-      const sections = document.querySelectorAll('[data-anchor-section]')
-      sections.forEach((section) => {
-        this.menuObserver.observe(section)
-      })
-    },
-    initSlider() {
-      new Swiper(this.$refs.contentSlider, {
-        direction: 'vertical',
-        slidesPerView: 'auto',
-        slideClass: 'about-section',
-        spaceBetween: 100,
-        autoHeight: false,
-        freeMode: true,
-        watchActiveIndex: true,
-        mousewheel: true,
-        // scrollbar: {
-        //   el: '.swiper-scrollbar',
-        //   dragSize: 74
-        // },
-        on: {
-          slideChange: function (swiper) {
-            console.log('change')
-            // let actveIndex = swiper.activeIndex
-            // navSwiper.slideTo(actveIndex)
-            // updateNav()
-          }
-        }
-      })
+      // this.contentSlider.controller.control = this.navSlider
+      // this.navSlider.controller.control = this.contentSlider
       //   function clickNav(e) {
       //     // аргумент e либо событие клика либо индекс пункта навигации
       //     actveIndex = typeof e === 'object' ? e.currentTarget.index : e
@@ -190,11 +220,101 @@ export default {
       //   function updateNav() {
       //     navItems.removeClass(SELECTOR.ACTIVE).eq(actveIndex).addClass(SELECTOR.ACTIVE)
       //   }
+    },
+    destroySlider() {
+      if (this.navSlider) {
+        this.navSlider.destroy()
+        this.navSlider = null
+      }
+      if (this.contentSlider) {
+        this.contentSlider.destroy()
+        this.contentSlider = null
+      }
+    },
+    checkScreenWidth() {
+      if (window.matchMedia('(max-width: 991.98px)').matches) {
+        // Инициализация Swiper, если ширина экрана меньше или равна 991.98 пикселей
+        this.initSlider()
+      } else {
+        // Отмена инициализации Swiper, если ширина экрана больше 991.98 пикселей
+        this.destroySlider()
+      }
+    },
+    setPositionNavAbout() {
+      if (window.innerWidth > 991.98) {
+        window.addEventListener('scroll', () => {
+          const header = document.querySelector('.header')
+          if (header.classList.contains('hide')) {
+            this.$refs.nav_about.style.top = `0px`
+          } else {
+            this.$refs.nav_about.style.top = `${header.clientHeight + 20}px`
+          }
+        })
+      } else {
+        return false
+      }
     }
   },
   mounted() {
+    this.setPositionNavAbout()
     this.observeNav()
-    // this.initSlider()
+    this.checkScreenWidth()
+    window.addEventListener('resize', () => {
+      this.checkScreenWidth()
+      this.setPositionNavAbout()
+      this.observeNav()
+    })
+    // const list = document.querySelector('.nav-about__list')
+    // const sections = document.querySelectorAll('.about-section')
+    // const navLinks = document.querySelectorAll('.nav-about__link')
+    // list.addEventListener('click', addActiveClass)
+    // function addActiveClass(e) {
+    //   if (e.target.closest('li')) {
+    //     document.querySelector('.nav-about__list li.active').classList.remove('active')
+    //     e.target.classList.add('active')
+    //   }
+    // }
+    // navLinks.forEach((item, index) => {
+    //   item.addEventListener('click', () => {
+    //     sections[index].scrollIntoView()
+    //   })
+    // })
+    // let options = {
+    //   root: null, //viewport
+    //   rootMargin: '0px',
+    //   threshold: 0.2
+    // }
+    // //section one
+    // const sectionOneObserver = new IntersectionObserver((entries, sectionOneObserver) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
+    //       navLinks[0].classList.add('active')
+    //     }
+    //   })
+    // }, options)
+
+    // //section two
+    // const sectionTwoObserver = new IntersectionObserver((entries, sectionTwoObserver) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
+    //       navLinks[1].classList.add('active')
+    //     }
+    //   })
+    // }, options)
+
+    // const sectionThreeObserver = new IntersectionObserver((entries, sectionThreeObserver) => {
+    //   entries.forEach((entry) => {
+    //     if (entry.isIntersecting) {
+    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
+    //       navLinks[2].classList.add('active')
+    //     }
+    //   })
+    // }, options)
+    // sectionOneObserver.observe(sections[0])
+    // sectionTwoObserver.observe(sections[1])
+    // sectionThreeObserver.observe(sections[2])
   }
 }
 </script>

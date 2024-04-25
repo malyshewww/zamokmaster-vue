@@ -46,7 +46,7 @@ export default {
       }
     },
     closeMenu(e) {
-      if (e.target.closest('a')) {
+      if (e.target.closest('li:not(.menu__item--extended) a')) {
         document.body.classList.remove('menu-open')
         document.body.classList.remove('lock')
       }

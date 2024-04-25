@@ -42,6 +42,18 @@ const routes = [
     component: TextPage,
     meta: { title: 'Текстовая страница' },
     name: 'text-page'
+  },
+  {
+    path: '/legal',
+    component: Home,
+    meta: { title: 'Главная' },
+    name: 'legal'
+  },
+  {
+    path: '/individual',
+    component: Home,
+    meta: { title: 'Главная' },
+    name: 'individual'
   }
 ]
 const router = createRouter({

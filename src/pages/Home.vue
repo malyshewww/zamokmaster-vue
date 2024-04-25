@@ -2,7 +2,7 @@
 	.main-screen
 		.container 
 			.main-screen__heading
-				h1.main-screen__title Вскрытие замков #[span в&nbsp;Санкт-Петербурге]
+				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity() }}]
 				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
@@ -33,24 +33,13 @@
 									source(:srcset=`'../images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
 									source(:srcset=`'../images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
 									img(:src=`'../images/services/services-'+service.img+'.png'`, :alt="service.title")
-	section.request
-		.container 
-			.request__body
-				.request__inner
-					.request__content 
-						h2.request__title Оставьте заявку
-						p.request__sub-title Оставьте контакты и мы позвоним вам&nbsp;в&nbsp;течении #[span 30 секунд]
-					form.request__form.form
-						.form-item 
-							input(type="text" placeholder="Введите номер")
-						input(type="submit", value="Заказать звонок").btn
-						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
+	Request
 	section.services-detail.services-detail--first
 		.services-detail__wrapper 
 			.services-detail__box
 				.container
 					ServiceDetail(:titleGray="servicesDetail[0].titleGray" :title="servicesDetail[0].title" :text1="servicesDetail[0].text[0]" img="1")
-				ServiceSlider(:count="9" imagePath="lock")
+				ServiceSlider(:count="3" imagePath="lock")
 				.services-detail__bottom 
 					.container
 						router-link(to="/service-card").services-detail__button.btn Подробнее
@@ -98,6 +87,8 @@
 </template>
 
 <script>
+import { cityIn, cityFrom, cityTo } from 'lvovich'
+
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
 import ServiceSlider from '../components/ServiceSlider.vue'
@@ -105,19 +96,22 @@ import Questions from '../components/Questions.vue'
 import MainScreenInfo from '../components/MainScreenInfo.vue'
 import MainAbout from '../components/MainAbout.vue'
 import MainGeography from '../components/MainGeography.vue'
+import Request from '../components/Request.vue'
 
 import ScrollReveal from 'scrollreveal'
 
 const { services, servicesDetail, stats } = obj
 
 export default {
+  props: ['currentCity'],
   components: {
     ServiceDetail,
     ServiceSlider,
     Questions,
     MainScreenInfo,
     MainAbout,
-    MainGeography
+    MainGeography,
+    Request
   },
   data() {
     return {
@@ -138,10 +132,14 @@ export default {
       //     duration: 1000,
       //     origin: 'top'
       //   })
+    },
+    declensionCity() {
+      return cityIn(this.currentCity)
     }
   },
   computed: {},
   mounted() {
+    this.declensionCity()
     this.animation()
   }
 }

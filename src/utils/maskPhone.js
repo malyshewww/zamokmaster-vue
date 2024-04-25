@@ -33,4 +33,4 @@ function maskPhone(elem = document) {
   }
 }
 
-maskPhone()
+export default maskPhone

@@ -1,8 +1,8 @@
 <template lang="pug">
 	.wrapper
-		TheHeader
+		TheHeader(:currentCity="currentCity")
 		main.main
-			router-view
+			router-view(:currentCity="currentCity")
 		TheFooter
 		.widget-call
 		.services-mobile
@@ -32,24 +32,11 @@ export default {
     return {
       services,
       showServices: false,
-      showPhone: false
+      showPhone: false,
+      currentCity: 'Санкт Петербург'
     }
   },
-  methods: {
-    randomInteger(min, max) {
-      // случайное число от min до (max+1)
-      const randomNumbers = Math.floor(Math.random() * (max - min) + min)
-      //   this.freeMasterStart = min + Math.random() * (max + 1 - min)
-      //   Math.floor(Math.random() * (max - min + 1)) + min
-      return randomNumbers
-    },
-    getRoute() {
-      console.log(this.$route)
-    }
-  },
-  mounted() {
-    this.getRoute()
-  },
+  methods: {},
   watch: {
     '$route.name'() {
       if (this.$route.name == 'home') {
@@ -58,6 +45,7 @@ export default {
         document.body.classList.remove('home')
       }
     }
-  }
+  },
+  mounted() {}
 }
 </script>

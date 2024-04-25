@@ -1,7 +1,7 @@
 <template lang="pug">
 	.header__location.location-header
-		.location-header__current Санкт-Петербург
-		.location-header__choice(:class="[isShowLocation ? 'active': '']")
+		.location-header__current {{currentCity}}
+		.location-header__choice(:class="[isShowLocation && !isHidden ? 'active': '']")
 			.location-header__header Ваш город #[span Санкт-Петербург?]
 			.location-header__buttons 
 				button(type="button" @click="closeLocation()").location-header__button.btn Верно
@@ -26,7 +26,7 @@
 import ModalSearch from './ModalSearch.vue'
 export default {
   components: { ModalSearch },
-  props: ['isShowMenu'],
+  props: ['isHidden', 'currentCity'],
   data() {
     return {
       top: '',
@@ -83,7 +83,9 @@ export default {
     }
   },
   mounted() {
-    this.isShowLocation = true
+    window.addEventListener('load', () => {
+      this.isShowLocation = true
+    })
   }
 }
 </script>

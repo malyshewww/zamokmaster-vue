@@ -121,3 +121,5 @@ class DynamicAdapt {
     }
   }
 }
+
+export default DynamicAdapt
