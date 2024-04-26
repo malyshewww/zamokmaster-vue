@@ -1,36 +1,34 @@
 <template lang="pug">
 	.header__location.location-header
-		.location-header__current {{currentCity}}
+		.location-header__current {{getCityStorage()}}
 		.location-header__choice(:class="[isShowLocation && !isHidden ? 'active': '']")
-			.location-header__header Ваш город #[span Санкт-Петербург?]
+			.location-header__header Ваш город #[span {{getCityStorage()}}?]
 			.location-header__buttons 
-				button(type="button" @click="closeLocation()").location-header__button.btn Верно
-				button(type="button" @click="openModal").location-header__button.btn.btn-border Выбрать другой
-	.modal(class="modal-search" id="modal-search" :class="[showModal ? 'open-modal' : '']" @click="closeModal")
-		.modal__wrapper 
-			.modal__content(@click="noCloseModal") 
-				button(type="button" @click="closeModal").modal__close
-				.modal__header 
-						.modal__title Выберите город
-				form(action="#").modal__form.form
-					.form-item 
-						input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
-						button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
-						button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
-					.form-result
-						ul.form-result__list 
-							li(v-for="(city, index) in filteredCities" @click="selectCity") {{ city }}
+				button(type="button" @click="closeLocation").location-header__button.btn Верно
+				button(type="button" @click="toggleModal").location-header__button.btn.btn-border Выбрать другой
+	Modal(class="modal-search" :class="[isOpenModal ? 'open-modal' : '']" id="modal-call" @close="toggleModal")
+		.modal__header 
+				.modal__title Выберите город
+		form(action="#").modal__form.form
+			.form-item 
+				input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
+				button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
+				button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
+			.form-result
+				ul.form-result__list 
+					li(v-for="(city, index) in filteredCities" @click="selectCity") {{ city }}
 </template>
 
 <script>
-import ModalSearch from './ModalSearch.vue'
+import Modal from '../layouts/Modal.vue'
 export default {
-  components: { ModalSearch },
-  props: ['isHidden', 'currentCity'],
+  props: ['isHidden'],
+  components: {
+    Modal
+  },
   data() {
     return {
-      top: '',
-      left: '',
+      isOpenModal: false,
       isShowLocation: false,
       showModal: false,
       showBtnSearch: true,
@@ -41,27 +39,30 @@ export default {
         'Нижний Новгород',
         'Казань',
         'Екатеринбург',
-        'Москва',
-        'Санкт-Петербург',
-        'Нижний Новгород',
-        'Казань',
-        'Екатеринбург'
-      ]
+        'Владивосток',
+        'Мурманск',
+        'Воронеж',
+        'Владимир'
+      ],
+      defaultCity: 'Санкт-Петербург'
     }
   },
   methods: {
-    closeLocation() {
+    toggleModal() {
+      document.body.classList.toggle('lock')
+      this.isOpenModal = !this.isOpenModal
       this.isShowLocation = false
     },
-    openModal(e, modalId) {
-      console.log('openPopup')
-      this.showModal = true
+    setCityStorage() {
+      if (localStorage.getItem('city') == '') return
+      this.getCityStorage()
     },
-    closeModal(e) {
-      this.showModal = false
+    replaceCityStorage(city) {
+      this.defaultCity = city
+      localStorage.setItem('city', this.defaultCity)
     },
-    noCloseModal(e) {
-      e.stopPropagation()
+    closeLocation() {
+      this.isShowLocation = false
     },
     onSearchInput(e) {
       this.showBtnSearch = this.search == '' ? false : true
@@ -69,10 +70,14 @@ export default {
     selectCity(e) {
       this.search = e.target.innerText
       this.showBtnSearch = false
+      this.replaceCityStorage(this.search)
     },
     deleteSearch() {
       this.search = ''
       this.showBtnSearch = true
+    },
+    getCityStorage() {
+      return localStorage.getItem('city')
     }
   },
   computed: {
@@ -82,8 +87,10 @@ export default {
       )
     }
   },
+  watch() {},
   mounted() {
     window.addEventListener('load', () => {
+      this.setCityStorage()
       this.isShowLocation = true
     })
   }

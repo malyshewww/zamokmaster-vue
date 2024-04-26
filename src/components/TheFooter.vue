@@ -6,10 +6,10 @@
 					.menu-footer__actions 
 						.menu-footer__logo
 							picture 
-								source(srcset="../../images/icons/footer-logo.svg" media="(min-width: 767.98px)")
-								source(srcset="../../images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
-								img(src="../../images/icons/logo-pc.svg", alt="логотип")
-						FooterCall
+								source(srcset="../assets/images/icons/footer-logo.svg" media="(min-width: 767.98px)")
+								source(srcset="../assets/images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
+								img(src="../assets/images/icons/logo-pc.svg", alt="логотип")
+						button(type="button" @click="toggleModal").btn #[span Заказать звонок]
 					.main-footer__menu.menu-footer(data-spollers)
 						.menu-footer__column(v-for="item in menuFooter")
 							.menu-footer__caption(data-spoller) {{ item.caption }}
@@ -34,28 +34,33 @@
 						.footer__company-caption Разработка сайта
 						a(href="https://webshop.ru/" target="_blank").footer__company-logo 
 							picture 
-								source(srcset="../../images/icons/company-logo.svg")
-								img(src="../../images/icons/company-logo.svg", alt="логотип компании")
+								source(srcset="../assets/images/icons/company-logo.svg")
+								img(src="../assets/images/icons/company-logo.svg", alt="логотип компании")
+	ModalCall(:isOpenModal="isOpenModal" @close="toggleModal")
 </template>
 
 <script>
 import obj from '../data.js'
-import FooterCall from './FooterCall.vue'
-
+import ModalCall from '../components/Modals/ModalCall.vue'
 import spollers from '../assets/scripts/modules/spollers.js'
 
 const { menuFooter } = obj
 
 export default {
   components: {
-    FooterCall
+    ModalCall
   },
   data() {
     return {
-      menuFooter
+      menuFooter,
+      isOpenModal: false
     }
   },
   methods: {
+    toggleModal() {
+      this.isOpenModal = !this.isOpenModal
+      document.body.classList.toggle('lock')
+    },
     initSpollers() {
       if (window.matchMedia('(max-width: 767.98px)').matches) {
         spollers()
@@ -65,11 +70,7 @@ export default {
     },
     resizeSpollers() {
       window.addEventListener('resize', () => {
-        if (window.innerWidth < 767.98) {
-          this.initSpollers()
-        } else {
-          return false
-        }
+        this.initSpollers()
       })
     }
   },

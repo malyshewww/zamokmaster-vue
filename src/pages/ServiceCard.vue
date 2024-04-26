@@ -6,10 +6,10 @@
 				.top-main__card 
 					.top-main__card-image
 						picture 
-							source(srcset="../../images/card/image.jpg")
-							img(src="../../images/card/image.jpg")
+							source(srcset="../assets/images/card/image.jpg")
+							img(src="../assets/images/card/image.jpg")
 					.top-main__body
-						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;Санкт-Петербурге]
+						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity()}}]
 						a(href="tel:+79958881086").btn-phone.btn
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { cityIn, cityFrom, cityTo } from 'lvovich'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
@@ -67,12 +68,24 @@ export default {
   },
   data() {
     return {
-      tablePrice
+      tablePrice,
+      defaultCity: 'Санкт-Петербург'
     }
   },
-  methods: {},
+  methods: {
+    getCityStorage() {
+      if (localStorage.getItem('city') == '') {
+        return this.defaultCity
+      } else {
+        return localStorage.getItem('city')
+      }
+    },
+    declensionCity() {
+      return cityIn(this.getCityStorage())
+    }
+  },
   mounted() {
-    wrapTable()
+    wrapTable(), this.declensionCity()
   }
 }
 </script>

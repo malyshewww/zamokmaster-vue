@@ -4,29 +4,25 @@
 			.header__body 
 				router-link(to="/").header__logo
 					picture 
-						source(srcset="../../images/icons/logo-pc.svg" media="(min-width: 767.98px)")
-						source(srcset="../../images/icons/logo-mobile.svg" media="(min-width: 300px)")
-						img(src="../../images/icons/logo-pc.svg", alt="логотип")
+						source(srcset="../assets/images/icons/logo-pc.svg" media="(min-width: 767.98px)")
+						source(srcset="../assets/images/icons/logo-mobile.svg" media="(min-width: 300px)")
+						img(src="../assets/images/icons/logo-pc.svg", alt="логотип")
 				.header__menu.menu
 					.menu__body
 						Navbar
 				.header__actions
-					HeaderLocation(:isHidden="isHidden", :currentCity="currentCity")
+					HeaderLocation(:isHidden="isHidden")
 					button(type="button" @click="openMenu").header__burger
 						span
 	.overlay(@click="closeMenu")
-	.header-menu-mobile
 </template>
 
 <script>
 import Navbar from '../components/Navbar.vue'
 import HeaderLocation from '../components/HeaderLocation.vue'
 
-import DynamicAdapt from '../assets/scripts/modules/dynamic_adapt.js'
-
 export default {
-  components: { Navbar, HeaderLocation, DynamicAdapt },
-  props: ['currentCity'],
+  components: { Navbar, HeaderLocation },
   data() {
     return {
       isHidden: false

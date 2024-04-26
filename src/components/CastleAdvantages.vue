@@ -12,6 +12,8 @@
 
 <script>
 import obj from '../data.js'
+import ScrollReveal from 'scrollreveal'
+
 const { castleAdvantages } = obj
 
 export default {
@@ -20,6 +22,19 @@ export default {
     return {
       castleAdvantages
     }
+  },
+  methods: {
+    animation() {
+      ScrollReveal({
+        reset: false,
+        duration: 1500,
+        distance: '15px'
+      })
+      ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
+    }
+  },
+  mounted() {
+    this.animation()
   }
 }
 </script>

@@ -16,23 +16,10 @@
 			.main-screen__image-wrap
 				.main-screen__image.ibg
 					picture
-						source(srcset="../../images/main-screen/banner.png")
-						img(src='../../images/main-screen/banner.png' alt="Баннер")
+						source(srcset="../assets/images/main-screen/banner.png")
+						img(src="../assets/images/main-screen/banner.png" alt="Баннер")
 				MainScreenInfo
-	section.services 
-		.container
-			.heading 
-				h2.heading__title Услуги
-			.services__body 
-				.services__item.item-services(v-for="(service, index) in services")
-					.item-services__content
-						.item-services__title= service.title
-						.item-services__bottom
-							span.item-services__icon 
-								picture
-									source(:srcset=`'../images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
-									source(:srcset=`'../images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
-									img(:src=`'../images/services/services-'+service.img+'.png'`, :alt="service.title")
+	MainServices
 	Request
 	section.services-detail.services-detail--first
 		.services-detail__wrapper 
@@ -88,6 +75,7 @@
 
 <script>
 import { cityIn, cityFrom, cityTo } from 'lvovich'
+import ScrollReveal from 'scrollreveal'
 
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
@@ -97,13 +85,11 @@ import MainScreenInfo from '../components/MainScreenInfo.vue'
 import MainAbout from '../components/MainAbout.vue'
 import MainGeography from '../components/MainGeography.vue'
 import Request from '../components/Request.vue'
+import MainServices from '../components/MainServices.vue'
 
-import ScrollReveal from 'scrollreveal'
-
-const { services, servicesDetail, stats } = obj
+const { servicesDetail, stats } = obj
 
 export default {
-  props: ['currentCity'],
   components: {
     ServiceDetail,
     ServiceSlider,
@@ -111,32 +97,37 @@ export default {
     MainScreenInfo,
     MainAbout,
     MainGeography,
-    Request
+    Request,
+    MainServices
   },
   data() {
     return {
-      services,
       servicesDetail,
-      stats
+      stats,
+      defaultCity: 'Санкт-Петербург'
     }
   },
   methods: {
-    animation() {
-      //   ScrollReveal({
-      //     reset: true,
-      //     duration: 2500
-      //   })
-      //   ScrollReveal().reveal('.main-screen__heading', { origin: 'bottom' })
-      //   ScrollReveal().reveal('.main-screen__advantage--1', {
-      //     opacity: 1,
-      //     duration: 1000,
-      //     origin: 'top'
-      //   })
+    getCityStorage() {
+      if (localStorage.getItem('city') == '') {
+        return this.defaultCity
+      } else {
+        return localStorage.getItem('city')
+      }
     },
     declensionCity() {
-      return cityIn(this.currentCity)
+      return cityIn(this.getCityStorage())
+    },
+    animation() {
+      ScrollReveal({
+        reset: false,
+        duration: 1500,
+        distance: '15px'
+      })
+      ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
     }
   },
+  watch() {},
   computed: {},
   mounted() {
     this.declensionCity()

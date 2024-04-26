@@ -1,13 +1,13 @@
 <template lang="pug">
 	.wrapper
-		TheHeader(:currentCity="currentCity")
+		TheHeader
 		main.main
-			router-view(:currentCity="currentCity")
+			router-view
 		TheFooter
-		.widget-call
+		Widget
 		.services-mobile
 			.services-mobile__body 
-				.services-mobile__item(v-for="service in services")
+				router-link(to="/service-card" v-for="service in services").services-mobile__item
 					.services-mobile__image 
 						picture
 							img(:src=`"../../images/services/mobile/service-mob-"+(service.img)+".png"`, :alt="service.title")
@@ -23,17 +23,17 @@ import obj from '../data.js'
 import TheHeader from '../components/TheHeader.vue'
 import TheFooter from '../components/TheFooter.vue'
 import FreeMasters from '../components/FreeMasters.vue'
+import Widget from '../components/Widget.vue'
 
 const { services } = obj
 
 export default {
-  components: { TheHeader, TheFooter, FreeMasters },
+  components: { TheHeader, TheFooter, FreeMasters, Widget },
   data() {
     return {
       services,
       showServices: false,
-      showPhone: false,
-      currentCity: 'Санкт Петербург'
+      showPhone: false
     }
   },
   methods: {},
