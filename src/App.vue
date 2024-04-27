@@ -10,9 +10,7 @@ export default {
     Layout
   },
   data() {
-    return {
-      test: 'test'
-    }
+    return {}
   },
   methods: {},
   watch() {

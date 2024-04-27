@@ -63,16 +63,18 @@ export default {
         } else {
           betweenSlider = 10
         }
-        const sliderWrapperWidth = this.$refs.mySwiperWrapper.scrollWidth
-        const widthSlides =
-          (slides[0].getBoundingClientRect().width + betweenSlider) * slides.length
-        if (widthSlides < sliderWrapperWidth) {
-          this.$refs.mySwiper.classList.add('in-active')
-          nav.nextEl.remove()
-          nav.prevEl.remove()
-          this.$refs.slider_controls.remove()
-        } else {
-          this.$refs.mySwiper.classList.remove('in-active')
+        if (this.$refs.mySwiperWrapper != null) {
+          const sliderWrapperWidth = this.$refs.mySwiperWrapper.scrollWidth
+          const widthSlides =
+            (slides[0].getBoundingClientRect().width + betweenSlider) * slides.length
+          if (widthSlides < sliderWrapperWidth) {
+            this.$refs.mySwiper.classList.add('in-active')
+            nav.nextEl.remove()
+            nav.prevEl.remove()
+            this.$refs.slider_controls.remove()
+          } else {
+            this.$refs.mySwiper.classList.remove('in-active')
+          }
         }
       }
     }

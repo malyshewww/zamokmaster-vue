@@ -1,8 +1,8 @@
 <template lang="pug">
 	.wrapper
-		TheHeader
+		TheHeader(:defaultCity="defaultCity" @onChangeCity="getNewCity($event)")
 		main.main
-			router-view
+			router-view(:defaultCity="defaultCity" @onChangeCity="getNewCity")
 		TheFooter
 		Widget
 		.services-mobile
@@ -33,10 +33,15 @@ export default {
     return {
       services,
       showServices: false,
-      showPhone: false
+      showPhone: false,
+      defaultCity: 'Санкт-Петербург'
     }
   },
-  methods: {},
+  methods: {
+    getNewCity(city) {
+      this.defaultCity = city
+    }
+  },
   watch: {
     '$route.name'() {
       if (this.$route.name == 'home') {
@@ -46,6 +51,7 @@ export default {
       }
     }
   },
+  updated() {},
   mounted() {}
 }
 </script>

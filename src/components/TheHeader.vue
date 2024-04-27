@@ -1,5 +1,5 @@
 <template lang="pug">
-	header.header(ref="header")
+	header.header(ref="header" @click="onChangeCity")
 		.container
 			.header__body 
 				router-link(to="/").header__logo
@@ -11,7 +11,7 @@
 					.menu__body
 						Navbar
 				.header__actions
-					HeaderLocation(:isHidden="isHidden")
+					HeaderLocation(:isHidden="isHidden" @selectCity="onChangeCity" :defaultCity="defaultCity")
 					button(type="button" @click="openMenu").header__burger
 						span
 	.overlay(@click="closeMenu")
@@ -23,9 +23,12 @@ import HeaderLocation from '../components/HeaderLocation.vue'
 
 export default {
   components: { Navbar, HeaderLocation },
+  emits: ['onChangeCity'],
+  props: ['defaultCity'],
   data() {
     return {
       isHidden: false
+      // localCity: this.defaultCity
     }
   },
   methods: {
@@ -55,6 +58,7 @@ export default {
       })
     }
   },
+  computed: {},
   mounted() {
     this.stickyHeader()
   }

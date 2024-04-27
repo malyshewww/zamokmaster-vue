@@ -2,7 +2,7 @@
 	.main-screen
 		.container 
 			.main-screen__heading
-				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity() }}]
+				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ localCity }}]
 				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
@@ -90,6 +90,8 @@ import MainServices from '../components/MainServices.vue'
 const { servicesDetail, stats } = obj
 
 export default {
+  props: ['defaultCity'],
+  emits: ['onChangeCity'],
   components: {
     ServiceDetail,
     ServiceSlider,
@@ -104,19 +106,20 @@ export default {
     return {
       servicesDetail,
       stats,
-      defaultCity: 'Санкт-Петербург'
+      localCity: this.defaultCity
     }
   },
   methods: {
     getCityStorage() {
       if (localStorage.getItem('city') == '') {
-        return this.defaultCity
+        return false
       } else {
         return localStorage.getItem('city')
       }
     },
     declensionCity() {
-      return cityIn(this.getCityStorage())
+      this.localCity = cityIn(this.getCityStorage())
+      return this.localCity
     },
     animation() {
       ScrollReveal({
@@ -125,10 +128,22 @@ export default {
         distance: '15px'
       })
       ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
+    },
+    onChangeCity() {
+      this.$emit('onChangeCity', this.declensionCity())
     }
   },
   watch() {},
-  computed: {},
+  computed: {
+    // localCity: {
+    //   get() {
+    //     return this.defaultCity
+    //   },
+    //   set(localCity) {
+    //     this.$emit('update:onChangeCity', localCity)
+    //   }
+    // }
+  },
   mounted() {
     this.declensionCity()
     this.animation()

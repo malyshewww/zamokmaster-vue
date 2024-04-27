@@ -245,15 +245,16 @@ export default {
         window.addEventListener('scroll', () => {
           const header = document.querySelector('.header')
           if (header.classList.contains('hide')) {
-            this.$refs.nav_about.style.top = `0px`
+            this.$el.querySelector('.nav-about').style.top = `0px`
           } else {
-            this.$refs.nav_about.style.top = `${header.clientHeight + 20}px`
+            this.$el.querySelector('.nav-about').style.top = `${header.clientHeight + 20}px`
           }
         })
       } else {
         return false
       }
-    }
+    },
+    watch() {}
   },
   mounted() {
     this.setPositionNavAbout()
@@ -264,57 +265,6 @@ export default {
       this.setPositionNavAbout()
       this.observeNav()
     })
-    // const list = document.querySelector('.nav-about__list')
-    // const sections = document.querySelectorAll('.about-section')
-    // const navLinks = document.querySelectorAll('.nav-about__link')
-    // list.addEventListener('click', addActiveClass)
-    // function addActiveClass(e) {
-    //   if (e.target.closest('li')) {
-    //     document.querySelector('.nav-about__list li.active').classList.remove('active')
-    //     e.target.classList.add('active')
-    //   }
-    // }
-    // navLinks.forEach((item, index) => {
-    //   item.addEventListener('click', () => {
-    //     sections[index].scrollIntoView()
-    //   })
-    // })
-    // let options = {
-    //   root: null, //viewport
-    //   rootMargin: '0px',
-    //   threshold: 0.2
-    // }
-    // //section one
-    // const sectionOneObserver = new IntersectionObserver((entries, sectionOneObserver) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.isIntersecting) {
-    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
-    //       navLinks[0].classList.add('active')
-    //     }
-    //   })
-    // }, options)
-
-    // //section two
-    // const sectionTwoObserver = new IntersectionObserver((entries, sectionTwoObserver) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.isIntersecting) {
-    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
-    //       navLinks[1].classList.add('active')
-    //     }
-    //   })
-    // }, options)
-
-    // const sectionThreeObserver = new IntersectionObserver((entries, sectionThreeObserver) => {
-    //   entries.forEach((entry) => {
-    //     if (entry.isIntersecting) {
-    //       document.querySelector('.nav-about__list li.active').classList.remove('active')
-    //       navLinks[2].classList.add('active')
-    //     }
-    //   })
-    // }, options)
-    // sectionOneObserver.observe(sections[0])
-    // sectionTwoObserver.observe(sections[1])
-    // sectionThreeObserver.observe(sections[2])
   }
 }
 </script>

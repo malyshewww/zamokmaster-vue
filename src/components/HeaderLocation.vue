@@ -1,6 +1,6 @@
 <template lang="pug">
 	.header__location.location-header
-		.location-header__current {{getCityStorage()}}
+		.location-header__current {{ getCityStorage() }}
 		.location-header__choice(:class="[isShowLocation && !isHidden ? 'active': '']")
 			.location-header__header Ваш город #[span {{getCityStorage()}}?]
 			.location-header__buttons 
@@ -22,12 +22,14 @@
 <script>
 import Modal from '../layouts/Modal.vue'
 export default {
-  props: ['isHidden'],
+  props: ['isHidden', 'defaultCity'],
+  emits: ['onChangeCity'],
   components: {
     Modal
   },
   data() {
     return {
+      localCity: this.defaultCity,
       isOpenModal: false,
       isShowLocation: false,
       showModal: false,
@@ -43,8 +45,7 @@ export default {
         'Мурманск',
         'Воронеж',
         'Владимир'
-      ],
-      defaultCity: 'Санкт-Петербург'
+      ]
     }
   },
   methods: {
@@ -52,14 +53,6 @@ export default {
       document.body.classList.toggle('lock')
       this.isOpenModal = !this.isOpenModal
       this.isShowLocation = false
-    },
-    setCityStorage() {
-      if (localStorage.getItem('city') == '') return
-      this.getCityStorage()
-    },
-    replaceCityStorage(city) {
-      this.defaultCity = city
-      localStorage.setItem('city', this.defaultCity)
     },
     closeLocation() {
       this.isShowLocation = false
@@ -76,6 +69,15 @@ export default {
       this.search = ''
       this.showBtnSearch = true
     },
+    setCityStorage() {
+      if (localStorage.getItem('city') == '') return
+      this.getCityStorage()
+    },
+    replaceCityStorage(city) {
+      this.localCity = city
+      localStorage.setItem('city', this.localCity)
+      this.$emit('onChangeCity', this.localCity)
+    },
     getCityStorage() {
       return localStorage.getItem('city')
     }
@@ -86,6 +88,14 @@ export default {
         (item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
       )
     }
+    // localCity: {
+    //   get() {
+    //     return this.defaultCity
+    //   },
+    //   set(localCity) {
+    //     this.$emit('update:defaultCity', localCity)
+    //   }
+    // }
   },
   watch() {},
   mounted() {
