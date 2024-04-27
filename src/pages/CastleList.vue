@@ -5,7 +5,7 @@
 				Breadcrumbs(pageTitle="Список замков")
 				.top-main__content 
 					.top-main__body 
-						h1.top-main__title.page-title Вскрытие всех видов замков #[span в Санкт-Петербурге]
+						h1.top-main__title.page-title Вскрытие всех видов замков #[span {{ declensionCity() }}]
 						p.top-main__sub-title Профессиональное вскрытие замков. Официально, предоставляем все документы
 					a(href="tel:+79958881086").btn-phone.btn
 						.btn-phone__text +7 (995) 888-10-86
@@ -34,20 +34,41 @@
 </template>
 
 <script>
+import { cityIn, cityFrom, cityTo } from 'lvovich'
+
 import obj from '../data.js'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { castleList } = obj
 export default {
+  props: ['defaultCity'],
   components: {
     Sidebar,
     Breadcrumbs
   },
   data() {
     return {
-      castleList
+      castleList,
+      localCity: this.defaultCity
     }
+  },
+  methods: {
+    getCityStorage() {
+      if (localStorage.getItem('city')) {
+        return localStorage.getItem('city')
+      } else {
+        return this.localCity
+      }
+    },
+    declensionCity() {
+      return cityIn(this.getCityStorage())
+    }
+  },
+  mounted() {
+    window.addEventListener('load', () => {
+      this.declensionCity()
+    })
   }
 }
 </script>

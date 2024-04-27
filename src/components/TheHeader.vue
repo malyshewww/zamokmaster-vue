@@ -11,7 +11,7 @@
 					.menu__body
 						Navbar
 				.header__actions
-					HeaderLocation(:isHidden="isHidden" @selectCity="onChangeCity" :defaultCity="defaultCity")
+					HeaderLocation(:isHidden="isHidden" @onChangeCity="newCity($event)" :defaultCity.sync="defaultCity")
 					button(type="button" @click="openMenu").header__burger
 						span
 	.overlay(@click="closeMenu")
@@ -28,7 +28,6 @@ export default {
   data() {
     return {
       isHidden: false
-      // localCity: this.defaultCity
     }
   },
   methods: {
@@ -56,9 +55,21 @@ export default {
         }
         currScroll = window.scrollY
       })
+    },
+    newCity(city) {
+      this.$emit('onChangeCity', city)
     }
   },
-  computed: {},
+  computed: {
+    // localCity: {
+    //   get() {
+    //     return this.defaultCity
+    //   },
+    //   set(localCity) {
+    //     this.$emit('update:onChangeCity', localCity)
+    //   }
+    // }
+  },
   mounted() {
     this.stickyHeader()
   }

@@ -1,8 +1,8 @@
 <template lang="pug">
 	.wrapper
-		TheHeader(:defaultCity="defaultCity" @onChangeCity="getNewCity($event)")
+		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(:defaultCity="defaultCity" @onChangeCity="getNewCity")
+			router-view(:defaultCity="defaultCity")
 		TheFooter
 		Widget
 		.services-mobile

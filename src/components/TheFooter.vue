@@ -36,7 +36,7 @@
 							picture 
 								source(srcset="../assets/images/icons/company-logo.svg")
 								img(src="../assets/images/icons/company-logo.svg", alt="логотип компании")
-	ModalCall(:isOpenModal="isOpenModal" @close="toggleModal")
+	ModalCall(@close="toggleModal" :isOpenModal="isOpenModal")
 </template>
 
 <script>

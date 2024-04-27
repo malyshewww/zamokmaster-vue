@@ -1,8 +1,8 @@
 <template lang="pug">
 	.header__location.location-header
-		.location-header__current {{ getCityStorage() }}
+		.location-header__current {{ setCityStorage() }} 
 		.location-header__choice(:class="[isShowLocation && !isHidden ? 'active': '']")
-			.location-header__header Ваш город #[span {{getCityStorage()}}?]
+			.location-header__header Ваш город #[span {{ setCityStorage() }}?]
 			.location-header__buttons 
 				button(type="button" @click="closeLocation").location-header__button.btn Верно
 				button(type="button" @click="toggleModal").location-header__button.btn.btn-border Выбрать другой
@@ -70,16 +70,26 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
-      if (localStorage.getItem('city') == '') return
-      this.getCityStorage()
+      if (localStorage.getItem('city')) {
+        return this.getCityStorage()
+      } else {
+        return this.localCity
+      }
     },
     replaceCityStorage(city) {
       this.localCity = city
       localStorage.setItem('city', this.localCity)
-      this.$emit('onChangeCity', this.localCity)
+      this.onChangeCity(this.localCity)
     },
     getCityStorage() {
+      // if (localStorage.getItem('city') == null) this.defaultCity
+      // if (localStorage.getItem('city') == '') {
+      //   return this.localCity
+      // }
       return localStorage.getItem('city')
+    },
+    onChangeCity(city) {
+      this.$emit('onChangeCity', city)
     }
   },
   computed: {
@@ -93,7 +103,7 @@ export default {
     //     return this.defaultCity
     //   },
     //   set(localCity) {
-    //     this.$emit('update:defaultCity', localCity)
+    //     this.$emit('update:onChangeCity', localCity)
     //   }
     // }
   },

@@ -9,7 +9,7 @@
 							source(srcset="../assets/images/card/logo.png")
 							img(src="../assets/images/card/logo.png")
 					.top-main__body
-						.top-main__title.page-title Вскрытие замка MSM #[span в&nbsp;{{declensionCity()}}]
+						.top-main__title.page-title Вскрытие замка MSM #[span в&nbsp;{{ declensionCity() }}]
 						a(href="tel:+79958881086").btn-phone.btn
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon
@@ -37,6 +37,7 @@ import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
 export default {
+  props: ['defaultCity'],
   components: {
     Sidebar,
     Breadcrumbs,
@@ -45,15 +46,15 @@ export default {
   },
   data() {
     return {
-      defaultCity: 'Санкт-Петербург'
+      localCity: this.defaultCity
     }
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') == '') {
-        return this.defaultCity
-      } else {
+      if (localStorage.getItem('city')) {
         return localStorage.getItem('city')
+      } else {
+        return this.localCity
       }
     },
     declensionCity() {
@@ -61,7 +62,9 @@ export default {
     }
   },
   mounted() {
-    this.declensionCity()
+    window.addEventListener('load', () => {
+      this.declensionCity()
+    })
   }
 }
 </script>

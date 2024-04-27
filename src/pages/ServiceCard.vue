@@ -60,6 +60,7 @@ import wrapTable from '../utils/tableWrap.js'
 const { tablePrice } = obj
 
 export default {
+  props: ['defaultCity'],
   components: {
     Sidebar,
     Breadcrumbs,
@@ -69,15 +70,15 @@ export default {
   data() {
     return {
       tablePrice,
-      defaultCity: 'Санкт-Петербург'
+      localCity: this.defaultCity
     }
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') == '') {
-        return this.defaultCity
-      } else {
+      if (localStorage.getItem('city')) {
         return localStorage.getItem('city')
+      } else {
+        return this.localCity
       }
     },
     declensionCity() {
@@ -85,7 +86,10 @@ export default {
     }
   },
   mounted() {
-    wrapTable(), this.declensionCity()
+    window.addEventListener('load', () => {
+      this.declensionCity()
+      wrapTable()
+    })
   }
 }
 </script>

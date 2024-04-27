@@ -13,11 +13,7 @@ export default {
     return {}
   },
   methods: {},
-  watch() {
-    window.addEventListener('storage', function (e) {
-      alert('session storage variable value changed')
-    })
-  },
+  watch() {},
   mounted() {}
 }
 </script>

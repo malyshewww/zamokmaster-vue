@@ -18,16 +18,19 @@
 import Modal from '../../layouts/Modal.vue'
 import maskPhone from '../../utils/maskPhone'
 export default {
+  props: ['isOpenModal'],
   components: {
     Modal
   },
-  props: ['isOpenModal'],
   data() {
     return {}
   },
   methods: {
     closeModal() {
       this.$emit('close')
+    },
+    openModal() {
+      this.$emit('open')
     }
   },
   computed() {

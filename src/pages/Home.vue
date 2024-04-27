@@ -2,7 +2,7 @@
 	.main-screen
 		.container 
 			.main-screen__heading
-				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ localCity }}]
+				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity() }}]
 				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
@@ -91,7 +91,6 @@ const { servicesDetail, stats } = obj
 
 export default {
   props: ['defaultCity'],
-  emits: ['onChangeCity'],
   components: {
     ServiceDetail,
     ServiceSlider,
@@ -111,15 +110,14 @@ export default {
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') == '') {
-        return false
-      } else {
+      if (localStorage.getItem('city')) {
         return localStorage.getItem('city')
+      } else {
+        return this.localCity
       }
     },
     declensionCity() {
-      this.localCity = cityIn(this.getCityStorage())
-      return this.localCity
+      return cityIn(this.getCityStorage())
     },
     animation() {
       ScrollReveal({
@@ -128,25 +126,15 @@ export default {
         distance: '15px'
       })
       ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
-    },
-    onChangeCity() {
-      this.$emit('onChangeCity', this.declensionCity())
     }
   },
   watch() {},
-  computed: {
-    // localCity: {
-    //   get() {
-    //     return this.defaultCity
-    //   },
-    //   set(localCity) {
-    //     this.$emit('update:onChangeCity', localCity)
-    //   }
-    // }
-  },
+  computed: {},
   mounted() {
-    this.declensionCity()
-    this.animation()
+    window.addEventListener('load', () => {
+      this.declensionCity()
+      this.animation()
+    })
   }
 }
 </script>
