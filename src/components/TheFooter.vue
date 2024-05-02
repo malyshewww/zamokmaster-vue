@@ -35,7 +35,7 @@
 						a(href="https://webshop.ru/" target="_blank").footer__company-logo 
 							picture 
 								source(:srcset="`./images/icons/company-logo.svg`")
-								img(:src="`./images/icons/company-logo.svg`", alt="логотип компании")
+								img(:src="`./images/icons/company-logo.svg`", alt="логотип компании" loading="lazy")
 	ModalCall(@closeModal="toggleModal" :isOpenModal="isOpenModal")
 </template>
 

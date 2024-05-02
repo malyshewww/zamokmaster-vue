@@ -34,12 +34,12 @@
 											.about-section__image.ibg
 												picture 
 													source(:srcset="`./images/about/beginning/1.jpg`")
-													img(:src="`./images/about/beginning/1.jpg`", alt="фото")
+													img(:src="`./images/about/beginning/1.jpg`", alt="фото" loading="lazy")
 											.about-section__image.ibg
 												picture 
 													source(:srcset="`./images/about/beginning/2.jpg`")
 													img(:src="`./images/about/beginning/2.jpg`", alt="фото")
-									section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005")
+									section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005" loading="lazy")
 										h2.about-section__title Масштабирование компании #[span по&nbsp;вскрытию&nbsp;замков]
 										.about-section__content.content 
 											p Наши услуги по вскрытию замков стали востребованы в разных секторах использования замочных механизмов. В итоге наш опыт и знания нашли своё применение во вскрытии автомобильного транспорта. К 2005 году, мы уже сотрудничали со многим официальным и частным автосалонами в рамках договорных гарантийных обязательств.
@@ -47,7 +47,7 @@
 											.about-section__image.ibg
 												picture 
 													source(:srcset="`./images/about/scaling/1.jpg`")
-													img(:src="`./images/about/scaling/1.jpg`", alt="фото")
+													img(:src="`./images/about/scaling/1.jpg`", alt="фото" loading="lazy")
 									section.about-section.about-section--progress(id="year-2013" data-anchor-section="year-2013")
 										h2.about-section__title #[span Развитие направления] по продаже, обслуживанию и вскрытию сейфов
 										.about-section__content.content 
@@ -63,11 +63,11 @@
 											.about-section__image.ibg
 												picture 
 													source(:srcset="`./images/about/progress/1.jpg`")
-													img(:src="`./images/about/progress/1.jpg`", alt="фото")
+													img(:src="`./images/about/progress/1.jpg`", alt="фото" loading="lazy")
 											.about-section__image.ibg
 												picture 
 													source(:srcset="`./images/about/progress/2.jpg`")
-													img(:src="`./images/about/progress/2.jpg`", alt="фото")
+													img(:src="`./images/about/progress/2.jpg`", alt="фото" loading="lazy")
 									section.about-section.about-section--leaders(id="year-2014" data-anchor-section="year-2014")
 										h2.about-section__title Лидеры по вскрытию замков #[span в&nbsp;нескольких регионах России]
 										.about-section__content.content 
@@ -77,30 +77,30 @@
 												picture 
 													source(:srcset="`./images/about/leaders/logo-sber.svg`" media="(min-width: 767.98px)")
 													source(:srcset="`./images/about/leaders/logo-sber-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-sber.svg`", alt="сбербанк")
+													img(:src="`./images/about/leaders/logo-sber.svg`", alt="сбербанк" loading="lazy")
 											.about-section__logo 
 												picture 
 													source(:srcset="`./images/about/leaders/logo-vtb.svg`" media="(min-width: 767.98px)")
 													source(:srcset="`./images/about/leaders/logo-vtb-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-vtb.svg`", alt="втб")
+													img(:src="`./images/about/leaders/logo-vtb.svg`", alt="втб" loading="lazy")
 											.about-section__logo
 												picture 
 													source(:srcset="`./images/about/leaders/logo-gazprom.svg`" media="(min-width: 767.98px)")
 													source(:srcset="`./images/about/leaders/logo-gazprom-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-gazprom.svg`", alt="газпром")
+													img(:src="`./images/about/leaders/logo-gazprom.svg`", alt="газпром" loading="lazy")
 											.about-section__logo 
 												picture 
 													source(:srcset="`./images/about/leaders/logo-surgutneft.svg`" media="(min-width: 767.98px)")
 													source(:srcset="`./images/about/leaders/logo-surgutneft-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-surgutneft.svg`", alt="сургутнефть")
-									section.about-section.about-section--expansion(id="year-2024"  data-anchor-section="year-2024")
+													img(:src="`./images/about/leaders/logo-surgutneft.svg`", alt="сургутнефть" loading="lazy")
+									section.about-section.about-section--expansion(id="year-2024" data-anchor-section="year-2024")
 										h2.about-section__title Расширение филиальной сети #[span по России]
 										.about-section__content.content 
 											p В настоящее время наша компания активно развивается сотрудничая, как с юридическими так и физическими лицами во многих регионах России и ближнего зарубежья. Мы налаживаем честное профессиональное сотрудничество с мастерами разных городов, передаем им наш опыт и знания в рамках обучения. 
 										.about-section__image.ibg
 											picture
 												source(:srcset="`./images/about/expansion/map.svg`")
-												img(:src="`./images/about/expansion/map.svg`", alt="карта")
+												img(:src="`./images/about/expansion/map.svg`", alt="карта" loading="lazy")
 								.swiper-scrollbar
 			Questions
 </template>

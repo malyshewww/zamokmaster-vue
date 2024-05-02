@@ -7,7 +7,7 @@
 					.top-main__card-image
 						picture 
 							source(:srcset="`./images/card/logo.png`")
-							img(:src="`./images/card/logo.png`")
+							img(:src="`./images/card/logo.png`" loading="lazy")
 					.top-main__body
 						.top-main__title.page-title Вскрытие замка MSM #[span в&nbsp;{{ declensionCity() }}]
 						a(href="tel:+79958881086").btn-phone.btn
@@ -51,8 +51,8 @@ export default {
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
+      if (window.localStorage.getItem('city') !== null) {
+        return window.localStorage.getItem('city')
       } else {
         return this.localCity
       }

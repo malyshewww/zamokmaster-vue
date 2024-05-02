@@ -5,13 +5,13 @@
 				.services-slider__item.swiper-slide(v-for="item in count")
 					.services-slider__image
 						picture
-							source(:srcset=`'../../images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'../../images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy")
 				.services-slider__item.swiper-slide(v-for="item in count")
 					.services-slider__image
 						picture
-							source(:srcset=`'../../images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'../../images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy")
 			.slider-controls(ref="slider_controls")
 				button.slider-button.slider-button-prev
 				button.slider-button.slider-button-next

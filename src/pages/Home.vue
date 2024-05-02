@@ -17,7 +17,7 @@
 				.main-screen__image.ibg
 					picture
 						source(:srcset="`./images/main-screen/banner.png`")
-						img(:src="`./images/main-screen/banner.png`" alt="Баннер")
+						img(:src="`./images/main-screen/banner.png`" alt="Баннер" loading="lazy")
 				MainScreenInfo
 	MainServices
 	Request
@@ -110,8 +110,8 @@ export default {
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
+      if (window.localStorage.getItem('city') !== null) {
+        return window.localStorage.getItem('city')
       } else {
         return this.localCity
       }

@@ -55,8 +55,8 @@ export default {
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
+      if (window.localStorage.getItem('city') !== null) {
+        return window.localStorage.getItem('city')
       } else {
         return this.localCity
       }

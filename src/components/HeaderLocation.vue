@@ -71,7 +71,7 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
-      if (localStorage.getItem('city') !== null) {
+      if (window.localStorage.getItem('city') !== null) {
         return this.getCityStorage()
       } else {
         return this.localCity
@@ -79,7 +79,8 @@ export default {
     },
     replaceCityStorage(city) {
       this.localCity = city
-      localStorage.getItem('city') !== null && localStorage.setItem('city', this.localCity)
+      window.localStorage.getItem('city') !== null &&
+        window.localStorage.setItem('city', this.localCity)
       this.onChangeCity(this.localCity)
     },
     getCityStorage() {

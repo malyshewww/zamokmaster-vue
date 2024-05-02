@@ -540,9 +540,6 @@ const _sfc_main$8 = {
     };
   },
   methods: {
-    noCloseModal(e) {
-      e.stopPropagation();
-    },
     closeModal() {
       this.$emit("closeModal");
     }
@@ -673,7 +670,7 @@ const _sfc_main$7 = {
       this.showBtnSearch = true;
     },
     setCityStorage() {
-      if (localStorage.getItem("city") !== null) {
+      if (window.localStorage.getItem("city") !== null) {
         return this.getCityStorage();
       } else {
         return this.localCity;
@@ -681,7 +678,7 @@ const _sfc_main$7 = {
     },
     replaceCityStorage(city) {
       this.localCity = city;
-      localStorage.getItem("city") !== null && localStorage.setItem("city", this.localCity);
+      window.localStorage.getItem("city") !== null && window.localStorage.setItem("city", this.localCity);
       this.onChangeCity(this.localCity);
     },
     getCityStorage() {
@@ -1124,7 +1121,7 @@ function ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
     });
     _push(`<!--]--></ul></div></div>`);
   });
-  _push(`<!--]--><div class="menu-footer__column menu-footer-contacts"><div class="menu-footer__caption" data-spoller>Контакты</div><div class="menu-footer__content"><ul class="menu-footer__list"><li><a class="menu-footer__phone" href="tel:+79958881086">+7 (995) 888-10-86</a></li><li><a class="menu-footer__email" href="mailto:hello@zamokmaster.ru">hello@zamokmaster.ru</a></li></ul></div></div></div></div></div></div><div class="footer__bottom bottom-footer"><div class="container"><div class="bottom-footer__body"><div class="footer__copy">©Замокмастер 2024</div><a class="footer__politic" href="/politika">Политика конфиденциальности</a><div class="footer__company"><div class="footer__company-caption">Разработка сайта</div><a class="footer__company-logo" href="https://webshop.ru/" target="_blank"><picture><source${ssrRenderAttr("srcset", `./images/icons/company-logo.svg`)}><img${ssrRenderAttr("src", `./images/icons/company-logo.svg`)} alt="логотип компании"></picture></a></div></div></div></div></footer>`);
+  _push(`<!--]--><div class="menu-footer__column menu-footer-contacts"><div class="menu-footer__caption" data-spoller>Контакты</div><div class="menu-footer__content"><ul class="menu-footer__list"><li><a class="menu-footer__phone" href="tel:+79958881086">+7 (995) 888-10-86</a></li><li><a class="menu-footer__email" href="mailto:hello@zamokmaster.ru">hello@zamokmaster.ru</a></li></ul></div></div></div></div></div></div><div class="footer__bottom bottom-footer"><div class="container"><div class="bottom-footer__body"><div class="footer__copy">©Замокмастер 2024</div><a class="footer__politic" href="/politika">Политика конфиденциальности</a><div class="footer__company"><div class="footer__company-caption">Разработка сайта</div><a class="footer__company-logo" href="https://webshop.ru/" target="_blank"><picture><source${ssrRenderAttr("srcset", `./images/icons/company-logo.svg`)}><img${ssrRenderAttr("src", `./images/icons/company-logo.svg`)} alt="логотип компании" loading="lazy"></picture></a></div></div></div></div></footer>`);
   _push(ssrRenderComponent(_component_ModalCall, {
     onCloseModal: $options.toggleModal,
     isOpenModal: $data.isOpenModal
@@ -1261,14 +1258,15 @@ function ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
     }, {
       default: withCtx((_, _push2, _parent2, _scopeId) => {
         if (_push2) {
-          _push2(`<div class="services-mobile__image"${_scopeId}><picture${_scopeId}><img${ssrRenderAttr("src", "../../images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)}${_scopeId}></picture></div><div class="services-mobile__title"${_scopeId}>${ssrInterpolate(service.title)}</div>`);
+          _push2(`<div class="services-mobile__image"${_scopeId}><picture${_scopeId}><img${ssrRenderAttr("src", "./images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)} loading="lazy"${_scopeId}></picture></div><div class="services-mobile__title"${_scopeId}>${ssrInterpolate(service.title)}</div>`);
         } else {
           return [
             createVNode("div", { class: "services-mobile__image" }, [
               createVNode("picture", null, [
                 createVNode("img", {
-                  src: "../../images/services/mobile/service-mob-" + service.img + ".png",
-                  alt: service.title
+                  src: "./images/services/mobile/service-mob-" + service.img + ".png",
+                  alt: service.title,
+                  loading: "lazy"
                 }, null, 8, ["src", "alt"])
               ])
             ]),

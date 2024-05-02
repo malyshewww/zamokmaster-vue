@@ -22,7 +22,7 @@
 										picture
 											source(:srcset=`'../images/service-list/icon-'+(index+1)+'.png'` media="(min-width: 767.98px)")
 											source(:srcset=`'../images/service-list/icon-'+(index+1)+'-mob.png'` media="(min-width: 300px)")
-											img(:src=`'../images/service-list/icon-'+(index+1)+'.png'`, :alt="service")
+											img(:src=`'../images/service-list/icon-'+(index+1)+'.png'`, :alt="service" loading="lazy")
 					.service-list__content.content 
 						p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 						p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
@@ -50,8 +50,8 @@ export default {
   },
   methods: {
     getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
+      if (window.localStorage.getItem('city') !== null) {
+        return window.localStorage.getItem('city')
       } else {
         return this.localCity
       }

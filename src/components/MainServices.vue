@@ -12,7 +12,7 @@
 								picture
 									source(:srcset=`'./images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
 									source(:srcset=`'./images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
-									img(:src=`'./images/services/services-'+service.img+'.png'`, :alt="service.title")
+									img(:src=`'./images/services/services-'+service.img+'.png'`, :alt="service.title" loading="lazy")
 </template>
 
 <script>
