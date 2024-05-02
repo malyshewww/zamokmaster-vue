@@ -70,7 +70,8 @@ const router = createRouter({
         window.scrollTo(0, 0)
       }, 100)
     }
-  }
+  },
+  base: '/zamokmaster/'
 })
 
 router.beforeEach((to, from, next) => {

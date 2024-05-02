@@ -16,8 +16,8 @@
 			.main-screen__image-wrap
 				.main-screen__image.ibg
 					picture
-						source(srcset="../assets/images/main-screen/banner.png")
-						img(src="../assets/images/main-screen/banner.png" alt="Баннер")
+						source(:srcset="`./images/main-screen/banner.png`")
+						img(:src="`./images/main-screen/banner.png`" alt="Баннер")
 				MainScreenInfo
 	MainServices
 	Request
@@ -134,6 +134,17 @@ export default {
     window.addEventListener('load', () => {
       this.declensionCity()
       this.animation()
+    })
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position, position.coords.latitude, position.coords.longitude)
+      })
+      /* местоположение доступно */
+    } else {
+      /* местоположение НЕ доступно */
+    }
+    geolocator.locateByIP(options, function (err, location) {
+      console.log(location.address.city)
     })
   }
 }

@@ -6,9 +6,9 @@
 					.menu-footer__actions 
 						.menu-footer__logo
 							picture 
-								source(srcset="../assets/images/icons/footer-logo.svg" media="(min-width: 767.98px)")
-								source(srcset="../assets/images/icons/footer-logo-mob.svg" media="(min-width: 300px)")
-								img(src="../assets/images/icons/logo-pc.svg", alt="логотип")
+								source(:srcset="`./images/icons/footer-logo.svg`" media="(min-width: 767.98px)")
+								source(:srcset="`./images/icons/footer-logo-mob.svg`" media="(min-width: 300px)")
+								img(:src="`./images/icons/logo-pc.svg`", alt="логотип")
 						button(type="button" @click="toggleModal").btn #[span Заказать звонок]
 					.main-footer__menu.menu-footer(data-spollers)
 						.menu-footer__column(v-for="item in menuFooter")
@@ -34,8 +34,8 @@
 						.footer__company-caption Разработка сайта
 						a(href="https://webshop.ru/" target="_blank").footer__company-logo 
 							picture 
-								source(srcset="../assets/images/icons/company-logo.svg")
-								img(src="../assets/images/icons/company-logo.svg", alt="логотип компании")
+								source(:srcset="`./images/icons/company-logo.svg`")
+								img(:src="`./images/icons/company-logo.svg`", alt="логотип компании")
 	ModalCall(@close="toggleModal" :isOpenModal="isOpenModal")
 </template>
 

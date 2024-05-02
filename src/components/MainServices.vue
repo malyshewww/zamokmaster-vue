@@ -10,9 +10,9 @@
 						.item-services__bottom
 							span.item-services__icon 
 								picture
-									source(:srcset=`'../images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
-									source(:srcset=`'../images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
-									img(:src=`'../images/services/services-'+service.img+'.png'`, :alt="service.title")
+									source(:srcset=`'./images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
+									source(:srcset=`'./images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
+									img(:src=`'./images/services/services-'+service.img+'.png'`, :alt="service.title")
 </template>
 
 <script>

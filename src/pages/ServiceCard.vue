@@ -6,8 +6,8 @@
 				.top-main__card 
 					.top-main__card-image
 						picture 
-							source(srcset="../assets/images/card/image.jpg")
-							img(src="../assets/images/card/image.jpg")
+							source(:srcset="`./images/card/image.jpg`")
+							img(:src="`./images/card/image.jpg`")
 					.top-main__body
 						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity()}}]
 						a(href="tel:+79958881086").btn-phone.btn
@@ -32,7 +32,7 @@
 						.service-card__content.content
 							.heading
 								h2.heading__title.title-sm Прайс лист
-							table
+							table(ref="table")
 								thead
 									tr
 										th Услуга
@@ -54,8 +54,6 @@ import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
-
-import wrapTable from '../utils/tableWrap.js'
 
 const { tablePrice } = obj
 
@@ -83,12 +81,20 @@ export default {
     },
     declensionCity() {
       return cityIn(this.getCityStorage())
+    },
+    wrapTable() {
+      if (window.innerWidth < 767.98) {
+        let tableWrap = document.createElement('div')
+        tableWrap.setAttribute('class', 'table-wrap')
+        this.$refs.table.parentNode.insertBefore(tableWrap, this.$refs.table)
+        tableWrap.appendChild(this.$refs.table)
+      }
     }
   },
   mounted() {
     window.addEventListener('load', () => {
       this.declensionCity()
-      wrapTable()
+      this.wrapTable()
     })
   }
 }

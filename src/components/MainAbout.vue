@@ -24,8 +24,8 @@
 				.main-about__image-wrap 
 					.main-about__image.ibg
 						picture
-							source(srcset="../assets/images/main-about/master.jpg")
-							img(src='../assets/images/main-about/master.jpg' alt="Баннер")
+							source(:srcset="`./images/main-about/master.jpg`")
+							img(:src='`./images/main-about/master.jpg`' alt="Баннер")
 </template>
 
 <script>
