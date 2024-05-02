@@ -5,7 +5,7 @@
 				Breadcrumbs(pageTitle="Услуги")
 				.top-main__content 
 					.top-main__body 
-						h1.top-main__title.page-title Услуги Замокмастер #[span {{ declensionCity() }}]
+						h1.top-main__title.page-title Услуги Замокмастер #[span {{ declensionCity }}]
 						p.top-main__sub-title Поможем открыть любой замок без повреждений двери. Срочный выезд за 15–20 минут
 					a(href="tel:+79958881086").btn-phone.btn
 						.btn-phone__text +7 (995) 888-10-86
@@ -30,40 +30,22 @@
 </template>
 
 <script>
-import { cityIn, cityFrom, cityTo } from 'lvovich'
-
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { servicesList } = obj
 
 export default {
-  props: ['defaultCity'],
+  props: ['defaultCity', 'declensionCity'],
   components: {
     Breadcrumbs
   },
   data() {
     return {
-      servicesList,
-      localCity: this.defaultCity
+      servicesList
     }
   },
-  methods: {
-    getCityStorage() {
-      if (window.localStorage.getItem('city') !== null) {
-        return window.localStorage.getItem('city')
-      } else {
-        return this.localCity
-      }
-    },
-    declensionCity() {
-      return cityIn(this.getCityStorage())
-    }
-  },
-  mounted() {
-    window.addEventListener('load', () => {
-      this.declensionCity()
-    })
-  }
+  methods: {},
+  mounted() {}
 }
 </script>

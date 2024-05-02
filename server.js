@@ -2,10 +2,6 @@ import fs from 'node:fs/promises'
 import express from 'express'
 import { LocalStorage } from 'node-localstorage'
 
-if (typeof localStorage === 'undefined' || localStorage === null) {
-  localStorage = new LocalStorage('./scratch')
-}
-
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 5173
@@ -41,7 +37,9 @@ if (!isProduction) {
 app.use('*', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '')
-
+    if (typeof localStorage === 'undefined' || localStorage === null) {
+      localStorage = new LocalStorage('./scratch')
+    }
     let template
     let render
     if (!isProduction) {

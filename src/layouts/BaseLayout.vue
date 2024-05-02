@@ -2,7 +2,7 @@
 	.wrapper
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(:defaultCity="defaultCity")
+			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
 		TheFooter
 		Widget
 		.services-mobile
@@ -19,6 +19,8 @@
 					FreeMasters
 </template>
 <script>
+import { cityIn, cityFrom, cityTo } from 'lvovich'
+
 import obj from '../data.js'
 import TheHeader from '../components/TheHeader.vue'
 import TheFooter from '../components/TheFooter.vue'
@@ -32,12 +34,29 @@ export default {
   data() {
     return {
       services,
-      defaultCity: 'Санкт-Петербург'
+      defaultCity: 'Санкт-Петербург',
+      declensionCity: ''
     }
   },
   methods: {
     getNewCity(city) {
       this.defaultCity = city
+      this.getStorageCity()
+    },
+    getCityStorage() {
+      if (typeof window !== 'undefined') {
+        if (localStorage.getItem('city') !== null) {
+          return localStorage.getItem('city')
+        } else {
+          return this.defaultCity
+        }
+      }
+    },
+    setDeclensionCity() {
+      return cityIn(this.getCityStorage())
+    },
+    getStorageCity() {
+      this.declensionCity = this.setDeclensionCity()
     }
   },
   watch: {
@@ -50,6 +69,10 @@ export default {
     }
   },
   updated() {},
-  mounted() {}
+  mounted() {
+    window.addEventListener('load', () => {
+      this.getStorageCity()
+    })
+  }
 }
 </script>

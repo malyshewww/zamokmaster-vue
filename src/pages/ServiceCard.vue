@@ -9,7 +9,7 @@
 							source(:srcset="`./images/card/image.jpg`")
 							img(:src="`./images/card/image.jpg`" loading="lazy")
 					.top-main__body
-						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity()}}]
+						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity}}]
 						a(href="tel:+79958881086").btn-phone.btn
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon
@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import { cityIn, cityFrom, cityTo } from 'lvovich'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
@@ -58,7 +57,7 @@ import CastleTypes from '../components/CastleTypes.vue'
 const { tablePrice } = obj
 
 export default {
-  props: ['defaultCity'],
+  props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,
     Breadcrumbs,
@@ -67,21 +66,10 @@ export default {
   },
   data() {
     return {
-      tablePrice,
-      localCity: this.defaultCity
+      tablePrice
     }
   },
   methods: {
-    getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
-      } else {
-        return this.localCity
-      }
-    },
-    declensionCity() {
-      return cityIn(this.getCityStorage())
-    },
     wrapTable() {
       if (window.innerWidth < 767.98) {
         let tableWrap = document.createElement('div')
@@ -93,7 +81,6 @@ export default {
   },
   mounted() {
     window.addEventListener('load', () => {
-      this.declensionCity()
       this.wrapTable()
     })
   }

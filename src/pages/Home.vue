@@ -2,7 +2,7 @@
 	.main-screen
 		.container 
 			.main-screen__heading
-				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity() }}]
+				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity }}]
 				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
@@ -74,7 +74,6 @@
 </template>
 
 <script>
-import { cityIn, cityFrom, cityTo } from 'lvovich'
 import ScrollReveal from 'scrollreveal'
 
 import obj from '../data.js'
@@ -90,7 +89,7 @@ import MainServices from '../components/MainServices.vue'
 const { servicesDetail, stats } = obj
 
 export default {
-  props: ['defaultCity'],
+  props: ['defaultCity', 'declensionCity'],
   components: {
     ServiceDetail,
     ServiceSlider,
@@ -105,21 +104,10 @@ export default {
     return {
       servicesDetail,
       stats,
-      localCity: this.defaultCity,
-      storage: ''
+      localCity: this.defaultCity
     }
   },
   methods: {
-    getCityStorage() {
-      if (localStorage.getItem('city') !== null) {
-        return localStorage.getItem('city')
-      } else {
-        return this.localCity
-      }
-    },
-    declensionCity() {
-      return cityIn(this.getCityStorage())
-    },
     animation() {
       ScrollReveal({
         reset: false,
@@ -133,7 +121,6 @@ export default {
   computed: {},
   mounted() {
     window.addEventListener('load', () => {
-      this.declensionCity()
       this.animation()
     })
   }
