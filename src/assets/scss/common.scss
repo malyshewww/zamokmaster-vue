@@ -191,7 +191,7 @@ picture {
 		&::before {
 			content: "";
 			display: block;
-			mask-image: url('../images/icons/phone.svg');
+			mask-image: url('/images/icons/phone.svg');
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: $bg-contrast-2;
@@ -260,7 +260,7 @@ picture {
 		width: 30px;
 		height: 30px;
 		display: block;
-		mask-image: url('../images/icons/phone.svg');
+		mask-image: url('/images/icons/phone.svg');
 		mask-repeat: no-repeat;
 		mask-position: center;
 		background-color: $white;
@@ -433,7 +433,7 @@ picture {
 @for $i from 1 through 6 {
 	.castle-advantages__item--#{$i} {
 		& .castle-advantages__icon {
-			background-image: url('../images/castle-advantages/icon-#{$i}.svg');
+			background-image: url('/images/castle-advantages/icon-#{$i}.svg');
 		}
 	}
 }

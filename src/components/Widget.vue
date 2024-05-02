@@ -1,6 +1,6 @@
 <template lang="pug">
 	.widget-call(@click="toggleModal")
-	ModalCall(:isOpenModal="isOpenModal" @close="toggleModal")
+	ModalCall(@closeModal="toggleModal" :isOpenModal="isOpenModal")
 </template>
 
 <script>

@@ -32,8 +32,6 @@ export default {
   data() {
     return {
       services,
-      showServices: false,
-      showPhone: false,
       defaultCity: 'Санкт-Петербург'
     }
   },

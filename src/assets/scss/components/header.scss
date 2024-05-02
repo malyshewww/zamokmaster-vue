@@ -234,12 +234,12 @@
 		}
 		&--phone {
 			&::before {
-				background-image: url('../images/icons/phone.svg');
+				background-image: url('/images/icons/phone.svg');
 			}
 		}
 		&--email {
 			&::before {
-				background-image: url('../images/icons/mail.svg');
+				background-image: url('/images/icons/mail.svg');
 			}
 		}
 		@media (any-hover: hover) {
@@ -285,7 +285,7 @@
 			display: block;
 			width: 16px;
 			height: 16px;
-			mask-image: url('../images/icons/location.svg');
+			mask-image: url('/images/icons/location.svg');
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: #336699;
@@ -427,13 +427,13 @@
 			display: block;
 			width: 10px;
 			height: 10px;
-			mask-image: url('../images/icons/chevron-down.svg');
+			mask-image: url('/images/icons/chevron-down.svg');
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: $text-default-text;
 			transition: transform .25s, background-color .25s;
 			@media screen and (max-width: $xxxl) {
-				mask-image: url('../images/icons/chevron-down-menu.svg');
+				mask-image: url('/images/icons/chevron-down-menu.svg');
 			}
 		}
 	}

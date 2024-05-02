@@ -111,7 +111,7 @@
 			position: absolute;
 			top: -26px;
 			right: -22px;
-			background-image: url('../images/icons/info.svg');
+			background-image: url('/images/icons/info.svg');
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: 40px 40px;
@@ -160,7 +160,7 @@
 	.main-screen__advantage--#{$i} {
 		animation-delay: calc($i * 0.2s);
 		&::before {
-			background-image: url('../images/main-screen/advantage-#{$i}.svg');
+			background-image: url('/images/main-screen/advantage-#{$i}.svg');
 		}
 	}
 }
@@ -272,14 +272,14 @@
 			display: block;
 			width: 35px;
 			height: 24px;
-			mask-image: url('../images/icons/arrow-right.svg');
+			mask-image: url('/images/icons/arrow-right.svg');
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: #212226;
 			transform-origin: left;
 			transition: transform .25s;
 			@media screen and (max-width: $md) {
-				mask-image: url('../images/icons/arrow-right-mob.svg');
+				mask-image: url('/images/icons/arrow-right-mob.svg');
 				height: 16px;
 				width: 35px;
 				mask-size: 35px 16px;
@@ -301,7 +301,7 @@
 		padding: 47px 15px 45px;
 		background-repeat: no-repeat;
 		background-position: 42.5% center;
-		background-image: url('../images/request/decor.svg');
+		background-image: url('/images/request/decor.svg');
 		background-size: 173px 380px;
 		@media screen and (max-width: $lg) {
 			background-image: none;
@@ -461,16 +461,16 @@
 		& .services-slider {
 			&__body {
 				&::before {
-					background-image: url('../images/service-detail/decor-blue-left.png');
+					background-image: url('/images/service-detail/decor-blue-left.png');
 					@media screen and (max-width: $md) {
-						background-image: url('../images/service-detail/decor-blue-left-mob.png');
+						background-image: url('/images/service-detail/decor-blue-left-mob.png');
 
 					}
 				}
 				&::after {
-					background-image: url('../images/service-detail/decor-blue-right.png');
+					background-image: url('/images/service-detail/decor-blue-right.png');
 					@media screen and (max-width: $md) {
-						background-image: url('../images/service-detail/decor-blue-right-mob.png');
+						background-image: url('/images/service-detail/decor-blue-right-mob.png');
 
 					}
 				}
@@ -648,16 +648,16 @@
 		}
 		&::before {
 			left: 0;
-			background-image: url('../images/service-detail/decor-left.png');
+			background-image: url('/images/service-detail/decor-left.png');
 			@media screen and (max-width: $md) {
-				background-image: url('../images/service-detail/decor-left-mob.png');
+				background-image: url('/images/service-detail/decor-left-mob.png');
 			}
 		}
 		&::after {
 			right: 0;
-			background-image: url('../images/service-detail/decor-right.png');
+			background-image: url('/images/service-detail/decor-right.png');
 			@media screen and (max-width: $md) {
-				background-image: url('../images/service-detail/decor-right-mob.png');
+				background-image: url('/images/service-detail/decor-right-mob.png');
 			}
 		}
 	}
@@ -727,12 +727,12 @@
 	}
 	&-prev {
 		&::before {
-			mask-image: url('../images/icons/arrow-prev.svg');
+			mask-image: url('/images/icons/arrow-prev.svg');
 		}
 	}
 	&-next {
 		&::before {
-			mask-image: url('../images/icons/arrow-next.svg');
+			mask-image: url('/images/icons/arrow-next.svg');
 		}
 	}
 	@media (any-hover:hover) {
@@ -766,7 +766,7 @@
 		min-height: 204px;
 		background: $bg-contrast-2;
 		padding: 58px 15px;
-		background-image: url('../images/questions/decor.svg');
+		background-image: url('/images/questions/decor.svg');
 		background-repeat: no-repeat;
 		background-position: 53.5% center;
 		background-size: 173px 380px;
@@ -856,13 +856,13 @@
 				height: 100%;
 				left: 0;
 				top: 0;
-				background-image: url('../images/icons/info-white.svg');
+				background-image: url('/images/icons/info-white.svg');
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
 				animation: trin 4s linear infinite;
 				@media screen and (max-width: $md) {
-					background-image: url('../images/icons/info.svg');
+					background-image: url('/images/icons/info.svg');
 				}
 			}
 		}
@@ -987,7 +987,7 @@
 		height: 114px;
 		left: 0;
 		bottom: 0px;
-		// background-image: url('../images/main-about/gradient.png');
+		// background-image: url('/images/main-about/gradient.png');
 		// background-repeat: no-repeat;
 		// background-size: cover;
 		display: flex;
@@ -1050,7 +1050,7 @@
 			display: block;
 			width: 757px;
 			height: 627px;
-			background-image: url('../images/testimonials/quote.svg');
+			background-image: url('/images/testimonials/quote.svg');
 			background-size: 757px 627px;
 			background-position: right 26px, 150%;
 			background-repeat: no-repeat;
@@ -1112,7 +1112,7 @@
 		left: 0;
 		width: 100%;
 		height: 120px;
-		background-image: url('../images/geography/gradient.png');
+		background-image: url('/images/geography/gradient.png');
 		background-repeat: no-repeat;
 		background-size: cover;
 		transition: opacity .5s;
@@ -1157,7 +1157,7 @@
 			width: 28px;
 			height: 28px;
 			flex-shrink: 0;
-			background-image: url('../images/icons/station.svg');
+			background-image: url('/images/icons/station.svg');
 			background-repeat: no-repeat;
 			background-position: center;
 			@media screen and (max-width: $md) {

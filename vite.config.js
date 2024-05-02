@@ -32,16 +32,16 @@ export default defineConfig({
       jpeg: {
         quality: 80
       }
-    }),
-    //плагин не умеет создавать на сервере папку проекта - нужно создать папку ручками и указать путь до нее в remotePath
-    VitePluginSsh.default({
-      host: 'html.webshop.ru',
-      // port: 22,
-      username: 'htmlshop',
-      password: 'L540YD9y',
-      localPath: 'dist',
-      remotePath: `public_html/zamokmaster`
     })
+    //плагин не умеет создавать на сервере папку проекта - нужно создать папку ручками и указать путь до нее в remotePath
+    // VitePluginSsh.default({
+    //   host: '2922965-nngroup.twc1.net',
+    //   port: 22,
+    //   username: 'zamokmaster',
+    //   password: 'OoCyoAbLU87G4lykE5AG',
+    //   localPath: 'app',
+    //   remotePath: `app/zamokmaster/dist`
+    // })
   ],
   resolve: {
     alias: {

@@ -1,4 +1,4 @@
-import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
+import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
 import { resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createSSRApp } from "vue";
 const data = {
   services: [
@@ -525,14 +525,14 @@ _sfc_main$9.setup = (props, ctx) => {
 const Navbar = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["ssrRender", ssrRender$9]]);
 function ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({
-    class: ["modal", { modalClass: $props.modalClass }[$data.isOpenModal ? "open-modal" : ""]],
+    class: ["modal", { modalClass: $props.modalClass }],
     id: { modalId: $props.modalId }
   }, _attrs))}><div class="modal__wrapper"><div class="modal__content"><button class="modal__close" type="button"></button>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div></div>`);
 }
 const _sfc_main$8 = {
-  props: ["modalId", "modalClass", "isOpenModal"],
+  props: ["modalId", "modalClass"],
   name: "Modal",
   data() {
     return {
@@ -544,7 +544,7 @@ const _sfc_main$8 = {
       e.stopPropagation();
     },
     closeModal() {
-      this.$emit("close");
+      this.$emit("closeModal");
     }
   }
 };
@@ -558,68 +558,70 @@ const Modal = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", ssrRender$
 function ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Modal = resolveComponent("Modal");
   _push(`<!--[--><div class="header__location location-header"><div class="location-header__current">${ssrInterpolate($options.setCityStorage())}</div><div class="${ssrRenderClass([[$data.isShowLocation && !$props.isHidden ? "active" : ""], "location-header__choice"])}"><div class="location-header__header">Ваш город <span>${ssrInterpolate($options.setCityStorage())}?</span></div><div class="location-header__buttons"><button class="location-header__button btn" type="button">Верно</button><button class="location-header__button btn btn-border" type="button">Выбрать другой</button></div></div></div>`);
-  _push(ssrRenderComponent(_component_Modal, {
-    class: ["modal-search", [$data.isOpenModal ? "open-modal" : ""]],
-    id: "modal-call",
-    onClose: $options.toggleModal
-  }, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`<div class="modal__header"${_scopeId}><div class="modal__title"${_scopeId}>Выберите город</div></div><form class="modal__form form" action="#"${_scopeId}><div class="form-item"${_scopeId}><input type="text" placeholder="Введите название города"${ssrRenderAttr("value", $data.search)}${_scopeId}>`);
-        if ($data.showBtnSearch) {
-          _push2(`<button class="form-item__btn btn-search" type="button"${_scopeId}></button>`);
+  ssrRenderTeleport(_push, (_push2) => {
+    _push2(ssrRenderComponent(_component_Modal, {
+      class: ["modal-search", [$data.isOpenModal ? "open-modal" : ""]],
+      id: "modal-call",
+      onCloseModal: $options.toggleModal
+    }, {
+      default: withCtx((_, _push3, _parent2, _scopeId) => {
+        if (_push3) {
+          _push3(`<div class="modal__header"${_scopeId}><div class="modal__title"${_scopeId}>Выберите город</div></div><form class="modal__form form" action="#"${_scopeId}><div class="form-item"${_scopeId}><input type="text" placeholder="Введите название города"${ssrRenderAttr("value", $data.search)}${_scopeId}>`);
+          if ($data.showBtnSearch) {
+            _push3(`<button class="form-item__btn btn-search" type="button"${_scopeId}></button>`);
+          } else {
+            _push3(`<button class="form-item__btn btn-delete" type="button"${_scopeId}></button>`);
+          }
+          _push3(`</div><div class="form-result"${_scopeId}><ul class="form-result__list"${_scopeId}><!--[-->`);
+          ssrRenderList($options.filteredCities, (city, index) => {
+            _push3(`<li${_scopeId}>${ssrInterpolate(city)}</li>`);
+          });
+          _push3(`<!--]--></ul></div></form>`);
         } else {
-          _push2(`<button class="form-item__btn btn-delete" type="button"${_scopeId}></button>`);
-        }
-        _push2(`</div><div class="form-result"${_scopeId}><ul class="form-result__list"${_scopeId}><!--[-->`);
-        ssrRenderList($options.filteredCities, (city, index) => {
-          _push2(`<li${_scopeId}>${ssrInterpolate(city)}</li>`);
-        });
-        _push2(`<!--]--></ul></div></form>`);
-      } else {
-        return [
-          createVNode("div", { class: "modal__header" }, [
-            createVNode("div", { class: "modal__title" }, "Выберите город")
-          ]),
-          createVNode("form", {
-            class: "modal__form form",
-            action: "#"
-          }, [
-            createVNode("div", { class: "form-item" }, [
-              withDirectives(createVNode("input", {
-                type: "text",
-                onInput: $options.onSearchInput,
-                placeholder: "Введите название города",
-                "onUpdate:modelValue": ($event) => $data.search = $event
-              }, null, 40, ["onInput", "onUpdate:modelValue"]), [
-                [vModelText, $data.search]
-              ]),
-              $data.showBtnSearch ? (openBlock(), createBlock("button", {
-                key: 0,
-                class: "form-item__btn btn-search",
-                type: "button",
-                ref: "btn_search"
-              }, null, 512)) : (openBlock(), createBlock("button", {
-                key: 1,
-                class: "form-item__btn btn-delete",
-                type: "button",
-                ref: "btn_delete",
-                onClick: $options.deleteSearch
-              }, null, 8, ["onClick"]))
+          return [
+            createVNode("div", { class: "modal__header" }, [
+              createVNode("div", { class: "modal__title" }, "Выберите город")
             ]),
-            createVNode("div", { class: "form-result" }, [
-              createVNode("ul", { class: "form-result__list" }, [
-                (openBlock(true), createBlock(Fragment, null, renderList($options.filteredCities, (city, index) => {
-                  return openBlock(), createBlock("li", { onClick: $options.selectCity }, toDisplayString(city), 9, ["onClick"]);
-                }), 256))
+            createVNode("form", {
+              class: "modal__form form",
+              action: "#"
+            }, [
+              createVNode("div", { class: "form-item" }, [
+                withDirectives(createVNode("input", {
+                  type: "text",
+                  onInput: $options.onSearchInput,
+                  placeholder: "Введите название города",
+                  "onUpdate:modelValue": ($event) => $data.search = $event
+                }, null, 40, ["onInput", "onUpdate:modelValue"]), [
+                  [vModelText, $data.search]
+                ]),
+                $data.showBtnSearch ? (openBlock(), createBlock("button", {
+                  key: 0,
+                  class: "form-item__btn btn-search",
+                  type: "button",
+                  ref: "btn_search"
+                }, null, 512)) : (openBlock(), createBlock("button", {
+                  key: 1,
+                  class: "form-item__btn btn-delete",
+                  type: "button",
+                  ref: "btn_delete",
+                  onClick: $options.deleteSearch
+                }, null, 8, ["onClick"]))
+              ]),
+              createVNode("div", { class: "form-result" }, [
+                createVNode("ul", { class: "form-result__list" }, [
+                  (openBlock(true), createBlock(Fragment, null, renderList($options.filteredCities, (city, index) => {
+                    return openBlock(), createBlock("li", { onClick: $options.selectCity }, toDisplayString(city), 9, ["onClick"]);
+                  }), 256))
+                ])
               ])
             ])
-          ])
-        ];
-      }
-    }),
-    _: 1
-  }, _parent));
+          ];
+        }
+      }),
+      _: 1
+    }, _parent));
+  }, "body", false, _parent);
   _push(`<!--]-->`);
 }
 const _sfc_main$7 = {
@@ -671,7 +673,7 @@ const _sfc_main$7 = {
       this.showBtnSearch = true;
     },
     setCityStorage() {
-      if (localStorage.getItem("city")) {
+      if (localStorage.getItem("city") !== null) {
         return this.getCityStorage();
       } else {
         return this.localCity;
@@ -679,7 +681,7 @@ const _sfc_main$7 = {
     },
     replaceCityStorage(city) {
       this.localCity = city;
-      localStorage.setItem("city", this.localCity);
+      localStorage.getItem("city") !== null && localStorage.setItem("city", this.localCity);
       this.onChangeCity(this.localCity);
     },
     getCityStorage() {
@@ -857,52 +859,54 @@ function maskPhone(elem = document) {
 }
 function ssrRender$5(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Modal = resolveComponent("Modal");
-  _push(ssrRenderComponent(_component_Modal, mergeProps({
-    class: ["modal-call", [$props.isOpenModal ? "open-modal" : ""]],
-    id: "modal-call",
-    onClose: _ctx.toggleModal
-  }, _attrs), {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(`<div class="modal__header"${_scopeId}><div class="modal__title"${_scopeId}>Оставьте заявку</div><div class="modal__sub-title"${_scopeId}>Оставьте заявку и наш мастер перезвонит вам в ближайшее время</div></div><form class="modal__form form" action=""${_scopeId}><div class="form__items"${_scopeId}><div class="form-item"${_scopeId}><input type="text" placeholder="Ваше имя"${_scopeId}></div><div class="form-item"${_scopeId}><input type="tel" placeholder="Номер телефона"${_scopeId}></div></div><div class="form__bottom"${_scopeId}><input class="btn form__button" type="submit" value="Заказать звонок"${_scopeId}><div class="form__agreement"${_scopeId}>Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта</div></div></form>`);
-      } else {
-        return [
-          createVNode("div", { class: "modal__header" }, [
-            createVNode("div", { class: "modal__title" }, "Оставьте заявку"),
-            createVNode("div", { class: "modal__sub-title" }, "Оставьте заявку и наш мастер перезвонит вам в ближайшее время")
-          ]),
-          createVNode("form", {
-            class: "modal__form form",
-            action: ""
-          }, [
-            createVNode("div", { class: "form__items" }, [
-              createVNode("div", { class: "form-item" }, [
-                createVNode("input", {
-                  type: "text",
-                  placeholder: "Ваше имя"
-                })
-              ]),
-              createVNode("div", { class: "form-item" }, [
-                createVNode("input", {
-                  type: "tel",
-                  placeholder: "Номер телефона"
-                })
-              ])
+  ssrRenderTeleport(_push, (_push2) => {
+    _push2(ssrRenderComponent(_component_Modal, {
+      class: ["modal-call", [$props.isOpenModal ? "open-modal" : ""]],
+      id: "modal-call",
+      onCloseModal: $options.closeModal
+    }, {
+      default: withCtx((_, _push3, _parent2, _scopeId) => {
+        if (_push3) {
+          _push3(`<div class="modal__header"${_scopeId}><div class="modal__title"${_scopeId}>Оставьте заявку</div><div class="modal__sub-title"${_scopeId}>Оставьте заявку и наш мастер перезвонит вам в ближайшее время</div></div><form class="modal__form form" action=""${_scopeId}><div class="form__items"${_scopeId}><div class="form-item"${_scopeId}><input type="text" placeholder="Ваше имя"${_scopeId}></div><div class="form-item"${_scopeId}><input type="tel" placeholder="Номер телефона"${_scopeId}></div></div><div class="form__bottom"${_scopeId}><input class="btn form__button" type="submit" value="Заказать звонок"${_scopeId}><div class="form__agreement"${_scopeId}>Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта</div></div></form>`);
+        } else {
+          return [
+            createVNode("div", { class: "modal__header" }, [
+              createVNode("div", { class: "modal__title" }, "Оставьте заявку"),
+              createVNode("div", { class: "modal__sub-title" }, "Оставьте заявку и наш мастер перезвонит вам в ближайшее время")
             ]),
-            createVNode("div", { class: "form__bottom" }, [
-              createVNode("input", {
-                class: "btn form__button",
-                type: "submit",
-                value: "Заказать звонок"
-              }),
-              createVNode("div", { class: "form__agreement" }, "Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта")
+            createVNode("form", {
+              class: "modal__form form",
+              action: ""
+            }, [
+              createVNode("div", { class: "form__items" }, [
+                createVNode("div", { class: "form-item" }, [
+                  createVNode("input", {
+                    type: "text",
+                    placeholder: "Ваше имя"
+                  })
+                ]),
+                createVNode("div", { class: "form-item" }, [
+                  createVNode("input", {
+                    type: "tel",
+                    placeholder: "Номер телефона"
+                  })
+                ])
+              ]),
+              createVNode("div", { class: "form__bottom" }, [
+                createVNode("input", {
+                  class: "btn form__button",
+                  type: "submit",
+                  value: "Заказать звонок"
+                }),
+                createVNode("div", { class: "form__agreement" }, "Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта")
+              ])
             ])
-          ])
-        ];
-      }
-    }),
-    _: 1
-  }, _parent));
+          ];
+        }
+      }),
+      _: 1
+    }, _parent));
+  }, "body", false, _parent);
 }
 const _sfc_main$5 = {
   props: ["isOpenModal"],
@@ -914,10 +918,10 @@ const _sfc_main$5 = {
   },
   methods: {
     closeModal() {
-      this.$emit("close");
+      this.$emit("closeModal");
     },
     openModal() {
-      this.$emit("open");
+      this.$emit("openModal");
     }
   },
   computed() {
@@ -1122,7 +1126,7 @@ function ssrRender$4(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   });
   _push(`<!--]--><div class="menu-footer__column menu-footer-contacts"><div class="menu-footer__caption" data-spoller>Контакты</div><div class="menu-footer__content"><ul class="menu-footer__list"><li><a class="menu-footer__phone" href="tel:+79958881086">+7 (995) 888-10-86</a></li><li><a class="menu-footer__email" href="mailto:hello@zamokmaster.ru">hello@zamokmaster.ru</a></li></ul></div></div></div></div></div></div><div class="footer__bottom bottom-footer"><div class="container"><div class="bottom-footer__body"><div class="footer__copy">©Замокмастер 2024</div><a class="footer__politic" href="/politika">Политика конфиденциальности</a><div class="footer__company"><div class="footer__company-caption">Разработка сайта</div><a class="footer__company-logo" href="https://webshop.ru/" target="_blank"><picture><source${ssrRenderAttr("srcset", `./images/icons/company-logo.svg`)}><img${ssrRenderAttr("src", `./images/icons/company-logo.svg`)} alt="логотип компании"></picture></a></div></div></div></div></footer>`);
   _push(ssrRenderComponent(_component_ModalCall, {
-    onClose: $options.toggleModal,
+    onCloseModal: $options.toggleModal,
     isOpenModal: $data.isOpenModal
   }, null, _parent));
   _push(`<!--]-->`);
@@ -1140,8 +1144,8 @@ const _sfc_main$4 = {
   },
   methods: {
     toggleModal() {
-      this.isOpenModal = !this.isOpenModal;
       document.body.classList.toggle("lock");
+      this.isOpenModal = !this.isOpenModal;
     },
     initSpollers() {
       if (window.matchMedia("(max-width: 767.98px)").matches) {
@@ -1204,8 +1208,8 @@ function ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   const _component_ModalCall = resolveComponent("ModalCall");
   _push(`<!--[--><div class="widget-call"></div>`);
   _push(ssrRenderComponent(_component_ModalCall, {
-    isOpenModal: $data.isOpenModal,
-    onClose: $options.toggleModal
+    onCloseModal: $options.toggleModal,
+    isOpenModal: $data.isOpenModal
   }, null, _parent));
   _push(`<!--]-->`);
 }
@@ -1285,8 +1289,6 @@ const _sfc_main$1 = {
   data() {
     return {
       services,
-      showServices: false,
-      showPhone: false,
       defaultCity: "Санкт-Петербург"
     };
   },

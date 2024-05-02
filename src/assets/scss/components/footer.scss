@@ -69,7 +69,7 @@
 				display: block;
 				width: 23px;
 				height: 23px;
-				mask-image: url('../images/icons/chevron-down-blue.svg');
+				mask-image: url('/images/icons/chevron-down-blue.svg');
 				mask-repeat: no-repeat;
 				mask-position: center;
 				background-color: $bg-contrast;
@@ -142,13 +142,13 @@
 }
 .menu-footer__phone {
 	&::before {
-		background-image: url('../images/icons/phone.svg');
+		background-image: url('/images/icons/phone.svg');
 	}
 }
 
 .menu-footer__email {
 	&::before {
-		background-image: url('../images/icons/mail.svg');
+		background-image: url('/images/icons/mail.svg');
 	}
 }
 

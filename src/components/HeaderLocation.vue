@@ -6,17 +6,18 @@
 			.location-header__buttons 
 				button(type="button" @click="closeLocation").location-header__button.btn Верно
 				button(type="button" @click="toggleModal").location-header__button.btn.btn-border Выбрать другой
-	Modal(class="modal-search" :class="[isOpenModal ? 'open-modal' : '']" id="modal-call" @close="toggleModal")
-		.modal__header 
-				.modal__title Выберите город
-		form(action="#").modal__form.form
-			.form-item 
-				input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
-				button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
-				button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
-			.form-result
-				ul.form-result__list 
-					li(v-for="(city, index) in filteredCities" @click="selectCity") {{ city }}
+	Teleport(to="body")
+		Modal(class="modal-search" :class="[isOpenModal ? 'open-modal' : '']" id="modal-call" @closeModal="toggleModal")
+			.modal__header 
+					.modal__title Выберите город
+			form(action="#").modal__form.form
+				.form-item 
+					input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
+					button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
+					button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
+				.form-result
+					ul.form-result__list 
+						li(v-for="(city, index) in filteredCities" @click="selectCity") {{ city }}
 </template>
 
 <script>
@@ -70,7 +71,7 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
-      if (localStorage.getItem('city')) {
+      if (localStorage.getItem('city') !== null) {
         return this.getCityStorage()
       } else {
         return this.localCity
@@ -78,7 +79,7 @@ export default {
     },
     replaceCityStorage(city) {
       this.localCity = city
-      localStorage.setItem('city', this.localCity)
+      localStorage.getItem('city') !== null && localStorage.setItem('city', this.localCity)
       this.onChangeCity(this.localCity)
     },
     getCityStorage() {

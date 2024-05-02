@@ -36,7 +36,7 @@
 							picture 
 								source(:srcset="`./images/icons/company-logo.svg`")
 								img(:src="`./images/icons/company-logo.svg`", alt="логотип компании")
-	ModalCall(@close="toggleModal" :isOpenModal="isOpenModal")
+	ModalCall(@closeModal="toggleModal" :isOpenModal="isOpenModal")
 </template>
 
 <script>
@@ -58,8 +58,8 @@ export default {
   },
   methods: {
     toggleModal() {
-      this.isOpenModal = !this.isOpenModal
       document.body.classList.toggle('lock')
+      this.isOpenModal = !this.isOpenModal
     },
     initSpollers() {
       if (window.matchMedia('(max-width: 767.98px)').matches) {

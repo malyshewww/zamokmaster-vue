@@ -66,7 +66,7 @@
 			width: 24px;
 			height: 24px;
 			mask-size: 16px 15px;
-			mask-image: url("../images/icons/close.svg");
+			mask-image: url("/images/icons/close.svg");
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: $stroke-light;
@@ -183,13 +183,13 @@
 }
 .btn-search {
 	&::before {
-		mask-image: url('../images/icons/search.svg');
+		mask-image: url('/images/icons/search.svg');
 		background-color: $text-placeholder;
 	}
 }
 .btn-delete {
 	&::before {
-		mask-image: url('../images/icons/close.svg');
+		mask-image: url('/images/icons/close.svg');
 		background-color: $text-headings;
 	}
 }
