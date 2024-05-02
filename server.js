@@ -1,5 +1,10 @@
 import fs from 'node:fs/promises'
 import express from 'express'
+import { LocalStorage } from 'node-localstorage'
+
+if (typeof localStorage === 'undefined' || localStorage === null) {
+  localStorage = new LocalStorage('./scratch')
+}
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'

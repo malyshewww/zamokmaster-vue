@@ -17,6 +17,7 @@
     "compression": "^1.7.4",
     "express": "^4.19.2",
     "lvovich": "^2.0.1",
+    "node-localstorage": "^3.0.5",
     "scrollreveal": "^4.0.9",
     "sirv": "^2.0.4",
     "swiper": "^11.1.1",

@@ -105,13 +105,14 @@ export default {
     return {
       servicesDetail,
       stats,
-      localCity: this.defaultCity
+      localCity: this.defaultCity,
+      storage: ''
     }
   },
   methods: {
     getCityStorage() {
-      if (window.localStorage.getItem('city') !== null) {
-        return window.localStorage.getItem('city')
+      if (localStorage.getItem('city') !== null) {
+        return localStorage.getItem('city')
       } else {
         return this.localCity
       }
