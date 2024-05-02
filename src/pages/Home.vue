@@ -135,17 +135,6 @@ export default {
       this.declensionCity()
       this.animation()
     })
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position, position.coords.latitude, position.coords.longitude)
-      })
-      /* местоположение доступно */
-    } else {
-      /* местоположение НЕ доступно */
-    }
-    geolocator.locateByIP(options, function (err, location) {
-      console.log(location.address.city)
-    })
   }
 }
 </script>
