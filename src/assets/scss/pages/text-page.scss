@@ -34,6 +34,18 @@
 	& .gallery-item {
 		&__image {
 			padding-bottom: math.div(269, 311) * 100%;
+			overflow: hidden;
+			& img {
+				transition: transform .5s cubic-bezier(.17, .67, .83, .87);
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					& img {
+						transform: scale(1.3);
+					}
+				}
+
+			}
 		}
 	}
 }

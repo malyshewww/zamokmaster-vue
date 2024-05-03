@@ -22,9 +22,9 @@
 									.category-castle__image
 										.category-castle__logo
 											picture 
-												source(:srcset=`"../../images/castlelist/"+item.path+'/'+(index+1)+'.png'` media="(min-width: 767.98px)")
+												source(:srcset=`"./images/castlelist/"+item.path+'/'+(index+1)+'.png'` media="(min-width: 767.98px)")
 												//- source(:srcset=`"../../images/castlelist/"+item.path+'/'+(index+1)+'-mob.png'` media="(min-width: 300px)")
-												img(:src=`"../../images/castlelist/"+item.path+'/'+(index+1)+'.png'`, alt=child)
+												img(:src=`"./images/castlelist/"+item.path+'/'+(index+1)+'.png'`, :alt="child" loading="lazy")
 									.category-castle__name {{child}}
 						.castle-list__content.content 
 							p ABUS — это немецкая компания, которая с 1924 года разрабатывает охранные системы. Марка ABUS позиционирует себя как лидером уникальных изобретений, у которых запатентованные сплавы сверхпрочных металлов.
@@ -34,12 +34,16 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { castleList } = obj
 export default {
+  setup() {
+    useMeta({ title: 'Список замков' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,

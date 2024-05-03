@@ -82,6 +82,7 @@ body {
 // Подключение общих стилей для элементов
 @import "./common";
 @import "./libs/swiper";
+@import "base/system-styles";
 // @import "./libs/fancybox";
 
 // Подключение общих стилей компонентов
@@ -91,6 +92,7 @@ body {
 @import "./components/main-top";
 @import "./components/breadcrumbs";
 @import "./components/popup";
+@import "./components/form";
 
 // Подключение стилей для отдельных страниц
 @import "./pages/index";

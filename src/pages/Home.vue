@@ -66,14 +66,10 @@
 						h2.heading__title Отзывы #[span наших&nbsp;клиентов]
 						p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
 	MainGeography
-	.modal.modal-notice#modal-notice
-		.modal__wrapper 
-			.modal__content
-				button(type="button").modal__close
-				.modal__title Заявка успешно отправлена
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import ScrollReveal from 'scrollreveal'
 
 import obj from '../data.js'
@@ -89,6 +85,13 @@ import MainServices from '../components/MainServices.vue'
 const { servicesDetail, stats } = obj
 
 export default {
+  setup() {
+    useMeta({
+      title: 'Главная',
+      description: [{ name: 'description', content: `My page meta description` }]
+    })
+  },
+
   props: ['defaultCity', 'declensionCity'],
   components: {
     ServiceDetail,
@@ -121,6 +124,7 @@ export default {
   computed: {},
   mounted() {
     window.addEventListener('load', () => {
+      document.body.classList.add('home')
       this.animation()
     })
   }

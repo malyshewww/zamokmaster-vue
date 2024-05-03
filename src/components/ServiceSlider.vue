@@ -6,12 +6,12 @@
 					.services-slider__image
 						picture
 							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy")
+							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
 				.services-slider__item.swiper-slide(v-for="item in count")
 					.services-slider__image
 						picture
 							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy")
+							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
 			.slider-controls(ref="slider_controls")
 				button.slider-button.slider-button-prev
 				button.slider-button.slider-button-next

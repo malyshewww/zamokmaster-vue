@@ -10,8 +10,18 @@ import ServiceList from './pages/ServiceList.vue'
 import TextPage from './pages/TextPage.vue'
 
 const routes = [
-  { path: '/', component: Home, meta: { title: 'Главная' }, name: 'home' },
-  { path: '/about', component: About, meta: { title: 'О компании' }, name: 'about' },
+  {
+    path: '/',
+    component: Home,
+    meta: { title: 'Главная' },
+    name: 'home'
+  },
+  {
+    path: '/about',
+    component: About,
+    meta: { title: 'О компании' },
+    name: 'about'
+  },
   { path: '/contacts', component: Contacts, meta: { title: 'Контакты' }, name: 'contacts' },
   {
     path: '/castle-list',
@@ -75,7 +85,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // console.log(to)
   document.title = to.meta.title
   next()
 })

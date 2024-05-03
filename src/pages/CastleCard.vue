@@ -7,7 +7,7 @@
 					.top-main__card-image
 						picture 
 							source(:srcset="`./images/card/logo.png`")
-							img(:src="`./images/card/logo.png`" loading="lazy")
+							img(:src="`./images/card/logo.png`" alt="фото" loading="lazy")
 					.top-main__body
 						.top-main__title.page-title Вскрытие замка MSM #[span в&nbsp;{{ declensionCity }}]
 						a(href="tel:+79958881086").btn-phone.btn
@@ -30,12 +30,16 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
 export default {
+  setup() {
+    useMeta({ title: 'Карточка замка' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,

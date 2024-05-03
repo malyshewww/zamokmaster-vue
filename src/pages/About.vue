@@ -1,5 +1,5 @@
 <template lang="pug">
-	.page.about
+	.page.about(v-bind="$attrs")
 		.main__top.top-main
 			.container
 				Breadcrumbs(pageTitle="О компании")
@@ -39,7 +39,7 @@
 												picture 
 													source(:srcset="`./images/about/beginning/2.jpg`")
 													img(:src="`./images/about/beginning/2.jpg`", alt="фото")
-									section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005" loading="lazy")
+									section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005")
 										h2.about-section__title Масштабирование компании #[span по&nbsp;вскрытию&nbsp;замков]
 										.about-section__content.content 
 											p Наши услуги по вскрытию замков стали востребованы в разных секторах использования замочных механизмов. В итоге наш опыт и знания нашли своё применение во вскрытии автомобильного транспорта. К 2005 году, мы уже сотрудничали со многим официальным и частным автосалонами в рамках договорных гарантийных обязательств.
@@ -106,11 +106,16 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import Swiper from 'swiper'
 import { Scrollbar, FreeMode, Thumbs } from 'swiper/modules'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 export default {
+  setup() {
+    useMeta({ title: 'О компании' })
+  },
+  props: ['defaultCity', 'declensionCity'],
   components: {
     Questions,
     Breadcrumbs

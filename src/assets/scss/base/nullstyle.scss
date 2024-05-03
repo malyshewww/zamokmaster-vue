@@ -77,6 +77,10 @@ button {
 	color: inherit;
 	background-color: inherit;
 }
+button,
+input[type="submit"] {
+	cursor: pointer;
+}
 a {
 	color: inherit;
 }
@@ -98,7 +102,7 @@ img {
 	vertical-align: top;
 	object-fit: cover;
 }
-// CR
+// scroll-bar
 * {
 	scrollbar-width: thin;
 	scroll-behavior: smooth;

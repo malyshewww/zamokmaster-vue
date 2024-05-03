@@ -221,6 +221,9 @@
 		top: 0;
 		pointer-events: none;
 		z-index: 1;
+		@media screen and (max-width: $md) {
+			border-radius: 16px;
+		}
 	}
 	&__content {
 		display: flex;

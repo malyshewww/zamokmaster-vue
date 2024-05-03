@@ -53,11 +53,16 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 export default {
+  setup() {
+    useMeta({ title: 'Текстовая страница' })
+  },
+  props: ['defaultCity', 'declensionCity'],
   components: {
     Breadcrumbs
   },

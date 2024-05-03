@@ -27,7 +27,8 @@ export default {
   props: ['defaultCity'],
   data() {
     return {
-      isHidden: false
+      isHidden: false,
+      currScroll: window.scrollY
     }
   },
   methods: {
@@ -40,9 +41,13 @@ export default {
       document.body.classList.remove('lock')
     },
     stickyHeader() {
-      let currScroll = window.scrollY
+      let rect = this.$refs.header.getBoundingClientRect()
       document.addEventListener('scroll', () => {
-        if (currScroll <= window.scrollY && window.scrollY > 0) {
+        if (
+          this.currScroll <= window.scrollY &&
+          window.scrollY > 0 &&
+          window.scrollY > rect.height
+        ) {
           if (!this.isHidden) {
             this.$refs.header.classList.add('hide')
             this.isHidden = true
@@ -53,7 +58,7 @@ export default {
             this.isHidden = false
           }
         }
-        currScroll = window.scrollY
+        this.currScroll = window.scrollY
       })
     },
     newCity(city) {

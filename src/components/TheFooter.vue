@@ -4,7 +4,7 @@
 			.container 
 				.main-footer__body
 					.menu-footer__actions 
-						.menu-footer__logo
+						router-link(to="/").menu-footer__logo
 							picture 
 								source(:srcset="`./images/icons/footer-logo.svg`" media="(min-width: 767.98px)")
 								source(:srcset="`./images/icons/footer-logo-mob.svg`" media="(min-width: 300px)")
@@ -29,7 +29,7 @@
 			.container 
 				.bottom-footer__body 
 					.footer__copy ©Замокмастер 2024
-					router-link(:to="`/text-page`").footer__politic Политика конфиденциальности
+					router-link(to="/text-page" target="_blank").footer__politic Политика конфиденциальности
 					.footer__company
 						.footer__company-caption Разработка сайта
 						a(href="https://webshop.ru/" target="_blank").footer__company-logo 
@@ -42,7 +42,7 @@
 <script>
 import obj from '../data.js'
 import ModalCall from '../components/Modals/ModalCall.vue'
-import spollers from '../assets/scripts/modules/spollers.js'
+import spollers from '../utils/spollers.js'
 
 const { menuFooter } = obj
 

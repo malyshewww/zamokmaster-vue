@@ -1,8 +1,11 @@
 <template lang="pug">
+	metainfo
+		template(v-slot:title="{ content }") {{ content ? `${content} | Замокмастер` : `Замокмастер` }}
 	.wrapper
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
+				RouterView(:defaultCity="defaultCity" :declensionCity="declensionCity")
+				//- div(:defaultCity="defaultCity" :declensionCity="declensionCity")
 		TheFooter
 		Widget
 		.services-mobile
@@ -15,8 +18,9 @@
 		.phone-mobile 
 			.container
 				.phone-mobile__body
-					a(tel="+79958881086").btn.btn-phone +7 (995) 888-10-86
+					a(href="tel=+79958881086").btn.btn-phone +7 (995) 888-10-86
 					FreeMasters
+		ModalNotice
 </template>
 <script>
 import { cityIn, cityFrom, cityTo } from 'lvovich'
@@ -26,11 +30,12 @@ import TheHeader from '../components/TheHeader.vue'
 import TheFooter from '../components/TheFooter.vue'
 import FreeMasters from '../components/FreeMasters.vue'
 import Widget from '../components/Widget.vue'
+import ModalNotice from '../components/Modals/ModalNotice.vue'
 
 const { services } = obj
 
 export default {
-  components: { TheHeader, TheFooter, FreeMasters, Widget },
+  components: { TheHeader, TheFooter, FreeMasters, Widget, ModalNotice },
   data() {
     return {
       services,

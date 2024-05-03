@@ -12,7 +12,7 @@
 					.modal__title Выберите город
 			form(action="#").modal__form.form
 				.form-item 
-					input(type="text" @input="onSearchInput" placeholder="Введите название города" v-model="search")
+					input(type="text" @input="onSearchInput" name="city" placeholder="Введите название города" v-model="search")
 					button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
 					button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
 				.form-result

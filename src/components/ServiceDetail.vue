@@ -2,7 +2,7 @@
 	.services-detail__item
 		.services-detail__body 
 			.services-detail__content 
-				.services-detail__title 
+				h2.services-detail__title 
 					span {{ titleGray }}
 					|  {{ title }}
 				.services-detail__text 
@@ -12,7 +12,7 @@
 			.services-detail__image-wrap 
 				.services-detail__image.ibg
 					picture
-						source(:srcset=`'./images/services/service-detail-'+img+'.jpg'` media="(min-width: 767.98px)")
+						source(:srcset=`'./images/services/service-detail-'+img+'.jpg'`)
 						//- source(:srcset=`'./images/services/service-detail-'+img+'-mob.jpg'` media="(min-width: 300px)")
 						img(:src=`'./images/services/service-detail-'+img+'.jpg'`, :alt="titleGray + title" loading="lazy")
 </template>

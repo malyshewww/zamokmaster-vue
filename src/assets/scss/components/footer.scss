@@ -119,7 +119,10 @@
 			&:hover {
 				color: $bg-contrast;
 			}
-
+		}
+		@media screen and (max-width: $md) {
+			font-size: 14px;
+			line-height: 17px;
 		}
 	}
 }

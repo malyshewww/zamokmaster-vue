@@ -7,7 +7,7 @@
 					.top-main__card-image
 						picture 
 							source(:srcset="`./images/card/image.jpg`")
-							img(:src="`./images/card/image.jpg`" loading="lazy")
+							img(:src="`./images/card/image.jpg`" alt="фото" loading="lazy")
 					.top-main__body
 						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity}}]
 						a(href="tel:+79958881086").btn-phone.btn
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
@@ -57,6 +58,9 @@ import CastleTypes from '../components/CastleTypes.vue'
 const { tablePrice } = obj
 
 export default {
+  setup() {
+    useMeta({ title: 'Карточка услуги' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,
