@@ -35,9 +35,9 @@ import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 export default {
-  // setup() {
-  //   useMeta({ title: 'Контакты' })
-  // },
+  setup() {
+    useMeta({ title: 'Контакты' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Questions,

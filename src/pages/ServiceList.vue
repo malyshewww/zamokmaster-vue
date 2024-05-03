@@ -37,9 +37,9 @@ import Breadcrumbs from '../components/Breadcrumbs.vue'
 const { servicesList } = obj
 
 export default {
-  //   setup() {
-  //     useMeta({ title: 'Список услуг' })
-  //   },
+  setup() {
+    useMeta({ title: 'Список услуг' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Breadcrumbs

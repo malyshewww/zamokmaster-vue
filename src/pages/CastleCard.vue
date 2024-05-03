@@ -37,9 +37,9 @@ import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
 export default {
-  //   setup() {
-  //     useMeta({ title: 'Карточка замка' })
-  //   },
+  setup() {
+    useMeta({ title: 'Карточка замка' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,

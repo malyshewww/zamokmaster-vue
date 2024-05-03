@@ -41,9 +41,9 @@ import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { castleList } = obj
 export default {
-  //   setup() {
-  //     useMeta({ title: 'Список замков' })
-  //   },
+  setup() {
+    useMeta({ title: 'Список замков' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,

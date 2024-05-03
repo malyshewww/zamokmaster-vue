@@ -58,9 +58,9 @@ import CastleTypes from '../components/CastleTypes.vue'
 const { tablePrice } = obj
 
 export default {
-  //   setup() {
-  //     useMeta({ title: 'Карточка услуги' })
-  //   },
+  setup() {
+    useMeta({ title: 'Карточка услуги' })
+  },
   props: ['defaultCity', 'declensionCity'],
   components: {
     Sidebar,
