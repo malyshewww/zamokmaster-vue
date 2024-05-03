@@ -6,6 +6,6 @@ import { router } from './router.js'
 
 const VueApp = createApp(App).use(router).use(createMetaManager()) // add this line
 
-await router.isReady()
+// await router.isReady()
 
 VueApp.mount('#app')

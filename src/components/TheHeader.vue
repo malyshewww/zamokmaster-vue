@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       isHidden: false,
-      currScroll: window.scrollY
+      currScroll: null
     }
   },
   methods: {
@@ -41,25 +41,28 @@ export default {
       document.body.classList.remove('lock')
     },
     stickyHeader() {
-      let rect = this.$refs.header.getBoundingClientRect()
-      document.addEventListener('scroll', () => {
-        if (
-          this.currScroll <= window.scrollY &&
-          window.scrollY > 0 &&
-          window.scrollY > rect.height
-        ) {
-          if (!this.isHidden) {
-            this.$refs.header.classList.add('hide')
-            this.isHidden = true
-          }
-        } else {
-          if (this.isHidden) {
-            this.$refs.header.classList.remove('hide')
-            this.isHidden = false
-          }
-        }
+      if (typeof window !== 'undefined') {
         this.currScroll = window.scrollY
-      })
+        let rect = this.$refs.header.getBoundingClientRect()
+        document.addEventListener('scroll', () => {
+          if (
+            this.currScroll <= window.scrollY &&
+            window.scrollY > 0 &&
+            window.scrollY > rect.height
+          ) {
+            if (!this.isHidden) {
+              this.$refs.header.classList.add('hide')
+              this.isHidden = true
+            }
+          } else {
+            if (this.isHidden) {
+              this.$refs.header.classList.remove('hide')
+              this.isHidden = false
+            }
+          }
+          this.currScroll = window.scrollY
+        })
+      }
     },
     newCity(city) {
       this.$emit('onChangeCity', city)
