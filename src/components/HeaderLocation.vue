@@ -71,6 +71,15 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
+      let c = this.getCookie()
+      console.log(c)
+      if (c.city) {
+        console.log('есть')
+        return this.getCityStorage()
+      } else {
+        console.log('нет')
+        return this.localCity
+      }
       // if (typeof window !== 'undefined') {
       //   if (localStorage.getItem('city') !== null) {
       //     return this.getCityStorage()
@@ -84,15 +93,27 @@ export default {
       // if (typeof window !== 'undefined') {
       //   localStorage.setItem('city', this.localCity)
       // }
+      let cookie_date = new Date()
+      cookie_date.setMonth(cookie_date.getMonth() + 1)
+      document.cookie = `city=${city};expires=` + cookie_date.toUTCString()
       this.onChangeCity(this.localCity)
     },
     getCityStorage() {
+      let c = this.getCookie()
+      return c.city
       // if (typeof window !== 'undefined') {
       //   return localStorage.getItem('city')
       // }
     },
     onChangeCity(city) {
       this.$emit('onChangeCity', city)
+    },
+    getCookie() {
+      return document.cookie.split('; ').reduce((acc, item) => {
+        const [name, value] = item.split('=')
+        acc[name] = value
+        return acc
+      }, {})
     }
   },
   computed: {
@@ -115,6 +136,8 @@ export default {
     window.addEventListener('load', () => {
       this.setCityStorage()
       this.isShowLocation = true
+      let c = this.getCookie()
+      console.log(c.city)
     })
   }
 }

@@ -41,23 +41,36 @@ export default {
   methods: {
     getNewCity(city) {
       this.defaultCity = city
-      // this.getStorageCity()
+      this.getStorageCity()
+    },
+    getCityStorage() {
+      // if (typeof window !== 'undefined') {
+      //   if (localStorage.getItem('city') !== null) {
+      //     return localStorage.getItem('city')
+      //   } else {
+      //     return this.defaultCity
+      //   }
+      // }
+      let c = this.getCookie()
+      if (c.city) {
+        return c.city
+      } else {
+        return this.defaultCity
+      }
+    },
+    setDeclensionCity() {
+      return cityIn(this.getCityStorage())
+    },
+    getStorageCity() {
+      this.declensionCity = this.setDeclensionCity()
+    },
+    getCookie() {
+      return document.cookie.split('; ').reduce((acc, item) => {
+        const [name, value] = item.split('=')
+        acc[name] = value
+        return acc
+      }, {})
     }
-    // getCityStorage() {
-    //   if (typeof window !== 'undefined') {
-    //     if (localStorage.getItem('city') !== null) {
-    //       return localStorage.getItem('city')
-    //     } else {
-    //       return this.defaultCity
-    //     }
-    //   }
-    // },
-    // setDeclensionCity() {
-    //   return cityIn(this.getCityStorage())
-    // },
-    // getStorageCity() {
-    //   this.declensionCity = this.setDeclensionCity()
-    // }
   },
   watch: {
     '$route.name'() {
@@ -70,10 +83,9 @@ export default {
   },
   updated() {},
   mounted() {
-    console.log(document.querySelector('body'))
-    // window.addEventListener('load', () => {
-    //   this.getStorageCity()
-    // })
+    window.addEventListener('load', () => {
+      this.getStorageCity()
+    })
   }
 }
 </script>

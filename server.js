@@ -37,9 +37,6 @@ if (!isProduction) {
 app.use('*', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '')
-    if (typeof localStorage === 'undefined' || localStorage === null) {
-      localStorage = new LocalStorage('./scratch')
-    }
     let template
     let render
     if (!isProduction) {
