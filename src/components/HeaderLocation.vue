@@ -71,25 +71,25 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
-      if (typeof window !== 'undefined') {
-        if (localStorage.getItem('city') !== null) {
-          return this.getCityStorage()
-        } else {
-          return this.localCity
-        }
-      }
+      // if (typeof window !== 'undefined') {
+      //   if (localStorage.getItem('city') !== null) {
+      //     return this.getCityStorage()
+      //   } else {
+      //     return this.localCity
+      //   }
+      // }
     },
     replaceCityStorage(city) {
       this.localCity = city
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('city', this.localCity)
-      }
+      // if (typeof window !== 'undefined') {
+      //   localStorage.setItem('city', this.localCity)
+      // }
       this.onChangeCity(this.localCity)
     },
     getCityStorage() {
-      if (typeof window !== 'undefined') {
-        return localStorage.getItem('city')
-      }
+      // if (typeof window !== 'undefined') {
+      //   return localStorage.getItem('city')
+      // }
     },
     onChangeCity(city) {
       this.$emit('onChangeCity', city)
