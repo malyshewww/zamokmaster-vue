@@ -29,7 +29,7 @@
 			.container 
 				.bottom-footer__body 
 					.footer__copy ©Замокмастер 2024
-					a(href="/politika").footer__politic Политика конфиденциальности
+					router-link(:to="`/text-page`").footer__politic Политика конфиденциальности
 					.footer__company
 						.footer__company-caption Разработка сайта
 						a(href="https://webshop.ru/" target="_blank").footer__company-logo 

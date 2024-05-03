@@ -7,8 +7,8 @@
 				.castle-item__image
 					.castle-item__logo
 						picture 
-							source(:srcset=`'../assets/images/castle-types/'+path+'/type-'+(index+1)+'.png'`)
-							img(:src=`"../assets/images/castle-types/card/type-"+(index+1)+'.png'`, alt="" loading="lazy")
+							source(:srcset=`'./images/castle-types/'+path+'/type-'+(index+1)+'.png'`)
+							img(:src=`"./images/castle-types/card/type-"+(index+1)+'.png'`, alt="" loading="lazy")
 		router-link(to="/castle-list").castle-types__button.btn Все замки
 </template>
 

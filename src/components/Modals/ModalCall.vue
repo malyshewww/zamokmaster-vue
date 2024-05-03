@@ -4,7 +4,7 @@
 			.modal__header 
 				.modal__title Оставьте заявку
 				.modal__sub-title Оставьте заявку и наш мастер перезвонит вам в ближайшее время
-			form(action="").modal__form.form 
+			form(action="#").modal__form.form 
 				.form__items 
 					.form-item 
 						input(type="text" placeholder="Ваше имя")
