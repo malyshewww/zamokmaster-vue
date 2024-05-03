@@ -51,11 +51,13 @@ export default {
       //     return this.defaultCity
       //   }
       // }
-      let c = this.getCookie()
-      if (c.city) {
-        return c.city
-      } else {
-        return this.defaultCity
+      if (typeof window !== 'undefined') {
+        let c = this.getCookie()
+        if (c.city) {
+          return c.city
+        } else {
+          return this.defaultCity
+        }
       }
     },
     setDeclensionCity() {
@@ -65,11 +67,13 @@ export default {
       this.declensionCity = this.setDeclensionCity()
     },
     getCookie() {
-      return document.cookie.split('; ').reduce((acc, item) => {
-        const [name, value] = item.split('=')
-        acc[name] = value
-        return acc
-      }, {})
+      if (typeof window !== 'undefined') {
+        return document.cookie.split('; ').reduce((acc, item) => {
+          const [name, value] = item.split('=')
+          acc[name] = value
+          return acc
+        }, {})
+      }
     }
   },
   watch: {

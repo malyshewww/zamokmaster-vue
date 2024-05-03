@@ -71,14 +71,13 @@ export default {
       this.showBtnSearch = true
     },
     setCityStorage() {
-      let c = this.getCookie()
-      console.log(c)
-      if (c.city) {
-        console.log('есть')
-        return this.getCityStorage()
-      } else {
-        console.log('нет')
-        return this.localCity
+      if (typeof window !== 'undefined') {
+        let c = this.getCookie()
+        if (c.city) {
+          return this.getCityStorage()
+        } else {
+          return this.localCity
+        }
       }
       // if (typeof window !== 'undefined') {
       //   if (localStorage.getItem('city') !== null) {
@@ -89,14 +88,16 @@ export default {
       // }
     },
     replaceCityStorage(city) {
-      this.localCity = city
       // if (typeof window !== 'undefined') {
       //   localStorage.setItem('city', this.localCity)
       // }
-      let cookie_date = new Date()
-      cookie_date.setMonth(cookie_date.getMonth() + 1)
-      document.cookie = `city=${city};expires=` + cookie_date.toUTCString()
-      this.onChangeCity(this.localCity)
+      if (typeof window !== 'undefined') {
+        this.localCity = city
+        let cookie_date = new Date()
+        cookie_date.setMonth(cookie_date.getMonth() + 1)
+        document.cookie = `city=${city};expires=` + cookie_date.toUTCString()
+        this.onChangeCity(this.localCity)
+      }
     },
     getCityStorage() {
       let c = this.getCookie()
@@ -109,11 +110,13 @@ export default {
       this.$emit('onChangeCity', city)
     },
     getCookie() {
-      return document.cookie.split('; ').reduce((acc, item) => {
-        const [name, value] = item.split('=')
-        acc[name] = value
-        return acc
-      }, {})
+      if (typeof window !== 'undefined') {
+        return document.cookie.split('; ').reduce((acc, item) => {
+          const [name, value] = item.split('=')
+          acc[name] = value
+          return acc
+        }, {})
+      }
     }
   },
   computed: {
