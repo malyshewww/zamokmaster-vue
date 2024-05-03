@@ -85,12 +85,12 @@ import MainServices from '../components/MainServices.vue'
 const { servicesDetail, stats } = obj
 
 export default {
-  setup() {
-    useMeta({
-      title: 'Главная',
-      description: [{ name: 'description', content: `My page meta description` }]
-    })
-  },
+  //   setup() {
+  //     useMeta({
+  //       title: 'Главная',
+  //       description: [{ name: 'description', content: `My page meta description` }]
+  //     })
+  //   },
 
   props: ['defaultCity', 'declensionCity'],
   components: {
