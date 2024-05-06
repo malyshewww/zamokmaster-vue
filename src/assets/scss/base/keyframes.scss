@@ -50,3 +50,15 @@
 		transform: rotate3d(0, 0, 1, 0deg);
 	}
 }
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+		transform: translateX(0);
+	}
+	40% {
+		transform: translateX(30px);
+	}
+	60% {
+		transform: translateX(15px);
+	}
+}

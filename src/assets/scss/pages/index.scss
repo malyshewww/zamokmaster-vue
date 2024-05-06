@@ -980,9 +980,6 @@
 		max-height: 226px;
 		overflow: hidden;
 		transition: max-height .5s ease 0s;
-		// .active & {
-		// 	max-height: 2000px;
-		// }
 	}
 	&-content__gradient {
 		position: absolute;
@@ -990,9 +987,6 @@
 		height: 114px;
 		left: 0;
 		bottom: 0px;
-		// background-image: url('/images/main-about/gradient.png');
-		// background-repeat: no-repeat;
-		// background-size: cover;
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-start;

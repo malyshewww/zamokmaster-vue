@@ -1,4 +1,3 @@
-import './assets/scss/main.scss'
 import { createMetaManager } from 'vue-meta'
 import { createApp } from 'vue'
 import App from './App.vue'

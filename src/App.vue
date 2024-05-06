@@ -21,6 +21,12 @@ export default {
   },
   methods: {},
   watch() {},
-  mounted() {}
+  mounted() {
+    console.log('app')
+  }
 }
 </script>
+
+<style lang="scss">
+@import './assets/scss/main.scss';
+</style>

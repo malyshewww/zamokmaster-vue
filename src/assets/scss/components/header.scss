@@ -19,24 +19,6 @@
 		padding: 12px 0;
 		border: none;
 	}
-
-	// &::before {
-	// 	content: "";
-	// 	height: 100%;
-	// 	width: 100%;
-	// 	background-color: $white;
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 0;
-	// 	z-index: 11;
-	// 	display: none;
-	// 	@media screen and (max-width: $xxxl) {
-	// 		display: block;
-	// 	}
-	// 	@media screen and (max-width: $md) {
-	// 		z-index: 21;
-	// 	}
-	// }
 	& .container {
 		max-width: 100%;
 		padding: 0 40px;
@@ -146,6 +128,15 @@
 	&__location {}
 	&__burger {
 		display: none;
+		@media (any-hover: hover) {
+			&:hover {
+				& span,
+				&::before,
+				&::after {
+					background-color: $button-link-hover;
+				}
+			}
+		}
 		@media screen and (max-width: $xxxl) {
 			width: 30px;
 			height: 22px;
