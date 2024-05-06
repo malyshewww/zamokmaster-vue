@@ -1501,6 +1501,7 @@ const _sfc_main = {
   watch() {
   },
   mounted() {
+    console.log("app");
   }
 };
 const _sfc_setup = _sfc_main.setup;
