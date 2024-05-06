@@ -25,12 +25,14 @@ export default {
   },
   methods: {
     animation() {
-      ScrollReveal({
-        reset: false,
-        duration: 1500,
-        distance: '15px'
-      })
-      ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
+      if (typeof window !== 'undefined') {
+        ScrollReveal({
+          reset: false,
+          duration: 1500,
+          distance: '15px'
+        })
+        ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
+      }
     }
   },
   mounted() {
