@@ -27,51 +27,53 @@ export default {
   },
   methods: {
     animation() {
-      ScrollReveal({
-        reset: false,
-        duration: 1500,
-        distance: '50px'
-      })
-      ScrollReveal().reveal(
-        '.services-detail--first .services-detail__box:nth-child(1) .services-detail__content',
-        { origin: 'left', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--first .services-detail__box:nth-child(1) .services-detail__image-wrap',
-        { origin: 'right', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--first .services-detail__box:nth-child(2) .services-detail__content',
-        { origin: 'right', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--first .services-detail__box:nth-child(2) .services-detail__image-wrap',
-        { origin: 'left', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--second .services-detail__box:nth-child(1) .services-detail__content',
-        { origin: 'left', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--second .services-detail__box:nth-child(1) .services-detail__image-wrap',
-        { origin: 'right', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--second .services-detail__box:nth-child(2) .services-detail__content',
-        { origin: 'right', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--second .services-detail__box:nth-child(2) .services-detail__image-wrap',
-        { origin: 'left', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--third .services-detail__box:nth-child(1) .services-detail__content',
-        { origin: 'left', opacity: 0 }
-      )
-      ScrollReveal().reveal(
-        '.services-detail--third .services-detail__box:nth-child(1) .services-detail__image-wrap',
-        { origin: 'right', opacity: 0 }
-      )
+      if (typeof window !== 'undefined') {
+        ScrollReveal({
+          reset: false,
+          duration: 1500,
+          distance: '50px'
+        })
+        ScrollReveal().reveal(
+          '.services-detail--first .services-detail__box:nth-child(1) .services-detail__content',
+          { origin: 'left', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--first .services-detail__box:nth-child(1) .services-detail__image-wrap',
+          { origin: 'right', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--first .services-detail__box:nth-child(2) .services-detail__content',
+          { origin: 'right', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--first .services-detail__box:nth-child(2) .services-detail__image-wrap',
+          { origin: 'left', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--second .services-detail__box:nth-child(1) .services-detail__content',
+          { origin: 'left', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--second .services-detail__box:nth-child(1) .services-detail__image-wrap',
+          { origin: 'right', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--second .services-detail__box:nth-child(2) .services-detail__content',
+          { origin: 'right', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--second .services-detail__box:nth-child(2) .services-detail__image-wrap',
+          { origin: 'left', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--third .services-detail__box:nth-child(1) .services-detail__content',
+          { origin: 'left', opacity: 0 }
+        )
+        ScrollReveal().reveal(
+          '.services-detail--third .services-detail__box:nth-child(1) .services-detail__image-wrap',
+          { origin: 'right', opacity: 0 }
+        )
+      }
     }
   },
   mounted() {

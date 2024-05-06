@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 
 import Home from './pages/Home.vue'
 import About from './pages/About.vue'
@@ -8,6 +8,9 @@ import CastleCard from './pages/CastleCard.vue'
 import ServiceCard from './pages/ServiceCard.vue'
 import ServiceList from './pages/ServiceList.vue'
 import TextPage from './pages/TextPage.vue'
+
+const baseUrl = import.meta.env.BASE_URL
+const history = import.meta.env.SSR ? createMemoryHistory(baseUrl) : createWebHistory(baseUrl)
 
 const routes = [
   {
@@ -67,7 +70,7 @@ const routes = [
   }
 ]
 const router = createRouter({
-  history: createWebHistory(),
+  history,
   routes,
   scrollBehavior: function (to, _from, savedPosition) {
     if (savedPosition) {

@@ -112,12 +112,14 @@ export default {
   },
   methods: {
     animation() {
-      ScrollReveal({
-        reset: false,
-        duration: 1500,
-        distance: '15px'
-      })
-      ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
+      if (typeof window !== 'undefined') {
+        ScrollReveal({
+          reset: false,
+          duration: 1500,
+          distance: '15px'
+        })
+        ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
+      }
     }
   },
   watch() {},
@@ -125,7 +127,7 @@ export default {
   mounted() {
     window.addEventListener('load', () => {
       document.body.classList.add('home')
-      this.animation()
+      //   this.animation()
     })
   }
 }
