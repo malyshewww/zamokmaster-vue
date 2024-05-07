@@ -29,7 +29,8 @@ export default {
         ScrollReveal({
           reset: false,
           duration: 1500,
-          distance: '15px'
+          distance: '15px',
+          mobile: false
         })
         ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
       }

@@ -31,7 +31,8 @@ export default {
       ScrollReveal({
         reset: false,
         duration: 1500,
-        distance: '30px'
+        distance: '30px',
+        mobile: false
       })
       ScrollReveal().reveal('.services__item', {
         origin: 'top',

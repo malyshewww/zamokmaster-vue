@@ -31,7 +31,8 @@ export default {
         ScrollReveal({
           reset: false,
           duration: 1500,
-          distance: '50px'
+          distance: '50px',
+          mobile: false
         })
         ScrollReveal().reveal(
           '.services-detail--first .services-detail__box:nth-child(1) .services-detail__content',

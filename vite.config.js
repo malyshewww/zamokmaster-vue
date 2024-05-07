@@ -10,6 +10,8 @@ import autoprefixer from 'autoprefixer'
 import VitePluginSsh from 'vite-plugin-ssh'
 import vuePugPlugin from 'vue-pug-plugin'
 
+import { visualizer } from 'rollup-plugin-visualizer'
+
 import * as nodePath from 'path'
 const repositoryName = nodePath.basename(nodePath.resolve())
 
@@ -60,11 +62,17 @@ export default defineConfig({
   },
   // root: 'src',
   build: {
+    rollupOptions: {
+      plugins: [
+        visualizer({
+          emitFile: true,
+          filename: 'stats.html'
+        })
+      ]
+    },
     sourcemap: false,
-    outDir: '../dist',
     emptyOutDir: true,
     cssMinify: true,
-    ssrManifest: true,
-    manifest: true
+    ssrManifest: true
   }
 })
