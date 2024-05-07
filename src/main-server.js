@@ -16,8 +16,6 @@ export async function render(url, manifest = null) {
   await router.push(url)
   await router.isReady()
 
-  // ctx - context. Плагин @vitejs/plugin-vue
-  // https://vitejs.dev/guide/ssr.html#generating-preload-directives
   const ctx = {
     modules: []
   }

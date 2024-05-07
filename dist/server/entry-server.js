@@ -527,7 +527,7 @@ const Navbar = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", ssrRender
 function ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${ssrRenderAttrs(mergeProps({
     class: ["modal", { modalClass: $props.modalClass }],
-    id: { modalId: $props.modalId }
+    id: [$props.modalId ? $props.modalId : ""]
   }, _attrs))}><div class="modal__wrapper"><div class="modal__content"><button class="modal__close" type="button"></button>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div></div>`);
@@ -559,7 +559,7 @@ function ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   ssrRenderTeleport(_push, (_push2) => {
     _push2(ssrRenderComponent(_component_Modal, {
       class: ["modal-search", [$data.isOpenModal ? "open-modal" : ""]],
-      id: "modal-call",
+      id: "modal-search",
       onCloseModal: $options.toggleModal
     }, {
       default: withCtx((_, _push3, _parent2, _scopeId) => {
@@ -884,7 +884,6 @@ function ssrRender$6(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   ssrRenderTeleport(_push, (_push2) => {
     _push2(ssrRenderComponent(_component_Modal, {
       class: ["modal-call", [$props.isOpenModal ? "open-modal" : ""]],
-      id: "modal-call",
       onCloseModal: $options.closeModal
     }, {
       default: withCtx((_, _push3, _parent2, _scopeId) => {
@@ -1310,6 +1309,7 @@ function ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   ssrRenderTeleport(_push, (_push2) => {
     _push2(ssrRenderComponent(_component_Modal, {
       class: "modal-notice",
+      id: "modal-notice",
       onCloseModal: $options.closeModal
     }, {
       default: withCtx((_, _push3, _parent2, _scopeId) => {

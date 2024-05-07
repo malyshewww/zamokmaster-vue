@@ -1,5 +1,5 @@
 <template lang="pug">
-	.modal(:class="{modalClass}" :id="{modalId}" @click="closeModal")
+	.modal(:class="{modalClass}" :id="[modalId ? modalId : '']" @click="closeModal")
 		.modal__wrapper 
 			.modal__content(@click.stop)
 				button(type="button" @click="closeModal").modal__close

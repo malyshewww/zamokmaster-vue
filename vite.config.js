@@ -62,6 +62,9 @@ export default defineConfig({
   build: {
     sourcemap: false,
     outDir: '../dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    cssMinify: true,
+    ssrManifest: true,
+    manifest: true
   }
 })

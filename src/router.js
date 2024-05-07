@@ -15,44 +15,49 @@ const history = import.meta.env.SSR ? createMemoryHistory(baseUrl) : createWebHi
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: () => import('@/pages/Home.vue'),
     meta: { title: 'Главная' },
     name: 'home'
   },
   {
     path: '/about',
-    component: About,
+    component: () => import('@/pages/About.vue'),
     meta: { title: 'О компании' },
     name: 'about'
   },
-  { path: '/contacts', component: Contacts, meta: { title: 'Контакты' }, name: 'contacts' },
+  {
+    path: '/contacts',
+    component: () => import('@/pages/Contacts.vue'),
+    meta: { title: 'Контакты' },
+    name: 'contacts'
+  },
   {
     path: '/castle-list',
-    component: CastleList,
+    component: () => import('@/pages/CastleList.vue'),
     meta: { title: 'Список замков' },
     name: 'castle-list'
   },
   {
     path: '/castle-card',
-    component: CastleCard,
+    component: () => import('@/pages/CastleCard.vue'),
     meta: { title: 'Карточка замка' },
     name: 'castle-card'
   },
   {
     path: '/service-card',
-    component: ServiceCard,
+    component: () => import('@/pages/ServiceCard.vue'),
     meta: { title: 'Карточка услуги' },
     name: 'service-card'
   },
   {
     path: '/service-list',
-    component: ServiceList,
+    component: () => import('@/pages/ServiceList.vue'),
     meta: { title: 'Список услуг' },
     name: 'service-list'
   },
   {
     path: '/text-page',
-    component: TextPage,
+    component: () => import('@/pages/TextPage.vue'),
     meta: { title: 'Текстовая страница' },
     name: 'text-page'
   },
@@ -84,7 +89,7 @@ const router = createRouter({
       }, 100)
     }
   },
-  base: '/zamokmaster/'
+  base: baseUrl
 })
 
 router.beforeEach((to, from, next) => {
