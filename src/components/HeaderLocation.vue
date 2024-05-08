@@ -7,7 +7,7 @@
 				button(type="button" @click="closeLocation").location-header__button.btn Верно
 				button(type="button" @click="toggleModal").location-header__button.btn.btn-border Выбрать другой
 	Teleport(to="body")
-		Modal(class="modal-search" :class="[isOpenModal ? 'open-modal' : '']" id="modal-search" @closeModal="toggleModal")
+		Modal(class="modal-search" :class="[isOpenModal ? 'open-modal' : '']" @closeModal="toggleModal")
 			.modal__header 
 					.modal__title Выберите город
 			form(action="#").modal__form.form

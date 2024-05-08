@@ -24,7 +24,8 @@ export default {
   props: ['count', 'imagePath'],
   data() {
     return {
-      slider: null
+      slider: null,
+      isLoopingSlider: false
     }
   },
   methods: {
@@ -33,7 +34,7 @@ export default {
         modules: [Navigation, Autoplay],
         speed: 1000,
         slidesPerView: 'auto',
-        loop: true,
+        loop: this.isLoopingSlider,
         autoplay: {
           delay: 1000,
           disableOnInteraction: false
@@ -56,6 +57,7 @@ export default {
     destroySlider() {
       if (this.slider != null) {
         const slides = this.slider.slides
+        this.countSlides = slides
         const nav = this.slider.navigation
         let betweenSlider = 0
         if (window.innerWidth > 767.98) {
@@ -72,8 +74,10 @@ export default {
             nav.nextEl.remove()
             nav.prevEl.remove()
             this.$refs.slider_controls.remove()
+            this.isLoopingSlider = false
           } else {
             this.$refs.mySwiper.classList.remove('in-active')
+            this.isLoopingSlider = true
           }
         }
       }

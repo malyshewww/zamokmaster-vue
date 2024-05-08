@@ -1,16 +1,13 @@
 import { createMetaManager } from 'vue-meta'
-// import { createApp } from './main'
-import { createApp } from 'vue'
-import App from './App.vue'
-import { router } from './router.js'
+import { createApp } from './main'
 
-const VueApp = createApp(App).use(router).use(createMetaManager())
+const { app, router } = createApp()
+
+app.use(router).use(createMetaManager())
 
 // await router.isReady()
 
-VueApp.mount('#app')
-
-// const { app, router } = createApp()
+app.mount('#app')
 
 // router.isReady().then(() => {
 //   app.mount('#app')

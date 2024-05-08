@@ -298,7 +298,9 @@ picture {
 	color: $text-headings;
 	@include adaptiv-value("font-size", 54, 26, 1);
 	@include adaptiv-value("line-height", 59, 29, 1);
-	hyphens: auto;
+	@media screen and (max-width: $xxxl) {
+		hyphens: auto;
+	}
 	& span {
 		color: $text-contrast-primary;
 		@media screen and (max-width: $md) {

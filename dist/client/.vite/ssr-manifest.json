@@ -1,26 +1,26 @@
 {
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/city.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/gender.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/incline.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/inclineRules.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/index.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/rules/cityRules.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/rules/genderRules.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesFirstname.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesLastname.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesMiddlename.js?commonjs-exports": [],
-  "\u0000/home/zamokmaster/app/zamokmaster/node_modules/lvovich/lib/utils.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/city.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/gender.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/incline.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/inclineRules.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/index.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/rules/cityRules.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/rules/genderRules.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesFirstname.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesLastname.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/rules/inclineRulesMiddlename.js?commonjs-exports": [],
+  "\u0000/home/work/vue-project/zamokmaster/node_modules/lvovich/lib/utils.js?commonjs-exports": [],
   "\u0000commonjsHelpers.js": [],
   "\u0000plugin-vue:export-helper": [],
   "\u0000vite/modulepreload-polyfill.js": [],
   "\u0000vite/preload-helper.js": [],
   "index.html": [],
   "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css": [
-    "/assets/TextPage-BeCY1yfc.js",
+    "/assets/TextPage-DhDJZ4Qk.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@fancyapps/ui/dist/index.esm.js": [
-    "/assets/TextPage-BeCY1yfc.js",
+    "/assets/TextPage-DhDJZ4Qk.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [],
@@ -54,22 +54,22 @@
     "/assets/scrollreveal.es-DIZ4IBFj.js"
   ],
   "node_modules/swiper/modules/autoplay.mjs": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "node_modules/swiper/modules/free-mode.mjs": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "node_modules/swiper/modules/navigation.mjs": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "node_modules/swiper/modules/scrollbar.mjs": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "node_modules/swiper/modules/thumbs.mjs": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "node_modules/swiper/shared/classes-to-selector.mjs": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "node_modules/swiper/shared/create-element-if-not-defined.mjs": [
     "/assets/create-element-if-not-defined-CpJkOhtE.js"
@@ -92,50 +92,50 @@
   "src/App.vue?vue&type=style&index=0&lang.scss": [],
   "src/App.vue?vue&type=template&lang.js": [],
   "src/components/Breadcrumbs.vue": [
-    "/assets/Breadcrumbs-CoOpr87F.js"
+    "/assets/Breadcrumbs-pIRobgFb.js"
   ],
   "src/components/Breadcrumbs.vue?vue&type=template&lang.js": [
-    "/assets/Breadcrumbs-CoOpr87F.js"
+    "/assets/Breadcrumbs-pIRobgFb.js"
   ],
   "src/components/CastleAdvantages.vue": [
-    "/assets/CastleTypes-DeFgN9OS.js"
+    "/assets/CastleTypes-C8RKtwAf.js"
   ],
   "src/components/CastleAdvantages.vue?vue&type=template&lang.js": [
-    "/assets/CastleTypes-DeFgN9OS.js"
+    "/assets/CastleTypes-C8RKtwAf.js"
   ],
   "src/components/CastleTypes.vue": [
-    "/assets/CastleTypes-DeFgN9OS.js"
+    "/assets/CastleTypes-C8RKtwAf.js"
   ],
   "src/components/CastleTypes.vue?vue&type=template&lang.js": [
-    "/assets/CastleTypes-DeFgN9OS.js"
+    "/assets/CastleTypes-C8RKtwAf.js"
   ],
   "src/components/FreeMasters.vue": [],
   "src/components/FreeMasters.vue?vue&type=template&lang.js": [],
   "src/components/HeaderLocation.vue": [],
   "src/components/HeaderLocation.vue?vue&type=template&lang.js": [],
   "src/components/MainAbout.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainAbout.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainGeography.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainGeography.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainScreenInfo.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainScreenInfo.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainServices.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/MainServices.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/Modals/ModalCall.vue": [],
   "src/components/Modals/ModalCall.vue?vue&type=template&lang.js": [],
@@ -144,34 +144,34 @@
   "src/components/Navbar.vue": [],
   "src/components/Navbar.vue?vue&type=template&lang.js": [],
   "src/components/Questions.vue": [
-    "/assets/Questions-n_I0kDBN.js"
+    "/assets/Questions-CE1oQwE_.js"
   ],
   "src/components/Questions.vue?vue&type=template&lang.js": [
-    "/assets/Questions-n_I0kDBN.js"
+    "/assets/Questions-CE1oQwE_.js"
   ],
   "src/components/Request.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/Request.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/ServiceDetail.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/ServiceDetail.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/ServiceSlider.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/ServiceSlider.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/components/Sidebar.vue": [
-    "/assets/Sidebar-DNOheaAm.js"
+    "/assets/Sidebar-Z4Rjmb-9.js"
   ],
   "src/components/Sidebar.vue?vue&type=template&lang.js": [
-    "/assets/Sidebar-DNOheaAm.js"
+    "/assets/Sidebar-Z4Rjmb-9.js"
   ],
   "src/components/TheFooter.vue": [],
   "src/components/TheFooter.vue?vue&type=template&lang.js": [],
@@ -185,57 +185,59 @@
   "src/layouts/BaseLayout.vue?vue&type=template&lang.js": [],
   "src/layouts/Modal.vue": [],
   "src/layouts/Modal.vue?vue&type=template&lang.js": [],
+  "src/main.js": [],
   "src/pages/About.vue": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "src/pages/About.vue?vue&type=template&lang.js": [
-    "/assets/About-C8k07Fzk.js"
+    "/assets/About-B09JUp_Y.js"
   ],
   "src/pages/CastleCard.vue": [
-    "/assets/CastleCard-BvXs4Ry7.js"
+    "/assets/CastleCard-CH9vD32w.js"
   ],
   "src/pages/CastleCard.vue?vue&type=template&lang.js": [
-    "/assets/CastleCard-BvXs4Ry7.js"
+    "/assets/CastleCard-CH9vD32w.js"
   ],
   "src/pages/CastleList.vue": [
-    "/assets/CastleList-CiQiBmpD.js"
+    "/assets/CastleList-CtWNylDB.js"
   ],
   "src/pages/CastleList.vue?vue&type=template&lang.js": [
-    "/assets/CastleList-CiQiBmpD.js"
+    "/assets/CastleList-CtWNylDB.js"
   ],
   "src/pages/Contacts.vue": [
-    "/assets/Contacts-R5EIaqBI.js"
+    "/assets/Contacts-fzYknPRJ.js"
   ],
   "src/pages/Contacts.vue?vue&type=template&lang.js": [
-    "/assets/Contacts-R5EIaqBI.js"
+    "/assets/Contacts-fzYknPRJ.js"
   ],
   "src/pages/Home.vue": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/pages/Home.vue?vue&type=template&lang.js": [
-    "/assets/Home-B4DPocmE.js"
+    "/assets/Home-Caql-oL5.js"
   ],
   "src/pages/ServiceCard.vue": [
-    "/assets/ServiceCard-TWfzGSCP.js"
+    "/assets/ServiceCard-BPvkmPDz.js"
   ],
   "src/pages/ServiceCard.vue?vue&type=template&lang.js": [
-    "/assets/ServiceCard-TWfzGSCP.js"
+    "/assets/ServiceCard-BPvkmPDz.js"
   ],
   "src/pages/ServiceList.vue": [
-    "/assets/ServiceList-B3gp_rv5.js"
+    "/assets/ServiceList-ZBv8qWwx.js"
   ],
   "src/pages/ServiceList.vue?vue&type=template&lang.js": [
-    "/assets/ServiceList-B3gp_rv5.js"
+    "/assets/ServiceList-ZBv8qWwx.js"
   ],
   "src/pages/TextPage.vue": [
-    "/assets/TextPage-BeCY1yfc.js",
+    "/assets/TextPage-DhDJZ4Qk.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/pages/TextPage.vue?vue&type=template&lang.js": [
-    "/assets/TextPage-BeCY1yfc.js",
+    "/assets/TextPage-DhDJZ4Qk.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/router.js": [],
+  "src/utils/dynamic_adapt.js": [],
   "src/utils/maskPhone.js": [],
   "src/utils/spollers.js": []
 }

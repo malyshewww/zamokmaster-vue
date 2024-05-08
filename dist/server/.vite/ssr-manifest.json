@@ -30,28 +30,28 @@
   "src/components/HeaderLocation.vue": [],
   "src/components/HeaderLocation.vue?vue&type=template&lang.js": [],
   "src/components/MainAbout.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainAbout.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainGeography.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainGeography.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainScreenInfo.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainScreenInfo.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainServices.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/MainServices.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/Modals/ModalCall.vue": [],
   "src/components/Modals/ModalCall.vue?vue&type=template&lang.js": [],
@@ -66,22 +66,22 @@
     "/assets/Questions-CeLo0nCs.js"
   ],
   "src/components/Request.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/Request.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/ServiceDetail.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/ServiceDetail.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/ServiceSlider.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/ServiceSlider.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/components/Sidebar.vue": [
     "/assets/Sidebar-B1JbPP8-.js"
@@ -115,10 +115,10 @@
     "/assets/CastleCard-Df2eTLSE.js"
   ],
   "src/pages/CastleList.vue": [
-    "/assets/CastleList-wgi4XP0s.js"
+    "/assets/CastleList-DA5hv7S6.js"
   ],
   "src/pages/CastleList.vue?vue&type=template&lang.js": [
-    "/assets/CastleList-wgi4XP0s.js"
+    "/assets/CastleList-DA5hv7S6.js"
   ],
   "src/pages/Contacts.vue": [
     "/assets/Contacts-DY3rGvXc.js"
@@ -127,10 +127,10 @@
     "/assets/Contacts-DY3rGvXc.js"
   ],
   "src/pages/Home.vue": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/pages/Home.vue?vue&type=template&lang.js": [
-    "/assets/Home-D4udPsOA.js"
+    "/assets/Home-BvN9XpjO.js"
   ],
   "src/pages/ServiceCard.vue": [
     "/assets/ServiceCard-DRQaifkc.js"
@@ -153,6 +153,7 @@
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/router.js": [],
+  "src/utils/dynamic_adapt.js": [],
   "src/utils/maskPhone.js": [],
   "src/utils/spollers.js": []
 }
