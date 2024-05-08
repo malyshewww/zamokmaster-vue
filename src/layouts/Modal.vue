@@ -1,5 +1,5 @@
 <template lang="pug">
-	.modal(:class="{modalClass}" :id="[modalId ? modalId : '']" @click="closeModal")
+	.modal(@click="closeModal")
 		.modal__wrapper 
 			.modal__content(@click.stop)
 				button(type="button" @click="closeModal").modal__close
@@ -8,7 +8,6 @@
 
 <script>
 export default {
-  props: ['modalId', 'modalClass'],
   name: 'Modal',
   data() {
     return {

@@ -435,7 +435,7 @@ function ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   _push(`</li><li class="menu__item">`);
   _push(ssrRenderComponent(_component_router_link, {
     class: "route",
-    to: "/legal"
+    to: "/"
   }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -451,7 +451,7 @@ function ssrRender$a(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   _push(`</li><li class="menu__item">`);
   _push(ssrRenderComponent(_component_router_link, {
     class: "route",
-    to: "/individual"
+    to: "/"
   }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -527,15 +527,11 @@ _sfc_main$a.setup = (props, ctx) => {
 };
 const Navbar = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["ssrRender", ssrRender$a]]);
 function ssrRender$9(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<div${ssrRenderAttrs(mergeProps({
-    class: ["modal", { modalClass: $props.modalClass }],
-    id: [$props.modalId ? $props.modalId : ""]
-  }, _attrs))}><div class="modal__wrapper"><div class="modal__content"><button class="modal__close" type="button"></button>`);
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "modal" }, _attrs))}><div class="modal__wrapper"><div class="modal__content"><button class="modal__close" type="button"></button>`);
   ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
   _push(`</div></div></div>`);
 }
 const _sfc_main$9 = {
-  props: ["modalId", "modalClass"],
   name: "Modal",
   data() {
     return {
@@ -561,7 +557,6 @@ function ssrRender$8(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   ssrRenderTeleport(_push, (_push2) => {
     _push2(ssrRenderComponent(_component_Modal, {
       class: ["modal-search", [$data.isOpenModal ? "open-modal" : ""]],
-      id: "modal-search",
       onCloseModal: $options.toggleModal
     }, {
       default: withCtx((_, _push3, _parent2, _scopeId) => {
@@ -742,6 +737,128 @@ _sfc_main$8.setup = (props, ctx) => {
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
 const HeaderLocation = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["ssrRender", ssrRender$8]]);
+function DynamicAdapt(type) {
+  this.type = type;
+}
+DynamicAdapt.prototype.init = function() {
+  const _this = this;
+  this.оbjects = [];
+  this.daClassname = "_dynamic_adapt_";
+  this.nodes = document.querySelectorAll("[data-da]");
+  for (let i = 0; i < this.nodes.length; i++) {
+    const node = this.nodes[i];
+    const data2 = node.dataset.da.trim();
+    const dataArray = data2.split(",");
+    const оbject = {};
+    оbject.element = node;
+    оbject.parent = node.parentNode;
+    оbject.destination = document.querySelector(dataArray[0].trim());
+    оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : "767";
+    оbject.place = dataArray[2] ? dataArray[2].trim() : "last";
+    оbject.index = this.indexInParent(оbject.parent, оbject.element);
+    this.оbjects.push(оbject);
+  }
+  this.arraySort(this.оbjects);
+  this.mediaQueries = Array.prototype.map.call(
+    this.оbjects,
+    function(item) {
+      return "(" + this.type + "-width: " + item.breakpoint + "px)," + item.breakpoint;
+    },
+    this
+  );
+  this.mediaQueries = Array.prototype.filter.call(this.mediaQueries, function(item, index, self) {
+    return Array.prototype.indexOf.call(self, item) === index;
+  });
+  for (let i = 0; i < this.mediaQueries.length; i++) {
+    const media = this.mediaQueries[i];
+    const mediaSplit = String.prototype.split.call(media, ",");
+    const matchMedia = window.matchMedia(mediaSplit[0]);
+    const mediaBreakpoint = mediaSplit[1];
+    const оbjectsFilter = Array.prototype.filter.call(this.оbjects, function(item) {
+      return item.breakpoint === mediaBreakpoint;
+    });
+    matchMedia.addListener(function() {
+      _this.mediaHandler(matchMedia, оbjectsFilter);
+    });
+    this.mediaHandler(matchMedia, оbjectsFilter);
+  }
+};
+DynamicAdapt.prototype.mediaHandler = function(matchMedia, оbjects) {
+  if (matchMedia.matches) {
+    for (let i = 0; i < оbjects.length; i++) {
+      const оbject = оbjects[i];
+      оbject.index = this.indexInParent(оbject.parent, оbject.element);
+      this.moveTo(оbject.place, оbject.element, оbject.destination);
+    }
+  } else {
+    for (let i = оbjects.length - 1; i >= 0; i--) {
+      const оbject = оbjects[i];
+      if (оbject.element.classList.contains(this.daClassname)) {
+        this.moveBack(оbject.parent, оbject.element, оbject.index);
+      }
+    }
+  }
+};
+DynamicAdapt.prototype.moveTo = function(place, element, destination) {
+  element.classList.add(this.daClassname);
+  if (place === "last" || place >= destination.children.length) {
+    destination.insertAdjacentElement("beforeend", element);
+    return;
+  }
+  if (place === "first") {
+    destination.insertAdjacentElement("afterbegin", element);
+    return;
+  }
+  destination.children[place].insertAdjacentElement("beforebegin", element);
+};
+DynamicAdapt.prototype.moveBack = function(parent, element, index) {
+  element.classList.remove(this.daClassname);
+  if (parent.children[index] !== void 0) {
+    parent.children[index].insertAdjacentElement("beforebegin", element);
+  } else {
+    parent.insertAdjacentElement("beforeend", element);
+  }
+};
+DynamicAdapt.prototype.indexInParent = function(parent, element) {
+  const array = Array.prototype.slice.call(parent.children);
+  return Array.prototype.indexOf.call(array, element);
+};
+DynamicAdapt.prototype.arraySort = function(arr) {
+  if (this.type === "max") {
+    Array.prototype.sort.call(arr, function(a, b) {
+      if (a.breakpoint === b.breakpoint) {
+        if (a.place === b.place) {
+          return 0;
+        }
+        if (a.place === "first" || b.place === "last") {
+          return -1;
+        }
+        if (a.place === "last" || b.place === "first") {
+          return 1;
+        }
+        return a.place - b.place;
+      }
+      return a.breakpoint - b.breakpoint;
+    });
+  } else {
+    Array.prototype.sort.call(arr, function(a, b) {
+      if (a.breakpoint === b.breakpoint) {
+        if (a.place === b.place) {
+          return 0;
+        }
+        if (a.place === "first" || b.place === "last") {
+          return 1;
+        }
+        if (a.place === "last" || b.place === "first") {
+          return -1;
+        }
+        return b.place - a.place;
+      }
+      return b.breakpoint - a.breakpoint;
+    });
+    return;
+  }
+};
 function ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_router_link = resolveComponent("router-link");
   const _component_Navbar = resolveComponent("Navbar");
@@ -749,7 +866,8 @@ function ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   _push(`<!--[--><header class="header"><div class="container"><div class="header__body">`);
   _push(ssrRenderComponent(_component_router_link, {
     class: "header__logo",
-    to: "/"
+    to: "/",
+    onClick: $options.closeMenu
   }, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -783,7 +901,7 @@ function ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
     onOnChangeCity: ($event) => $options.newCity($event),
     defaultCity: $props.defaultCity
   }, null, _parent));
-  _push(`<button class="header__burger" type="button"><span></span></button></div></div></div></header><div class="overlay"></div><!--]-->`);
+  _push(`<button class="header__burger" type="button"><span></span></button></div></div></div></header><div class="overlay" data-da=".wrapper, 1400, 1"></div><!--]-->`);
 }
 const _sfc_main$7 = {
   components: { Navbar, HeaderLocation },
@@ -792,7 +910,8 @@ const _sfc_main$7 = {
   data() {
     return {
       isHidden: false,
-      currScroll: null
+      currScroll: null,
+      da: null
     };
   },
   methods: {
@@ -801,8 +920,8 @@ const _sfc_main$7 = {
       document.body.classList.toggle("lock");
     },
     closeMenu() {
-      document.body.classList.remove("menu-open");
-      document.body.classList.remove("lock");
+      document.body.classList.contains("menu-open") && document.body.classList.remove("menu-open");
+      document.body.classList.contains("lock") && document.body.classList.remove("lock");
     },
     stickyHeader() {
       if (typeof window !== "undefined") {
@@ -826,6 +945,10 @@ const _sfc_main$7 = {
     },
     newCity(city) {
       this.$emit("onChangeCity", city);
+    },
+    initDynamicAdapt() {
+      this.da = new DynamicAdapt("max");
+      this.da.init();
     }
   },
   computed: {
@@ -840,6 +963,7 @@ const _sfc_main$7 = {
   },
   mounted() {
     this.stickyHeader();
+    this.initDynamicAdapt();
   }
 };
 const _sfc_setup$7 = _sfc_main$7.setup;
@@ -949,6 +1073,8 @@ const _sfc_main$6 = {
     }
   },
   computed() {
+  },
+  mounted() {
     maskPhone();
   }
 };
@@ -1518,7 +1644,7 @@ const history = createMemoryHistory(baseUrl);
 const routes = [
   {
     path: "/",
-    component: () => import("./assets/Home-D4udPsOA.js"),
+    component: () => import("./assets/Home-BvN9XpjO.js"),
     meta: { title: "Главная" },
     name: "home"
   },
@@ -1536,7 +1662,7 @@ const routes = [
   },
   {
     path: "/castle-list",
-    component: () => import("./assets/CastleList-wgi4XP0s.js"),
+    component: () => import("./assets/CastleList-DA5hv7S6.js"),
     meta: { title: "Список замков" },
     name: "castle-list"
   },
@@ -1566,14 +1692,14 @@ const routes = [
   },
   {
     path: "/legal",
-    component: () => import("./assets/Home-D4udPsOA.js"),
-    meta: { title: "Главная" },
+    component: () => import("./assets/Home-BvN9XpjO.js"),
+    meta: { title: "Юридическим лицам" },
     name: "legal"
   },
   {
     path: "/individual",
-    component: () => import("./assets/Home-D4udPsOA.js"),
-    meta: { title: "Главная" },
+    component: () => import("./assets/Home-BvN9XpjO.js"),
+    meta: { title: "Физическим лицам" },
     name: "individual"
   }
 ];
@@ -1592,17 +1718,16 @@ const router = createRouter({
       }, 100);
     }
   },
-  base: baseUrl
+  base: baseUrl,
+  beforeEach: function(to, from, next) {
+    document.title = to.meta.title;
+    next();
+  }
 });
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title;
-  next();
-});
-function createApp() {
+const createApp = () => {
   const app = createSSRApp(App);
-  app.use(router);
   return { app, router };
-}
+};
 async function render(url, manifest) {
   const { app, router: router2 } = createApp();
   await router2.push(url);

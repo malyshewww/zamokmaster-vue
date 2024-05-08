@@ -118,7 +118,8 @@ const _sfc_main$6 = {
   props: ["count", "imagePath"],
   data() {
     return {
-      slider: null
+      slider: null,
+      isLoopingSlider: false
     };
   },
   methods: {
@@ -127,7 +128,7 @@ const _sfc_main$6 = {
         modules: [Navigation, Autoplay],
         speed: 1e3,
         slidesPerView: "auto",
-        loop: true,
+        loop: this.isLoopingSlider,
         autoplay: {
           delay: 1e3,
           disableOnInteraction: false
@@ -150,6 +151,7 @@ const _sfc_main$6 = {
     destroySlider() {
       if (this.slider != null) {
         const slides = this.slider.slides;
+        this.countSlides = slides;
         const nav = this.slider.navigation;
         let betweenSlider = 0;
         if (window.innerWidth > 767.98) {
@@ -165,8 +167,10 @@ const _sfc_main$6 = {
             nav.nextEl.remove();
             nav.prevEl.remove();
             this.$refs.slider_controls.remove();
+            this.isLoopingSlider = false;
           } else {
             this.$refs.mySwiper.classList.remove("in-active");
+            this.isLoopingSlider = true;
           }
         }
       }
