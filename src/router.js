@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 
 const baseUrl = import.meta.env.BASE_URL
 const history = import.meta.env.SSR ? createMemoryHistory(baseUrl) : createWebHistory(baseUrl)

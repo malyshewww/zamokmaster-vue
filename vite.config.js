@@ -63,12 +63,12 @@ export default defineConfig({
   // root: 'src',
   build: {
     rollupOptions: {
-      plugins: [
-        visualizer({
-          emitFile: true,
-          filename: 'stats.html'
-        })
-      ]
+      // plugins: [
+      //   visualizer({
+      //     emitFile: true,
+      //     filename: 'stats.html'
+      //   })
+      // ]
     },
     sourcemap: false,
     emptyOutDir: true,

@@ -1,6 +1,8 @@
+import { basename } from "node:path";
 import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
 import { resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createSSRApp } from "vue";
 import { cityIn } from "lvovich";
+import { createMemoryHistory, createRouter } from "vue-router";
 const data = {
   services: [
     {
@@ -1511,16 +1513,151 @@ _sfc_main.setup = (props, ctx) => {
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", ssrRender]]);
+const baseUrl = "/";
+const history = createMemoryHistory(baseUrl);
+const routes = [
+  {
+    path: "/",
+    component: () => import("./assets/Home-D4udPsOA.js"),
+    meta: { title: "Главная" },
+    name: "home"
+  },
+  {
+    path: "/about",
+    component: () => import("./assets/About-mAkWf6YF.js"),
+    meta: { title: "О компании" },
+    name: "about"
+  },
+  {
+    path: "/contacts",
+    component: () => import("./assets/Contacts-DY3rGvXc.js"),
+    meta: { title: "Контакты" },
+    name: "contacts"
+  },
+  {
+    path: "/castle-list",
+    component: () => import("./assets/CastleList-wgi4XP0s.js"),
+    meta: { title: "Список замков" },
+    name: "castle-list"
+  },
+  {
+    path: "/castle-card",
+    component: () => import("./assets/CastleCard-Df2eTLSE.js"),
+    meta: { title: "Карточка замка" },
+    name: "castle-card"
+  },
+  {
+    path: "/service-card",
+    component: () => import("./assets/ServiceCard-DRQaifkc.js"),
+    meta: { title: "Карточка услуги" },
+    name: "service-card"
+  },
+  {
+    path: "/service-list",
+    component: () => import("./assets/ServiceList-Bse9nPAn.js"),
+    meta: { title: "Список услуг" },
+    name: "service-list"
+  },
+  {
+    path: "/text-page",
+    component: () => import("./assets/TextPage-BCTmTwVv.js"),
+    meta: { title: "Текстовая страница" },
+    name: "text-page"
+  },
+  {
+    path: "/legal",
+    component: () => import("./assets/Home-D4udPsOA.js"),
+    meta: { title: "Главная" },
+    name: "legal"
+  },
+  {
+    path: "/individual",
+    component: () => import("./assets/Home-D4udPsOA.js"),
+    meta: { title: "Главная" },
+    name: "individual"
+  }
+];
+const router = createRouter({
+  history,
+  routes,
+  scrollBehavior: function(to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { el: to.hash, behavior: "smooth" };
+    } else {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 100);
+    }
+  },
+  base: baseUrl
+});
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
+});
 function createApp() {
   const app = createSSRApp(App);
-  return { app };
+  app.use(router);
+  return { app, router };
 }
-async function render() {
-  const { app } = createApp();
+async function render(url, manifest) {
+  const { app, router: router2 } = createApp();
+  await router2.push(url);
+  await router2.isReady();
   const ctx = {};
   const html = await renderToString(app, ctx);
-  return { html };
+  const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
+  return [html, preloadLinks];
+}
+function renderPreloadLinks(modules, manifest) {
+  let links = "";
+  const seen = /* @__PURE__ */ new Set();
+  modules.forEach((id) => {
+    const files = manifest[id];
+    if (files) {
+      files.forEach((file) => {
+        if (!seen.has(file)) {
+          seen.add(file);
+          const filename = basename(file);
+          if (manifest[filename]) {
+            for (const depFile of manifest[filename]) {
+              links += renderPreloadLink(depFile);
+              seen.add(depFile);
+            }
+          }
+          links += renderPreloadLink(file);
+        }
+      });
+    }
+  });
+  return links;
+}
+function renderPreloadLink(file) {
+  if (file.endsWith(".js")) {
+    return `<link rel="modulepreload" crossorigin href="${file}">`;
+  } else if (file.endsWith(".css")) {
+    return `<link rel="stylesheet" href="${file}">`;
+  } else if (file.endsWith(".woff")) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`;
+  } else if (file.endsWith(".woff2")) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin>`;
+  } else if (file.endsWith(".gif")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/gif">`;
+  } else if (file.endsWith(".jpg") || file.endsWith(".jpeg")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/jpeg">`;
+  } else if (file.endsWith(".png")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/png">`;
+  } else {
+    return "";
+  }
 }
 export {
+  FreeMasters as F,
+  _export_sfc as _,
+  data as d,
+  maskPhone as m,
   render
 };

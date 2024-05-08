@@ -1,92 +1,78 @@
+import { basename } from 'node:path'
 import { renderToString } from 'vue/server-renderer'
 import { createApp } from './main'
 
-export async function render() {
-  const { app } = createApp()
-  const ctx = {}
-  const html = await renderToString(app, ctx)
-  return { html }
-}
+// const { app } = createApp()
 
 // const router = app.$router
-// const meta = app.$meta() // here
+// const meta = app.$meta()
 
 // export default (context) => {
 //   router.push(context.url)
-//   context.meta = meta // and here
+//   context.meta = meta
 //   return app
 // }
 
-// // Node.js
-// import { basename } from 'node:path'
-
-// // Vue SSR
-// import { createSSRApp } from 'vue'
-// import { renderToString } from 'vue/server-renderer'
-
-// // App
-// import App from './App.vue'
-// import router from './router.js'
-
-// export async function render(url, manifest = null) {
-//   const app = createSSRApp(App)
-//   app.use(router)
-
-//   await router.push(url)
-//   await router.isReady()
-
-//   const ctx = {
-//     modules: []
-//   }
-//   const html = await renderToString(app)
-//   let preloadLinks = ''
-//   if (manifest) {
-//     renderPreloadLinks(ctx.modules, manifest)
-//   }
-
-//   return [html, preloadLinks]
+// export const render = async () => {
+//   const { app } = createApp()
+//   const ctx = {}
+//   const html = await renderToString(app, ctx)
+//   return { html }
 // }
 
-// function renderPreloadLinks(modules, manifest) {
-//   let links = ''
-//   const seen = new Set()
-//   modules.forEach((id) => {
-//     const files = manifest[id]
-//     if (files) {
-//       files.forEach((file) => {
-//         if (!seen.has(file)) {
-//           seen.add(file)
-//           const filename = basename(file)
-//           if (manifest[filename]) {
-//             for (const depFile of manifest[filename]) {
-//               links += renderPreloadLink(depFile)
-//               seen.add(depFile)
-//             }
-//           }
-//           links += renderPreloadLink(file)
-//         }
-//       })
-//     }
-//   })
-//   return links
-// }
+export async function render(url, manifest) {
+  const { app, router } = createApp()
 
-// function renderPreloadLink(file) {
-//   if (file.endsWith('.js')) {
-//     return `<link rel="modulepreload" crossorigin href="${file}">`
-//   } else if (file.endsWith('.css')) {
-//     return `<link rel="stylesheet" href="${file}">`
-//   } else if (file.endsWith('.woff')) {
-//     return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`
-//   } else if (file.endsWith('.woff2')) {
-//     return ` <link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin>`
-//   } else if (file.endsWith('.gif')) {
-//     return ` <link rel="preload" href="${file}" as="image" type="image/gif">`
-//   } else if (file.endsWith('.jpg') || file.endsWith('.jpeg')) {
-//     return ` <link rel="preload" href="${file}" as="image" type="image/jpeg">`
-//   } else if (file.endsWith('.png')) {
-//     return ` <link rel="preload" href="${file}" as="image" type="image/png">`
-//   } else {
-//     return ''
-//   }
-// }
+  await router.push(url)
+  await router.isReady()
+
+  const ctx = {}
+  const html = await renderToString(app, ctx)
+
+  const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
+  return [html, preloadLinks]
+}
+
+function renderPreloadLinks(modules, manifest) {
+  let links = ''
+  const seen = new Set()
+  modules.forEach((id) => {
+    const files = manifest[id]
+    if (files) {
+      files.forEach((file) => {
+        if (!seen.has(file)) {
+          seen.add(file)
+          const filename = basename(file)
+          if (manifest[filename]) {
+            for (const depFile of manifest[filename]) {
+              links += renderPreloadLink(depFile)
+              seen.add(depFile)
+            }
+          }
+          links += renderPreloadLink(file)
+        }
+      })
+    }
+  })
+  return links
+}
+
+function renderPreloadLink(file) {
+  if (file.endsWith('.js')) {
+    return `<link rel="modulepreload" crossorigin href="${file}">`
+  } else if (file.endsWith('.css')) {
+    return `<link rel="stylesheet" href="${file}">`
+  } else if (file.endsWith('.woff')) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`
+  } else if (file.endsWith('.woff2')) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin>`
+  } else if (file.endsWith('.gif')) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/gif">`
+  } else if (file.endsWith('.jpg') || file.endsWith('.jpeg')) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/jpeg">`
+  } else if (file.endsWith('.png')) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/png">`
+  } else {
+    return ''
+  }
+}

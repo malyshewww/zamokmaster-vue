@@ -33,7 +33,8 @@ export default {
       this.$emit('closeModal')
     }
   },
-  computed() {
+  computed() {},
+  mounted() {
     maskPhone()
   }
 }

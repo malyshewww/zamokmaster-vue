@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node ./server.js",
     "preview": "vite preview",
     "vbuild": "vite build",
     "serve": "NODE_ENV=production node ./server.js",
