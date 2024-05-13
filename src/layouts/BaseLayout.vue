@@ -1,15 +1,15 @@
 <template lang="pug">
 	metainfo
 		template(v-slot:title="{ content }") {{ content ? `${content} | Замокмастер` : `Замокмастер` }}
-	.wrapper
+	.wrapper(ref="wrapper" id="wrapper")
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-				RouterView(:defaultCity="defaultCity" :declensionCity="declensionCity")
+			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
 				//- div(:defaultCity="defaultCity" :declensionCity="declensionCity")
 		TheFooter
 		Widget
 		.services-mobile
-			.services-mobile__body 
+			.services-mobile__body
 				router-link(to="/service-card" v-for="service in services").services-mobile__item
 					.services-mobile__image 
 						picture
@@ -83,16 +83,24 @@ export default {
   },
   watch: {
     '$route.name'() {
-      if (this.$route.name == 'home') {
-        document.body.classList.add('home')
-      } else {
-        document.body.classList.remove('home')
+      if (typeof window !== undefined) {
+        if (this.$route.name == 'home') {
+          document.body.classList.add('home')
+        } else {
+          document.body.classList.remove('home')
+        }
       }
     }
   },
   updated() {},
   mounted() {
     window.addEventListener('load', () => {
+      const pageWrapper = document.querySelectorAll('.wrapper')
+      ;[...pageWrapper].forEach((wrapper) => {
+        if (wrapper.getAttribute('id')) return
+        wrapper.remove()
+      })
+      console.log(this.$refs.wrapper)
       this.getStorageCity()
     })
   }

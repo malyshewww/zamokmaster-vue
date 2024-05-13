@@ -145,7 +145,7 @@ export default {
         // Отслеживание пересечения секции и добавление класса для меню
         const changeNav = (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+            if (entry.isIntersecting) {
               entry.target.style.opacity = 1
               if (lastTimeout) clearTimeout(lastTimeout)
               lastTimeout = setTimeout(function () {
@@ -164,7 +164,7 @@ export default {
           })
         }
         const menuOptions = {
-          threshold: [0.1]
+          threshold: [0.5]
         }
         this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
         const sections = document.querySelectorAll('[data-anchor-section]')
