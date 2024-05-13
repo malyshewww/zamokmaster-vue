@@ -66,7 +66,7 @@ async function start() {
   })
 }
 
-start()
+// start()
 
 // async function createServer() {
 //   const manifest = isProd
@@ -132,15 +132,15 @@ async function initServer() {
     let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
     template = await vite.transformIndexHtml(req.originalUrl, template)
     const render = (await vite.ssrLoadModule('/src/entry-server.ts')).render
-    const { html: appHtml } = await render()
+    const [appHtml, preloadLinks] = await render()
     const html = template.replace('<!--app-html-->', appHtml)
     res.set({ 'Content-Type': 'text/html' }).end(html)
   })
   return app
 }
 
-// initServer().then((app) =>
-//   app.listen(5173, () => {
-//     console.log('ready')
-//   })
-// )
+initServer().then((app) =>
+  app.listen(PORT, () => {
+    console.log('ready')
+  })
+)
