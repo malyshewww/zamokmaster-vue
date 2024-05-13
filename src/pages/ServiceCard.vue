@@ -75,18 +75,19 @@ export default {
   },
   methods: {
     wrapTable() {
-      if (window.innerWidth < 767.98) {
-        let tableWrap = document.createElement('div')
-        tableWrap.setAttribute('class', 'table-wrap')
-        this.$refs.table.parentNode.insertBefore(tableWrap, this.$refs.table)
-        tableWrap.appendChild(this.$refs.table)
+      if (typeof window !== 'undefined') {
+        console.log(this.$refs.table)
+        if (window.innerWidth < 767.98) {
+          let tableWrap = document.createElement('div')
+          tableWrap.setAttribute('class', 'table-wrap')
+          this.$refs.table.parentNode.insertBefore(tableWrap, this.$refs.table)
+          tableWrap.appendChild(this.$refs.table)
+        }
       }
     }
   },
   mounted() {
-    window.addEventListener('load', () => {
-      this.wrapTable()
-    })
+    this.wrapTable()
   }
 }
 </script>

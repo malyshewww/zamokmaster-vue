@@ -95,7 +95,7 @@
 				overflow-x: hidden;
 				width: 354px;
 				margin-left: auto;
-				padding: 83px 30px 30px;
+				padding: 87px 30px 30px;
 				background-color: $bg-primary;
 				position: relative;
 				transform: translateX(100%);
@@ -296,6 +296,8 @@
 		font-weight: 500;
 		z-index: 21;
 		color: $text-default-text;
+		cursor: pointer;
+		transition: color .25s;
 		&::before {
 			content: "";
 			display: block;
@@ -305,6 +307,11 @@
 			mask-repeat: no-repeat;
 			mask-position: center;
 			background-color: #336699;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #336699;
+			}
 		}
 		@media screen and (max-width: $md) {
 			width: 18px;
@@ -371,6 +378,11 @@
 	&__button {
 		font-size: 16px;
 		line-height: 18px;
+		@media screen and (max-width: $md) {
+			&:first-child {
+				background-color: $bg-contrast-2;
+			}
+		}
 		&.btn-border {
 			padding: 11px 20px;
 			flex-grow: 1;
@@ -382,14 +394,14 @@
 }
 .menu {
 	& nav a {
-		@media screen and (max-width: $xxxl) {
+		@media (any-hover: hover) and (max-width: $xxxl) {
 			&:hover {
 				color: $bg-contrast;
 			}
 		}
 	}
 	& li {
-		@media screen and (min-width: $xxxl) {
+		@media (any-hover: hover) and (min-width: $xxxl) {
 			&:hover {
 				color: $bg-contrast;
 			}

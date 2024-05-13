@@ -10,7 +10,7 @@
 						.form-item 
 							input(type="tel" placeholder="Введите номер")
 						input(type="submit", value="Заказать звонок").btn
-						.form-text Нажимая на кнопку, вы соглашаетесь политикой конфиденциальности сайта
+						.form-text Нажимая на кнопку, вы соглашаетесь #[router-link(to="/text-page") политикой конфиденциальности] сайта
 </template>
 <script>
 import maskPhone from '../utils/maskPhone.js'

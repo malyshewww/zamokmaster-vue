@@ -21,6 +21,11 @@
 		overflow: hidden;
 		background-color: $bg-seconadary;
 		min-width: 350px;
+		& [class*="inner-panes"],
+		& [class*="map"],
+		& [class*="events-pane"] {
+			border-radius: inherit;
+		}
 		@media screen and (max-width: $md) {
 			min-width: 100%;
 			flex: 1 1 auto;

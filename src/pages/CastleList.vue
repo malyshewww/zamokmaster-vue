@@ -18,7 +18,7 @@
 							.heading
 								h2.heading__title.title-sm {{ item.title }}
 							.category-castle__items 
-								.category-castle__item(v-for="(child, index) in item.children")
+								router-link(to="/castle-card" v-for="(child, index) in item.children").category-castle__item
 									.category-castle__image
 										.category-castle__logo
 											picture 

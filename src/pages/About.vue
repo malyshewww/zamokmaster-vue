@@ -8,19 +8,19 @@
 		.page__body
 			.about__data(ref="about_data")
 				.container 
-					.about__body 
-						nav.about__navigation.nav-about(ref="nav_about")
+					.about__body(ref="about_body")
+						nav.about__navigation.nav-about(ref="nav_about" @click="manualSmoothScroll($event)")
 							ul.nav-about__list
 								li.nav-about__list-item
-									a(href="javascript:void(0);" data-anchor-link="year-1994" @click="manualSmoothScroll($event)").nav-about__link.active 1994
+									a(href="javascript:void(0);" data-anchor-link="year-1994").nav-about__link.active 1994
 								li.nav-about__list-item
-									a(href="javascript:void(0);" data-anchor-link="year-2005" @click="manualSmoothScroll($event)").nav-about__link 2005
+									a(href="javascript:void(0);" data-anchor-link="year-2005").nav-about__link 2005
 								li.nav-about__list-item
-									a(href="javascript:void(0);" data-anchor-link="year-2013" @click="manualSmoothScroll($event)").nav-about__link 2013
+									a(href="javascript:void(0);" data-anchor-link="year-2013").nav-about__link 2013
 								li.nav-about__list-item
-									a(href="javascript:void(0);" data-anchor-link="year-2014" @click="manualSmoothScroll($event)").nav-about__link 2014
+									a(href="javascript:void(0);" data-anchor-link="year-2014").nav-about__link 2014
 								li.nav-about__list-item
-									a(href="javascript:void(0);" data-anchor-link="year-2024" @click="manualSmoothScroll($event)").nav-about__link 2024
+									a(href="javascript:void(0);" data-anchor-link="year-2024").nav-about__link 2024
 						.about__sections 
 							.swiper(ref="contentSlider")
 								.swiper-wrapper
@@ -125,7 +125,8 @@ export default {
       menuObserver: null,
       contentSlider: null,
       navSlider: null,
-      count: 0
+      count: 0,
+      minHeightSection: 0
     }
   },
   methods: {
@@ -136,7 +137,15 @@ export default {
         const target = document.querySelector(`[data-anchor-section="${id}"]`)
         if (!target) return
         event.preventDefault()
-        target.scrollIntoView({ behavior: 'smooth' })
+        // window.scrollTo({
+        //   behavior: 'smooth',
+        //   top: target.getBoundingClientRect().top + window.scrollY
+        // })
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: `${id == 'year-2014' ? 'center' : 'start'}`
+          // block: 'start'
+        })
       }
     },
     observeNav() {
@@ -145,6 +154,7 @@ export default {
         // Отслеживание пересечения секции и добавление класса для меню
         const changeNav = (entries) => {
           entries.forEach((entry) => {
+            console.log(entry)
             if (entry.isIntersecting) {
               entry.target.style.opacity = 1
               if (lastTimeout) clearTimeout(lastTimeout)
@@ -164,7 +174,7 @@ export default {
           })
         }
         const menuOptions = {
-          threshold: [0.5]
+          threshold: [0.45]
         }
         this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
         const sections = document.querySelectorAll('[data-anchor-section]')
@@ -185,7 +195,7 @@ export default {
         })
         this.contentSlider = new Swiper(this.$refs.contentSlider, {
           modules: [FreeMode, Scrollbar, Thumbs],
-          //   direction: 'vertical',
+          // direction: 'vertical',
           slidesPerView: 1,
           slideClass: 'about-section',
           spaceBetween: 100,
@@ -237,11 +247,10 @@ export default {
       }
     },
     checkScreenWidth() {
+      // this.initSlider()
       if (window.matchMedia('(max-width: 991.98px)').matches) {
-        // Инициализация Swiper, если ширина экрана меньше или равна 991.98 пикселей
         this.initSlider()
       } else {
-        // Отмена инициализации Swiper, если ширина экрана больше 991.98 пикселей
         this.destroySlider()
       }
     },

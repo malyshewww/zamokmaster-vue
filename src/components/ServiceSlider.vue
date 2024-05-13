@@ -2,12 +2,12 @@
 	.services-slider
 		.services-slider__body.swiper(ref="mySwiper")
 			.services-slider__wrapper.swiper-wrapper(ref="mySwiperWrapper")
-				.services-slider__item.swiper-slide(v-for="item in count")
+				router-link(to="/castle-card" v-for="item in count").services-slider__item.swiper-slide
 					.services-slider__image
 						picture
 							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
 							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
-				.services-slider__item.swiper-slide(v-for="item in count")
+				router-link(to="/castle-card" v-for="item in count").services-slider__item.swiper-slide
 					.services-slider__image
 						picture
 							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)

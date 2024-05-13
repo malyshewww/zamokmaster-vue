@@ -448,6 +448,10 @@ picture {
 	height: 546px;
 	position: relative;
 	overflow: hidden;
+	border-radius: 12px;
+	& iframe {
+		border-radius: 12px !important;
+	}
 	& .badge {
 		min-width: 100%
 	}

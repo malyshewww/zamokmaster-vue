@@ -1,6 +1,6 @@
 <template lang="pug">
 	.header__location.location-header
-		.location-header__current {{ setCityStorage() }} 
+		.location-header__current(@click="toggleModal") {{ setCityStorage() }} 
 		.location-header__choice(:class="[isShowLocation && !isHidden ? 'active': '']")
 			.location-header__header Ваш город #[span {{ setCityStorage() }}?]
 			.location-header__buttons 
