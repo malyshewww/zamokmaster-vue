@@ -1,5 +1,5 @@
 import { createMetaManager } from 'vue-meta'
-import { createApp } from './main'
+import { createApp } from './main.js'
 
 const { app, router } = createApp()
 
