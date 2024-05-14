@@ -1,6 +1,6 @@
 import { useMeta } from "vue-meta";
-import ScrollReveal from "scrollreveal";
 import { _ as _export_sfc, F as FreeMasters, d as data, m as maskPhone } from "../entry-server.js";
+import ScrollReveal from "scrollreveal";
 import { resolveComponent, mergeProps, withCtx, createTextVNode, useSSRContext, createVNode } from "vue";
 import { ssrRenderAttrs, ssrInterpolate, ssrRenderComponent, ssrRenderAttr, ssrRenderList, ssrRenderClass, ssrRenderStyle } from "vue/server-renderer";
 import Swiper from "swiper";
@@ -580,18 +580,7 @@ const _sfc_main = {
       localCity: this.defaultCity
     };
   },
-  methods: {
-    animation() {
-      if (typeof window !== "undefined") {
-        ScrollReveal({
-          reset: false,
-          duration: 1500,
-          distance: "15px"
-        });
-        ScrollReveal().reveal(".main-screen__heading", { origin: "top", opacity: 0 });
-      }
-    }
-  },
+  methods: {},
   watch() {
   },
   computed: {},

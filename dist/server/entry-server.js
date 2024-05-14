@@ -1,6 +1,6 @@
 import { basename } from "node:path";
-import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
-import { resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createSSRApp } from "vue";
+import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, ssrRenderVNode, renderToString } from "vue/server-renderer";
+import { resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, resolveDynamicComponent, Transition, createSSRApp } from "vue";
 import { cityIn } from "lvovich";
 import { createMemoryHistory, createRouter } from "vue-router";
 const data = {
@@ -1476,7 +1476,6 @@ _sfc_main$2.setup = (props, ctx) => {
 };
 const ModalNotice = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", ssrRender$2]]);
 function ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  const _component_metainfo = resolveComponent("metainfo");
   const _component_TheHeader = resolveComponent("TheHeader");
   const _component_router_view = resolveComponent("router-view");
   const _component_TheFooter = resolveComponent("TheFooter");
@@ -1484,33 +1483,44 @@ function ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
   const _component_router_link = resolveComponent("router-link");
   const _component_FreeMasters = resolveComponent("FreeMasters");
   const _component_ModalNotice = resolveComponent("ModalNotice");
-  _push(`<!--[-->`);
-  _push(ssrRenderComponent(_component_metainfo, null, {
-    title: withCtx(({ content }, _push2, _parent2, _scopeId) => {
+  _push(`<div${ssrRenderAttrs(mergeProps({
+    class: "wrapper",
+    ref: "wrapper",
+    id: "wrapper"
+  }, _attrs))} data-v-b564e662>`);
+  _push(ssrRenderComponent(_component_TheHeader, {
+    onOnChangeCity: ($event) => $options.getNewCity($event),
+    defaultCity: $data.defaultCity
+  }, null, _parent));
+  _push(`<main class="main" data-v-b564e662>`);
+  _push(ssrRenderComponent(_component_router_view, null, {
+    default: withCtx(({ Component }, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`${ssrInterpolate(content ? `${content} | Замокмастер` : `Замокмастер`)}`);
+        _push2(``);
+        ssrRenderVNode(_push2, createVNode(resolveDynamicComponent(Component), {
+          defaultCity: $data.defaultCity,
+          declensionCity: $data.declensionCity
+        }, null), _parent2, _scopeId);
       } else {
         return [
-          createTextVNode(toDisplayString(content ? `${content} | Замокмастер` : `Замокмастер`), 1)
+          createVNode(Transition, { name: "slide-fade" }, {
+            default: withCtx(() => [
+              (openBlock(), createBlock(resolveDynamicComponent(Component), {
+                defaultCity: $data.defaultCity,
+                declensionCity: $data.declensionCity
+              }, null, 8, ["defaultCity", "declensionCity"]))
+            ]),
+            _: 2
+          }, 1024)
         ];
       }
     }),
     _: 1
   }, _parent));
-  _push(`<div class="wrapper" id="wrapper">`);
-  _push(ssrRenderComponent(_component_TheHeader, {
-    onOnChangeCity: ($event) => $options.getNewCity($event),
-    defaultCity: $data.defaultCity
-  }, null, _parent));
-  _push(`<main class="main">`);
-  _push(ssrRenderComponent(_component_router_view, {
-    defaultCity: $data.defaultCity,
-    declensionCity: $data.declensionCity
-  }, null, _parent));
   _push(`</main>`);
   _push(ssrRenderComponent(_component_TheFooter, null, null, _parent));
   _push(ssrRenderComponent(_component_Widget, null, null, _parent));
-  _push(`<div class="services-mobile"><div class="services-mobile__body"><!--[-->`);
+  _push(`<div class="services-mobile" data-v-b564e662><div class="services-mobile__body" data-v-b564e662><!--[-->`);
   ssrRenderList($data.services, (service) => {
     _push(ssrRenderComponent(_component_router_link, {
       class: "services-mobile__item",
@@ -1518,7 +1528,7 @@ function ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
     }, {
       default: withCtx((_, _push2, _parent2, _scopeId) => {
         if (_push2) {
-          _push2(`<div class="services-mobile__image"${_scopeId}><picture${_scopeId}><img${ssrRenderAttr("src", "./images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)} loading="lazy"${_scopeId}></picture></div><div class="services-mobile__title"${_scopeId}>${ssrInterpolate(service.title)}</div>`);
+          _push2(`<div class="services-mobile__image" data-v-b564e662${_scopeId}><picture data-v-b564e662${_scopeId}><img${ssrRenderAttr("src", "./images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)} loading="lazy" data-v-b564e662${_scopeId}></picture></div><div class="services-mobile__title" data-v-b564e662${_scopeId}>${ssrInterpolate(service.title)}</div>`);
         } else {
           return [
             createVNode("div", { class: "services-mobile__image" }, [
@@ -1537,11 +1547,11 @@ function ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $optio
       _: 2
     }, _parent));
   });
-  _push(`<!--]--></div></div><div class="phone-mobile"><div class="container"><div class="phone-mobile__body"><a class="btn btn-phone" href="tel=+79958881086">+7 (995) 888-10-86</a>`);
+  _push(`<!--]--></div></div><div class="phone-mobile" data-v-b564e662><div class="container" data-v-b564e662><div class="phone-mobile__body" data-v-b564e662><a class="btn btn-phone" href="tel=+79958881086" data-v-b564e662>+7 (995) 888-10-86</a>`);
   _push(ssrRenderComponent(_component_FreeMasters, null, null, _parent));
   _push(`</div></div></div>`);
   _push(ssrRenderComponent(_component_ModalNotice, null, null, _parent));
-  _push(`</div><!--]-->`);
+  _push(`</div>`);
 }
 const { services } = data;
 const _sfc_main$1 = {
@@ -1586,7 +1596,7 @@ const _sfc_main$1 = {
   },
   watch: {
     "$route.name"() {
-      if (typeof window !== void 0) {
+      if (typeof window !== "undefined") {
         if (this.$route.name == "home") {
           document.body.classList.add("home");
         } else {
@@ -1605,7 +1615,6 @@ const _sfc_main$1 = {
           return;
         wrapper.remove();
       });
-      console.log(this.$refs.wrapper);
       this.getStorageCity();
     });
   }
@@ -1616,7 +1625,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/layouts/BaseLayout.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", ssrRender$1]]);
+const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["ssrRender", ssrRender$1], ["__scopeId", "data-v-b564e662"]]);
 function ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   const _component_Layout = resolveComponent("Layout");
   _push(ssrRenderComponent(_component_Layout, _attrs, null, _parent));
@@ -1638,7 +1647,6 @@ const _sfc_main = {
   watch() {
   },
   mounted() {
-    console.log("app");
   }
 };
 const _sfc_setup = _sfc_main.setup;
@@ -1653,13 +1661,13 @@ const history = createMemoryHistory(baseUrl);
 const routes = [
   {
     path: "/",
-    component: () => import("./assets/Home-COiuo01T.js"),
+    component: () => import("./assets/Home-CPikSVkt.js"),
     meta: { title: "Главная" },
     name: "home"
   },
   {
     path: "/about",
-    component: () => import("./assets/About-CuqLnrAE.js"),
+    component: () => import("./assets/About-BmPEbeZ_.js"),
     meta: { title: "О компании" },
     name: "about"
   },
@@ -1701,13 +1709,13 @@ const routes = [
   },
   {
     path: "/legal",
-    component: () => import("./assets/Home-COiuo01T.js"),
+    component: () => import("./assets/Home-CPikSVkt.js"),
     meta: { title: "Юридическим лицам" },
     name: "legal"
   },
   {
     path: "/individual",
-    component: () => import("./assets/Home-COiuo01T.js"),
+    component: () => import("./assets/Home-CPikSVkt.js"),
     meta: { title: "Физическим лицам" },
     name: "individual"
   }

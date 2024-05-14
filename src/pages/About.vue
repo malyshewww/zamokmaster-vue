@@ -154,14 +154,11 @@ export default {
         // Отслеживание пересечения секции и добавление класса для меню
         const changeNav = (entries) => {
           entries.forEach((entry) => {
-            console.log(entry)
             if (entry.isIntersecting) {
               entry.target.style.opacity = 1
               if (lastTimeout) clearTimeout(lastTimeout)
               lastTimeout = setTimeout(function () {
                 this.count++
-                //   counter.innerText = `Intersections: ${count}`
-                //   entry.target.style.backgroundColor = 'lightblue'
                 ;[...document.querySelectorAll('.nav-about a.active')].forEach((item) => {
                   item.classList.remove('active')
                 })

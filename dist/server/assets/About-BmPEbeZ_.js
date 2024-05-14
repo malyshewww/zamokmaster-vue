@@ -59,7 +59,6 @@ const _sfc_main = {
         let lastTimeout;
         const changeNav = (entries) => {
           entries.forEach((entry) => {
-            console.log(entry);
             if (entry.isIntersecting) {
               entry.target.style.opacity = 1;
               if (lastTimeout)

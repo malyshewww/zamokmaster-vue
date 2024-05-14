@@ -21,9 +21,7 @@ export default {
   },
   methods: {},
   watch() {},
-  mounted() {
-    console.log('app')
-  }
+  mounted() {}
 }
 </script>
 

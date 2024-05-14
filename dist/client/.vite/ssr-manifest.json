@@ -16,11 +16,11 @@
   "\u0000vite/preload-helper.js": [],
   "index.html": [],
   "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css": [
-    "/assets/TextPage-Boy-GMKM.js",
+    "/assets/TextPage-BLiK3_v_.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@fancyapps/ui/dist/index.esm.js": [
-    "/assets/TextPage-Boy-GMKM.js",
+    "/assets/TextPage-BLiK3_v_.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js": [],
@@ -54,22 +54,22 @@
     "/assets/scrollreveal.es-DIZ4IBFj.js"
   ],
   "node_modules/swiper/modules/autoplay.mjs": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "node_modules/swiper/modules/free-mode.mjs": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "node_modules/swiper/modules/navigation.mjs": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "node_modules/swiper/modules/scrollbar.mjs": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "node_modules/swiper/modules/thumbs.mjs": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "node_modules/swiper/shared/classes-to-selector.mjs": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "node_modules/swiper/shared/create-element-if-not-defined.mjs": [
     "/assets/create-element-if-not-defined-CpJkOhtE.js"
@@ -92,50 +92,50 @@
   "src/App.vue?vue&type=template&lang.js": [],
   "src/assets/scss/main.scss": [],
   "src/components/Breadcrumbs.vue": [
-    "/assets/Breadcrumbs-DknyUpCb.js"
+    "/assets/Breadcrumbs-DKX4yj3U.js"
   ],
   "src/components/Breadcrumbs.vue?vue&type=template&lang.js": [
-    "/assets/Breadcrumbs-DknyUpCb.js"
+    "/assets/Breadcrumbs-DKX4yj3U.js"
   ],
   "src/components/CastleAdvantages.vue": [
-    "/assets/CastleTypes-BeHkHm_n.js"
+    "/assets/CastleTypes-DENNWrQ7.js"
   ],
   "src/components/CastleAdvantages.vue?vue&type=template&lang.js": [
-    "/assets/CastleTypes-BeHkHm_n.js"
+    "/assets/CastleTypes-DENNWrQ7.js"
   ],
   "src/components/CastleTypes.vue": [
-    "/assets/CastleTypes-BeHkHm_n.js"
+    "/assets/CastleTypes-DENNWrQ7.js"
   ],
   "src/components/CastleTypes.vue?vue&type=template&lang.js": [
-    "/assets/CastleTypes-BeHkHm_n.js"
+    "/assets/CastleTypes-DENNWrQ7.js"
   ],
   "src/components/FreeMasters.vue": [],
   "src/components/FreeMasters.vue?vue&type=template&lang.js": [],
   "src/components/HeaderLocation.vue": [],
   "src/components/HeaderLocation.vue?vue&type=template&lang.js": [],
   "src/components/MainAbout.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainAbout.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainGeography.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainGeography.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainScreenInfo.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainScreenInfo.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainServices.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/MainServices.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/Modals/ModalCall.vue": [],
   "src/components/Modals/ModalCall.vue?vue&type=template&lang.js": [],
@@ -144,34 +144,34 @@
   "src/components/Navbar.vue": [],
   "src/components/Navbar.vue?vue&type=template&lang.js": [],
   "src/components/Questions.vue": [
-    "/assets/Questions-YGcEJADF.js"
+    "/assets/Questions-pqoHKar1.js"
   ],
   "src/components/Questions.vue?vue&type=template&lang.js": [
-    "/assets/Questions-YGcEJADF.js"
+    "/assets/Questions-pqoHKar1.js"
   ],
   "src/components/Request.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/Request.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/ServiceDetail.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/ServiceDetail.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/ServiceSlider.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/ServiceSlider.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/components/Sidebar.vue": [
-    "/assets/Sidebar-C1E_1s2a.js"
+    "/assets/Sidebar-CjsBdHL5.js"
   ],
   "src/components/Sidebar.vue?vue&type=template&lang.js": [
-    "/assets/Sidebar-C1E_1s2a.js"
+    "/assets/Sidebar-CjsBdHL5.js"
   ],
   "src/components/TheFooter.vue": [],
   "src/components/TheFooter.vue?vue&type=template&lang.js": [],
@@ -182,58 +182,59 @@
   "src/data.js": [],
   "src/entry-client.js": [],
   "src/layouts/BaseLayout.vue": [],
-  "src/layouts/BaseLayout.vue?vue&type=template&lang.js": [],
+  "src/layouts/BaseLayout.vue?vue&type=style&index=0&scoped=b564e662&lang.css": [],
+  "src/layouts/BaseLayout.vue?vue&type=template&scoped=b564e662&lang.js": [],
   "src/layouts/Modal.vue": [],
   "src/layouts/Modal.vue?vue&type=template&lang.js": [],
   "src/main.js": [],
   "src/pages/About.vue": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "src/pages/About.vue?vue&type=template&lang.js": [
-    "/assets/About-CsR17vc9.js"
+    "/assets/About-BQRYnQcW.js"
   ],
   "src/pages/CastleCard.vue": [
-    "/assets/CastleCard-CAjJOgPL.js"
+    "/assets/CastleCard-8lK6WvGF.js"
   ],
   "src/pages/CastleCard.vue?vue&type=template&lang.js": [
-    "/assets/CastleCard-CAjJOgPL.js"
+    "/assets/CastleCard-8lK6WvGF.js"
   ],
   "src/pages/CastleList.vue": [
-    "/assets/CastleList-BsACqt3p.js"
+    "/assets/CastleList-CUPACktN.js"
   ],
   "src/pages/CastleList.vue?vue&type=template&lang.js": [
-    "/assets/CastleList-BsACqt3p.js"
+    "/assets/CastleList-CUPACktN.js"
   ],
   "src/pages/Contacts.vue": [
-    "/assets/Contacts-pJg5a5QA.js"
+    "/assets/Contacts-C7hHE7AJ.js"
   ],
   "src/pages/Contacts.vue?vue&type=template&lang.js": [
-    "/assets/Contacts-pJg5a5QA.js"
+    "/assets/Contacts-C7hHE7AJ.js"
   ],
   "src/pages/Home.vue": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/pages/Home.vue?vue&type=template&lang.js": [
-    "/assets/Home-CypjFbQN.js"
+    "/assets/Home-C2mFmO8X.js"
   ],
   "src/pages/ServiceCard.vue": [
-    "/assets/ServiceCard-CIoc7_Rn.js"
+    "/assets/ServiceCard-BWedANMP.js"
   ],
   "src/pages/ServiceCard.vue?vue&type=template&lang.js": [
-    "/assets/ServiceCard-CIoc7_Rn.js"
+    "/assets/ServiceCard-BWedANMP.js"
   ],
   "src/pages/ServiceList.vue": [
-    "/assets/ServiceList-V2RP5rPJ.js"
+    "/assets/ServiceList-95is82OS.js"
   ],
   "src/pages/ServiceList.vue?vue&type=template&lang.js": [
-    "/assets/ServiceList-V2RP5rPJ.js"
+    "/assets/ServiceList-95is82OS.js"
   ],
   "src/pages/TextPage.vue": [
-    "/assets/TextPage-Boy-GMKM.js",
+    "/assets/TextPage-BLiK3_v_.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/pages/TextPage.vue?vue&type=template&lang.js": [
-    "/assets/TextPage-Boy-GMKM.js",
+    "/assets/TextPage-BLiK3_v_.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/router.js": [],

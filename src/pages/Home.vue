@@ -70,7 +70,6 @@
 
 <script>
 import { useMeta } from 'vue-meta'
-import ScrollReveal from 'scrollreveal'
 
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
@@ -110,18 +109,7 @@ export default {
       localCity: this.defaultCity
     }
   },
-  methods: {
-    animation() {
-      if (typeof window !== 'undefined') {
-        ScrollReveal({
-          reset: false,
-          duration: 1500,
-          distance: '15px'
-        })
-        ScrollReveal().reveal('.main-screen__heading', { origin: 'top', opacity: 0 })
-      }
-    }
-  },
+  methods: {},
   watch() {},
   computed: {},
   mounted() {

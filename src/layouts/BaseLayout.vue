@@ -1,11 +1,12 @@
 <template lang="pug">
-	metainfo
-		template(v-slot:title="{ content }") {{ content ? `${content} | Замокмастер` : `Замокмастер` }}
+	//- metainfo
+	//- 	template(v-slot:title="{ content }") {{ content ? `${content} | Замокмастер` : `Замокмастер` }}
 	.wrapper(ref="wrapper" id="wrapper")
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
-				//- div(:defaultCity="defaultCity" :declensionCity="declensionCity")
+			router-view(v-slot="{ Component }")
+					Transition(name="slide-fade")
+						component(:is="Component" :defaultCity="defaultCity" :declensionCity="declensionCity")
 		TheFooter
 		Widget
 		.services-mobile
@@ -83,7 +84,7 @@ export default {
   },
   watch: {
     '$route.name'() {
-      if (typeof window !== undefined) {
+      if (typeof window !== 'undefined') {
         if (this.$route.name == 'home') {
           document.body.classList.add('home')
         } else {
@@ -100,9 +101,21 @@ export default {
         if (wrapper.getAttribute('id')) return
         wrapper.remove()
       })
-      console.log(this.$refs.wrapper)
       this.getStorageCity()
     })
   }
 }
 </script>
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.25s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  /* transform: translateX(-10px); */
+  opacity: 0;
+}
+</style>
