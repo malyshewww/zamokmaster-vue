@@ -73,16 +73,25 @@ textarea {
 	font-size: inherit;
 }
 button {
-	cursor: pointer;
 	color: inherit;
 	background-color: inherit;
 }
 button,
 input[type="submit"] {
 	cursor: pointer;
+	@media (min-width: $md) and (any-hover: hover) {
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 a {
 	color: inherit;
+	@media (any-hover: hover) {
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 input.error,
 textarea.error {

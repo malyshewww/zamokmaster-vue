@@ -66,7 +66,7 @@ const routes = [
   }
 ]
 
-export const router = createRouter({
+const router = createRouter({
   history,
   routes,
   scrollBehavior: function (to, _from, savedPosition) {
@@ -110,4 +110,4 @@ export const router = createRouter({
 //   next()
 // })
 
-// export { router }
+export default router

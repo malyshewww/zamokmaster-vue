@@ -14,7 +14,6 @@
 					HeaderLocation(:isHidden="isHidden" @onChangeCity="newCity($event)" :defaultCity.sync="defaultCity")
 					button(type="button" @click="openMenu").header__burger
 						span
-	.overlay(@click="closeMenu" data-da=".wrapper, 1400, 1")
 </template>
 
 <script>

@@ -8,6 +8,13 @@
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		overflow-x: auto;
+		&::-webkit-scrollbar {
+			background: none;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: none;
+		}
 	}
 	&__item {
 		font-weight: 500;
@@ -15,6 +22,7 @@
 		line-height: 120%;
 		color: $text-contrast-primary;
 		position: relative;
+		white-space: nowrap;
 		& + & {
 			padding-left: 12px;
 			&::before {

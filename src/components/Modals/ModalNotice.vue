@@ -1,6 +1,6 @@
 <template lang="pug">
 	Teleport(to="body")
-		Modal(class="modal-notice" id="modal-notice" @closeModal="closeModal")
+		Modal(class="modal-notice" :class="[isOpenModal ? 'open-modal' : '']" id="modal-notice" @closeModal="closeModal")
 			.modal__title Заявка успешно отправлена
 </template>
 

@@ -1,7 +1,6 @@
-import './assets/scss/main.scss'
 import { createSSRApp } from 'vue'
 import App from './App.vue'
-import { router } from './router'
+import router from './router'
 
 export const createApp = () => {
   const app = createSSRApp(App)

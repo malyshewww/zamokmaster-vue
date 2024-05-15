@@ -42,17 +42,26 @@
 			.services-detail__box
 				.container
 					ServiceDetail(:titleGray="servicesDetail[2].titleGray" :title="servicesDetail[2].title" :text1="servicesDetail[2].text[0]" :text2="servicesDetail[2].text[1]" img="3")
-				ServiceSlider(:count="9" imagePath="safe") 
+				ServiceSlider(:count="9" imagePath="safe")
+				.services-detail__bottom 
+					.container
+						router-link(to="/service-card").services-detail__button.btn Подробнее 
 			.services-detail__box
 				.container
 					ServiceDetail(:titleGray="servicesDetail[3].titleGray" :title="servicesDetail[3].title" :text1="servicesDetail[3].text[0]" :text2="servicesDetail[3].text[1]" img="4")
-				ServiceSlider(:count="9" imagePath="car") 
+				ServiceSlider(:count="9" imagePath="car")
+				.services-detail__bottom 
+					.container
+						router-link(to="/service-card").services-detail__button.btn Подробнее 
 	section.services-detail.services-detail--third
 		.services-detail__wrapper 
 			.services-detail__box
 				.container
 					ServiceDetail(:titleGray="servicesDetail[4].titleGray" :title="servicesDetail[4].title" :text1="servicesDetail[4].text[0]" :text2="servicesDetail[4].text[1]" img="5")
 				ServiceSlider(:count="9" imagePath="setlock")
+				.services-detail__bottom 
+					.container
+						router-link(to="/service-card").services-detail__button.btn Подробнее
 	Questions
 	MainAbout
 	section.testimonials

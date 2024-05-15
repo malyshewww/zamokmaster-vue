@@ -12,6 +12,12 @@
 	transition: all 0.3s ease 0s;
 	z-index: 30;
 	pointer-events: none;
+	&::-webkit-scrollbar {
+		background: none;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: none;
+	}
 	&.open-modal {
 		opacity: 1;
 		visibility: visible;

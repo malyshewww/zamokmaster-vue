@@ -4,9 +4,7 @@
 	.wrapper(ref="wrapper" id="wrapper")
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(v-slot="{ Component }")
-					Transition(name="slide-fade")
-						component(:is="Component" :defaultCity="defaultCity" :declensionCity="declensionCity")
+			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
 		TheFooter
 		Widget
 		.services-mobile
@@ -19,7 +17,7 @@
 		.phone-mobile 
 			.container
 				.phone-mobile__body
-					a(href="tel=+79958881086").btn.btn-phone +7 (995) 888-10-86
+					a(href="tel:79958881086").btn.btn-phone +7 (995) 888-10-86
 					FreeMasters
 		ModalNotice
 </template>

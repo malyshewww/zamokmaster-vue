@@ -86,9 +86,9 @@ picture {
 	position: relative;
 	overflow: hidden;
 	transition: background-color .25s;
-	cursor: pointer;
 	@media (any-hover:hover) {
 		&:hover {
+			cursor: pointer;
 			background-color: $button-primary-yellow-hover;
 			& .btn-phone__icon::before {
 				background-color: $button-primary-yellow-hover;

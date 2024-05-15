@@ -185,5 +185,11 @@
 	&-logo {
 		width: 69px;
 		height: 12px;
+		transition: filter .25s;
+		@media (any-hover: hover) {
+			&:hover {
+				filter: opacity(0.5);
+			}
+		}
 	}
 }
