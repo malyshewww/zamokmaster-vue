@@ -15,7 +15,7 @@
 					input(type="text" @input="onSearchInput" name="city" placeholder="Введите название города" v-model="search")
 					button(type="button" ref="btn_search" v-if="showBtnSearch").form-item__btn.btn-search
 					button(type="button" ref="btn_delete" v-else @click="deleteSearch").form-item__btn.btn-delete
-				.form-result
+				.form-result(v-if="isOpenModal")
 					ul.form-result__list 
 						li(v-for="(city, index) in filteredCities" @click="selectCity") {{ city }}
 </template>
@@ -36,17 +36,19 @@ export default {
       showModal: false,
       showBtnSearch: true,
       search: '',
-      cities: [
-        'Москва',
-        'Санкт-Петербург',
-        'Нижний Новгород',
-        'Казань',
-        'Екатеринбург',
-        'Владивосток',
-        'Мурманск',
-        'Воронеж',
-        'Владимир'
-      ]
+      // cities: [
+      //   'Москва',
+      //   'Санкт-Петербург',
+      //   'Нижний Новгород',
+      //   'Казань',
+      //   'Екатеринбург',
+      //   'Владивосток',
+      //   'Мурманск',
+      //   'Воронеж',
+      //   'Владимир'
+      // ],
+      cities: [],
+      token: '5ce8d1aaf3083ef146c27a68ecf9a5c065802258'
     }
   },
   methods: {
@@ -54,12 +56,17 @@ export default {
       document.body.classList.toggle('lock')
       this.isOpenModal = !this.isOpenModal
       this.isShowLocation = false
+      if (this.isOpenModal) {
+        this.getApiCities()
+      } else {
+        this.cities = []
+      }
     },
     closeLocation() {
       this.isShowLocation = false
     },
     onSearchInput(e) {
-      this.showBtnSearch = this.search == '' ? false : true
+      this.showBtnSearch = this.search == '' ? true : false
     },
     selectCity(e) {
       this.search = e.target.innerText
@@ -117,13 +124,31 @@ export default {
           return acc
         }, {})
       }
+    },
+    getApiCities() {
+      try {
+        fetch('https://apimarket.parserdata.ru/regions/', {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            Authorization: `Token ${this.token}`
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            this.cities = [...data]
+            // console.log(this.cities);
+          })
+      } catch (error) {
+        console.log('Ошибка', error)
+      }
     }
   },
   computed: {
     filteredCities() {
-      return this.cities.filter(
-        (item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-      )
+      return this.cities
+        .map((el) => el.name)
+        .filter((item) => item.toLowerCase().indexOf(this.search.toLowerCase()) !== -1)
     }
     // localCity: {
     //   get() {
@@ -139,8 +164,6 @@ export default {
     window.addEventListener('load', () => {
       this.setCityStorage()
       this.isShowLocation = true
-      let c = this.getCookie()
-      console.log(c.city)
     })
   }
 }

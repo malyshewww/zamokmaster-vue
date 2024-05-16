@@ -9,7 +9,7 @@
 							source(:srcset="`./images/card/logo.png`")
 							img(:src="`./images/card/logo.png`" alt="фото" loading="lazy")
 					.top-main__body
-						.top-main__title.page-title Вскрытие замка MSM #[span в&nbsp;{{ declensionCity }}]
+						.top-main__title.page-title Вскрытие замка MSM #[span {{ declensionCity }}]
 						a(href="tel:+79958881086").btn-phone.btn
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon

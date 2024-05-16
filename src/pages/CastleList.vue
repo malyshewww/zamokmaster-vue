@@ -5,7 +5,7 @@
 				Breadcrumbs(pageTitle="Список замков")
 				.top-main__content 
 					.top-main__body 
-						h1.top-main__title.page-title Вскрытие всех видов замков в #[span {{ declensionCity }}]
+						h1.top-main__title.page-title Вскрытие всех видов замков #[span {{ declensionCity }}]
 						p.top-main__sub-title Профессиональное вскрытие замков. Официально, предоставляем все документы
 					a(href="tel:+79958881086").btn-phone.btn
 						.btn-phone__text +7 (995) 888-10-86

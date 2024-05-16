@@ -2,7 +2,7 @@
 	.main-screen
 		.container 
 			.main-screen__heading
-				h1.main-screen__title Вскрытие замков #[span в&nbsp;{{ declensionCity }}]
+				h1.main-screen__title Вскрытие замков #[span {{ declensionCity }}]
 				a(href="tel:+79958881086").main-screen__phone.btn-phone.btn
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon

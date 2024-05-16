@@ -68,7 +68,11 @@ export default {
       return cityIn(this.getCityStorage())
     },
     getStorageCity() {
-      this.declensionCity = this.setDeclensionCity()
+      const firstSymbols = this.getCityStorage().substring(0, 2)
+      this.declensionCity =
+        firstSymbols.toLowerCase() == 'вл'
+          ? `во ${this.setDeclensionCity()}`
+          : `в ${this.setDeclensionCity()}`
     },
     getCookie() {
       if (typeof window !== 'undefined') {

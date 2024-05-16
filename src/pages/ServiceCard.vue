@@ -9,7 +9,7 @@
 							source(:srcset="`./images/card/image.jpg`")
 							img(:src="`./images/card/image.jpg`" alt="фото" loading="lazy")
 					.top-main__body
-						.top-main__title.page-title Вскрытие автомобилей #[span в&nbsp;{{declensionCity}}]
+						.top-main__title.page-title Вскрытие автомобилей #[span {{declensionCity}}]
 						a(href="tel:+79958881086").btn-phone.btn
 							.btn-phone__text +7 (995) 888-10-86
 							.btn-phone__icon
