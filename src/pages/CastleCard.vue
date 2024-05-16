@@ -29,28 +29,20 @@
 
 </template>
 
-<script>
+<script setup>
+import { defineComponent } from 'vue'
 import { useMeta } from 'vue-meta'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
-export default {
+defineComponent({
+  head: {},
   setup() {
-    useMeta({ title: 'Карточка замка' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Sidebar,
-    Breadcrumbs,
-    CastleAdvantages,
-    CastleTypes
-  },
-  data() {
-    return {}
-  },
-  methods: {},
-  mounted() {}
-}
+    const { title } = useMeta()
+    title.value = 'Карточка замка'
+  }
+})
+const props = defineProps(['defaultCity', 'declensionCity'])
 </script>

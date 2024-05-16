@@ -9,9 +9,9 @@
 						.main-about__item.stats-item(v-for="item in stats")
 							.stats-item__num {{ item.num }}
 							.stats-item__text {{ item.text }}
-					.text-hidden(ref="hiddenBlock" :class="[textShow ? 'active': '']")
+					.text-hidden(:class="[textShow ? 'active': '']")
 						.text-hidden-content(ref="hiddenContent" :style="myStyles")
-							.content(ref="content")
+							.content
 								p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 								p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
 								p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не
@@ -28,30 +28,16 @@
 							img(:src='`./images/main-about/master.jpg`' alt="Баннер")
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue'
 import obj from '../data.js'
-// import { textHidden, textHide } from '../assets/scripts/modules/textHidden.js'
 const { stats } = obj
+const textShow = ref(false)
+const hiddenContent = ref()
 
-export default {
-  components: {},
-  data() {
-    return {
-      stats,
-      textShow: false,
-      maxHeight: 0
-    }
-  },
-  methods: {},
-  computed: {
-    myStyles() {
-      return {
-        // `height: ${this.show ? this.$el.scrollHeight : 0}px`
-        'max-height': `${this.textShow ? this.$el.querySelector('.text-hidden-content')?.scrollHeight : false}px`
-      }
-    }
-  },
-  watch: {},
-  mounted() {}
-}
+const myStyles = computed(() => {
+  return {
+    'max-height': `${textShow.value ? hiddenContent.value?.scrollHeight : false}px`
+  }
+})
 </script>

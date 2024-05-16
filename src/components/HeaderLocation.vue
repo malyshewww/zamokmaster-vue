@@ -56,11 +56,7 @@ export default {
       document.body.classList.toggle('lock')
       this.isOpenModal = !this.isOpenModal
       this.isShowLocation = false
-      if (this.isOpenModal) {
-        this.getApiCities()
-      } else {
-        this.cities = []
-      }
+      this.uploadCities()
     },
     closeLocation() {
       this.isShowLocation = false
@@ -142,6 +138,9 @@ export default {
       } catch (error) {
         console.log('Ошибка', error)
       }
+    },
+    uploadCities() {
+      return this.isOpenModal ? this.getApiCities() : (this.cities = [])
     }
   },
   computed: {

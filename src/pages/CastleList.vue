@@ -33,28 +33,22 @@
 					Sidebar
 </template>
 
-<script>
+<script setup>
+import { defineComponent } from 'vue'
 import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { castleList } = obj
-export default {
+
+const props = defineProps(['defaultCity', 'declensionCity'])
+
+defineComponent({
+  head: {},
   setup() {
-    useMeta({ title: 'Список замков' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Sidebar,
-    Breadcrumbs
-  },
-  data() {
-    return {
-      castleList
-    }
-  },
-  methods: {},
-  mounted() {}
-}
+    const { title } = useMeta()
+    title.value = 'Список замков'
+  }
+})
 </script>

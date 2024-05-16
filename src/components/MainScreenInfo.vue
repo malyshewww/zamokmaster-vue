@@ -7,13 +7,6 @@
 		span.main-screen__info-icon 
 </template>
 
-<script>
+<script setup>
 import FreeMasters from './FreeMasters.vue'
-
-export default {
-  components: { FreeMasters },
-  data() {
-    return {}
-  }
-}
 </script>

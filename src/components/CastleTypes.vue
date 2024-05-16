@@ -12,12 +12,6 @@
 		router-link(to="/castle-list").castle-types__button.btn Все замки
 </template>
 
-<script>
-export default {
-  props: ['path', 'count'],
-  components: {},
-  data() {
-    return {}
-  }
-}
+<script setup>
+const props = defineProps(['path', 'count'])
 </script>

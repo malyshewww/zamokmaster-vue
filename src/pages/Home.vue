@@ -77,7 +77,8 @@
 	MainGeography
 </template>
 
-<script>
+<script setup>
+import { ref, defineComponent, onMounted } from 'vue'
 import { useMeta } from 'vue-meta'
 
 import obj from '../data.js'
@@ -90,42 +91,24 @@ import MainGeography from '../components/MainGeography.vue'
 import Request from '../components/Request.vue'
 import MainServices from '../components/MainServices.vue'
 
+const props = defineProps(['defaultCity', 'declensionCity'])
+
 const { servicesDetail, stats } = obj
 
-export default {
+defineComponent({
+  head: {},
   setup() {
-    useMeta({
-      title: 'Главная',
-      description: [{ name: 'description', content: `My page meta description` }]
-    })
-  },
-
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    ServiceDetail,
-    ServiceSlider,
-    Questions,
-    MainScreenInfo,
-    MainAbout,
-    MainGeography,
-    Request,
-    MainServices
-  },
-  data() {
-    return {
-      servicesDetail,
-      stats,
-      localCity: this.defaultCity
-    }
-  },
-  methods: {},
-  watch() {},
-  computed: {},
-  mounted() {
-    window.addEventListener('load', () => {
-      document.body.classList.add('home')
-      //   this.animation()
-    })
+    const { title } = useMeta()
+    title.value = 'Главная'
   }
-}
+})
+
+const localCity = ref('')
+localCity.value = props.defaultCity
+
+onMounted(() => {
+  window.addEventListener('load', () => {
+    document.body.classList.add('home')
+  })
+})
 </script>

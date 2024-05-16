@@ -1035,6 +1035,11 @@
 		justify-content: flex-start;
 		background: linear-gradient(180deg, rgba(255, 255, 255, 0) 5.9%, #FFF 100.00%);
 		transition: opacity .25s;
+		@media (any-hover: hover) {
+			&:hover {
+				cursor: pointer;
+			}
+		}
 		.active & {
 			opacity: 0;
 		}

@@ -10,34 +10,25 @@
 					.castle-advantages__description {{ item.descr }}
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref } from 'vue'
 import obj from '../data.js'
 import ScrollReveal from 'scrollreveal'
 
 const { castleAdvantages } = obj
 
-export default {
-  components: {},
-  data() {
-    return {
-      castleAdvantages
-    }
-  },
-  methods: {
-    animation() {
-      if (typeof window !== 'undefined') {
-        ScrollReveal({
-          reset: false,
-          duration: 1500,
-          distance: '15px',
-          mobile: false
-        })
-        ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
-      }
-    }
-  },
-  mounted() {
-    this.animation()
+function animation() {
+  if (typeof window !== 'undefined') {
+    ScrollReveal({
+      reset: false,
+      duration: 1500,
+      distance: '15px',
+      mobile: false
+    })
+    ScrollReveal().reveal('.castle-advantages__item', { origin: 'top', opacity: 0 })
   }
 }
+onMounted(() => {
+  animation()
+})
 </script>

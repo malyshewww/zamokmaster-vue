@@ -3,22 +3,14 @@
 	ModalCall(@closeModal="toggleModal" :isOpenModal="isOpenModal")
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 import ModalCall from '../components/Modals/ModalCall.vue'
-export default {
-  components: {
-    ModalCall
-  },
-  data() {
-    return {
-      isOpenModal: false
-    }
-  },
-  methods: {
-    toggleModal() {
-      document.body.classList.toggle('lock')
-      this.isOpenModal = !this.isOpenModal
-    }
-  }
+
+const isOpenModal = ref(false)
+
+const toggleModal = () => {
+  document.body.classList.toggle('lock')
+  isOpenModal.value = !isOpenModal.value
 }
 </script>

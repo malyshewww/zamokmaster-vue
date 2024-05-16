@@ -52,43 +52,48 @@
 								img(:src=`"./images/text-page/gallery-"+(index+1)+".jpg"` alt="фото" loading="lazy")
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, onUpdated, defineComponent } from 'vue'
 import { useMeta } from 'vue-meta'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
-export default {
+const props = defineProps(['defaultCity', 'declensionCity'])
+
+defineComponent({
+  head: {},
   setup() {
-    useMeta({ title: 'Текстовая страница' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Breadcrumbs
-  },
-  data() {
-    return {
-      fancyboxOptions: {
-        Hash: false
+    const { title, meta } = useMeta()
+    title.value = 'Текстовая страница'
+    meta.value = [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'My description'
       }
-    }
-  },
-  methods: {
-    wrapTable() {
-      if (window.innerWidth < 767.98) {
-        let tableWrap = document.createElement('div')
-        tableWrap.setAttribute('class', 'table-wrap')
-        this.$refs.table.parentNode.insertBefore(tableWrap, this.$refs.table)
-        tableWrap.appendChild(this.$refs.table)
-      }
-    }
-  },
-  mounted() {
-    Fancybox.bind(`[data-fancybox="gallery"]`, this.fancyboxOptions)
-    this.wrapTable()
-  },
-  updated() {
-    Fancybox.bind(`[data-fancybox="gallery"]`, this.fancyboxOptions)
+    ]
+  }
+})
+
+const fancyboxOptions = {
+  Hash: false
+}
+const table = ref()
+
+const wrapTable = () => {
+  if (window.innerWidth < 767.98) {
+    let tableWrap = document.createElement('div')
+    tableWrap.setAttribute('class', 'table-wrap')
+    table.value.parentNode.insertBefore(tableWrap, table.value)
+    tableWrap.appendChild(table.value)
   }
 }
+onMounted(() => {
+  Fancybox.bind(`[data-fancybox="gallery"]`, fancyboxOptions)
+  wrapTable()
+})
+onUpdated(() => {
+  Fancybox.bind(`[data-fancybox="gallery"]`, fancyboxOptions)
+})
 </script>

@@ -47,7 +47,8 @@
 
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, defineComponent } from 'vue'
 import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
@@ -55,39 +56,31 @@ import Sidebar from '../components/Sidebar.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
 
+const props = defineProps(['defaultCity', 'declensionCity'])
+
 const { tablePrice } = obj
 
-export default {
+const table = ref()
+
+defineComponent({
+  head: {},
   setup() {
-    useMeta({ title: 'Карточка услуги' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Sidebar,
-    Breadcrumbs,
-    CastleAdvantages,
-    CastleTypes
-  },
-  data() {
-    return {
-      tablePrice
+    const { title } = useMeta()
+    title.value = 'Карточка услуги'
+  }
+})
+
+const wrapTable = () => {
+  if (typeof window !== 'undefined') {
+    if (window.innerWidth < 767.98) {
+      let tableWrap = document.createElement('div')
+      tableWrap.setAttribute('class', 'table-wrap')
+      table.value.parentNode.insertBefore(tableWrap, table.value)
+      tableWrap.appendChild(table.value)
     }
-  },
-  methods: {
-    wrapTable() {
-      if (typeof window !== 'undefined') {
-        console.log(this.$refs.table)
-        if (window.innerWidth < 767.98) {
-          let tableWrap = document.createElement('div')
-          tableWrap.setAttribute('class', 'table-wrap')
-          this.$refs.table.parentNode.insertBefore(tableWrap, this.$refs.table)
-          tableWrap.appendChild(this.$refs.table)
-        }
-      }
-    }
-  },
-  mounted() {
-    this.wrapTable()
   }
 }
+onMounted(() => {
+  wrapTable()
+})
 </script>

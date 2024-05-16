@@ -17,68 +17,64 @@
 						img(:src=`'./images/services/service-detail-'+img+'.jpg'`, :alt="titleGray + title" loading="lazy")
 </template>
 
-<script>
+<script setup>
+import { onMounted } from 'vue'
 import ScrollReveal from 'scrollreveal'
 
-export default {
-  props: ['titleGray', 'title', 'text1', 'text2', 'img'],
-  data() {
-    return {}
-  },
-  methods: {
-    animation() {
-      if (typeof window !== 'undefined') {
-        ScrollReveal({
-          reset: false,
-          duration: 1500,
-          distance: '50px',
-          mobile: false
-        })
-        ScrollReveal().reveal(
-          '.services-detail--first .services-detail__box:nth-child(1) .services-detail__content',
-          { origin: 'left', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--first .services-detail__box:nth-child(1) .services-detail__image-wrap',
-          { origin: 'right', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--first .services-detail__box:nth-child(2) .services-detail__content',
-          { origin: 'right', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--first .services-detail__box:nth-child(2) .services-detail__image-wrap',
-          { origin: 'left', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--second .services-detail__box:nth-child(1) .services-detail__content',
-          { origin: 'left', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--second .services-detail__box:nth-child(1) .services-detail__image-wrap',
-          { origin: 'right', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--second .services-detail__box:nth-child(2) .services-detail__content',
-          { origin: 'right', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--second .services-detail__box:nth-child(2) .services-detail__image-wrap',
-          { origin: 'left', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--third .services-detail__box:nth-child(1) .services-detail__content',
-          { origin: 'left', opacity: 0 }
-        )
-        ScrollReveal().reveal(
-          '.services-detail--third .services-detail__box:nth-child(1) .services-detail__image-wrap',
-          { origin: 'right', opacity: 0 }
-        )
-      }
-    }
-  },
-  mounted() {
-    this.animation()
+const props = defineProps(['titleGray', 'title', 'text1', 'text2', 'img'])
+
+const animation = () => {
+  if (typeof window !== 'undefined') {
+    ScrollReveal({
+      reset: false,
+      duration: 1500,
+      distance: '50px',
+      mobile: false
+    })
+    ScrollReveal().reveal(
+      '.services-detail--first .services-detail__box:nth-child(1) .services-detail__content',
+      { origin: 'left', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--first .services-detail__box:nth-child(1) .services-detail__image-wrap',
+      { origin: 'right', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--first .services-detail__box:nth-child(2) .services-detail__content',
+      { origin: 'right', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--first .services-detail__box:nth-child(2) .services-detail__image-wrap',
+      { origin: 'left', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--second .services-detail__box:nth-child(1) .services-detail__content',
+      { origin: 'left', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--second .services-detail__box:nth-child(1) .services-detail__image-wrap',
+      { origin: 'right', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--second .services-detail__box:nth-child(2) .services-detail__content',
+      { origin: 'right', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--second .services-detail__box:nth-child(2) .services-detail__image-wrap',
+      { origin: 'left', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--third .services-detail__box:nth-child(1) .services-detail__content',
+      { origin: 'left', opacity: 0 }
+    )
+    ScrollReveal().reveal(
+      '.services-detail--third .services-detail__box:nth-child(1) .services-detail__image-wrap',
+      { origin: 'right', opacity: 0 }
+    )
   }
 }
+
+onMounted(() => {
+  animation()
+})
 </script>

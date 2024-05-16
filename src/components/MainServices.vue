@@ -15,35 +15,28 @@
 									img(:src=`'./images/services/services-'+service.img+'.png'`, :alt="service.title" loading="lazy")
 </template>
 
-<script>
+<script setup>
+import { onMounted } from 'vue'
 import ScrollReveal from 'scrollreveal'
 import obj from '../data.js'
+
 const { services } = obj
 
-export default {
-  data() {
-    return {
-      services
-    }
-  },
-  methods: {
-    animation() {
-      ScrollReveal({
-        reset: false,
-        duration: 1500,
-        distance: '30px',
-        mobile: false
-      })
-      ScrollReveal().reveal('.services__item', {
-        origin: 'top',
-        opacity: 0.2,
-        scale: 0.5,
-        delay: 0.2
-      })
-    }
-  },
-  mounted() {
-    this.animation()
-  }
+const animation = () => {
+  ScrollReveal({
+    reset: false,
+    duration: 1500,
+    distance: '30px',
+    mobile: false
+  })
+  ScrollReveal().reveal('.services__item', {
+    origin: 'top',
+    opacity: 0.2,
+    scale: 0.5,
+    delay: 0.2
+  })
 }
+onMounted(() => {
+  animation()
+})
 </script>

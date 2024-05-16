@@ -264,8 +264,7 @@ export default {
       } else {
         return false
       }
-    },
-    watch() {}
+    }
   },
   mounted() {
     this.setPositionNavAbout()
@@ -279,3 +278,6 @@ export default {
   }
 }
 </script>
+<!-- <style lang="scss">
+@import '@/assets/scss/pages/about.scss';
+</style> -->

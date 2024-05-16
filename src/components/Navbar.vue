@@ -5,7 +5,7 @@
 				router-link.route(to="/") Главная
 			li.menu__item.menu__item--extended(:class="[isShow ? 'active' : '']")
 				a(href="javascript:void();" @click.native="openSubMenu($event)") Услуги
-				.menu__sub-list(:style="myStyles" ref="sub_menu")
+				.menu__sub-list(:style="myStyles" ref="subMenu")
 					ul
 						li 
 							router-link.route(to="/castle-card") Вскрытие дверей
@@ -30,36 +30,27 @@
 		a(href="mailto:hello@zamokmaster.ru").contacts-header__link.contacts-header__link--email hello@zamokmaster.ru
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      maxHeight: 0,
-      isShow: false
-    }
-  },
-  methods: {
-    openSubMenu(e) {
-      if (window.innerWidth < 1400) {
-        e.preventDefault()
-        this.isShow = !this.isShow
-      }
-    },
-    closeMenu(e) {
-      if (e.target.closest('li:not(.menu__item--extended) a')) {
-        document.body.classList.remove('menu-open')
-        document.body.classList.remove('lock')
-      }
-    }
-  },
-  computed: {
-    myStyles() {
-      return {
-        'max-height': `${this.isShow ? this.$refs.sub_menu?.scrollHeight : this.maxHeight}px`
-      }
-    }
+<script setup>
+import { ref, computed } from 'vue'
+
+const maxHeight = ref(0)
+const isShow = ref(false)
+const subMenu = ref()
+const openSubMenu = (e) => {
+  if (window.innerWidth < 1400) {
+    e.preventDefault()
+    isShow.value = !isShow.value
   }
 }
+const closeMenu = (e) => {
+  if (e.target.closest('li:not(.menu__item--extended) a')) {
+    document.body.classList.remove('menu-open')
+    document.body.classList.remove('lock')
+  }
+}
+const myStyles = computed(() => {
+  return {
+    'max-height': `${isShow.value ? subMenu.value?.scrollHeight : maxHeight.value}px`
+  }
+})
 </script>
-
-<style lang="scss"></style>

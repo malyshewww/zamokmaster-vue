@@ -7,7 +7,7 @@
 						source(:srcset="`./images/icons/logo-pc.svg`" media="(min-width: 767.98px)")
 						source(:srcset="`./images/icons/logo-mobile.svg`" media="(min-width: 300px)")
 						img(:src="`./images/icons/logo-pc.svg`", alt="логотип")
-				.header__menu.menu(ref="header_menu" @click="closeMenu")
+				.header__menu.menu(@click="closeMenu")
 					.menu__body(@click.stop)
 						Navbar
 				.header__actions
@@ -16,78 +16,55 @@
 						span
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
 import Navbar from '../components/Navbar.vue'
 import HeaderLocation from '../components/HeaderLocation.vue'
 
-import DynamicAdapt from '../utils/dynamic_adapt.js'
+const props = defineProps(['defaultCity'])
+const emit = defineEmits(['onChangeCity'])
 
-export default {
-  components: { Navbar, HeaderLocation },
-  emits: ['onChangeCity'],
-  props: ['defaultCity'],
-  data() {
-    return {
-      isHidden: false,
-      currScroll: null,
-      da: null
-    }
-  },
-  methods: {
-    openMenu() {
-      document.body.classList.toggle('menu-open')
-      document.body.classList.toggle('lock')
-    },
-    closeMenu() {
-      document.body.classList.contains('menu-open') && document.body.classList.remove('menu-open')
-      document.body.classList.contains('lock') && document.body.classList.remove('lock')
-    },
-    stickyHeader() {
-      if (typeof window !== 'undefined') {
-        this.currScroll = window.scrollY
-        let rect = this.$refs.header.getBoundingClientRect()
-        document.addEventListener('scroll', () => {
-          if (
-            this.currScroll <= window.scrollY &&
-            window.scrollY > 0 &&
-            window.scrollY > rect.height
-          ) {
-            if (!this.isHidden) {
-              this.$refs.header.classList.add('hide')
-              this.isHidden = true
-            }
-          } else {
-            if (this.isHidden) {
-              this.$refs.header.classList.remove('hide')
-              this.isHidden = false
-            }
-          }
-          this.currScroll = window.scrollY
-        })
+const isHidden = ref(false)
+const currScroll = ref(null)
+const da = ref(null)
+const header = ref()
+
+const openMenu = () => {
+  document.body.classList.toggle('menu-open')
+  document.body.classList.toggle('lock')
+}
+const closeMenu = () => {
+  document.body.classList.contains('menu-open') && document.body.classList.remove('menu-open')
+  document.body.classList.contains('lock') && document.body.classList.remove('lock')
+}
+const stickyHeader = () => {
+  if (typeof window !== 'undefined') {
+    currScroll.value = window.scrollY
+    let rect = header.value.getBoundingClientRect()
+    document.addEventListener('scroll', () => {
+      if (
+        currScroll.value <= window.scrollY &&
+        window.scrollY > 0 &&
+        window.scrollY > rect.height
+      ) {
+        if (!isHidden.value) {
+          header.value.classList.add('hide')
+          isHidden.value = true
+        }
+      } else {
+        if (isHidden.value) {
+          header.value.classList.remove('hide')
+          isHidden.value = false
+        }
       }
-    },
-    newCity(city) {
-      this.$emit('onChangeCity', city)
-    },
-    initDynamicAdapt() {
-      this.da = new DynamicAdapt('max')
-      this.da.init()
-    }
-  },
-  computed: {
-    // localCity: {
-    //   get() {
-    //     return this.defaultCity
-    //   },
-    //   set(localCity) {
-    //     this.$emit('update:onChangeCity', localCity)
-    //   }
-    // }
-  },
-  mounted() {
-    this.stickyHeader()
-    this.initDynamicAdapt()
-    // this.teleportMenu()
+      currScroll.value = window.scrollY
+    })
   }
 }
+const newCity = (city) => {
+  emit('onChangeCity', city)
+}
+onMounted(() => {
+  stickyHeader()
+})
 </script>

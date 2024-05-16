@@ -7,8 +7,6 @@
 				li.breadcrumbs__item {{ pageTitle }}
 </template>
 
-<script>
-export default {
-  props: ['pageTitle']
-}
+<script setup>
+const props = defineProps(['pageTitle'])
 </script>

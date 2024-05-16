@@ -39,44 +39,33 @@
 	ModalCall(@closeModal="toggleModal" :isOpenModal="isOpenModal")
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue'
 import obj from '../data.js'
 import ModalCall from '../components/Modals/ModalCall.vue'
 import spollers from '../utils/spollers.js'
 
 const { menuFooter } = obj
+const isOpenModal = ref(false)
 
-export default {
-  components: {
-    ModalCall
-  },
-  data() {
-    return {
-      menuFooter,
-      isOpenModal: false
-    }
-  },
-  methods: {
-    toggleModal() {
-      document.body.classList.toggle('lock')
-      this.isOpenModal = !this.isOpenModal
-    },
-    initSpollers() {
-      if (window.matchMedia('(max-width: 767.98px)').matches) {
-        spollers()
-      } else {
-        return false
-      }
-    },
-    resizeSpollers() {
-      window.addEventListener('resize', () => {
-        this.initSpollers()
-      })
-    }
-  },
-  mounted() {
-    this.initSpollers()
-    this.resizeSpollers()
+const toggleModal = () => {
+  document.body.classList.toggle('lock')
+  isOpenModal.value = !isOpenModal.value
+}
+const initSpollers = () => {
+  if (window.matchMedia('(max-width: 767.98px)').matches) {
+    spollers()
+  } else {
+    return false
   }
 }
+const resizeSpollers = () => {
+  window.addEventListener('resize', () => {
+    initSpollers()
+  })
+}
+onMounted(() => {
+  initSpollers()
+  resizeSpollers()
+})
 </script>

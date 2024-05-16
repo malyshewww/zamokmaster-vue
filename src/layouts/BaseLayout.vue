@@ -117,7 +117,6 @@ export default {
 }
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  /* transform: translateX(-10px); */
   opacity: 0;
 }
 </style>

@@ -4,21 +4,13 @@
 			.modal__title Заявка успешно отправлена
 </template>
 
-<script>
+<script setup>
 import Modal from '../../layouts/Modal.vue'
-export default {
-  props: ['isOpenModal'],
-  emits: ['closeModal'],
-  components: {
-    Modal
-  },
-  data() {
-    return {}
-  },
-  methods: {
-    closeModal() {
-      this.$emit('closeModal')
-    }
-  }
+
+const props = defineProps(['isOpenModal'])
+const emit = defineEmits(['closeModal'])
+
+const closeModal = () => {
+  emit('closeModal')
 }
 </script>

@@ -29,27 +29,21 @@
 						p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не 
 </template>
 
-<script>
+<script setup>
+import { defineComponent } from 'vue'
 import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { servicesList } = obj
 
-export default {
+const props = defineProps(['defaultCity', 'declensionCity'])
+
+defineComponent({
+  head: {},
   setup() {
-    useMeta({ title: 'Список услуг' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Breadcrumbs
-  },
-  data() {
-    return {
-      servicesList
-    }
-  },
-  methods: {},
-  mounted() {}
-}
+    const { title } = useMeta()
+    title.value = 'Список услуг'
+  }
+})
 </script>
