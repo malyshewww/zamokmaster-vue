@@ -6,18 +6,9 @@
 				slot
 </template>
 
-<script>
-export default {
-  name: 'Modal',
-  data() {
-    return {
-      isOpenModal: false
-    }
-  },
-  methods: {
-    closeModal() {
-      this.$emit('closeModal')
-    }
-  }
+<script setup>
+const emit = defineEmits(['closeModal'])
+const closeModal = () => {
+  emit('closeModal')
 }
 </script>

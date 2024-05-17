@@ -81,33 +81,16 @@ const router = createRouter({
       }, 100)
     }
   },
-  base: baseUrl,
-  beforeEach: function (to, from, next) {
-    document.title = to.meta.title
-    next()
-  }
+  base: baseUrl
+  // beforeEach: function (to, from, next) {
+  //   document.title = to.meta.title
+  //   next()
+  // }
 })
-// const router = createRouter({
-//   history,
-//   routes,
-//   scrollBehavior: function (to, _from, savedPosition) {
-//     if (savedPosition) {
-//       return savedPosition
-//     }
-//     if (to.hash) {
-//       return { el: to.hash, behavior: 'smooth' }
-//     } else {
-//       setTimeout(() => {
-//         window.scrollTo(0, 0)
-//       }, 100)
-//     }
-//   },
-//   base: baseUrl
-// })
 
-// router.beforeEach((to, from, next) => {
-//   document.title = to.meta.title
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  document.title = to.meta?.title ?? 'Замокмастер'
+  next()
+})
 
 export default router

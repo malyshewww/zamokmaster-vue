@@ -2,7 +2,7 @@
 	.text-page
 		.container
 			.text-page__top
-					Breadcrumbs(pageTitle="Политика конфиденциальности")
+				Breadcrumbs(pageTitle="Политика конфиденциальности")
 			.text-page__content.content
 				h1 H1 Заголовок
 				h2 H2 заголовок
@@ -53,28 +53,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUpdated, defineComponent } from 'vue'
-import { useMeta } from 'vue-meta'
+import { ref, onMounted, onUpdated } from 'vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 const props = defineProps(['defaultCity', 'declensionCity'])
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title, meta } = useMeta()
-    title.value = 'Текстовая страница'
-    meta.value = [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'My description'
-      }
-    ]
-  }
-})
 
 const fancyboxOptions = {
   Hash: false

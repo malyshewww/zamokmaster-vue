@@ -30,20 +30,10 @@
 </template>
 
 <script setup>
-import { defineComponent } from 'vue'
-import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 
 const { servicesList } = obj
 
 const props = defineProps(['defaultCity', 'declensionCity'])
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title } = useMeta()
-    title.value = 'Список услуг'
-  }
-})
 </script>

@@ -34,8 +34,6 @@
 </template>
 
 <script setup>
-import { defineComponent } from 'vue'
-import { useMeta } from 'vue-meta'
 import obj from '../data.js'
 import Sidebar from '../components/Sidebar.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
@@ -43,12 +41,4 @@ import Breadcrumbs from '../components/Breadcrumbs.vue'
 const { castleList } = obj
 
 const props = defineProps(['defaultCity', 'declensionCity'])
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title } = useMeta()
-    title.value = 'Список замков'
-  }
-})
 </script>

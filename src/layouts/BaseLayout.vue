@@ -21,7 +21,8 @@
 					FreeMasters
 		ModalNotice
 </template>
-<script>
+<script setup>
+import { ref, onMounted, watchEffect } from 'vue'
 import { cityIn, cityFrom, cityTo } from 'lvovich'
 
 import obj from '../data.js'
@@ -31,82 +32,73 @@ import FreeMasters from '../components/FreeMasters.vue'
 import Widget from '../components/Widget.vue'
 import ModalNotice from '../components/Modals/ModalNotice.vue'
 
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
 const { services } = obj
 
-export default {
-  components: { TheHeader, TheFooter, FreeMasters, Widget, ModalNotice },
-  data() {
-    return {
-      services,
-      defaultCity: 'Санкт-Петербург',
-      declensionCity: ''
+const defaultCity = ref('')
+const declensionCity = ref('')
+
+defaultCity.value = 'Санкт-Петербург'
+
+const getNewCity = (city) => {
+  defaultCity.value = city
+  getStorageCity()
+}
+const getCityStorage = () => {
+  // if (typeof window !== 'undefined') {
+  //   if (localStorage.getItem('city') !== null) {
+  //     return localStorage.getItem('city')
+  //   } else {
+  //     return this.defaultCity
+  //   }
+  // }
+  if (typeof window !== 'undefined') {
+    let c = getCookie()
+    if (c.city) {
+      return c.city
+    } else {
+      return defaultCity.value
     }
-  },
-  methods: {
-    getNewCity(city) {
-      this.defaultCity = city
-      this.getStorageCity()
-    },
-    getCityStorage() {
-      // if (typeof window !== 'undefined') {
-      //   if (localStorage.getItem('city') !== null) {
-      //     return localStorage.getItem('city')
-      //   } else {
-      //     return this.defaultCity
-      //   }
-      // }
-      if (typeof window !== 'undefined') {
-        let c = this.getCookie()
-        if (c.city) {
-          return c.city
-        } else {
-          return this.defaultCity
-        }
-      }
-    },
-    setDeclensionCity() {
-      return cityIn(this.getCityStorage())
-    },
-    getStorageCity() {
-      const firstSymbols = this.getCityStorage().substring(0, 2)
-      this.declensionCity =
-        firstSymbols.toLowerCase() == 'вл'
-          ? `во ${this.setDeclensionCity()}`
-          : `в ${this.setDeclensionCity()}`
-    },
-    getCookie() {
-      if (typeof window !== 'undefined') {
-        return document.cookie.split('; ').reduce((acc, item) => {
-          const [name, value] = item.split('=')
-          acc[name] = value
-          return acc
-        }, {})
-      }
-    }
-  },
-  watch: {
-    '$route.name'() {
-      if (typeof window !== 'undefined') {
-        if (this.$route.name == 'home') {
-          document.body.classList.add('home')
-        } else {
-          document.body.classList.remove('home')
-        }
-      }
-    }
-  },
-  updated() {},
-  mounted() {
-    window.addEventListener('load', () => {
-      const pageWrapper = document.querySelectorAll('.wrapper')
-      ;[...pageWrapper].forEach((wrapper) => {
-        if (wrapper.getAttribute('id')) return
-        wrapper.remove()
-      })
-      this.getStorageCity()
-    })
   }
 }
+const setDeclensionCity = () => {
+  return cityIn(getCityStorage())
+}
+
+const getStorageCity = () => {
+  const firstSymbols = getCityStorage().substring(0, 2)
+  declensionCity.value =
+    firstSymbols.toLowerCase() == 'вл' ? `во ${setDeclensionCity()}` : `в ${setDeclensionCity()}`
+}
+const getCookie = () => {
+  if (typeof window !== 'undefined') {
+    return document.cookie.split('; ').reduce((acc, item) => {
+      const [name, value] = item.split('=')
+      acc[name] = value
+      return acc
+    }, {})
+  }
+}
+watchEffect(() => {
+  if (typeof window !== 'undefined') {
+    route.name == 'home'
+      ? document.body.classList.add('home')
+      : document.body.classList.remove('home')
+  }
+})
+onMounted(() => {
+  window.addEventListener('load', () => {
+    const pageWrapper = document.querySelectorAll('.wrapper')
+    ;[...pageWrapper].forEach((wrapper) => {
+      if (wrapper.getAttribute('id')) return
+      wrapper.remove()
+    })
+    getStorageCity()
+  })
+})
 </script>
 <style scoped>
 .slide-fade-enter-active {

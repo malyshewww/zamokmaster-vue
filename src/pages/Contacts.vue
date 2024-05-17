@@ -30,18 +30,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineComponent } from 'vue'
-import { useMeta } from 'vue-meta'
+import { ref, onMounted } from 'vue'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title } = useMeta()
-    title.value = 'Контакты'
-  }
-})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

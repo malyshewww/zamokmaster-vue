@@ -105,179 +105,140 @@
 			Questions
 </template>
 
-<script>
-import { useMeta } from 'vue-meta'
+<script setup>
+import { ref, reactive, onMounted } from 'vue'
 import Swiper from 'swiper'
 import { Scrollbar, FreeMode, Thumbs } from 'swiper/modules'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
-export default {
-  setup() {
-    useMeta({ title: 'О компании' })
-  },
-  props: ['defaultCity', 'declensionCity'],
-  components: {
-    Questions,
-    Breadcrumbs
-  },
-  data() {
-    return {
-      menuObserver: null,
-      contentSlider: null,
-      navSlider: null,
-      count: 0,
-      minHeightSection: 0
-    }
-  },
-  methods: {
-    manualSmoothScroll(event) {
-      if (window.innerWidth > 991.98) {
-        const id = event.target.closest('.nav-about a')?.getAttribute('data-anchor-link')
-        if (!id) return
-        const target = document.querySelector(`[data-anchor-section="${id}"]`)
-        if (!target) return
-        event.preventDefault()
-        // window.scrollTo({
-        //   behavior: 'smooth',
-        //   top: target.getBoundingClientRect().top + window.scrollY
-        // })
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: `${id == 'year-2014' ? 'center' : 'start'}`
-          // block: 'start'
-        })
-      }
-    },
-    observeNav() {
-      if (window.innerWidth > 991.98) {
-        let lastTimeout
-        // Отслеживание пересечения секции и добавление класса для меню
-        const changeNav = (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = 1
-              if (lastTimeout) clearTimeout(lastTimeout)
-              lastTimeout = setTimeout(function () {
-                this.count++
-                ;[...document.querySelectorAll('.nav-about a.active')].forEach((item) => {
-                  item.classList.remove('active')
-                })
-                let id = entry.target.getAttribute('id')
-                document
-                  .querySelector(`.nav-about a[data-anchor-link="${id}"]`)
-                  ?.classList.add('active')
-              }, 350)
-            }
-          })
-        }
-        const menuOptions = {
-          threshold: [0.45]
-        }
-        this.menuObserver = new IntersectionObserver(changeNav, menuOptions)
-        const sections = document.querySelectorAll('[data-anchor-section]')
-        sections.forEach((section) => {
-          this.menuObserver.observe(section)
-        })
-      }
-    },
-    initSlider() {
-      if (!this.navSlider && !this.contentSlider) {
-        this.navSlider = new Swiper(this.$refs.nav_about, {
-          slideClass: 'nav-about__list-item',
-          wrapperClass: 'nav-about__list',
-          speed: 800,
-          freeMode: true,
-          slidesPerView: 'auto',
-          spaceBetween: 20
-        })
-        this.contentSlider = new Swiper(this.$refs.contentSlider, {
-          modules: [FreeMode, Scrollbar, Thumbs],
-          // direction: 'vertical',
-          slidesPerView: 1,
-          slideClass: 'about-section',
-          spaceBetween: 100,
-          speed: 800,
-          autoHeight: true,
-          watchActiveIndex: true,
-          spaceBetween: 20,
-          scrollbar: {
-            el: '.swiper-scrollbar',
-            dragSize: 74
-          },
-          thumbs: {
-            swiper: this.navSlider
-          },
-          on: {
-            slideChange: function (swiper) {
-              console.log('change')
-              // let actveIndex = swiper.activeIndex
-              // navSwiper.slideTo(actveIndex)
-              // updateNav()
-            }
-          }
-        })
-      }
-      // this.contentSlider.controller.control = this.navSlider
-      // this.navSlider.controller.control = this.contentSlider
-      //   function clickNav(e) {
-      //     // аргумент e либо событие клика либо индекс пункта навигации
-      //     actveIndex = typeof e === 'object' ? e.currentTarget.index : e
 
-      //     if (navSwiper) {
-      //       navSwiper.slideTo(actveIndex)
-      //       historySwiper.slideTo(actveIndex)
-      //       //   updateNav()
-      //     }
-      //   }
-      //   function updateNav() {
-      //     navItems.removeClass(SELECTOR.ACTIVE).eq(actveIndex).addClass(SELECTOR.ACTIVE)
-      //   }
-    },
-    destroySlider() {
-      if (this.navSlider) {
-        this.navSlider.destroy()
-        this.navSlider = null
-      }
-      if (this.contentSlider) {
-        this.contentSlider.destroy()
-        this.contentSlider = null
-      }
-    },
-    checkScreenWidth() {
-      // this.initSlider()
-      if (window.matchMedia('(max-width: 991.98px)').matches) {
-        this.initSlider()
-      } else {
-        this.destroySlider()
-      }
-    },
-    setPositionNavAbout() {
-      if (window.innerWidth > 991.98) {
-        window.addEventListener('scroll', () => {
-          const header = document.querySelector('.header')
-          if (header.classList.contains('hide')) {
-            this.$el.querySelector('.nav-about').style.top = `0px`
-          } else {
-            this.$el.querySelector('.nav-about').style.top = `${header.clientHeight + 20}px`
-          }
-        })
-      } else {
-        return false
-      }
-    }
-  },
-  mounted() {
-    this.setPositionNavAbout()
-    this.observeNav()
-    this.checkScreenWidth()
-    window.addEventListener('resize', () => {
-      this.checkScreenWidth()
-      this.setPositionNavAbout()
-      this.observeNav()
+const props = defineProps(['defaultCity', 'declensionCity'])
+
+const state = reactive({
+  menuObserver: null,
+  contentSlider: null,
+  navSlider: null,
+  count: 0
+})
+
+const nav_about = ref()
+const contentSlider = ref()
+
+const manualSmoothScroll = (event) => {
+  if (window.innerWidth > 991.98) {
+    const id = event.target.closest('.nav-about a')?.getAttribute('data-anchor-link')
+    if (!id) return
+    const target = document.querySelector(`[data-anchor-section="${id}"]`)
+    if (!target) return
+    event.preventDefault()
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: `${id == 'year-2014' ? 'center' : 'start'}`
     })
   }
 }
+const observeNav = () => {
+  if (window.innerWidth > 991.98) {
+    let lastTimeout
+    // Отслеживание пересечения секции и добавление класса для навигации
+    const changeNav = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1
+          if (lastTimeout) clearTimeout(lastTimeout)
+          lastTimeout = setTimeout(function () {
+            state.count++
+            ;[...document.querySelectorAll('.nav-about a.active')].forEach((item) => {
+              item.classList.remove('active')
+            })
+            let id = entry.target.getAttribute('id')
+            document
+              .querySelector(`.nav-about a[data-anchor-link="${id}"]`)
+              ?.classList.add('active')
+          }, 350)
+        }
+      })
+    }
+    const menuOptions = {
+      threshold: [0.45]
+    }
+    state.menuObserver = new IntersectionObserver(changeNav, menuOptions)
+    const sections = document.querySelectorAll('[data-anchor-section]')
+    sections.forEach((section) => {
+      state.menuObserver.observe(section)
+    })
+  }
+}
+const initSlider = () => {
+  if (!state.navSlider && !state.contentSlider) {
+    state.navSlider = new Swiper(nav_about.value, {
+      slideClass: 'nav-about__list-item',
+      wrapperClass: 'nav-about__list',
+      speed: 800,
+      freeMode: true,
+      slidesPerView: 'auto',
+      spaceBetween: 20
+    })
+    state.contentSlider = new Swiper(contentSlider.value, {
+      modules: [FreeMode, Scrollbar, Thumbs],
+      // direction: 'vertical',
+      slidesPerView: 1,
+      slideClass: 'about-section',
+      spaceBetween: 100,
+      speed: 800,
+      autoHeight: true,
+      watchActiveIndex: true,
+      spaceBetween: 20,
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        dragSize: 74
+      },
+      thumbs: {
+        swiper: state.navSlider
+      }
+    })
+  }
+}
+const destroySlider = () => {
+  if (state.navSlider) {
+    state.navSlider.destroy()
+    state.navSlider = null
+  }
+  if (state.contentSlider) {
+    state.contentSlider.destroy()
+    state.contentSlider = null
+  }
+}
+const checkScreenWidth = () => {
+  if (window.matchMedia('(max-width: 991.98px)').matches) {
+    initSlider()
+  } else {
+    destroySlider()
+  }
+}
+const setPositionNavAbout = () => {
+  if (window.innerWidth > 991.98) {
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header')
+      if (header.classList.contains('hide')) {
+        nav_about.value.style.top = `0px`
+      } else {
+        nav_about.value.style.top = `${header.clientHeight + 20}px`
+      }
+    })
+  } else {
+    return false
+  }
+}
+
+onMounted(() => {
+  setPositionNavAbout()
+  observeNav()
+  checkScreenWidth()
+  window.addEventListener('resize', () => {
+    checkScreenWidth()
+    setPositionNavAbout()
+    observeNav()
+  })
+})
 </script>
-<!-- <style lang="scss">
-@import '@/assets/scss/pages/about.scss';
-</style> -->

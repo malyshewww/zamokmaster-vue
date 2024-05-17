@@ -48,8 +48,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineComponent } from 'vue'
-import { useMeta } from 'vue-meta'
+import { ref, onMounted } from 'vue'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
@@ -61,14 +60,6 @@ const props = defineProps(['defaultCity', 'declensionCity'])
 const { tablePrice } = obj
 
 const table = ref()
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title } = useMeta()
-    title.value = 'Карточка услуги'
-  }
-})
 
 const wrapTable = () => {
   if (typeof window !== 'undefined') {

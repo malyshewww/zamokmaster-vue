@@ -22,7 +22,10 @@ export default defineConfig({
       template: {
         preprocessOptions: {
           // 'preprocessOptions' is passed through to the pug compiler
-          plugins: [vuePugPlugin]
+          plugins: [vuePugPlugin],
+          scss: {
+            additionalData: `@import "@/assets/scss/base/variables.scss";`
+          }
         }
       }
     }),
@@ -67,14 +70,7 @@ export default defineConfig({
   },
   // root: 'src',
   build: {
-    rollupOptions: {
-      // plugins: [
-      //   visualizer({
-      //     emitFile: true,
-      //     filename: 'stats.html'
-      //   })
-      // ]
-    },
+    rollupOptions: {},
     sourcemap: false,
     emptyOutDir: true,
     cssMinify: true,

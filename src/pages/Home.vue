@@ -78,8 +78,7 @@
 </template>
 
 <script setup>
-import { ref, defineComponent, onMounted } from 'vue'
-import { useMeta } from 'vue-meta'
+import { ref, onMounted } from 'vue'
 
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
@@ -94,14 +93,6 @@ import MainServices from '../components/MainServices.vue'
 const props = defineProps(['defaultCity', 'declensionCity'])
 
 const { servicesDetail, stats } = obj
-
-defineComponent({
-  head: {},
-  setup() {
-    const { title } = useMeta()
-    title.value = 'Главная'
-  }
-})
 
 const localCity = ref('')
 localCity.value = props.defaultCity
