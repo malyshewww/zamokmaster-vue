@@ -30,9 +30,25 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

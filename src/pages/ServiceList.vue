@@ -20,9 +20,9 @@
 								.item-services__bottom
 									span.item-services__icon 
 										picture
-											source(:srcset=`'./images/service-list/icon-'+(index+1)+'.png'` media="(min-width: 767.98px)")
-											source(:srcset=`'./images/service-list/icon-'+(index+1)+'-mob.png'` media="(min-width: 300px)")
-											img(:src=`'./images/service-list/icon-'+(index+1)+'.png'`, :alt="service" loading="lazy")
+											source(:srcset=`'/images/service-list/icon-'+(index+1)+'.png'` media="(min-width: 767.98px)")
+											source(:srcset=`'/images/service-list/icon-'+(index+1)+'-mob.png'` media="(min-width: 300px)")
+											img(:src=`'/images/service-list/icon-'+(index+1)+'.png'`, :alt="service" loading="lazy")
 					.service-list__content.content 
 						p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 						p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
@@ -30,8 +30,25 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const { servicesList } = obj
 

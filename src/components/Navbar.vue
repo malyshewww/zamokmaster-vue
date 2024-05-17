@@ -8,13 +8,13 @@
 				.menu__sub-list(:style="myStyles" ref="subMenu")
 					ul
 						li 
-							router-link.route(to="/castle-card") Вскрытие дверей
+							router-link.route(to="/service-list/0") Вскрытие дверей
 						li
-							router-link.route(to="/castle-card") Вскрытие сейфов
+							router-link.route(to="/service-list/1") Вскрытие сейфов
 						li
-							router-link.route(to="/castle-card") Вскрытие авто
+							router-link.route(to="/service-list/2") Вскрытие авто
 						li
-							router-link.route(to="/castle-card") Установка замков
+							router-link.route(to="/service-list/3") Установка замков
 			li.menu__item
 				router-link.route(to="/about") О компании
 			li.menu__item

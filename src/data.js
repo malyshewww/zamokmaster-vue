@@ -165,23 +165,23 @@ const data = {
       list: [
         {
           title: 'Вскрытие замков',
-          path: '/castle-card'
+          path: '/service-list/0'
         },
         {
           title: 'Вскрытие дверей',
-          path: '/castle-card'
+          path: '/service-list/1'
         },
         {
           title: 'Вскрытие авто',
-          path: '/castle-card'
+          path: '/service-list/2'
         },
         {
           title: 'Вскрытие сейфов',
-          path: '/castle-card'
+          path: '/service-list/3'
         },
         {
           title: 'Установка замков',
-          path: '/castle-card'
+          path: '/service-list/5'
         }
       ]
     }

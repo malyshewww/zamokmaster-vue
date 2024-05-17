@@ -19,15 +19,15 @@
 				h3 Изображения в тексте
 				p Так же одно из наших преимуществ является то, что наша организация рассчитывает на работу со своими клиентами на долгосрочной основе, предполагая взаимовыгодное сотрудничество на долгие годы. предполагая взаимовыгодное сотрудничество на долгие годы.
 				picture
-					source(:srcset="`./images/text-page/image-1.jpg`")
-					img(:src="`./images/text-page/image-1.jpg`", alt="фото" width="420" height="254" loading="lazy").align-left
+					source(:srcset="`/images/text-page/image-1.jpg`")
+					img(:src="`/images/text-page/image-1.jpg`", alt="фото" width="420" height="254" loading="lazy").align-left
 				p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 				p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
 				p Теперь у вас есть надёжный помощник-специалист компании "Замок-Мастер", который сможет оперативно 
 				p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать? Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, й 
 				picture
-					source(:srcset="`./images/text-page/image-2.jpg`")
-					img(:src="`./images/text-page/image-2.jpg`", alt="фото" width="310" height="399" loading="lazy").align-right
+					source(:srcset="`/images/text-page/image-2.jpg`")
+					img(:src="`/images/text-page/image-2.jpg`", alt="фото" width="310" height="399" loading="lazy").align-right
 				p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
 				p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
 				p Теперь у вас есть надёжный помощник-специалист компании "Замок-Мастер", который сможет оперативно В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
@@ -45,18 +45,34 @@
 			.text-page__gallery 
 				h3 Фотогалерея
 				.text-page__gallery-body
-					a.gallery-item(v-for="(item, index) in 8" data-fancybox="gallery" :href=`"./images/text-page/gallery-"+(index+1)+".jpg"`)
+					a.gallery-item(v-for="(item, index) in 8" data-fancybox="gallery" :href=`"/images/text-page/gallery-"+(index+1)+".jpg"`)
 						div.gallery-item__image.ibg
 							picture
-								source(:srcset=`"./images/text-page/gallery-"+(index+1)+".jpg"`)
-								img(:src=`"./images/text-page/gallery-"+(index+1)+".jpg"` alt="фото" loading="lazy")
+								source(:srcset=`"/images/text-page/gallery-"+(index+1)+".jpg"`)
+								img(:src=`"/images/text-page/gallery-"+(index+1)+".jpg"` alt="фото" loading="lazy")
 </template>
 
 <script setup>
-import { ref, onMounted, onUpdated } from 'vue'
+import { ref, onMounted, onUpdated, computed } from 'vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

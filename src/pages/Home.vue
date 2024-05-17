@@ -16,8 +16,8 @@
 			.main-screen__image-wrap
 				.main-screen__image.ibg
 					picture
-						source(:srcset="`./images/main-screen/banner.png`")
-						img(:src="`./images/main-screen/banner.png`" alt="Баннер" loading="lazy")
+						source(:srcset="`/images/main-screen/banner.png`")
+						img(:src="`/images/main-screen/banner.png`" alt="Баннер" loading="lazy")
 				MainScreenInfo
 	MainServices
 	Request
@@ -78,7 +78,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
@@ -89,6 +89,22 @@ import MainAbout from '../components/MainAbout.vue'
 import MainGeography from '../components/MainGeography.vue'
 import Request from '../components/Request.vue'
 import MainServices from '../components/MainServices.vue'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

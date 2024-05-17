@@ -22,10 +22,7 @@ export default defineConfig({
       template: {
         preprocessOptions: {
           // 'preprocessOptions' is passed through to the pug compiler
-          plugins: [vuePugPlugin],
-          scss: {
-            additionalData: `@import "@/assets/scss/base/variables.scss";`
-          }
+          plugins: [vuePugPlugin]
         }
       }
     }),

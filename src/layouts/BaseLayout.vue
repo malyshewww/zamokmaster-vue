@@ -12,7 +12,7 @@
 				router-link(to="/service-card" v-for="service in services").services-mobile__item
 					.services-mobile__image 
 						picture
-							img(:src=`"./images/services/mobile/service-mob-"+(service.img)+".png"`, :alt="service.title" loading="lazy")
+							img(:src=`"/images/services/mobile/service-mob-"+(service.img)+".png"`, :alt="service.title" loading="lazy")
 					.services-mobile__title {{ service.title }}
 		.phone-mobile 
 			.container
@@ -22,7 +22,7 @@
 		ModalNotice
 </template>
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted, watchEffect, computed } from 'vue'
 import { cityIn, cityFrom, cityTo } from 'lvovich'
 
 import obj from '../data.js'

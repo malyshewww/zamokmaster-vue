@@ -33,12 +33,12 @@
 										.about-section__images 
 											.about-section__image.ibg
 												picture 
-													source(:srcset="`./images/about/beginning/1.jpg`")
-													img(:src="`./images/about/beginning/1.jpg`", alt="фото" loading="lazy")
+													source(:srcset="`/images/about/beginning/1.jpg`")
+													img(:src="`/images/about/beginning/1.jpg`", alt="фото" loading="lazy")
 											.about-section__image.ibg
 												picture 
-													source(:srcset="`./images/about/beginning/2.jpg`")
-													img(:src="`./images/about/beginning/2.jpg`", alt="фото")
+													source(:srcset="`/images/about/beginning/2.jpg`")
+													img(:src="`/images/about/beginning/2.jpg`", alt="фото")
 									section.about-section.about-section--scaling(id="year-2005" data-anchor-section="year-2005")
 										h2.about-section__title Масштабирование компании #[span по&nbsp;вскрытию&nbsp;замков]
 										.about-section__content.content 
@@ -46,8 +46,8 @@
 										.about-section__images 
 											.about-section__image.ibg
 												picture 
-													source(:srcset="`./images/about/scaling/1.jpg`")
-													img(:src="`./images/about/scaling/1.jpg`", alt="фото" loading="lazy")
+													source(:srcset="`/images/about/scaling/1.jpg`")
+													img(:src="`/images/about/scaling/1.jpg`", alt="фото" loading="lazy")
 									section.about-section.about-section--progress(id="year-2013" data-anchor-section="year-2013")
 										h2.about-section__title #[span Развитие направления] по продаже, обслуживанию и вскрытию сейфов
 										.about-section__content.content 
@@ -62,12 +62,12 @@
 										.about-section__images 
 											.about-section__image.ibg
 												picture 
-													source(:srcset="`./images/about/progress/1.jpg`")
-													img(:src="`./images/about/progress/1.jpg`", alt="фото" loading="lazy")
+													source(:srcset="`/images/about/progress/1.jpg`")
+													img(:src="`/images/about/progress/1.jpg`", alt="фото" loading="lazy")
 											.about-section__image.ibg
 												picture 
-													source(:srcset="`./images/about/progress/2.jpg`")
-													img(:src="`./images/about/progress/2.jpg`", alt="фото" loading="lazy")
+													source(:srcset="`/images/about/progress/2.jpg`")
+													img(:src="`/images/about/progress/2.jpg`", alt="фото" loading="lazy")
 									section.about-section.about-section--leaders(id="year-2014" data-anchor-section="year-2014")
 										h2.about-section__title Лидеры по вскрытию замков #[span в&nbsp;нескольких регионах России]
 										.about-section__content.content 
@@ -75,42 +75,58 @@
 										.about-section__logos
 											.about-section__logo 
 												picture 
-													source(:srcset="`./images/about/leaders/logo-sber.svg`" media="(min-width: 767.98px)")
-													source(:srcset="`./images/about/leaders/logo-sber-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-sber.svg`", alt="сбербанк" loading="lazy")
+													source(:srcset="`/images/about/leaders/logo-sber.svg`" media="(min-width: 767.98px)")
+													source(:srcset="`/images/about/leaders/logo-sber-mob.svg`" media="(min-width: 300px)")
+													img(:src="`/images/about/leaders/logo-sber.svg`", alt="сбербанк" loading="lazy")
 											.about-section__logo 
 												picture 
-													source(:srcset="`./images/about/leaders/logo-vtb.svg`" media="(min-width: 767.98px)")
-													source(:srcset="`./images/about/leaders/logo-vtb-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-vtb.svg`", alt="втб" loading="lazy")
+													source(:srcset="`/images/about/leaders/logo-vtb.svg`" media="(min-width: 767.98px)")
+													source(:srcset="`/images/about/leaders/logo-vtb-mob.svg`" media="(min-width: 300px)")
+													img(:src="`/images/about/leaders/logo-vtb.svg`", alt="втб" loading="lazy")
 											.about-section__logo
 												picture 
-													source(:srcset="`./images/about/leaders/logo-gazprom.svg`" media="(min-width: 767.98px)")
-													source(:srcset="`./images/about/leaders/logo-gazprom-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-gazprom.svg`", alt="газпром" loading="lazy")
+													source(:srcset="`/images/about/leaders/logo-gazprom.svg`" media="(min-width: 767.98px)")
+													source(:srcset="`/images/about/leaders/logo-gazprom-mob.svg`" media="(min-width: 300px)")
+													img(:src="`/images/about/leaders/logo-gazprom.svg`", alt="газпром" loading="lazy")
 											.about-section__logo 
 												picture 
-													source(:srcset="`./images/about/leaders/logo-surgutneft.svg`" media="(min-width: 767.98px)")
-													source(:srcset="`./images/about/leaders/logo-surgutneft-mob.svg`" media="(min-width: 300px)")
-													img(:src="`./images/about/leaders/logo-surgutneft.svg`", alt="сургутнефть" loading="lazy")
+													source(:srcset="`/images/about/leaders/logo-surgutneft.svg`" media="(min-width: 767.98px)")
+													source(:srcset="`/images/about/leaders/logo-surgutneft-mob.svg`" media="(min-width: 300px)")
+													img(:src="`/images/about/leaders/logo-surgutneft.svg`", alt="сургутнефть" loading="lazy")
 									section.about-section.about-section--expansion(id="year-2024" data-anchor-section="year-2024")
 										h2.about-section__title Расширение филиальной сети #[span по России]
 										.about-section__content.content 
 											p В настоящее время наша компания активно развивается сотрудничая, как с юридическими так и физическими лицами во многих регионах России и ближнего зарубежья. Мы налаживаем честное профессиональное сотрудничество с мастерами разных городов, передаем им наш опыт и знания в рамках обучения. 
 										.about-section__image.ibg
 											picture
-												source(:srcset="`./images/about/expansion/map.svg`")
-												img(:src="`./images/about/expansion/map.svg`", alt="карта" loading="lazy")
+												source(:srcset="`/images/about/expansion/map.svg`")
+												img(:src="`/images/about/expansion/map.svg`", alt="карта" loading="lazy")
 								.swiper-scrollbar
 			Questions
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 import Swiper from 'swiper'
 import { Scrollbar, FreeMode, Thumbs } from 'swiper/modules'
 import Questions from '../components/Questions.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

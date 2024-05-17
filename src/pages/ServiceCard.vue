@@ -6,8 +6,8 @@
 				.top-main__card 
 					.top-main__card-image
 						picture 
-							source(:srcset="`./images/card/image.jpg`")
-							img(:src="`./images/card/image.jpg`" alt="фото" loading="lazy")
+							source(:srcset="`/images/card/image.jpg`")
+							img(:src="`/images/card/image.jpg`" alt="фото" loading="lazy")
 					.top-main__body
 						.top-main__title.page-title Вскрытие автомобилей #[span {{declensionCity}}]
 						a(href="tel:+79958881086").btn-phone.btn
@@ -48,12 +48,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import obj from '../data.js'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import Sidebar from '../components/Sidebar.vue'
 import CastleAdvantages from '../components/CastleAdvantages.vue'
 import CastleTypes from '../components/CastleTypes.vue'
+
+import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const title = computed(() => route.meta.title)
+
+useHead({
+  title: title.value,
+  meta: [
+    {
+      name: 'description',
+      content: `Описание на странице ${title.value}`
+    }
+  ]
+})
 
 const props = defineProps(['defaultCity', 'declensionCity'])
 

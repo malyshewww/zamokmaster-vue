@@ -35,6 +35,13 @@ const routes = [
     name: 'castle-card'
   },
   {
+    path: '/castle-list/:id',
+    component: () => import('@/pages/CastleCard.vue'),
+    meta: { title: 'Карточка замка' },
+    name: 'castle-detail',
+    props: true
+  },
+  {
     path: '/service-card',
     component: () => import('@/pages/ServiceCard.vue'),
     meta: { title: 'Карточка услуги' },
@@ -45,6 +52,13 @@ const routes = [
     component: () => import('@/pages/ServiceList.vue'),
     meta: { title: 'Список услуг' },
     name: 'service-list'
+  },
+  {
+    path: '/service-list/:id',
+    component: () => import('@/pages/ServiceCard.vue'),
+    meta: { title: 'Карточка услуги' },
+    name: 'service-detail',
+    props: true
   },
   {
     path: '/text-page',

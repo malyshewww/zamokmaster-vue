@@ -2,16 +2,16 @@
 	.services-slider
 		.services-slider__body.swiper(ref="mySwiper")
 			.services-slider__wrapper.swiper-wrapper(ref="mySwiperWrapper")
-				router-link(to="/castle-card" v-for="item in count").services-slider__item.swiper-slide
+				router-link(:to="`/castle-list/${index}`" v-for="(item, index) in count").services-slider__item.swiper-slide
 					.services-slider__image
 						picture
-							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
-				router-link(to="/castle-card" v-for="item in count").services-slider__item.swiper-slide
+							source(:srcset=`'/images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							img(:src=`'/images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
+				router-link(:to="`/castle-list/${index}`" v-for="(item, index) in count").services-slider__item.swiper-slide
 					.services-slider__image
 						picture
-							source(:srcset=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
-							img(:src=`'./images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
+							source(:srcset=`'/images/service-detail/'+imagePath+'/logo-'+item+'.png'`)
+							img(:src=`'/images/service-detail/'+imagePath+'/logo-'+item+'.png'` loading="lazy" alt="фото")
 			.slider-controls(ref="sliderControls")
 				button.slider-button.slider-button-prev
 				button.slider-button.slider-button-next

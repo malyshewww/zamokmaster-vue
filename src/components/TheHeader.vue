@@ -4,9 +4,9 @@
 			.header__body 
 				router-link(to="/" @click="closeMenu").header__logo
 					picture 
-						source(:srcset="`./images/icons/logo-pc.svg`" media="(min-width: 767.98px)")
-						source(:srcset="`./images/icons/logo-mobile.svg`" media="(min-width: 300px)")
-						img(:src="`./images/icons/logo-pc.svg`", alt="логотип")
+						source(:srcset="`/images/icons/logo-pc.svg`" media="(min-width: 767.98px)")
+						source(:srcset="`/images/icons/logo-mobile.svg`" media="(min-width: 300px)")
+						img(:src="`/images/icons/logo-pc.svg`", alt="логотип")
 				.header__menu.menu(@click="closeMenu")
 					.menu__body(@click.stop)
 						Navbar

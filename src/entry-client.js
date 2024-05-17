@@ -1,9 +1,12 @@
 import { createMetaManager } from 'vue-meta'
 import { createApp } from './main.js'
+import { createHead } from '@vueuse/head'
 
 const { app, router } = createApp()
 
-app.use(router).use(createMetaManager())
+const head = createHead()
+
+app.use(head).use(router).use(createMetaManager())
 
 // await router.isReady()
 

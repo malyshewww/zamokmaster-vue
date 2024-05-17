@@ -4,15 +4,15 @@
 			.heading 
 				h2.heading__title Услуги
 			.services__body 
-				.services__item.item-services(v-for="(service, index) in services")
+				router-link(:to="`/service-list/${index}`" v-for="(service, index) in services").services__item.item-services
 					.item-services__content
 						.item-services__title= service.title
 						.item-services__bottom
 							span.item-services__icon 
 								picture
-									source(:srcset=`'./images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
-									source(:srcset=`'./images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
-									img(:src=`'./images/services/services-'+service.img+'.png'`, :alt="service.title" loading="lazy")
+									source(:srcset=`'/images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
+									source(:srcset=`'/images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
+									img(:src=`'/images/services/services-'+service.img+'.png'`, :alt="service.title" loading="lazy")
 </template>
 
 <script setup>

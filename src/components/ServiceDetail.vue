@@ -12,9 +12,9 @@
 			.services-detail__image-wrap 
 				.services-detail__image.ibg
 					picture
-						source(:srcset=`'./images/services/service-detail-'+img+'.jpg'`)
-						//- source(:srcset=`'./images/services/service-detail-'+img+'-mob.jpg'` media="(min-width: 300px)")
-						img(:src=`'./images/services/service-detail-'+img+'.jpg'`, :alt="titleGray + title" loading="lazy")
+						source(:srcset=`'/images/services/service-detail-'+img+'.jpg'`)
+						//- source(:srcset=`'/images/services/service-detail-'+img+'-mob.jpg'` media="(min-width: 300px)")
+						img(:src=`'/images/services/service-detail-'+img+'.jpg'`, :alt="titleGray + title" loading="lazy")
 </template>
 
 <script setup>
