@@ -248,7 +248,7 @@ const setPositionNavAbout = () => {
 }
 
 onMounted(() => {
-  if (window.scrollY == 0) {
+  if (window.scrollY >= 0) {
     observeNav()
   }
   setPositionNavAbout()
