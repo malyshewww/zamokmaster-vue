@@ -111,7 +111,7 @@
 		position: relative;
 		cursor: pointer;
 		padding: 0 12px;
-		@include transition(font-size, .5s, line-height .5s, color .5s, transform .25s);
+		@include transition(font-size, .25s linear, line-height .25s linear, color .25s, transform .25s linear);
 		@media (any-hover: hover) {
 			&:hover {
 				color: $bg-contrast;

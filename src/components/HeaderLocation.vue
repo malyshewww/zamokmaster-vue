@@ -54,6 +54,10 @@ function selectCity(e) {
   state.search = e.target.innerText
   state.showBtnSearch = false
   replaceCityStorage(state.search)
+  state.isOpenModal = !state.isOpenModal
+  document.body.classList.toggle('lock')
+  state.search = ''
+  state.cities = []
 }
 function deleteSearch() {
   state.search = ''

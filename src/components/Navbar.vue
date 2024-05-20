@@ -15,6 +15,8 @@
 							router-link.route(to="/service-list/2") Вскрытие авто
 						li
 							router-link.route(to="/service-list/3") Установка замков
+						li
+							router-link.route(to="/service-list") Все услуги
 			li.menu__item
 				router-link.route(to="/about") О компании
 			li.menu__item

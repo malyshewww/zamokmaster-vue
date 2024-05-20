@@ -1,4 +1,15 @@
 .service-card {
+	& .top-main__card-image {
+		position: relative;
+		& img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 	&__content {
 		& .disclamer p {
 			margin-bottom: 0;

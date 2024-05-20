@@ -14,7 +14,7 @@
 			.container 
 				.service-list__wrapper.section-groups
 					.service-list__body
-						.services__item.item-services(v-for="(service, index) in servicesList")
+						router-link.services__item.item-services(:to="`/service-list/${index}`" v-for="(service, index) in servicesList")
 							.item-services__content
 								.item-services__title {{ service }}
 								.item-services__bottom

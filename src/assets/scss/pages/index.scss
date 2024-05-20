@@ -922,7 +922,7 @@
 			background-color: $white;
 			&::before {
 				background-color: $bg-contrast;
-				animation: trin 6s linear infinite;
+				// animation: trin 6s linear infinite;
 			}
 		}
 	}
@@ -1118,7 +1118,7 @@
 		}
 		@media screen and (max-width: $md) {
 			width: 100%;
-			height: 350px;
+			height: 650px;
 			& .badge__more-reviews-link-wrap:after {
 				content: none;
 			}
