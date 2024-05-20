@@ -59,11 +59,6 @@ export default defineConfig({
         })
       ]
     }
-    // preprocessorOptions: {
-    //   scss: {
-    //     additionalData: `@import "@/assets/scss/base/variables.scss";`
-    //   }
-    // }
   },
   // root: 'src',
   build: {

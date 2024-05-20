@@ -1,7 +1,6 @@
 <template lang="pug">
 	Layout
 </template>
-
 <script setup>
 import { reactive, computed } from 'vue'
 import { useHead } from '@vueuse/head'

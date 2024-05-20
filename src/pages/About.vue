@@ -248,8 +248,10 @@ const setPositionNavAbout = () => {
 }
 
 onMounted(() => {
+  if (window.scrollY == 0) {
+    observeNav()
+  }
   setPositionNavAbout()
-  observeNav()
   checkScreenWidth()
   window.addEventListener('resize', () => {
     checkScreenWidth()

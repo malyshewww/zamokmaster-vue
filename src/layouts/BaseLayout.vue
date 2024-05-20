@@ -22,7 +22,7 @@
 		ModalNotice
 </template>
 <script setup>
-import { ref, onMounted, watchEffect, computed } from 'vue'
+import { ref, onMounted, watchEffect, reactive, computed } from 'vue'
 import { cityIn, cityFrom, cityTo } from 'lvovich'
 
 import obj from '../data.js'
@@ -33,6 +33,10 @@ import Widget from '../components/Widget.vue'
 import ModalNotice from '../components/Modals/ModalNotice.vue'
 
 import { useRoute } from 'vue-router'
+
+// const myStore = reactive({
+//   city: 'Санкт-Петербург'
+// })
 
 const route = useRoute()
 
