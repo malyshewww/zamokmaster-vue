@@ -4,7 +4,8 @@
 			li.menu__item
 				router-link.route(to="/") Главная
 			li.menu__item.menu__item--extended(:class="[isShow ? 'active' : '']")
-				a(href="javascript:void();" @click.native="openSubMenu($event)") Услуги
+				router-link(to="/service-list" @mouseenter="openSubMenu($event)" @mouseleave="closeSubMenu($event)").link-pc Услуги
+				a(href="javascript:void(0);" @click.prevent="openSubMenuMobile($event)" ).link-touch Услуги
 				.menu__sub-list(:style="myStyles" ref="subMenu")
 					ul
 						li 
@@ -15,8 +16,6 @@
 							router-link.route(to="/service-list/2") Вскрытие авто
 						li
 							router-link.route(to="/service-list/3") Установка замков
-						li
-							router-link.route(to="/service-list") Все услуги
 			li.menu__item
 				router-link.route(to="/about") О компании
 			li.menu__item
@@ -38,9 +37,17 @@ import { ref, computed } from 'vue'
 const maxHeight = ref(0)
 const isShow = ref(false)
 const subMenu = ref()
+const openSubMenuMobile = (e) => {
+  e.preventDefault()
+  isShow.value = !isShow.value
+}
 const openSubMenu = (e) => {
-  if (window.innerWidth < 1400) {
-    e.preventDefault()
+  if (window.innerWidth < 1400 && window.innerWidth > 1024) {
+    isShow.value = !isShow.value
+  }
+}
+const closeSubMenu = (e) => {
+  if (window.innerWidth < 1400 && window.innerWidth > 1024) {
     isShow.value = !isShow.value
   }
 }

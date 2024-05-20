@@ -327,6 +327,9 @@ picture {
 	display: grid;
 	align-items: start;
 	gap: 20px;
+	@media screen and (max-width: $md) {
+		position: static;
+	}
 }
 
 .castle-types {
