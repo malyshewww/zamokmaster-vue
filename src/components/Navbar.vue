@@ -3,7 +3,7 @@
 		ul.menu__list
 			li.menu__item
 				router-link.route(to="/") Главная
-			li.menu__item.menu__item--extended(:class="[isShow ? 'active' : '']")
+			li.menu__item.menu__item--extended(:class="{active: isShow}")
 				router-link(to="/service-list" @mouseenter="openSubMenu($event)" @mouseleave="closeSubMenu($event)").link-pc Услуги
 				a(href="javascript:void(0);" @click.prevent="openSubMenuMobile($event)" ).link-touch Услуги
 				.menu__sub-list(:style="myStyles" ref="subMenu")

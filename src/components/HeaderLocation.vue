@@ -28,13 +28,13 @@ const props = defineProps(['isHidden', 'defaultCity'])
 const emit = defineEmits(['onChangeCity'])
 
 const state = reactive({
-  localCity: props.defaultCity,
   isOpenModal: false,
   isShowLocation: false,
   showModal: false,
   showBtnSearch: true,
   search: '',
   cities: [],
+  localCity: props.defaultCity,
   token: '5ce8d1aaf3083ef146c27a68ecf9a5c065802258'
 })
 
@@ -52,11 +52,9 @@ function onSearchInput(e) {
 }
 function selectCity(e) {
   state.search = e.target.innerText
-  state.showBtnSearch = false
   replaceCityStorage(state.search)
-  state.isOpenModal = !state.isOpenModal
   document.body.classList.toggle('lock')
-  state.search = ''
+  state.isOpenModal = !state.isOpenModal
   state.cities = []
 }
 function deleteSearch() {
@@ -123,7 +121,6 @@ function getApiCities() {
       .then((res) => res.json())
       .then((data) => {
         state.cities = [...data]
-        // console.log(this.cities);
       })
   } catch (error) {
     console.log('Ошибка', error)
