@@ -56,10 +56,11 @@ function selectCity(e) {
   document.body.classList.toggle('lock')
   state.isOpenModal = !state.isOpenModal
   state.cities = []
+  state.showBtnSearch = state.search !== '' ? false : true
 }
 function deleteSearch() {
   state.search = ''
-  state.showBtnSearch = true
+  state.showBtnSearch = !state.showBtnSearch
 }
 function setCityStorage() {
   if (typeof window !== 'undefined') {
@@ -135,6 +136,9 @@ const filteredCities = computed(() => {
     .map((el) => el.name)
     .filter((item) => item.toLowerCase().indexOf(state.search.toLowerCase()) !== -1)
 })
+// const isEmptySearch = computed(() => {
+//   return state.search == '' ? false : true
+// })
 onMounted(() => {
   window.addEventListener('load', () => {
     setCityStorage()
