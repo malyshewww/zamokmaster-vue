@@ -68,13 +68,13 @@ const routes = [
   },
   {
     path: '/legal',
-    component: () => import('@/pages/Home.vue'),
+    component: () => import('@/pages/Legal.vue'),
     meta: { title: 'Юридическим лицам' },
     name: 'legal'
   },
   {
     path: '/individual',
-    component: () => import('@/pages/Home.vue'),
+    component: () => import('@/pages/Individual.vue'),
     meta: { title: 'Физическим лицам' },
     name: 'individual'
   }

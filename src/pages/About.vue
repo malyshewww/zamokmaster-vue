@@ -1,5 +1,5 @@
 <template lang="pug">
-	.page.about(v-bind="$attrs")
+	.page.about
 		.main__top.top-main
 			.container
 				Breadcrumbs(pageTitle="О компании")

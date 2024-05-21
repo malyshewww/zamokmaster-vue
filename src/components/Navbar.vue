@@ -21,9 +21,9 @@
 			li.menu__item
 				router-link.route(to="/castle-list") Список замков
 			li.menu__item
-				router-link.route(to="/") Юридическим лицам
+				router-link.route(to="/legal") Юридическим лицам
 			li.menu__item
-				router-link.route(to="/") Физическим лицам
+				router-link.route(to="/individual") Физическим лицам
 			li.menu__item
 				router-link.route(to="/contacts") Контакты
 	.header__contacts.contacts-header
