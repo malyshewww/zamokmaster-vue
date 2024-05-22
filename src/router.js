@@ -77,6 +77,10 @@ const routes = [
     component: () => import('@/pages/Individual.vue'),
     meta: { title: 'Физическим лицам' },
     name: 'individual'
+  },
+  {
+    path: '/:catchAll(.*)*',
+    redirect: { name: 'home' }
   }
 ]
 

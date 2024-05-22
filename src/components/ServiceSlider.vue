@@ -20,7 +20,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import Swiper from 'swiper'
-import { Navigation, Autoplay, FreeMode } from 'swiper/modules'
+import { Navigation, Autoplay } from 'swiper/modules'
 
 const props = defineProps(['count', 'imagePath'])
 
@@ -32,7 +32,7 @@ const mySwiperWrapper = ref()
 
 const initSlider = () => {
   slider.value = new Swiper(mySwiper.value, {
-    modules: [Navigation, Autoplay, FreeMode],
+    modules: [Navigation, Autoplay],
     speed: 1000,
     loop: !isLoopingSlider.value,
     slidesPerView: 'auto',
