@@ -1,5 +1,5 @@
 <template lang="pug">
-	.page.about
+	.page.legal-page
 		.main__top.top-main
 			.container
 				Breadcrumbs(pageTitle="Юридическим лицам")

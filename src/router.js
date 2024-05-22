@@ -79,6 +79,7 @@ const routes = [
     name: 'individual'
   },
   {
+    // path: '/:pathMatch(.*)*',
     path: '/:catchAll(.*)*',
     redirect: { name: 'home' }
   }

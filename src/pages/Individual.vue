@@ -1,5 +1,5 @@
 <template lang="pug">
-	.page.about
+	.page.individual-page
 		.main__top.top-main
 			.container
 				Breadcrumbs(pageTitle="Физическим лицам")

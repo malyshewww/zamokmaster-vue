@@ -17,6 +17,21 @@ const repositoryName = nodePath.basename(nodePath.resolve())
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [
+        postCssSortMediaQueries({ sort: 'desktop-first' }),
+        autoprefixer({
+          overrideBrowserslist: ['last 3 versions', 'ie >= 10']
+        })
+      ]
+    }
+    // preprocessorOptions: {
+    //   scss: {
+    //     additionalData: '@use "./src/assets/scss/vase/variables.scss" as *;'
+    //   }
+    // }
+  },
   plugins: [
     vue({
       template: {
@@ -48,16 +63,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-  css: {
-    postcss: {
-      plugins: [
-        postCssSortMediaQueries({ sort: 'desktop-first' }),
-        autoprefixer({
-          overrideBrowserslist: ['last 3 versions', 'ie >= 10']
-        })
-      ]
     }
   },
   // root: 'src',
