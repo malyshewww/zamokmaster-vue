@@ -28,19 +28,12 @@ export default defineConfig({
     }
     // preprocessorOptions: {
     //   scss: {
-    //     additionalData: '@use "./src/assets/scss/vase/variables.scss" as *;'
+    //     additionalData: `@import "@/assets/scss/vase/variables.scss";`
     //   }
     // }
   },
   plugins: [
-    vue({
-      template: {
-        preprocessOptions: {
-          // 'preprocessOptions' is passed through to the pug compiler
-          plugins: [vuePugPlugin]
-        }
-      }
-    }),
+    vue(),
     vueJsx(),
     ViteImageOptimizer({
       jpg: {

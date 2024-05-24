@@ -1,7 +1,8 @@
 <template lang="pug">
-	Layout
+  Layout
 </template>
 <script setup>
+import '@/assets/scss/main.scss'
 import { reactive, computed } from 'vue'
 import { useHead } from '@vueuse/head'
 import Layout from './layouts/BaseLayout.vue'

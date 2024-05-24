@@ -42,10 +42,8 @@ const route = useRoute()
 
 const { services } = obj
 
-const defaultCity = ref('')
+const defaultCity = ref('Санкт-Петербург')
 const declensionCity = ref('')
-
-defaultCity.value = 'Санкт-Петербург'
 
 const getNewCity = (city) => {
   defaultCity.value = city
