@@ -6,7 +6,7 @@
 			.services__body 
 				router-link(:to="`/service-list/${index}`" v-for="(service, index) in services").services__item.item-services
 					.item-services__content
-						.item-services__title= service.title
+						.item-services__title {{ service.title }}
 						.item-services__bottom
 							span.item-services__icon 
 								picture
