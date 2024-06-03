@@ -1,5 +1,5 @@
 <template lang="pug">
-	p Сейчас свободны #[span #{randomIntFrom} из #{randomIntTo} мастеров]
+	p Сейчас свободны #[span {{randomIntFrom}} из {{randomIntTo}} мастеров]
 </template>
 
 <script setup>

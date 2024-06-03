@@ -103,7 +103,10 @@ useHead({
       name: 'description',
       content: `Описание на странице ${title.value}`
     }
-  ]
+  ],
+  bodyAttrs: {
+    class: 'home'
+  }
 })
 
 const props = defineProps(['defaultCity', 'declensionCity'])
@@ -112,11 +115,5 @@ const { servicesDetail, stats } = obj
 
 const localCity = ref('')
 localCity.value = props.defaultCity
-
-onMounted(() => {
-  window.addEventListener('load', () => {
-    document.body.classList.add('home')
-  })
-})
 </script>
 <style lang="scss"></style>
