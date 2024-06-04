@@ -27,6 +27,9 @@
 
 // @import "../../node_modules/swiper/swiper.min.css"; // Slider: npm install swiper, site: https://swiperjs.com/get-started
 // @import "../../node_modules/air-datepicker/air-datepicker.css"; // Datepicker: npm i air-datepicker -S, site: https://air-datepicker.com/ru
+html, body {
+  scrollbar-gutter: stable;
+}
 body {
   // Скролл заблокирован
   &.lock {
