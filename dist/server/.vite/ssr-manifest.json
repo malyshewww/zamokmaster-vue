@@ -1,0 +1,99 @@
+{
+  "\u0000plugin-vue:export-helper": [],
+  "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css": [
+    "/assets/TextPage-CGBjqe20.js",
+    "/assets/TextPage-DS-KjMi4.css"
+  ],
+  "src/App.vue": [],
+  "src/assets/scss/main.scss": [],
+  "src/components/Breadcrumbs.vue": [
+    "/assets/Breadcrumbs-BtW0J10y.js"
+  ],
+  "src/components/CastleAdvantages.vue": [
+    "/assets/CastleTypes-CSdHFa4q.js"
+  ],
+  "src/components/CastleTypes.vue": [
+    "/assets/CastleTypes-CSdHFa4q.js"
+  ],
+  "src/components/FreeMasters.vue": [],
+  "src/components/HeaderLocation.vue": [],
+  "src/components/MainAbout.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/MainGeography.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/MainScreenInfo.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/MainServices.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/Modals/ModalCall.vue": [],
+  "src/components/Modals/ModalNotice.vue": [],
+  "src/components/Navbar.vue": [],
+  "src/components/Questions.vue": [
+    "/assets/Questions-BoxVuI8X.js"
+  ],
+  "src/components/Questions.vue?vue&type=template&lang.js": [
+    "/assets/Questions-BoxVuI8X.js"
+  ],
+  "src/components/Request.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/ServiceDetail.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/ServiceSlider.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/components/Sidebar.vue": [
+    "/assets/Sidebar-OR3Vja4K.js"
+  ],
+  "src/components/Sidebar.vue?vue&type=template&lang.js": [
+    "/assets/Sidebar-OR3Vja4K.js"
+  ],
+  "src/components/TheFooter.vue": [],
+  "src/components/TheHeader.vue": [],
+  "src/components/Widget.vue": [],
+  "src/data.js": [],
+  "src/entry-server.js": [],
+  "src/layouts/BaseLayout.vue": [],
+  "src/layouts/BaseLayout.vue?vue&type=style&index=0&scoped=1bd5887d&lang.css": [],
+  "src/layouts/Modal.vue": [],
+  "src/main.js": [],
+  "src/pages/About.vue": [
+    "/assets/About-D_acYKFu.js"
+  ],
+  "src/pages/CastleCard.vue": [
+    "/assets/CastleCard-BqxbyQ2g.js"
+  ],
+  "src/pages/CastleList.vue": [
+    "/assets/CastleList-D5kzd_DV.js"
+  ],
+  "src/pages/Contacts.vue": [
+    "/assets/Contacts-C1c-xEO4.js"
+  ],
+  "src/pages/Home.vue": [
+    "/assets/Home-Kuvyi4tG.js"
+  ],
+  "src/pages/Individual.vue": [
+    "/assets/Individual-BIS3F7pN.js"
+  ],
+  "src/pages/Legal.vue": [
+    "/assets/Legal-B6H2Z5Oy.js"
+  ],
+  "src/pages/ServiceCard.vue": [
+    "/assets/ServiceCard-jsKbZt0M.js"
+  ],
+  "src/pages/ServiceList.vue": [
+    "/assets/ServiceList-feSAYI5b.js"
+  ],
+  "src/pages/TextPage.vue": [
+    "/assets/TextPage-CGBjqe20.js",
+    "/assets/TextPage-DS-KjMi4.css"
+  ],
+  "src/router.js": [],
+  "src/utils/maskPhone.js": [],
+  "src/utils/spollers.js": []
+}

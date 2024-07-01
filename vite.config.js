@@ -17,6 +17,12 @@ const repositoryName = nodePath.basename(nodePath.resolve())
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // server: {
+  //   host: 'localhost',
+  //   port: 5173,
+  //   open: true
+  // },
+  // ssr: true,
   css: {
     postcss: {
       plugins: [

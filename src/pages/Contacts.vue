@@ -110,7 +110,7 @@ const initMap = () => {
       // создаем и вставляем апи карт
       var script = document.createElement('script')
       script.src =
-        'https://api-maps.yandex.ru/2.1/?apikey=292672c7-fe24-4469-a901-e4fedb380302&lang=ru_RU'
+        'https://api-maps.yandex.ru/2.1/?apikey=5f83ec22-85a8-4723-a3ac-503a77f91a74&lang=ru_RU'
       document.body.appendChild(script)
       isLoaded = true
       //инициализируем карту

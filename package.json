@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server.js",
     "preview": "vite preview",
     "vbuild": "vite build",
     "serve": "NODE_ENV=production node ./server.js",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
     "@vueuse/head": "^2.0.0",
+    "axios": "^1.7.2",
     "compression": "^1.7.4",
     "express": "^4.19.2",
     "lvovich": "^2.0.1",
