@@ -1,8 +1,9 @@
-import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
-import { ref, computed, resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, reactive, onMounted, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createCommentVNode, unref, watchEffect, createSSRApp } from "vue";
-import { useHead } from "@vueuse/head";
+import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList } from "vue/server-renderer";
+import { ref, computed, resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, reactive, onMounted, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createCommentVNode, unref, watchEffect, createSSRApp, createApp as createApp$1 } from "vue";
+import { useHead, createHead, renderHeadToString } from "@vueuse/head";
 import { cityIn } from "lvovich";
-import { useRoute, createMemoryHistory, createRouter } from "vue-router";
+import { useRoute, createMemoryHistory, createRouter as createRouter$1 } from "vue-router";
+import { renderToString } from "@vue/server-renderer";
 const data = {
   services: [
     {
@@ -848,8 +849,7 @@ function maskPhone(elem = document) {
           res += i === 0 ? " (" : "";
           res += i == 3 ? ") " : "";
           res += i == 6 || i == 8 ? "-" : "";
-          if (i == 10)
-            break;
+          if (i == 10) break;
           res += val[i];
         }
         phone.value = res;
@@ -857,8 +857,7 @@ function maskPhone(elem = document) {
       phone.addEventListener("blur", function() {
         let val = phone.value.replace(find, "");
         val = val.trim();
-        if (!val)
-          phone.value = null;
+        if (!val) phone.value = null;
       });
     });
   }
@@ -1384,8 +1383,7 @@ const _sfc_main$1 = {
       window.addEventListener("load", () => {
         const pageWrapper = document.querySelectorAll(".wrapper");
         [...pageWrapper].forEach((wrapper) => {
-          if (wrapper.getAttribute("id"))
-            return;
+          if (wrapper.getAttribute("id")) return;
           wrapper.remove();
         });
         getStorageCity();
@@ -1476,6 +1474,7 @@ const _sfc_main = {
       ]
     });
     onMounted(() => {
+      console.log("mounted");
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(Layout, _attrs, null, _parent));
@@ -1489,60 +1488,60 @@ _sfc_main.setup = (props, ctx) => {
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 const baseUrl = "/";
-const history = createMemoryHistory(baseUrl);
+const history = createMemoryHistory();
 const routes = [
   {
     path: "/",
-    component: () => import("./assets/Home-Kuvyi4tG.js"),
+    component: () => import("./assets/Home-CL_tq5Na.js"),
     meta: { title: "Главная" },
     name: "home"
   },
   {
     path: "/about",
-    component: () => import("./assets/About-D_acYKFu.js"),
+    component: () => import("./assets/About-N_D5NKCb.js"),
     meta: { title: "О компании" },
     name: "about"
   },
   {
     path: "/contacts",
-    component: () => import("./assets/Contacts-C1c-xEO4.js"),
+    component: () => import("./assets/Contacts-BXZZ3DpM.js"),
     meta: { title: "Контакты" },
     name: "contacts"
   },
   {
     path: "/castle-list",
-    component: () => import("./assets/CastleList-D5kzd_DV.js"),
+    component: () => import("./assets/CastleList-xm-Q-PBz.js"),
     meta: { title: "Список замков" },
     name: "castle-list"
   },
   {
     path: "/castle-card",
-    component: () => import("./assets/CastleCard-BqxbyQ2g.js"),
+    component: () => import("./assets/CastleCard-C3BsOoog.js"),
     meta: { title: "Карточка замка" },
     name: "castle-card"
   },
   {
     path: "/castle-list/:id",
-    component: () => import("./assets/CastleCard-BqxbyQ2g.js"),
+    component: () => import("./assets/CastleCard-C3BsOoog.js"),
     meta: { title: "Карточка замка" },
     name: "castle-detail",
     props: true
   },
   {
     path: "/service-card",
-    component: () => import("./assets/ServiceCard-jsKbZt0M.js"),
+    component: () => import("./assets/ServiceCard-DgGhO8AI.js"),
     meta: { title: "Карточка услуги" },
     name: "service-card"
   },
   {
     path: "/service-list",
-    component: () => import("./assets/ServiceList-feSAYI5b.js"),
+    component: () => import("./assets/ServiceList-Ct-yydsl.js"),
     meta: { title: "Список услуг" },
     name: "service-list"
   },
   {
     path: "/service-list/:id",
-    component: () => import("./assets/ServiceCard-jsKbZt0M.js"),
+    component: () => import("./assets/ServiceCard-DgGhO8AI.js"),
     meta: { title: "Карточка услуги" },
     name: "service-detail",
     props: true
@@ -1571,41 +1570,76 @@ const routes = [
     redirect: { name: "home" }
   }
 ];
-const router = createRouter({
-  history,
-  routes,
-  scrollBehavior: function(to, _from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
+function createRouter() {
+  return createRouter$1({
+    history,
+    routes,
+    base: baseUrl,
+    scrollBehavior: function(to, _from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      }
+      if (to.hash) {
+        return { el: to.hash, behavior: "smooth" };
+      } else {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 100);
+      }
     }
-    if (to.hash) {
-      return { el: to.hash, behavior: "smooth" };
-    } else {
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 100);
-    }
-  },
-  base: baseUrl
-  // beforeEach: function (to, from, next) {
-  //   document.title = to.meta.title
-  //   next()
-  // }
-});
-router.beforeEach((to, from, next) => {
-  var _a;
-  document.title = ((_a = to.meta) == null ? void 0 : _a.title) ?? "Замокмастер";
-  next();
-});
-const createApp = () => {
-  const app = createSSRApp(_sfc_main);
-  return { app, router };
-};
-async function render() {
-  const { app } = createApp();
+  });
+}
+function createApp() {
+  const isSSR = typeof window === "undefined";
+  const app = isSSR ? createSSRApp(_sfc_main) : createApp$1(_sfc_main);
+  const router = createRouter();
+  const head = createHead();
+  return { app, router, head };
+}
+async function render(url, manifest) {
+  const { app, router, head } = createApp();
+  await router.push(url);
+  await router.isReady();
   const ctx = {};
   const html = await renderToString(app, ctx);
-  return { html };
+  const { headTags } = renderHeadToString(head);
+  const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
+  return [html, preloadLinks, headTags, store];
+}
+function renderPreloadLinks(modules, manifest) {
+  let links = "";
+  const seen = /* @__PURE__ */ new Set();
+  modules.forEach((id) => {
+    const files = manifest[id];
+    if (files) {
+      files.forEach((file) => {
+        if (!seen.has(file)) {
+          seen.add(file);
+          links += renderPreloadLink(file);
+        }
+      });
+    }
+  });
+  return links;
+}
+function renderPreloadLink(file) {
+  if (file.endsWith(".js")) {
+    return `<link rel="modulepreload" crossorigin href="${file}">`;
+  } else if (file.endsWith(".css")) {
+    return `<link rel="stylesheet" href="${file}">`;
+  } else if (file.endsWith(".woff")) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`;
+  } else if (file.endsWith(".woff2")) {
+    return ` <link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin>`;
+  } else if (file.endsWith(".gif")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/gif">`;
+  } else if (file.endsWith(".jpg") || file.endsWith(".jpeg")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/jpeg">`;
+  } else if (file.endsWith(".png")) {
+    return ` <link rel="preload" href="${file}" as="image" type="image/png">`;
+  } else {
+    return "";
+  }
 }
 export {
   _sfc_main$4 as _,

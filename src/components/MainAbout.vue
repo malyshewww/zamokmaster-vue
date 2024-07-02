@@ -11,13 +11,7 @@
 							.stats-item__text {{ item.text }}
 					.text-hidden(:class="[textShow ? 'active': '']")
 						.text-hidden-content(ref="hiddenContent" :style="myStyles")
-							.content
-								p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
-								p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
-								p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не
-								p В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?
-								p Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.
-								p Теперь у вас есть надёжный помощник-специалист компании "Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не 
+							.content(v-html="data")
 							div.text-hidden-content__gradient(@click='textShow = !textShow')
 						button(type="button" @click='textShow = !textShow' v-if="!textShow").main-about__button.btn-show Читать полностью
 					router-link(to="/about").main-about__btn.btn О компании
@@ -29,15 +23,29 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import obj from '../data.js'
 const { stats } = obj
 const textShow = ref(false)
 const hiddenContent = ref()
 
+defineProps({
+  data: {
+    type: String
+  }
+})
+// const parseContent = () => {
+//   return JSON.parse(content.value)
+// }
+// const parseData = computed(() => {
+//   return JSON.parse(props.data)
+// })
 const myStyles = computed(() => {
   return {
     'max-height': `${textShow.value ? hiddenContent.value?.scrollHeight : false}px`
   }
+})
+onMounted(() => {
+  //   parseContent()
 })
 </script>

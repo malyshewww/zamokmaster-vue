@@ -7,9 +7,10 @@
 					span.btn-phone__text +7 (995) 888-10-86
 					span.btn-phone__icon
 			.main-screen__advantages
-				.main-screen__advantage.main-screen__advantage--1 Работаем официально и круглосуточно (24/7)
-				.main-screen__advantage.main-screen__advantage--2 Срочный выезд мастера (15-20 мин)
-				.main-screen__advantage.main-screen__advantage--3 Звонок напрямую мастеру (без посредников)
+				.main-screen__advantage(v-for="(item, index) in dataBase.advantages" :key="item.id" :class="`main-screen__advantage--${index+1}`") 
+					| {{ item.field_title[0] }}
+				//- .main-screen__advantage.main-screen__advantage--2 Срочный выезд мастера (15-20 мин)
+				//- .main-screen__advantage.main-screen__advantage--3 Звонок напрямую мастеру (без посредников)
 			a(href="tel:+79958881086").main-screen__phone-mobile.btn-phone.btn
 				span.btn-phone__text +7 (995) 888-10-86
 				span.btn-phone__icon
@@ -19,7 +20,7 @@
 						source(:srcset="`/images/main-screen/banner.png`")
 						img(:src="`/images/main-screen/banner.png`" alt="Баннер" loading="lazy")
 				MainScreenInfo
-	MainServices
+	MainServices(:services="dataBase.services")
 	Request
 	section.services-detail.services-detail--first
 		.services-detail__wrapper 
@@ -63,7 +64,7 @@
 					.container
 						router-link(to="/service-card").services-detail__button.btn Подробнее
 	Questions
-	MainAbout
+	MainAbout(:data="dataBase.about")
 	section.testimonials
 		.testimonials__wrapper
 			.container
@@ -74,11 +75,11 @@
 					.heading 
 						h2.heading__title Отзывы #[span наших&nbsp;клиентов]
 						p.heading__sub-title За время работы нашей компании, остались довольными более 15&nbsp;000&nbsp;клиентов.
-	MainGeography
+	MainGeography(:geo="dataBase.geo")
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, reactive, onMounted, computed } from 'vue'
 
 import obj from '../data.js'
 import ServiceDetail from '../components/ServiceDetail.vue'
@@ -90,11 +91,36 @@ import MainGeography from '../components/MainGeography.vue'
 import Request from '../components/Request.vue'
 import MainServices from '../components/MainServices.vue'
 
+import ajax from '@/ajax.js'
+
 import { useRoute } from 'vue-router'
 import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const title = computed(() => route.meta.title)
+
+const dataBase = reactive({
+  about: '',
+  services: '',
+  advantages: '',
+  geo: ''
+})
+
+const getData = async () => {
+  try {
+    const axios = await ajax()
+    const { data } = await axios.get('/wsapi/packs/front')
+    dataBase.about = data.data.info_front[0].field_about
+    dataBase.advantages = data.data.info_front[0].field_advantages
+    dataBase.geo = data.data.info_front[0].field_geography
+    console.log(data.data.info_front[0].field_geography)
+    // dataBase.data = data.data
+    // dataBase.meta = data.meta
+    // dataBase.links = data.links
+  } catch (e) {
+    console.log('maininfo:' + e)
+  }
+}
 
 useHead({
   title: title.value,
@@ -109,11 +135,15 @@ useHead({
   }
 })
 
-const props = defineProps(['defaultCity', 'declensionCity'])
+const props = defineProps(['defaultCity', 'declensionCity', 'mainInfo'])
 
 const { servicesDetail, stats } = obj
 
 const localCity = ref('')
 localCity.value = props.defaultCity
+
+onMounted(() => {
+  getData()
+})
 </script>
 <style lang="scss"></style>

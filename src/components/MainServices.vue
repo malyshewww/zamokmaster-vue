@@ -22,6 +22,14 @@ import obj from '../data.js'
 
 const { services } = obj
 
+// defineProps({
+//   services: {
+//     type: Array
+//   }
+// })
+
+// console.log(services)
+
 const animation = () => {
   ScrollReveal({
     reset: false,

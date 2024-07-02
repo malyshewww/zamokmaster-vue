@@ -2,7 +2,6 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import postCssSortMediaQueries from 'postcss-sort-media-queries'
@@ -15,14 +14,13 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import * as nodePath from 'path'
 const repositoryName = nodePath.basename(nodePath.resolve())
 
-// https://vitejs.dev/config/
 export default defineConfig({
   // server: {
-  //   host: 'localhost',
-  //   port: 5173,
-  //   open: true
+  //   port: 3000,
+  //   proxy: {
+  //     '/wsapi': 'http://zamokmaster.localhost'
+  //   }
   // },
-  // ssr: true,
   css: {
     postcss: {
       plugins: [
@@ -40,7 +38,6 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    vueJsx(),
     ViteImageOptimizer({
       jpg: {
         quality: 80
@@ -63,6 +60,9 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  define: {
+    'process.env': process.env
   },
   // root: 'src',
   build: {

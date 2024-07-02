@@ -1,7 +1,7 @@
-import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import { createMemoryHistory, createRouter as _createRouter, createWebHistory } from 'vue-router'
 
 const baseUrl = import.meta.env.BASE_URL
-const history = import.meta.env.SSR ? createMemoryHistory(baseUrl) : createWebHistory(baseUrl)
+const history = import.meta.env.SSR ? createMemoryHistory() : createWebHistory()
 
 const routes = [
   {
@@ -85,31 +85,43 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history,
-  routes,
-  scrollBehavior: function (to, _from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
+export function createRouter() {
+  return _createRouter({
+    history,
+    routes,
+    base: baseUrl,
+    scrollBehavior: function (to, _from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      }
+      if (to.hash) {
+        return { el: to.hash, behavior: 'smooth' }
+      } else {
+        setTimeout(() => {
+          window.scrollTo(0, 0)
+        }, 100)
+      }
     }
-    if (to.hash) {
-      return { el: to.hash, behavior: 'smooth' }
-    } else {
-      setTimeout(() => {
-        window.scrollTo(0, 0)
-      }, 100)
-    }
-  },
-  base: baseUrl
-  // beforeEach: function (to, from, next) {
-  //   document.title = to.meta.title
-  //   next()
-  // }
-})
+  })
+}
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta?.title ?? 'Замокмастер'
-  next()
-})
-
-export default router
+// const router = createRouter({
+//   history,
+//   routes,
+//   scrollBehavior: function (to, _from, savedPosition) {
+//     if (savedPosition) {
+//       return savedPosition
+//     }
+//     if (to.hash) {
+//       return { el: to.hash, behavior: 'smooth' }
+//     } else {
+//       setTimeout(() => {
+//         window.scrollTo(0, 0)
+//       }, 100)
+//     }
+//   }
+//   // beforeEach: function (to, from, next) {
+//   //   document.title = to.meta.title
+//   //   next()
+//   // }
+// })

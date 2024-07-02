@@ -16,11 +16,11 @@
   "\u0000vite/preload-helper.js": [],
   "index.html": [],
   "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css": [
-    "/assets/TextPage-9wLaqlZh.js",
+    "/assets/TextPage-BnWfme8E.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@fancyapps/ui/dist/index.esm.js": [
-    "/assets/TextPage-9wLaqlZh.js",
+    "/assets/TextPage-BnWfme8E.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "node_modules/@unhead/dom/dist/index.mjs": [],
@@ -33,6 +33,153 @@
   "node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js": [],
   "node_modules/@vue/shared/dist/shared.esm-bundler.js": [],
   "node_modules/@vueuse/head/dist/index.mjs": [],
+  "node_modules/axios/lib/adapters/adapters.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/adapters/fetch.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/adapters/xhr.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/axios.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/cancel/CancelToken.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/cancel/CanceledError.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/cancel/isCancel.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/Axios.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/AxiosError.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/AxiosHeaders.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/InterceptorManager.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/buildFullPath.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/dispatchRequest.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/mergeConfig.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/settle.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/core/transformData.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/defaults/index.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/defaults/transitional.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/env/data.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/AxiosURLSearchParams.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/HttpStatusCode.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/bind.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/buildURL.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/combineURLs.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/composeSignals.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/cookies.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/formDataToJSON.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/isAbsoluteURL.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/isAxiosError.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/isURLSameOrigin.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/null.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/parseHeaders.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/parseProtocol.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/progressEventReducer.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/resolveConfig.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/speedometer.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/spread.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/throttle.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/toFormData.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/toURLEncodedForm.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/trackStream.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/helpers/validator.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/browser/classes/Blob.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/browser/classes/FormData.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/browser/classes/URLSearchParams.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/browser/index.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/common/utils.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/platform/index.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
+  "node_modules/axios/lib/utils.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
   "node_modules/hookable/dist/index.mjs": [],
   "node_modules/is-dom-node-list/dist/is-dom-node-list.es.js": [
     "/assets/scrollreveal.es-DIZ4IBFj.js"
@@ -61,22 +208,22 @@
     "/assets/scrollreveal.es-DIZ4IBFj.js"
   ],
   "node_modules/swiper/modules/autoplay.mjs": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "node_modules/swiper/modules/free-mode.mjs": [
-    "/assets/About-D2RqMFNW.js"
+    "/assets/About-fRSVyz5c.js"
   ],
   "node_modules/swiper/modules/navigation.mjs": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "node_modules/swiper/modules/scrollbar.mjs": [
-    "/assets/About-D2RqMFNW.js"
+    "/assets/About-fRSVyz5c.js"
   ],
   "node_modules/swiper/modules/thumbs.mjs": [
-    "/assets/About-D2RqMFNW.js"
+    "/assets/About-fRSVyz5c.js"
   ],
   "node_modules/swiper/shared/classes-to-selector.mjs": [
-    "/assets/About-D2RqMFNW.js"
+    "/assets/About-fRSVyz5c.js"
   ],
   "node_modules/swiper/shared/create-element-if-not-defined.mjs": [
     "/assets/create-element-if-not-defined-CpJkOhtE.js"
@@ -94,60 +241,65 @@
     "/assets/scrollreveal.es-DIZ4IBFj.js"
   ],
   "node_modules/unhead/dist/index.mjs": [],
-  "node_modules/vue-meta/dist/vue-meta.esm-browser.min.js": [],
   "node_modules/vue-router/dist/vue-router.mjs": [],
   "src/App.vue": [],
+  "src/ajax.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
   "src/assets/scss/main.scss": [],
   "src/components/Breadcrumbs.vue": [
-    "/assets/Breadcrumbs-BunzU8cJ.js"
+    "/assets/Breadcrumbs-3qfypMEU.js"
   ],
   "src/components/CastleAdvantages.vue": [
-    "/assets/CastleTypes-2IZh7Bn-.js"
+    "/assets/CastleTypes-pz8PuZJs.js"
   ],
   "src/components/CastleTypes.vue": [
-    "/assets/CastleTypes-2IZh7Bn-.js"
+    "/assets/CastleTypes-pz8PuZJs.js"
   ],
   "src/components/FreeMasters.vue": [],
   "src/components/HeaderLocation.vue": [],
   "src/components/MainAbout.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/MainGeography.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/MainScreenInfo.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/MainServices.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/Modals/ModalCall.vue": [],
   "src/components/Modals/ModalNotice.vue": [],
   "src/components/Navbar.vue": [],
   "src/components/Questions.vue": [
-    "/assets/Questions-oAkjHki-.js"
+    "/assets/Questions-NCx9sE4L.js"
   ],
   "src/components/Questions.vue?vue&type=template&lang.js": [
-    "/assets/Questions-oAkjHki-.js"
+    "/assets/Questions-NCx9sE4L.js"
   ],
   "src/components/Request.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/ServiceDetail.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/ServiceSlider.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/components/Sidebar.vue": [
-    "/assets/Sidebar-BE3H5_b4.js"
+    "/assets/Sidebar-D8m02ZWZ.js"
   ],
   "src/components/Sidebar.vue?vue&type=template&lang.js": [
-    "/assets/Sidebar-BE3H5_b4.js"
+    "/assets/Sidebar-D8m02ZWZ.js"
   ],
   "src/components/TheFooter.vue": [],
   "src/components/TheHeader.vue": [],
   "src/components/Widget.vue": [],
+  "src/config.js": [
+    "/assets/Home-kxZL_tPN.js"
+  ],
   "src/data.js": [],
   "src/entry-client.js": [],
   "src/layouts/BaseLayout.vue": [],
@@ -155,34 +307,34 @@
   "src/layouts/Modal.vue": [],
   "src/main.js": [],
   "src/pages/About.vue": [
-    "/assets/About-D2RqMFNW.js"
+    "/assets/About-fRSVyz5c.js"
   ],
   "src/pages/CastleCard.vue": [
-    "/assets/CastleCard-iVLS4Lc5.js"
+    "/assets/CastleCard-DUlle1mb.js"
   ],
   "src/pages/CastleList.vue": [
-    "/assets/CastleList-DBFj_7J8.js"
+    "/assets/CastleList-Cmcgw-3B.js"
   ],
   "src/pages/Contacts.vue": [
-    "/assets/Contacts-CnUqwbN5.js"
+    "/assets/Contacts-Dans29If.js"
   ],
   "src/pages/Home.vue": [
-    "/assets/Home-DBvfqjlL.js"
+    "/assets/Home-kxZL_tPN.js"
   ],
   "src/pages/Individual.vue": [
-    "/assets/Individual-DCeie0KZ.js"
+    "/assets/Individual-aF0WYUdn.js"
   ],
   "src/pages/Legal.vue": [
-    "/assets/Legal-4JKIxoEH.js"
+    "/assets/Legal-BsC2RmdI.js"
   ],
   "src/pages/ServiceCard.vue": [
-    "/assets/ServiceCard-BzdO5ZRE.js"
+    "/assets/ServiceCard-CI6YBsxF.js"
   ],
   "src/pages/ServiceList.vue": [
-    "/assets/ServiceList-CmCPhlBm.js"
+    "/assets/ServiceList-OHcqvQMT.js"
   ],
   "src/pages/TextPage.vue": [
-    "/assets/TextPage-9wLaqlZh.js",
+    "/assets/TextPage-BnWfme8E.js",
     "/assets/TextPage-DS-KjMi4.css"
   ],
   "src/router.js": [],

@@ -1,10 +1,8 @@
 <template lang="pug">
-	//- metainfo
-	//- 	template(v-slot:title="{ content }") {{ content ? `${content} | Замокмастер` : `Замокмастер` }}
 	.wrapper(ref="wrapper" id="wrapper")
 		TheHeader(@onChangeCity="getNewCity($event)" :defaultCity="defaultCity")
 		main.main
-			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity")
+			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity" :mainInfo="dataBase")
 		TheFooter
 		Widget
 		.services-mobile
@@ -34,16 +32,30 @@ import ModalNotice from '../components/Modals/ModalNotice.vue'
 
 import { useRoute } from 'vue-router'
 
-// const myStore = reactive({
-//   city: 'Санкт-Петербург'
-// })
+import ajax from '@/ajax.js'
 
 const route = useRoute()
-
 const { services } = obj
-
 const defaultCity = ref('Санкт-Петербург')
 const declensionCity = ref('')
+
+const dataBase = reactive({
+  data: {},
+  meta: {},
+  links: {}
+})
+
+const getData = async () => {
+  try {
+    const axios = await ajax()
+    const { data } = await axios.get('/wsapi/packs/maininfo')
+    dataBase.data = data.data
+    dataBase.meta = data.meta
+    dataBase.links = data.links
+  } catch (e) {
+    console.log('maininfo:' + e)
+  }
+}
 
 const getNewCity = (city) => {
   defaultCity.value = city
@@ -100,6 +112,7 @@ onMounted(() => {
     })
     getStorageCity()
   })
+  getData()
 })
 </script>
 <style scoped>

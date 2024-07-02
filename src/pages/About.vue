@@ -233,13 +233,18 @@ const checkScreenWidth = () => {
   }
 }
 const setPositionNavAbout = () => {
+  const navAbout = document.querySelector('.nav-about')
   if (window.innerWidth > 991.98) {
     window.addEventListener('scroll', () => {
       const header = document.querySelector('.header')
       if (header.classList.contains('hide')) {
-        nav_about.value.style.top = `0px`
+        if (navAbout) {
+          navAbout.style.top = `0px`
+        }
       } else {
-        nav_about.value.style.top = `${header.clientHeight + 20}px`
+        if (navAbout) {
+          navAbout.style.top = `${header.clientHeight + 20}px`
+        }
       }
     })
   } else {
