@@ -15,12 +15,10 @@ import * as nodePath from 'path'
 const repositoryName = nodePath.basename(nodePath.resolve())
 
 export default defineConfig({
-  // server: {
-  //   port: 3000,
-  //   proxy: {
-  //     '/wsapi': 'http://zamokmaster.localhost'
-  //   }
-  // },
+  server: {
+    port: 3001,
+    host: 'http://zamokmaster.localhost'
+  },
   css: {
     postcss: {
       plugins: [

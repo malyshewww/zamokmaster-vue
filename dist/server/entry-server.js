@@ -1,9 +1,10 @@
-import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList } from "vue/server-renderer";
+import { ssrRenderComponent, ssrRenderClass, ssrRenderStyle, ssrRenderAttrs, ssrRenderSlot, ssrInterpolate, ssrRenderTeleport, ssrRenderAttr, ssrRenderList, renderToString } from "vue/server-renderer";
 import { ref, computed, resolveComponent, withCtx, createTextVNode, useSSRContext, mergeProps, reactive, onMounted, createVNode, withDirectives, vModelText, openBlock, createBlock, Fragment, renderList, toDisplayString, createCommentVNode, unref, watchEffect, createSSRApp, createApp as createApp$1 } from "vue";
-import { useHead, createHead, renderHeadToString } from "@vueuse/head";
+import { useHead, createHead } from "@vueuse/head";
 import { cityIn } from "lvovich";
 import { useRoute, createMemoryHistory, createRouter as createRouter$1 } from "vue-router";
-import { renderToString } from "@vue/server-renderer";
+import axios from "axios";
+import { createPinia } from "pinia";
 const data = {
   services: [
     {
@@ -1329,6 +1330,39 @@ _sfc_main$2.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/components/Modals/ModalNotice.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
+const config = {
+  // copy this file to config.js and edit the settings to match yours
+  url: "http://zamokmaster.localhost"
+};
+let singleton = null;
+const ajax = async () => {
+  if (!singleton) {
+    const tokenURL = `${config.url}/session/token?_format_json`;
+    try {
+      const response = await axios.get(tokenURL, {
+        // mode: 'no-cors',
+        withCredentials: true
+        // required to send auth cookie
+      });
+      const csrf_token = response.data;
+      singleton = axios.create({
+        // mode: 'no-cors',
+        baseURL: `${config.url}`,
+        // every request is relative to this URL
+        withCredentials: true,
+        // include auth cookie in every request
+        headers: {
+          "X-CSRF-Token": csrf_token,
+          "Content-Type": "application/json"
+        }
+        // params: { _format: 'json' }, // add these query params to every request
+      });
+    } catch (error) {
+      console.log("ajax error");
+    }
+  }
+  return singleton;
+};
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -1344,6 +1378,22 @@ const _sfc_main$1 = {
     const { services } = data;
     const defaultCity = ref("Санкт-Петербург");
     const declensionCity = ref("");
+    const dataBase = reactive({
+      data: {},
+      meta: {},
+      links: {}
+    });
+    const getData = async () => {
+      try {
+        const axios2 = await ajax();
+        const { data: data2 } = await axios2.get("/wsapi/packs/maininfo");
+        dataBase.data = data2.data;
+        dataBase.meta = data2.meta;
+        dataBase.links = data2.links;
+      } catch (e) {
+        console.log("maininfo:" + e);
+      }
+    };
     const getNewCity = (city) => {
       defaultCity.value = city;
       getStorageCity();
@@ -1388,6 +1438,7 @@ const _sfc_main$1 = {
         });
         getStorageCity();
       });
+      getData();
     });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_router_view = resolveComponent("router-view");
@@ -1396,20 +1447,21 @@ const _sfc_main$1 = {
         class: "wrapper",
         ref: "wrapper",
         id: "wrapper"
-      }, _attrs))} data-v-1bd5887d>`);
+      }, _attrs))} data-v-f2693bca>`);
       _push(ssrRenderComponent(_sfc_main$7, {
         onOnChangeCity: ($event) => getNewCity($event),
         defaultCity: defaultCity.value
       }, null, _parent));
-      _push(`<main class="main" data-v-1bd5887d>`);
+      _push(`<main class="main" data-v-f2693bca>`);
       _push(ssrRenderComponent(_component_router_view, {
         defaultCity: defaultCity.value,
-        declensionCity: declensionCity.value
+        declensionCity: declensionCity.value,
+        mainInfo: dataBase
       }, null, _parent));
       _push(`</main>`);
       _push(ssrRenderComponent(_sfc_main$5, null, null, _parent));
       _push(ssrRenderComponent(_sfc_main$3, null, null, _parent));
-      _push(`<div class="services-mobile" data-v-1bd5887d><div class="services-mobile__body" data-v-1bd5887d><!--[-->`);
+      _push(`<div class="services-mobile" data-v-f2693bca><div class="services-mobile__body" data-v-f2693bca><!--[-->`);
       ssrRenderList(unref(services), (service) => {
         _push(ssrRenderComponent(_component_router_link, {
           class: "services-mobile__item",
@@ -1417,7 +1469,7 @@ const _sfc_main$1 = {
         }, {
           default: withCtx((_, _push2, _parent2, _scopeId) => {
             if (_push2) {
-              _push2(`<div class="services-mobile__image" data-v-1bd5887d${_scopeId}><picture data-v-1bd5887d${_scopeId}><img${ssrRenderAttr("src", "/images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)} loading="lazy" data-v-1bd5887d${_scopeId}></picture></div><div class="services-mobile__title" data-v-1bd5887d${_scopeId}>${ssrInterpolate(service.title)}</div>`);
+              _push2(`<div class="services-mobile__image" data-v-f2693bca${_scopeId}><picture data-v-f2693bca${_scopeId}><img${ssrRenderAttr("src", "/images/services/mobile/service-mob-" + service.img + ".png")}${ssrRenderAttr("alt", service.title)} loading="lazy" data-v-f2693bca${_scopeId}></picture></div><div class="services-mobile__title" data-v-f2693bca${_scopeId}>${ssrInterpolate(service.title)}</div>`);
             } else {
               return [
                 createVNode("div", { class: "services-mobile__image" }, [
@@ -1436,7 +1488,7 @@ const _sfc_main$1 = {
           _: 2
         }, _parent));
       });
-      _push(`<!--]--></div></div><div class="phone-mobile" data-v-1bd5887d><div class="container" data-v-1bd5887d><div class="phone-mobile__body" data-v-1bd5887d><a class="btn btn-phone" href="tel:79958881086" data-v-1bd5887d>+7 (995) 888-10-86</a>`);
+      _push(`<!--]--></div></div><div class="phone-mobile" data-v-f2693bca><div class="container" data-v-f2693bca><div class="phone-mobile__body" data-v-f2693bca><a class="btn btn-phone" href="tel:79958881086" data-v-f2693bca>+7 (995) 888-10-86</a>`);
       _push(ssrRenderComponent(_sfc_main$4, null, null, _parent));
       _push(`</div></div></div>`);
       _push(ssrRenderComponent(_sfc_main$2, null, null, _parent));
@@ -1450,7 +1502,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/layouts/BaseLayout.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1bd5887d"]]);
+const Layout = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-f2693bca"]]);
 const _sfc_main = {
   __name: "App",
   __ssrInlineRender: true,
@@ -1474,10 +1526,9 @@ const _sfc_main = {
       ]
     });
     onMounted(() => {
-      console.log("mounted");
     });
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(Layout, _attrs, null, _parent));
+      _push(ssrRenderComponent(Layout, mergeProps({ mainInfo: _ctx.dataBase }, _attrs), null, _parent));
     };
   }
 };
@@ -1492,56 +1543,56 @@ const history = createMemoryHistory();
 const routes = [
   {
     path: "/",
-    component: () => import("./assets/Home-CL_tq5Na.js"),
+    component: () => import("./assets/Home-DHsautV2.js"),
     meta: { title: "Главная" },
     name: "home"
   },
   {
     path: "/about",
-    component: () => import("./assets/About-N_D5NKCb.js"),
+    component: () => import("./assets/About-BEHAbpQ8.js"),
     meta: { title: "О компании" },
     name: "about"
   },
   {
     path: "/contacts",
-    component: () => import("./assets/Contacts-BXZZ3DpM.js"),
+    component: () => import("./assets/Contacts-DCLWoyTq.js"),
     meta: { title: "Контакты" },
     name: "contacts"
   },
   {
     path: "/castle-list",
-    component: () => import("./assets/CastleList-xm-Q-PBz.js"),
+    component: () => import("./assets/CastleList-Dp428p7y.js"),
     meta: { title: "Список замков" },
     name: "castle-list"
   },
   {
     path: "/castle-card",
-    component: () => import("./assets/CastleCard-C3BsOoog.js"),
+    component: () => import("./assets/CastleCard-CCoTth6m.js"),
     meta: { title: "Карточка замка" },
     name: "castle-card"
   },
   {
     path: "/castle-list/:id",
-    component: () => import("./assets/CastleCard-C3BsOoog.js"),
+    component: () => import("./assets/CastleCard-CCoTth6m.js"),
     meta: { title: "Карточка замка" },
     name: "castle-detail",
     props: true
   },
   {
     path: "/service-card",
-    component: () => import("./assets/ServiceCard-DgGhO8AI.js"),
+    component: () => import("./assets/ServiceCard-DIA_lNSb.js"),
     meta: { title: "Карточка услуги" },
     name: "service-card"
   },
   {
     path: "/service-list",
-    component: () => import("./assets/ServiceList-Ct-yydsl.js"),
+    component: () => import("./assets/ServiceList-C2teugyb.js"),
     meta: { title: "Список услуг" },
     name: "service-list"
   },
   {
     path: "/service-list/:id",
-    component: () => import("./assets/ServiceCard-DgGhO8AI.js"),
+    component: () => import("./assets/ServiceCard-DIA_lNSb.js"),
     meta: { title: "Карточка услуги" },
     name: "service-detail",
     props: true
@@ -1594,56 +1645,20 @@ function createApp() {
   const app = isSSR ? createSSRApp(_sfc_main) : createApp$1(_sfc_main);
   const router = createRouter();
   const head = createHead();
-  return { app, router, head };
+  const pinia = createPinia();
+  return { app, router, head, pinia };
 }
-async function render(url, manifest) {
-  const { app, router, head } = createApp();
-  await router.push(url);
-  await router.isReady();
+async function render() {
+  const { app } = createApp();
   const ctx = {};
   const html = await renderToString(app, ctx);
-  const { headTags } = renderHeadToString(head);
-  const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
-  return [html, preloadLinks, headTags, store];
-}
-function renderPreloadLinks(modules, manifest) {
-  let links = "";
-  const seen = /* @__PURE__ */ new Set();
-  modules.forEach((id) => {
-    const files = manifest[id];
-    if (files) {
-      files.forEach((file) => {
-        if (!seen.has(file)) {
-          seen.add(file);
-          links += renderPreloadLink(file);
-        }
-      });
-    }
-  });
-  return links;
-}
-function renderPreloadLink(file) {
-  if (file.endsWith(".js")) {
-    return `<link rel="modulepreload" crossorigin href="${file}">`;
-  } else if (file.endsWith(".css")) {
-    return `<link rel="stylesheet" href="${file}">`;
-  } else if (file.endsWith(".woff")) {
-    return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`;
-  } else if (file.endsWith(".woff2")) {
-    return ` <link rel="preload" href="${file}" as="font" type="font/woff2" crossorigin>`;
-  } else if (file.endsWith(".gif")) {
-    return ` <link rel="preload" href="${file}" as="image" type="image/gif">`;
-  } else if (file.endsWith(".jpg") || file.endsWith(".jpeg")) {
-    return ` <link rel="preload" href="${file}" as="image" type="image/jpeg">`;
-  } else if (file.endsWith(".png")) {
-    return ` <link rel="preload" href="${file}" as="image" type="image/png">`;
-  } else {
-    return "";
-  }
+  return { html };
 }
 export {
   _sfc_main$4 as _,
-  _export_sfc as a,
+  ajax as a,
+  _export_sfc as b,
+  config as c,
   data as d,
   maskPhone as m,
   render

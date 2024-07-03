@@ -6,7 +6,7 @@ let singleton = null // a singleton instance of axios that the default init func
 // note the 'async' keyword, it allows us to call 'await' later
 export default async () => {
   if (!singleton) {
-    const tokenURL = `${config.drupal_url}/session/token?_format_json`
+    const tokenURL = `${config.url}/session/token?_format_json`
     try {
       const response = await axios.get(tokenURL, {
         // mode: 'no-cors',
@@ -15,7 +15,7 @@ export default async () => {
       const csrf_token = response.data
       singleton = axios.create({
         // mode: 'no-cors',
-        baseURL: `${config.drupal_url}`, // every request is relative to this URL
+        baseURL: `${config.url}`, // every request is relative to this URL
         withCredentials: true, // include auth cookie in every request
         headers: {
           'X-CSRF-Token': csrf_token,

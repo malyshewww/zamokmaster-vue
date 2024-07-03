@@ -1,13 +1,14 @@
 import { computed, mergeProps, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderAttr, ssrInterpolate } from "vue/server-renderer";
-import { S as Sidebar } from "./Sidebar-OR3Vja4K.js";
+import { S as Sidebar } from "./Sidebar-CIHe6jy1.js";
 import { _ as _sfc_main$1 } from "./Breadcrumbs-BtW0J10y.js";
 import { _ as _sfc_main$2, a as _sfc_main$3 } from "./CastleTypes-CSdHFa4q.js";
 import { useRoute } from "vue-router";
 import { useHead } from "@vueuse/head";
 import "../entry-server.js";
 import "lvovich";
-import "@vue/server-renderer";
+import "axios";
+import "pinia";
 import "scrollreveal";
 const _sfc_main = {
   __name: "CastleCard",

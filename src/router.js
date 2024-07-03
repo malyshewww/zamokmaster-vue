@@ -48,13 +48,13 @@ const routes = [
     name: 'service-card'
   },
   {
-    path: '/service-list',
+    path: '/services',
     component: () => import('@/pages/ServiceList.vue'),
     meta: { title: 'Список услуг' },
     name: 'service-list'
   },
   {
-    path: '/service-list/:id',
+    path: '/services/:id',
     component: () => import('@/pages/ServiceCard.vue'),
     meta: { title: 'Карточка услуги' },
     name: 'service-detail',

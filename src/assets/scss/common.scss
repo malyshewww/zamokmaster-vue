@@ -568,6 +568,14 @@ picture {
 		line-height: 11px;
 		color: #000;
 	}
+	&__image {
+		width: 30px;
+		height: 30px;
+		& img {
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 
 .phone-mobile {

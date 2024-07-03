@@ -4,31 +4,27 @@
 			.heading 
 				h2.heading__title Услуги
 			.services__body 
-				router-link(:to="`/service-list/${index}`" v-for="(service, index) in services").services__item.item-services
+				router-link(ref="serviceItem" v-for="(service, index) in services" :key="service.id" :to="`${service.url}`" ).services__item.item-services
 					.item-services__content
 						.item-services__title {{ service.title }}
 						.item-services__bottom
 							span.item-services__icon 
 								picture
-									source(:srcset=`'/images/services/services-'+service.img+'.png'` media="(min-width: 767.98px)")
-									source(:srcset=`'/images/services/services-'+service.img+'-mob.png'` media="(min-width: 300px)")
-									img(:src=`'/images/services/services-'+service.img+'.png'`, :alt="service.title" loading="lazy")
+									source(:srcset="`${config.url}${service.field_logo[0].markup}`" media="(min-width: 767.98px)")
+									source(:srcset="`${config.url}${service.field_logo[0].markup}`" media="(min-width: 300px)")
+									img(:src="`${config.url}${service.field_logo[0].markup}`", :alt="service.title" loading="lazy" :width="service.field_logo[0].width" :height="service.field_logo[0].height")
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import ScrollReveal from 'scrollreveal'
-import obj from '../data.js'
+import config from '@/config'
 
-const { services } = obj
+const serviceItem = ref('')
 
-// defineProps({
-//   services: {
-//     type: Array
-//   }
-// })
-
-// console.log(services)
+defineProps({
+  services: {}
+})
 
 const animation = () => {
   ScrollReveal({

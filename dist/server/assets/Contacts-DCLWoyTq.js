@@ -1,12 +1,13 @@
 import { computed, ref, onMounted, mergeProps, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent } from "vue/server-renderer";
-import { Q as Questions } from "./Questions-BoxVuI8X.js";
+import { Q as Questions } from "./Questions-CBRBJScZ.js";
 import { _ as _sfc_main$1 } from "./Breadcrumbs-BtW0J10y.js";
 import { useRoute } from "vue-router";
 import { useHead } from "@vueuse/head";
 import "../entry-server.js";
 import "lvovich";
-import "@vue/server-renderer";
+import "axios";
+import "pinia";
 const _sfc_main = {
   __name: "Contacts",
   __ssrInlineRender: true,

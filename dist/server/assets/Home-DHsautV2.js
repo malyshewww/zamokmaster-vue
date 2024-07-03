@@ -1,15 +1,66 @@
-import { onMounted, resolveComponent, mergeProps, withCtx, createTextVNode, useSSRContext, ref, createVNode, computed, unref, toDisplayString } from "vue";
+import { resolveComponent, mergeProps, unref, withCtx, createTextVNode, useSSRContext, onMounted, ref, createVNode, computed, reactive, toDisplayString } from "vue";
 import { ssrRenderAttrs, ssrInterpolate, ssrRenderComponent, ssrRenderAttr, ssrRenderList, ssrRenderClass, ssrRenderStyle } from "vue/server-renderer";
-import { _ as _sfc_main$8, d as data, m as maskPhone } from "../entry-server.js";
+import { c as config, _ as _sfc_main$9, d as data, m as maskPhone, a as ajax } from "../entry-server.js";
 import ScrollReveal from "scrollreveal";
 import Swiper from "swiper";
 import { Navigation, Autoplay } from "swiper/modules";
-import { Q as Questions } from "./Questions-BoxVuI8X.js";
-import axios from "axios";
+import { Q as Questions } from "./Questions-CBRBJScZ.js";
 import { useRoute } from "vue-router";
 import { useHead } from "@vueuse/head";
 import "lvovich";
-import "@vue/server-renderer";
+import "axios";
+import "pinia";
+const _sfc_main$8 = {
+  __name: "ServiceDetailBox",
+  __ssrInlineRender: true,
+  props: ["service", "locks"],
+  setup(__props) {
+    const props = __props;
+    console.log(props.service);
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_router_link = resolveComponent("router-link");
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "services-detail__box" }, _attrs))}><div class="container"><div class="services-detail__item"><div class="services-detail__body"><div class="services-detail__content"><h2 class="services-detail__title">${ssrInterpolate(__props.service.title)}<span></span></h2><div class="services-detail__text"></div>`);
+      _push(ssrRenderComponent(_component_router_link, {
+        class: "services-detail__button btn",
+        to: `${unref(config).url}${__props.service.url}`
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Подробнее`);
+          } else {
+            return [
+              createTextVNode("Подробнее")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div><div class="services-detail__image-wrap"><div class="services-detail__image ibg"><picture></picture></div></div></div></div></div><div class="services-slider"><div class="services-slider__body swiper"><div class="services-slider__wrapper swiper-wrapper"></div><div class="slider-controls"><button class="slider-button slider-button-prev"></button><button class="slider-button slider-button-next"></button></div></div></div><div class="services-detail__bottom"><div class="container">`);
+      _push(ssrRenderComponent(_component_router_link, {
+        class: "services-detail__button btn",
+        to: "/service-card"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Подробнее`);
+          } else {
+            return [
+              createTextVNode("Подробнее")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div></div></div>`);
+    };
+  }
+};
+const _sfc_setup$8 = _sfc_main$8.setup;
+_sfc_main$8.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/components/ServiceDetailBox.vue");
+  return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
+};
 const _sfc_main$7 = {
   __name: "ServiceDetail",
   __ssrInlineRender: true,
@@ -247,7 +298,7 @@ const _sfc_main$5 = {
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "main-screen__info" }, _attrs))}><div class="main-screen__content">`);
-      _push(ssrRenderComponent(_sfc_main$8, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$9, null, null, _parent));
       _push(`<p>К вам приедет ближайший из них</p></div><span class="main-screen__info-icon"></span></div>`);
     };
   }
@@ -261,6 +312,11 @@ _sfc_main$5.setup = (props, ctx) => {
 const _sfc_main$4 = {
   __name: "MainAbout",
   __ssrInlineRender: true,
+  props: {
+    data: {
+      type: String
+    }
+  },
   setup(__props) {
     const { stats } = data;
     const textShow = ref(false);
@@ -271,13 +327,15 @@ const _sfc_main$4 = {
         "max-height": `${textShow.value ? (_a = hiddenContent.value) == null ? void 0 : _a.scrollHeight : false}px`
       };
     });
+    onMounted(() => {
+    });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_router_link = resolveComponent("router-link");
       _push(`<section${ssrRenderAttrs(mergeProps({ class: "main-about" }, _attrs))}><div class="container"><div class="main-about__body"><div class="main-about__content"><div class="heading"><h2 class="heading__title">О компании</h2></div><div class="main-about__stats"><!--[-->`);
       ssrRenderList(unref(stats), (item) => {
         _push(`<div class="main-about__item stats-item"><div class="stats-item__num">${ssrInterpolate(item.num)}</div><div class="stats-item__text">${ssrInterpolate(item.text)}</div></div>`);
       });
-      _push(`<!--]--></div><div class="${ssrRenderClass([[textShow.value ? "active" : ""], "text-hidden"])}"><div class="text-hidden-content" style="${ssrRenderStyle(myStyles.value)}"><div class="content"><p>В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?</p><p>Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.</p><p>Теперь у вас есть надёжный помощник-специалист компании &quot;Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не</p><p>В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не открывается ваш автомобиль. А может вы потеряли ключи от сейфа, и теперь не знаете что делать?</p><p>Главное, не поддавайтесь панике, и не пытайтесь, с помощью подручных инструментов, самостоятельно решить данную проблему, разрушая тем самым не только конструкцию замка, но и целостность самой двери.</p><p>Теперь у вас есть надёжный помощник-специалист компании &quot;Замок- В жизни каждого человека случаются непредвиденные ситуации: захлопнулась дверь, сломался замок, или не </p></div><div class="text-hidden-content__gradient"></div></div>`);
+      _push(`<!--]--></div><div class="${ssrRenderClass([[textShow.value ? "active" : ""], "text-hidden"])}"><div class="text-hidden-content" style="${ssrRenderStyle(myStyles.value)}"><div class="content">${__props.data}</div><div class="text-hidden-content__gradient"></div></div>`);
       if (!textShow.value) {
         _push(`<button class="main-about__button btn-show" type="button">Читать полностью</button>`);
       } else {
@@ -312,28 +370,53 @@ _sfc_main$4.setup = (props, ctx) => {
 const _sfc_main$3 = {
   __name: "MainGeography",
   __ssrInlineRender: true,
+  props: ["geo"],
   setup(__props) {
-    const { geography } = data;
     const textShow = ref(false);
     const geographyWrapper = ref();
+    const props = __props;
     const myStyles = computed(() => {
       var _a;
       return {
         "max-height": `${textShow.value ? (_a = geographyWrapper.value) == null ? void 0 : _a.scrollHeight : false}px`
       };
     });
+    const newArray = reactive({
+      geo: []
+    });
+    const separationArray = computed(() => {
+      let size = 1;
+      for (let i = 0; i < Math.ceil(props.geo.length / size); i++) {
+        newArray.geo[i] = props.geo.slice(i * size, i * size + size);
+      }
+      return newArray.geo;
+    });
+    onMounted(() => {
+    });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<section${ssrRenderAttrs(mergeProps({ class: "geography" }, _attrs))}><div class="container"><div class="heading"><h2 class="heading__title">География работы</h2></div><div class="${ssrRenderClass([[textShow.value ? "active" : ""], "geography__wrapper"])}" style="${ssrRenderStyle(myStyles.value)}"><div class="geography__body"><!--[-->`);
-      ssrRenderList(unref(geography), (item) => {
+      ssrRenderList(separationArray.value, (item, key) => {
         _push(`<ul class="geography__list"><!--[-->`);
-        ssrRenderList(item.list, (station) => {
+        ssrRenderList(item, (station) => {
           _push(`<li class="geography__list-item">${ssrInterpolate(station)}</li>`);
         });
         _push(`<!--]--></ul>`);
       });
-      _push(`<!--]--></div><span class="geography__gradient"></span></div>`);
-      if (!textShow.value) {
-        _push(`<button class="geography__button btn-show" type="button">Показать все</button>`);
+      _push(`<!--]--></div>`);
+      if (__props.geo.length > 5) {
+        _push(`<span class="geography__gradient"></span>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
+      if (__props.geo.length > 5) {
+        _push(`<div>`);
+        if (!textShow.value) {
+          _push(`<button class="geography__button btn-show" type="button">Показать все</button>`);
+        } else {
+          _push(`<!---->`);
+        }
+        _push(`</div>`);
       } else {
         _push(`<!---->`);
       }
@@ -452,46 +535,37 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("src/components/MainServices.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const config = {
-  // copy this file to config.js and edit the settings to match yours
-  drupal_url: "http://zamokmaster.localhost"
-};
-let singleton = null;
-const ajax = async () => {
-  if (!singleton) {
-    const tokenURL = `${config.drupal_url}/session/token?_format_json`;
-    try {
-      const response = await axios.get(tokenURL, {
-        // mode: 'no-cors',
-        withCredentials: true
-        // required to send auth cookie
-      });
-      const csrf_token = response.data;
-      singleton = axios.create({
-        // mode: 'no-cors',
-        baseURL: `${config.drupal_url}`,
-        // every request is relative to this URL
-        withCredentials: true,
-        // include auth cookie in every request
-        headers: {
-          "X-CSRF-Token": csrf_token,
-          "Content-Type": "application/json"
-        }
-        // params: { _format: 'json' }, // add these query params to every request
-      });
-    } catch (error) {
-      console.log("ajax error");
-    }
-  }
-  return singleton;
-};
 const _sfc_main = {
   __name: "Home",
   __ssrInlineRender: true,
-  props: ["defaultCity", "declensionCity"],
+  props: ["defaultCity", "declensionCity", "mainInfo"],
   setup(__props) {
     const route = useRoute();
     const title = computed(() => route.meta.title);
+    const dataBase = reactive({
+      about: "",
+      services: {
+        items: "",
+        locks: ""
+      },
+      advantages: "",
+      geo: "",
+      locks: ""
+    });
+    const getData = async () => {
+      try {
+        const axios = await ajax();
+        const { data: data2 } = await axios.get("/wsapi/packs/front");
+        dataBase.about = data2.data.info_front[0].field_about;
+        dataBase.advantages = data2.data.info_front[0].field_advantages;
+        dataBase.geo = data2.data.info_front[0].field_geography;
+        dataBase.services.locks = data2.data.services.locks;
+        dataBase.services.items = data2.data.services;
+        console.log(dataBase.services.items);
+      } catch (e) {
+        console.log("maininfo:" + e);
+      }
+    };
     useHead({
       title: title.value,
       meta: [
@@ -508,27 +582,28 @@ const _sfc_main = {
     const { servicesDetail, stats } = data;
     const localCity = ref("");
     localCity.value = props.defaultCity;
-    const getData = async () => {
-      try {
-        const axios2 = await ajax();
-        const response = await axios2.get("/wsapi/packs/maininfo");
-        const data2 = await response;
-        console.log(data2);
-      } catch (e) {
-        console.log("MainInfo Error: " + e);
-      }
-    };
     onMounted(() => {
       getData();
     });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_router_link = resolveComponent("router-link");
-      _push(`<!--[--><div class="main-screen"><div class="container"><div class="main-screen__heading"><h1 class="main-screen__title">Вскрытие замков <span>${ssrInterpolate(__props.declensionCity)}</span></h1><a class="main-screen__phone btn-phone btn" href="tel:+79958881086"><span class="btn-phone__text">+7 (995) 888-10-86</span><span class="btn-phone__icon"></span></a></div><div class="main-screen__advantages"><div class="main-screen__advantage main-screen__advantage--1">Работаем официально и круглосуточно (24/7)</div><div class="main-screen__advantage main-screen__advantage--2">Срочный выезд мастера (15-20 мин)</div><div class="main-screen__advantage main-screen__advantage--3">Звонок напрямую мастеру (без посредников)</div></div><a class="main-screen__phone-mobile btn-phone btn" href="tel:+79958881086"><span class="btn-phone__text">+7 (995) 888-10-86</span><span class="btn-phone__icon"></span></a><div class="main-screen__image-wrap"><div class="main-screen__image ibg"><picture><source${ssrRenderAttr("srcset", `/images/main-screen/banner.png`)}><img${ssrRenderAttr("src", `/images/main-screen/banner.png`)} alt="Баннер" loading="lazy"></picture></div>`);
+      _push(`<!--[--><div class="main-screen"><div class="container"><div class="main-screen__heading"><h1 class="main-screen__title">Вскрытие замков <span>${ssrInterpolate(__props.declensionCity)}</span></h1><a class="main-screen__phone btn-phone btn" href="tel:+79958881086"><span class="btn-phone__text">+7 (995) 888-10-86</span><span class="btn-phone__icon"></span></a></div><div class="main-screen__advantages"><!--[-->`);
+      ssrRenderList(dataBase.advantages, (item, index) => {
+        _push(`<div class="${ssrRenderClass([`main-screen__advantage--${index + 1}`, "main-screen__advantage"])}">${ssrInterpolate(item.field_title[0])}</div>`);
+      });
+      _push(`<!--]--></div><a class="main-screen__phone-mobile btn-phone btn" href="tel:+79958881086"><span class="btn-phone__text">+7 (995) 888-10-86</span><span class="btn-phone__icon"></span></a><div class="main-screen__image-wrap"><div class="main-screen__image ibg"><picture><source${ssrRenderAttr("srcset", `/images/main-screen/banner.png`)}><img${ssrRenderAttr("src", `/images/main-screen/banner.png`)} alt="Баннер" loading="lazy"></picture></div>`);
       _push(ssrRenderComponent(_sfc_main$5, null, null, _parent));
       _push(`</div></div></div>`);
-      _push(ssrRenderComponent(_sfc_main$1, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$1, {
+        services: dataBase.services
+      }, null, _parent));
       _push(ssrRenderComponent(_sfc_main$2, null, null, _parent));
-      _push(`<section class="services-detail services-detail--first"><div class="services-detail__wrapper"><div class="services-detail__box"><div class="container">`);
+      _push(`<section class="services-detail services-detail--first"><div class="services-detail__wrapper">`);
+      _push(ssrRenderComponent(_sfc_main$8, {
+        service: dataBase.services.items[0],
+        locks: dataBase.services.locks
+      }, null, _parent));
+      _push(`<div class="services-detail__box"><div class="container">`);
       _push(ssrRenderComponent(_sfc_main$7, {
         titleGray: unref(servicesDetail)[0].titleGray,
         title: unref(servicesDetail)[0].title,
@@ -674,10 +749,18 @@ const _sfc_main = {
       }, _parent));
       _push(`</div></div></div></div></section>`);
       _push(ssrRenderComponent(Questions, null, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$4, null, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$4, {
+        data: dataBase.about
+      }, null, _parent));
       _push(`<section class="testimonials"><div class="testimonials__wrapper"><div class="container"><div class="testimonials__body"><div class="testimonials__module"><iframe style="${ssrRenderStyle({ "width": "100%", "height": "100%", "border": "1px solid #e6e6e6", "border-radius": "8px", "box-sizing": "border-box" })}" src="https://yandex.ru/maps-reviews-widget/158778930985?comments"></iframe><a href="https://yandex.ru/maps/org/dom_byta/158778930985/" target="_blank" style="${ssrRenderStyle({ "box-sizing": "border-box", "text-decoration": "none", "color": "#b3b3b3", "font-size": "10px", "font-family": "YS Text,sans-serif", "padding": "0 16px", "position": "absolute", "bottom": "8px", "width": "100%", "text-align": "center", "left": "0", "overflow": "hidden", "text-overflow": "ellipsis", "display": "block", "max-height": "14px", "white-space": "nowrap" })}">Дом Быта на карте Москвы — Яндекс Карты</a></div><div class="heading"><h2 class="heading__title">Отзывы <span>наших клиентов</span></h2><p class="heading__sub-title">За время работы нашей компании, остались довольными более 15 000 клиентов.</p></div></div></div></div></section>`);
-      _push(ssrRenderComponent(_sfc_main$3, null, null, _parent));
-      _push(`<!--]-->`);
+      _push(ssrRenderComponent(_sfc_main$3, {
+        geo: dataBase.geo
+      }, null, _parent));
+      _push(`<!--[-->`);
+      ssrRenderList(dataBase.locks, (lock) => {
+        _push(`<div><img${ssrRenderAttr("src", `http://zamokmaster.localhost/sites/default/files/2024-06/service-detail-1.jpg`)} alt=""${ssrRenderAttr("width", lock.field_logo[0].width)}${ssrRenderAttr("height", lock.field_logo[0].height)}></div>`);
+      });
+      _push(`<!--]--><!--]-->`);
     };
   }
 };

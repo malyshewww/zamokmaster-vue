@@ -1,12 +1,13 @@
 import { computed, resolveComponent, mergeProps, unref, withCtx, createVNode, toDisplayString, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrInterpolate, ssrRenderList, ssrRenderAttr } from "vue/server-renderer";
 import { d as data } from "../entry-server.js";
-import { S as Sidebar } from "./Sidebar-OR3Vja4K.js";
+import { S as Sidebar } from "./Sidebar-CIHe6jy1.js";
 import { _ as _sfc_main$1 } from "./Breadcrumbs-BtW0J10y.js";
 import { useRoute } from "vue-router";
 import { useHead } from "@vueuse/head";
 import "lvovich";
-import "@vue/server-renderer";
+import "axios";
+import "pinia";
 const _sfc_main = {
   __name: "CastleList",
   __ssrInlineRender: true,

@@ -5,7 +5,8 @@ import { _ as _sfc_main$1 } from "./Breadcrumbs-BtW0J10y.js";
 import { useRoute } from "vue-router";
 import { useHead } from "@vueuse/head";
 import "lvovich";
-import "@vue/server-renderer";
+import "axios";
+import "pinia";
 const _sfc_main = {
   __name: "ServiceList",
   __ssrInlineRender: true,

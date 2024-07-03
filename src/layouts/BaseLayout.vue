@@ -5,13 +5,6 @@
 			router-view(:defaultCity="defaultCity" :declensionCity="declensionCity" :mainInfo="dataBase")
 		TheFooter
 		Widget
-		.services-mobile
-			.services-mobile__body
-				router-link(to="/service-card" v-for="service in services").services-mobile__item
-					.services-mobile__image 
-						picture
-							img(:src=`"/images/services/mobile/service-mob-"+(service.img)+".png"`, :alt="service.title" loading="lazy")
-					.services-mobile__title {{ service.title }}
 		.phone-mobile 
 			.container
 				.phone-mobile__body
